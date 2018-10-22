@@ -130,7 +130,7 @@ namespace Microsoft.ML.Runtime.Learners
                 var trainedData = new RoleMappedData(view, label: trainerLabel, feature: transformer.FeatureColumn);
 
                 if (calibratedModel == null)
-                   calibratedModel = CalibratorUtils.TrainCalibrator(Host, ch, Calibrator, Args.MaxCalibrationExamples, transformer.Model, trainedData) as TDistPredictor;
+                    calibratedModel = CalibratorUtils.TrainCalibrator(Host, ch, Calibrator, Args.MaxCalibrationExamples, transformer.Model, trainedData) as TDistPredictor;
 
                 Host.Check(calibratedModel != null, "Calibrated predictor does not implement the expected interface");
                 return new BinaryPredictionTransformer<TScalarPredictor>(Host, calibratedModel, trainedData.Data.Schema, transformer.FeatureColumn);
@@ -186,9 +186,13 @@ namespace Microsoft.ML.Runtime.Learners
                     {
                         var transformer = TrainOne(ch, GetTrainer(), td, i);
                         featureColumn = transformer.FeatureColumn;
+                        predictors[i] = transformer.Model;
                     }
-
-                    predictors[i] = TrainOne(ch, GetTrainer(), td, i).Model;
+                    else
+                    {
+                        var tr = GetTrainer();
+                        predictors[i] = TrainOne(ch, tr, td, i).Model;
+                    }
                 }
             }
 
