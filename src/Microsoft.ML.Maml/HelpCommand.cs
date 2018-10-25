@@ -341,7 +341,20 @@ namespace Microsoft.ML.Runtime.Tools
                 return;
 
             // REVIEW: should we replace consecutive spaces with a single space as a preprocessing step?
-            int screenWidth = (columns ?? Console.BufferWidth) - 1;
+            int screenWidth = columns ?? 0;
+            if (screenWidth <= 0)
+            {
+                try
+                {
+                    screenWidth = Console.BufferWidth - 1;
+                    if (screenWidth <= 0)
+                        screenWidth = 79;
+                }
+                catch (Exception)
+                {
+                    screenWidth = 79;
+                }
+            }
 
             // Console.BufferWidth returns 0 if command redirection operator is used
             if (screenWidth <= 0)

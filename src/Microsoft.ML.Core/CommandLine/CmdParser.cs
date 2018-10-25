@@ -941,9 +941,20 @@ namespace Microsoft.ML.Runtime.CommandLine
         /// </summary>
         private string GetUsageString(IHostEnvironment env, ArgumentInfo info, bool showRsp = true, int? columns = null)
         {
-            int screenWidth = columns ?? Console.BufferWidth;
+            int screenWidth = columns ?? 0;
             if (screenWidth <= 0)
-                screenWidth = 80;
+            {
+                try
+                {
+                    screenWidth = Console.BufferWidth;
+                    if (screenWidth <= 0)
+                        screenWidth = 80;
+                }
+                catch (Exception)
+                {
+                    screenWidth = 80;
+                }
+            }
 
             ArgumentHelpStrings[] strings = GetAllHelpStrings(env, info, showRsp);
 
@@ -1323,7 +1334,8 @@ namespace Microsoft.ML.Runtime.CommandLine
                 // Used for help and composing settings strings.
                 public object DefaultValue { get { return _arg.DefaultValue; } }
 
-                public bool IsRequired {
+                public bool IsRequired
+                {
                     get { return ArgumentType.Required == (Kind & ArgumentType.Required); }
                 }
 
@@ -2327,15 +2339,18 @@ namespace Microsoft.ML.Runtime.CommandLine
                 return bldr.ToString();
             }
 
-            public bool IsRequired {
+            public bool IsRequired
+            {
                 get { return 0 != (Kind & ArgumentType.Required); }
             }
 
-            public bool AllowMultiple {
+            public bool AllowMultiple
+            {
                 get { return 0 != (Kind & ArgumentType.Multiple); }
             }
 
-            public bool Unique {
+            public bool Unique
+            {
                 get { return 0 != (Kind & ArgumentType.Unique); }
             }
 
@@ -2349,7 +2364,8 @@ namespace Microsoft.ML.Runtime.CommandLine
                 get { return IsComponentFactory && Field.FieldType.IsArray; }
             }
 
-            public bool IsCustomItemType {
+            public bool IsCustomItemType
+            {
                 get { return _infoCustom != null; }
             }
         }
