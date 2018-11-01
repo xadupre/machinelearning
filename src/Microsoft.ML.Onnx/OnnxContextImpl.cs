@@ -40,7 +40,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
             Contracts.CheckValue(env, nameof(env));
             _host = env.Register(nameof(OnnxContext));
             _host.CheckValue(name, nameof(name));
-            _host.CheckValue(name, nameof(domain));
+            _host.CheckValue(domain, nameof(domain));
 
             _nodes = new List<NodeProto>();
             _intermediateValues = new List<OnnxUtils.ModelArgs>();
