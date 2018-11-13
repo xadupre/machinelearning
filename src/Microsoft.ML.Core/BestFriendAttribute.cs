@@ -16,7 +16,7 @@ namespace Microsoft.ML
     [BestFriend]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Constructor
         | AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Delegate, AllowMultiple = false, Inherited = false)]
-    internal sealed class BestFriendAttribute : Attribute
+    /*internal*/ sealed class BestFriendAttribute : Attribute
     {
     }
 
@@ -27,7 +27,7 @@ namespace Microsoft.ML
     /// </summary>
     [BestFriend]
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-    internal sealed class WantsToBeBestFriendsAttribute : Attribute
+    /*internal*/ sealed class WantsToBeBestFriendsAttribute : Attribute
     {
     }
 }
