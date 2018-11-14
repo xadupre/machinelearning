@@ -13,7 +13,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal sealed class TransformImplGenerator : ImplGeneratorBase
+    /*internal*/public sealed class TransformImplGenerator : ImplGeneratorBase
     {
         protected override void GenerateMethodSignature(IndentingTextWriter w, string prefix, ComponentCatalog.LoadableClassInfo component)
         {
@@ -74,7 +74,7 @@ namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
         }
     }
 
-    internal sealed class TransformEntryPointGenerator : EntryPointGeneratorBase
+    /*internal*/public sealed class TransformEntryPointGenerator : EntryPointGeneratorBase
     {
         protected override void GenerateSummaryComment(IndentingTextWriter w, ComponentCatalog.LoadableClassInfo component)
         {
@@ -159,7 +159,7 @@ namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
         }
     }
 
-    internal sealed class TransformModuleInstanceEntryPointGenerator : GeneratorBase
+    /*internal*/public sealed class TransformModuleInstanceEntryPointGenerator : GeneratorBase
     {
         private string _compName;
 

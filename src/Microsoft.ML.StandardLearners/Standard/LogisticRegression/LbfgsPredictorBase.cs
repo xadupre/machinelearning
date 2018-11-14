@@ -85,21 +85,21 @@ namespace Microsoft.ML.Runtime.Learners
             [Argument(ArgumentType.AtMostOnce, HelpText = "Number of threads", ShortName = "nt")]
             public int? NumThreads;
 
-            [Argument(ArgumentType.AtMostOnce, HelpText = "Force densification of the internal optimization vectors", ShortName = "do")]
+            [Argument(ArgumentType.AtMostOnce, HelpText = "Force densification of the /*internal*/public optimization vectors", ShortName = "do")]
             [TlcModule.SweepableDiscreteParamAttribute("DenseOptimizer", new object[] { false, true })]
             public bool DenseOptimizer = false;
 
             [Argument(ArgumentType.AtMostOnce, HelpText = "Enforce non-negative weights", ShortName = "nn", SortOrder = 90)]
             public bool EnforceNonNegativity = Defaults.EnforceNonNegativity;
 
-            internal static class Defaults
+            /*internal*/public static class Defaults
             {
-                internal const float L2Weight = 1;
-                internal const float L1Weight = 1;
-                internal const float OptTol = 1e-7f;
-                internal const int MemorySize = 20;
-                internal const int MaxIterations = int.MaxValue;
-                internal const bool EnforceNonNegativity = false;
+                /*internal*/public const float L2Weight = 1;
+                /*internal*/public const float L1Weight = 1;
+                /*internal*/public const float OptTol = 1e-7f;
+                /*internal*/public const int MemorySize = 20;
+                /*internal*/public const int MaxIterations = int.MaxValue;
+                /*internal*/public const bool EnforceNonNegativity = false;
             }
         }
 
@@ -151,7 +151,7 @@ namespace Microsoft.ML.Runtime.Learners
         private static readonly TrainerInfo _info = new TrainerInfo(caching: true, supportIncrementalTrain: true);
         public override TrainerInfo Info => _info;
 
-        internal LbfgsTrainerBase(IHostEnvironment env,
+        /*internal*/public LbfgsTrainerBase(IHostEnvironment env,
             string featureColumn,
             SchemaShape.Column labelColumn,
             string weightColumn,
@@ -176,7 +176,7 @@ namespace Microsoft.ML.Runtime.Learners
         {
         }
 
-        internal LbfgsTrainerBase(IHostEnvironment env,
+        /*internal*/public LbfgsTrainerBase(IHostEnvironment env,
             TArgs args,
             SchemaShape.Column labelColumn,
             Action<TArgs> advancedSettings = null)

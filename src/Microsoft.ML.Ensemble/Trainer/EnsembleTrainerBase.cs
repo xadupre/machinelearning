@@ -53,7 +53,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             [TGUI(Label = "Show Sub-Model Metrics")]
             public bool ShowMetrics;
 
-            internal abstract IComponentFactory<ITrainer<IPredictorProducing<TOutput>>>[] GetPredictorFactories();
+            /*internal*/public abstract IComponentFactory<ITrainer<IPredictorProducing<TOutput>>>[] GetPredictorFactories();
         }
 
         private const int DefaultNumModels = 50;
@@ -93,7 +93,7 @@ namespace Microsoft.ML.Runtime.Ensemble
                 Trainers = new ITrainer<IPredictorProducing<TOutput>>[NumModels];
                 for (int i = 0; i < Trainers.Length; i++)
                     Trainers[i] = predictorFactories[i % predictorFactories.Length].CreateComponent(Host);
-                // We infer normalization and calibration preferences from the trainers. However, even if the internal trainers
+                // We infer normalization and calibration preferences from the trainers. However, even if the /*internal*/public trainers
                 // don't need caching we are performing multiple passes over the data, so it is probably appropriate to always cache.
                 Info = new TrainerInfo(
                     normalization: Trainers.Any(t => t.Info.NeedNormalization),

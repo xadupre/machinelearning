@@ -41,7 +41,7 @@ namespace Microsoft.ML.Legacy.Models
             });
         }
 
-        internal static List<ConfusionMatrix> Create(IHostEnvironment env, IDataView confusionMatrix)
+        /*internal*/public static List<ConfusionMatrix> Create(IHostEnvironment env, IDataView confusionMatrix)
         {
             Contracts.AssertValue(env);
             env.AssertValue(confusionMatrix);

@@ -390,7 +390,7 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         public abstract PredictionKind PredictionKind { get; }
 
-        internal IPredictorModel[] PredictorModels { get; }
+        /*internal*/public IPredictorModel[] PredictorModels { get; }
 
         private SchemaBindablePipelineEnsembleBase(IHostEnvironment env, IPredictorModel[] predictors, string registrationName, string scoreColumnKind)
         {

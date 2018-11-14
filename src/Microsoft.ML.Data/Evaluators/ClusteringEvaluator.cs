@@ -587,7 +587,7 @@ namespace Microsoft.ML.Runtime.Data
             /// </summary>
             public double Dbi { get; }
 
-            internal Result(IExceptionContext ectx, IRow overallResult, bool calculateDbi)
+            /*internal*/public Result(IExceptionContext ectx, IRow overallResult, bool calculateDbi)
             {
                 double Fetch(string name) => RowCursorUtils.Fetch<double>(ectx, overallResult, name);
 

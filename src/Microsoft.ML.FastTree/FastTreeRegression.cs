@@ -38,9 +38,9 @@ namespace Microsoft.ML.Trainers.FastTree
         : BoostingFastTreeTrainerBase<FastTreeRegressionTrainer.Arguments, RegressionPredictionTransformer<FastTreeRegressionPredictor>, FastTreeRegressionPredictor>
     {
         public const string LoadNameValue = "FastTreeRegression";
-        internal const string UserNameValue = "FastTree (Boosted Trees) Regression";
-        internal const string Summary = "Trains gradient boosted decision trees to fit target values using least-squares.";
-        internal const string ShortName = "ftr";
+        /*internal*/public const string UserNameValue = "FastTree (Boosted Trees) Regression";
+        /*internal*/public const string Summary = "Trains gradient boosted decision trees to fit target values using least-squares.";
+        /*internal*/public const string ShortName = "ftr";
 
         private TestHistory _firstTestSetHistory;
         private Test _trainRegressionTest;
@@ -79,7 +79,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Initializes a new instance of <see cref="FastTreeRegressionTrainer"/> by using the legacy <see cref="Arguments"/> class.
         /// </summary>
-        internal FastTreeRegressionTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public FastTreeRegressionTrainer(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
         }
@@ -378,7 +378,7 @@ namespace Microsoft.ML.Trainers.FastTree
             PrintTestGraph(ch);
         }
 
-        internal sealed class ObjectiveImpl : ObjectiveFunctionBase, IStepSearch
+        /*internal*/public sealed class ObjectiveImpl : ObjectiveFunctionBase, IStepSearch
         {
             private readonly float[] _labels;
 
@@ -462,7 +462,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         protected override uint VerCategoricalSplitSerialized => 0x00010005;
 
-        internal FastTreeRegressionPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
+        /*internal*/public FastTreeRegressionPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
             : base(env, RegistrationName, trainedEnsemble, featureCount, innerArgs)
         {
         }

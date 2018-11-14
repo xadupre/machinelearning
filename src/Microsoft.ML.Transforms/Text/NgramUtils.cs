@@ -19,12 +19,12 @@ namespace Microsoft.ML.Runtime.Data
     /// <param name="more">True if processing should continue, false if it should stop.
     /// It is true on input, so only needs to be set to false.</param>
     /// <returns>The ngram slot if it was found, -1 otherwise.</returns>
-    internal delegate int NgramIdFinder(uint[] ngram, int lim, int icol, ref bool more);
+    /*internal*/public delegate int NgramIdFinder(uint[] ngram, int lim, int icol, ref bool more);
 
     // A class that given a VBuffer of keys, finds all the ngrams in it, and maintains a vector of ngram-counts.
     // The id of each ngram is found by calling an NgramIdFinder delegate. This class can also be used to build
     // an ngram dictionary, by defining an NgramIdFinder that adds the ngrams to a dictionary and always return false.
-    internal sealed class NgramBufferBuilder
+    /*internal*/public sealed class NgramBufferBuilder
     {
         // This buffer builder maintains the vector of ngram-counts.
         private readonly BufferBuilder<Float> _bldr;

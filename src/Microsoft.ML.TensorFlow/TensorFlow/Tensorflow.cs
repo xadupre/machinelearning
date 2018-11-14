@@ -31,20 +31,20 @@ using System.Collections;
 
 namespace Microsoft.ML.Transforms.TensorFlow
 {
-    internal static partial class NativeBinding
+    /*internal*/public static partial class NativeBinding
     {
         public const string TensorFlowLibrary = "tensorflow";
         public const string TensorFlowLibraryGPU = "libtensorflowgpu";
 
-        internal static string GetStr(this IntPtr x) => Marshal.PtrToStringAnsi(x);
+        /*internal*/public static string GetStr(this IntPtr x) => Marshal.PtrToStringAnsi(x);
     }
 
     /// <summary>
     /// Contains TensorFlow fundamental methods and utility functions.
     /// </summary>
-    internal static class TFCore
+    /*internal*/public static class TFCore
     {
-        internal static bool UseCPU = true;
+        /*internal*/public static bool UseCPU = true;
 
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe IntPtr TF_Version();
@@ -54,7 +54,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             Init();
         }
 
-        internal static void Init()
+        /*internal*/public static void Init()
         {
             CheckSize();
         }
@@ -121,9 +121,9 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// override the NativeDispose method (internal) to release the associated resource.
     /// </para>
     /// </remarks>
-    internal abstract class TFDisposable : IDisposable
+    /*internal*/public abstract class TFDisposable : IDisposable
     {
-        internal IntPtr handle;
+        /*internal*/public IntPtr handle;
 
         /// <summary>
         /// Returns the opaque handle to the object that this TFDisposable owns.
@@ -172,7 +172,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         // Must be implemented in subclasses to dispose the unmanaged object, it does
         // not need to take care of zeroing out the handle, that is done by the Dispose
         // method inherited from TFDisposable
-        internal abstract void NativeDispose(IntPtr handle);
+        /*internal*/public abstract void NativeDispose(IntPtr handle);
 
         /// <summary>
         /// Dispose the specified object
@@ -188,7 +188,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal static void ObjectDisposedException()
+        /*internal*/public static void ObjectDisposedException()
         {
             throw new ObjectDisposedException("The object was disposed");
         }
@@ -205,7 +205,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// so the release methods are suitable to be invoked from the Finalizer thread, in
     /// those scenarios, subclass from this class rather than the TFDisposable class.
     /// </remarks>
-    internal abstract class TFDisposableThreadSafe : TFDisposable
+    /*internal*/public abstract class TFDisposableThreadSafe : TFDisposable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TensorFlow.TFDisposable"/> class
@@ -237,7 +237,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// TensorFlow Exception
     /// </summary>
-    internal class TFException : Exception
+    /*internal*/public class TFException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TensorFlow.TFException"/> class with a message.
@@ -264,7 +264,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// operation did not succeed.
     /// </para>
     /// </remarks>
-    internal class TFStatus : TFDisposable
+    /*internal*/public class TFStatus : TFDisposable
     {
         // extern TF_Status * TF_NewStatus ();
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -292,7 +292,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe void TF_DeleteStatus(TF_Status status);
 
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             TF_DeleteStatus(handle);
         }
@@ -383,7 +383,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         // exception is raised.
         //
 
-        internal bool CheckMaybeRaise(TFStatus incomingStatus, bool last = true)
+        /*internal*/public bool CheckMaybeRaise(TFStatus incomingStatus, bool last = true)
         {
             if (incomingStatus == null)
             {
@@ -403,7 +403,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             return StatusCode == TFCode.Ok;
         }
 
-        internal static TFStatus Setup(TFStatus incoming)
+        /*internal*/public static TFStatus Setup(TFStatus incoming)
         {
             return incoming == null ? new TFStatus() : incoming;
         }
@@ -412,7 +412,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// The session options object holds configuration options that you want to use during your session, like the TensorFlow target or the configuration.
     /// </summary>
-    internal class TFSessionOptions : TFDisposable
+    /*internal*/public class TFSessionOptions : TFDisposable
     {
         // extern TF_SessionOptions * TF_NewSessionOptions ();
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -426,7 +426,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         // extern void TF_DeleteSessionOptions (TF_SessionOptions *);
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe void TF_DeleteSessionOptions(TF_SessionOptions options);
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             TF_DeleteSessionOptions(handle);
         }
@@ -493,7 +493,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// "hot", and add a "sub" operation there the result will be "demo/hot/sub".
     /// </para>
     /// </remarks>
-    internal partial class TFGraph : TFDisposableThreadSafe, IEnumerable<TFOperation>
+    /*internal*/public partial class TFGraph : TFDisposableThreadSafe, IEnumerable<TFOperation>
     {
         // extern TF_Graph * TF_NewGraph ();
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -509,7 +509,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         // extern void TF_DeleteGraph (TF_Graph *);
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe void TF_DeleteGraph(TF_Graph graph);
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             TF_DeleteGraph(handle);
         }
@@ -734,9 +734,9 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <see cref="T:Tensorflow.TFGraph"/>, but they can also be constructed
     /// manually using the low-level <see cref="T:Tensorflow.TFOperationDesc"/> API.
     /// </remarks>
-    internal partial class TFOperation
+    /*internal*/public partial class TFOperation
     {
-        internal IntPtr handle;
+        /*internal*/public IntPtr handle;
 
         /// <summary>
         /// Gets the handle to the unmanaged TF_Operation object.
@@ -745,9 +745,9 @@ namespace Microsoft.ML.Transforms.TensorFlow
         public IntPtr Handle => handle;
 
         // Pointer to the graph, to keep it from collecting if there are TFOperations alive.
-        internal TFGraph graph;
+        /*internal*/public TFGraph graph;
 
-        internal TFOperation(TFGraph graph, IntPtr handle)
+        /*internal*/public TFOperation(TFGraph graph, IntPtr handle)
         {
             this.handle = handle;
             this.graph = graph;
@@ -811,7 +811,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// Device type
     /// </summary>
-    internal enum DeviceType
+    /*internal*/public enum DeviceType
     {
         /// <summary>
         /// The device is the Central Processing Unit (CPU)
@@ -832,9 +832,9 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// Describes the device attributes
     /// </summary>
-    internal class DeviceAttributes
+    /*internal*/public class DeviceAttributes
     {
-        internal DeviceAttributes(string name, DeviceType deviceType, long memoryLimitBytes)
+        /*internal*/public DeviceAttributes(string name, DeviceType deviceType, long memoryLimitBytes)
         {
             Name = name;
             DeviceType = deviceType;
@@ -862,7 +862,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// Contains options that are used to control how graph importing works.
     /// </summary>
-    internal class TFImportGraphDefOptions : TFDisposable
+    /*internal*/public class TFImportGraphDefOptions : TFDisposable
     {
         // extern TF_ImportGraphDefOptions * TF_NewImportGraphDefOptions ();
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -876,7 +876,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe void TF_DeleteImportGraphDefOptions(TF_ImportGraphDefOptions opts);
 
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             TF_DeleteImportGraphDefOptions(handle);
         }
@@ -1053,7 +1053,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// be kept in sync.
     /// </para>
     /// </remarks>
-    internal class TFSession : TFDisposableThreadSafe
+    /*internal*/public class TFSession : TFDisposableThreadSafe
     {
         // extern TF_Session * TF_NewSession (TF_Graph *graph, const TF_SessionOptions *opts, TF_Status *status);
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -1242,7 +1242,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             cstatus.CheckMaybeRaise(status);
         }
 
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             using (var s = new TFStatus())
             {
@@ -1290,7 +1290,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             private List<TFOperation> targets;
             private TFSession session;
 
-            internal Runner(TFSession session)
+            /*internal*/public Runner(TFSession session)
             {
                 inputs = new List<TFOutput>();
                 outputs = new List<TFOutput>();
@@ -1559,7 +1559,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// Tensors have uniform data types, all the elements of the tensor are of this
     /// type and they dictate how TensorFlow will treat the data stored.
     /// </remarks>
-    internal enum TFDataType : uint
+    /*internal*/public enum TFDataType : uint
     {
         /// <summary>
         /// The TFDataType has not been set
@@ -1678,7 +1678,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// Status code for invoking a tensorflow operation.
     /// </summary>
-    internal enum TFCode : uint
+    /*internal*/public enum TFCode : uint
     {
         /// <summary>
         /// Not an error; returned on success
@@ -1806,7 +1806,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         Unimplemented = 12,
 
         /// <summary>
-        /// Internal errors.  Means some invariants expected by underlying
+        /// /*internal*/public errors.  Means some invariants expected by underlying
         /// system has been broken.  If you see one of these errors,
         /// something is very broken.
         /// </summary>
@@ -1832,7 +1832,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// Represents a specific input of an operation.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct TFInput
+    /*internal*/public struct TFInput
     {
         /// <summary>
         /// The operation that this input is for
@@ -1868,7 +1868,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// </para>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct TFOutput
+    /*internal*/public struct TFOutput
     {
         private unsafe TF_Operation LLOperation;
 
@@ -1972,7 +1972,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <summary>
     /// Low-level: Enumeration describing the types of a metadata attribute
     /// </summary>
-    internal enum TFAttributeType : uint
+    /*internal*/public enum TFAttributeType : uint
     {
         /// <summary>
         /// The type of the attribute is a string
@@ -2029,7 +2029,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// bindings in the <see cref="T:TensorFlow.TFGraph"/> type.
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct TFAttributeMetadata
+    /*internal*/public struct TFAttributeMetadata
     {
         private byte isList;
         public bool IsList => isList != 0;
@@ -2079,7 +2079,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// var batch = new TFShape (-1, 4)
     /// </para>
     /// </remarks>
-    internal class TFShape
+    /*internal*/public class TFShape
     {
         /// <summary>
         /// Represents an unknown number of dimensions in the tensor.
@@ -2093,7 +2093,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         /// <value>The scalar.</value>
         public static TFShape Scalar => new TFShape(new long[0]);
 
-        internal long[] dims;
+        /*internal*/public long[] dims;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TensorFlow.TFShape"/> class.

@@ -14,26 +14,26 @@ namespace Microsoft.ML.Runtime
     /// both SignatureTrainer and SignatureXxxTrainer where Xxx is the prediction kind.
     /// </summary>
     [BestFriend]
-    internal delegate void SignatureTrainer();
+    /*internal*/public delegate void SignatureTrainer();
 
     [BestFriend]
-    internal delegate void SignatureBinaryClassifierTrainer();
+    /*internal*/public delegate void SignatureBinaryClassifierTrainer();
     [BestFriend]
-    internal delegate void SignatureMultiClassClassifierTrainer();
+    /*internal*/public delegate void SignatureMultiClassClassifierTrainer();
     [BestFriend]
-    internal delegate void SignatureRegressorTrainer();
+    /*internal*/public delegate void SignatureRegressorTrainer();
     [BestFriend]
-    internal delegate void SignatureMultiOutputRegressorTrainer();
+    /*internal*/public delegate void SignatureMultiOutputRegressorTrainer();
     [BestFriend]
-    internal delegate void SignatureRankerTrainer();
+    /*internal*/public delegate void SignatureRankerTrainer();
     [BestFriend]
-    internal delegate void SignatureAnomalyDetectorTrainer();
+    /*internal*/public delegate void SignatureAnomalyDetectorTrainer();
     [BestFriend]
-    internal delegate void SignatureClusteringTrainer();
+    /*internal*/public delegate void SignatureClusteringTrainer();
     [BestFriend]
-    internal delegate void SignatureSequenceTrainer();
+    /*internal*/public delegate void SignatureSequenceTrainer();
     [BestFriend]
-    internal delegate void SignatureMatrixRecommendingTrainer();
+    /*internal*/public delegate void SignatureMatrixRecommendingTrainer();
 
     /// <summary>
     /// The base interface for a trainers. Implementors should not implement this interface directly,

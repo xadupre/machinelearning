@@ -149,10 +149,10 @@ namespace Microsoft.ML.Trainers.FastTree
 
         public override PredictionKind PredictionKind => PredictionKind.Regression;
 
-        internal const string Summary = "Trains a random forest to fit target values using least-squares.";
-        internal const string LoadNameValue = "FastForestRegression";
-        internal const string UserNameValue = "Fast Forest Regression";
-        internal const string ShortName = "ffr";
+        /*internal*/public const string Summary = "Trains a random forest to fit target values using least-squares.";
+        /*internal*/public const string LoadNameValue = "FastForestRegression";
+        /*internal*/public const string UserNameValue = "Fast Forest Regression";
+        /*internal*/public const string ShortName = "ffr";
 
         /// <summary>
         /// Initializes a new instance of <see cref="FastForestRegression"/>

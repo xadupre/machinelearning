@@ -26,10 +26,10 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
         public const string LoaderSignature = "FieldAwareFactMacPredict";
         public override PredictionKind PredictionKind => PredictionKind.BinaryClassification;
         private bool _norm;
-        internal int FieldCount { get; }
-        internal int FeatureCount { get; }
-        internal int LatentDim { get; }
-        internal int LatentDimAligned { get; }
+        /*internal*/public int FieldCount { get; }
+        /*internal*/public int FeatureCount { get; }
+        /*internal*/public int LatentDim { get; }
+        /*internal*/public int LatentDimAligned { get; }
         private readonly float[] _linearWeights;
         private readonly AlignedArray _latentWeightsAligned;
 
@@ -44,7 +44,7 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
                 loaderAssemblyName: typeof(FieldAwareFactorizationMachinePredictor).Assembly.FullName);
         }
 
-        internal FieldAwareFactorizationMachinePredictor(IHostEnvironment env, bool norm, int fieldCount, int featureCount, int latentDim,
+        /*internal*/public FieldAwareFactorizationMachinePredictor(IHostEnvironment env, bool norm, int fieldCount, int featureCount, int latentDim,
             float[] linearWeights, AlignedArray latentWeightsAligned) : base(env, LoaderSignature)
         {
             Host.Assert(fieldCount > 0);
@@ -160,7 +160,7 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
             ctx.Writer.WriteSingleArray(latentWeights);
         }
 
-        internal float CalculateResponse(ValueGetter<VBuffer<float>>[] getters, VBuffer<float> featureBuffer,
+        /*internal*/public float CalculateResponse(ValueGetter<VBuffer<float>>[] getters, VBuffer<float> featureBuffer,
             int[] featureFieldBuffer, int[] featureIndexBuffer, float[] featureValueBuffer, AlignedArray latentSum)
         {
             int count = 0;
@@ -175,14 +175,14 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
         public ISchemaBoundMapper Bind(IHostEnvironment env, RoleMappedSchema schema)
             => new FieldAwareFactorizationMachineScalarRowMapper(env, schema, Schema.Create(new BinaryClassifierSchema()), this);
 
-        internal void CopyLinearWeightsTo(float[] linearWeights)
+        /*internal*/public void CopyLinearWeightsTo(float[] linearWeights)
         {
             Host.AssertValue(_linearWeights);
             Host.AssertValue(linearWeights);
             Array.Copy(_linearWeights, linearWeights, _linearWeights.Length);
         }
 
-        internal void CopyLatentWeightsTo(AlignedArray latentWeights)
+        /*internal*/public void CopyLatentWeightsTo(AlignedArray latentWeights)
         {
             Host.AssertValue(_latentWeightsAligned);
             Host.AssertValue(latentWeights);

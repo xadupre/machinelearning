@@ -90,12 +90,12 @@ namespace Microsoft.ML.Transforms.Text
         {
         }
 
-        internal const string Summary = "The input to this transform is text, and the output is a vector of text containing the words (tokens) in the original text. "
+        /*internal*/public const string Summary = "The input to this transform is text, and the output is a vector of text containing the words (tokens) in the original text. "
             + "The separator is space, but can be specified as any other character (or multiple characters) if needed.";
 
-        internal const string LoaderSignature = "TokenizeTextTransform";
+        /*internal*/public const string LoaderSignature = "TokenizeTextTransform";
 
-        internal const string UserName = "Tokenize Text Transform";
+        /*internal*/public const string UserName = "Tokenize Text Transform";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -198,7 +198,7 @@ namespace Microsoft.ML.Transforms.Text
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -435,7 +435,7 @@ namespace Microsoft.ML.Transforms.Text
     {
         public static bool IsColumnTypeValid(ColumnType type) => type.ItemType.IsText;
 
-        internal const string ExpectedColumnType = "Text";
+        /*internal*/public const string ExpectedColumnType = "Text";
 
         /// <summary>
         /// Tokenize incoming text in <paramref name="inputColumn"/> and output the tokens as <paramref name="outputColumn"/>.

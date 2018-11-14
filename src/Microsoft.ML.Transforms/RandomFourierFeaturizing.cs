@@ -204,7 +204,7 @@ namespace Microsoft.ML.Transforms.Projections
             }
         }
 
-        internal const string Summary = "This transform maps numeric vectors to a random low-dimensional feature space. It is useful when data has non-linear features, "
+        /*internal*/public const string Summary = "This transform maps numeric vectors to a random low-dimensional feature space. It is useful when data has non-linear features, "
             + "since the transform is designed so that the inner products of the transformed data are approximately equal to those in the feature space of a user specified "
             + "shift-invariant kernel.";
 
@@ -643,7 +643,7 @@ namespace Microsoft.ML.Transforms.Projections
     /// </summary>
     public sealed class RandomFourierFeaturizingEstimator : IEstimator<RandomFourierFeaturizingTransformer>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const int NewDim = 1000;
             public const bool UseSin = false;

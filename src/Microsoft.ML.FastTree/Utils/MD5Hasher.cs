@@ -15,7 +15,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         public UInt64 Prefix;
         public UInt64 Suffix;
 
-        internal MD5Hash(byte[] array)
+        /*internal*/public MD5Hash(byte[] array)
         {
             Contracts.Assert(Utils.Size(array) == SizeInBytes());
             Prefix = BitConverter.ToUInt64(array, 0);

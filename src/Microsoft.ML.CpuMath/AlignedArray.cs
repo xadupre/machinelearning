@@ -20,9 +20,9 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
     {
         // Items includes "head" items filled with NaN, followed by _size entries, followed by "tail"
         // items, also filled with NaN. Note that _size * sizeof(Float) is divisible by _cbAlign.
-        // It is illegal to access any slot outsize [_base, _base + _size). This is internal so clients
+        // It is illegal to access any slot outsize [_base, _base + _size). This is /*internal*/public so clients
         // can easily pin it.
-        internal Float[] Items;
+        /*internal*/public Float[] Items;
 
         private readonly int _size; // Must be divisible by (_cbAlign / sizeof(Float)).
         private readonly int _cbAlign; // The alignment in bytes, a power of two, divisible by sizeof(Float).
@@ -49,7 +49,7 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
             _lock = new object();
         }
 
-        internal unsafe int GetBase(long addr)
+        /*internal*/public unsafe int GetBase(long addr)
         {
 #if DEBUG
             fixed (Float* pv = Items)

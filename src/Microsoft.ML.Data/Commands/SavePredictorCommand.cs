@@ -50,7 +50,7 @@ namespace Microsoft.ML.Runtime.Tools
 #pragma warning restore 649 // never assigned
         }
 
-        internal const string Summary = "Given a TLC model file with a predictor, we can output this same predictor in multiple export formats.";
+        /*internal*/public const string Summary = "Given a TLC model file with a predictor, we can output this same predictor in multiple export formats.";
 
         private readonly Arguments _args;
         private readonly IHost _host;

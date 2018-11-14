@@ -10,7 +10,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.Data.IO
 {
-    internal sealed partial class CodecFactory
+    /*internal*/public sealed partial class CodecFactory
     {
         // REVIEW: In future, this scheme might probably use loadable classes with
         // assembly attributes instead of having the mapping from load name to reader hard coded.

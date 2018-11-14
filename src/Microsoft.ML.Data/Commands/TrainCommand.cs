@@ -78,7 +78,7 @@ namespace Microsoft.ML.Runtime.Data
             public bool ContinueTrain;
         }
 
-        internal const string Summary = "Trains a predictor.";
+        /*internal*/public const string Summary = "Trains a predictor.";
 
         private readonly IComponentFactory<ITrainer> _trainer;
 

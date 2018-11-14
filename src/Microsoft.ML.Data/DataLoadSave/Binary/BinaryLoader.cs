@@ -765,10 +765,10 @@ namespace Microsoft.ML.Runtime.Data.IO
 
         public bool CanShuffle { get { return true; } }
 
-        internal const string Summary = "Loads native Binary IDV data file.";
-        internal const string LoadName = "BinaryLoader";
+        /*internal*/public const string Summary = "Loads native Binary IDV data file.";
+        /*internal*/public const string LoadName = "BinaryLoader";
 
-        internal const string LoaderSignature = "BinaryLoader";
+        /*internal*/public const string LoaderSignature = "BinaryLoader";
         private static VersionInfo GetVersionInfo()
         {
             return new VersionInfo(

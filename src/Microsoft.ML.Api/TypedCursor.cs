@@ -76,7 +76,7 @@ namespace Microsoft.ML.Runtime.Api
     /// Similarly to the 'DataView{T}, this class uses IL generation to create the 'poke' methods that
     /// write directly into the fields of the user-defined type.
     /// </summary>
-    internal sealed class TypedCursorable<TRow> : ICursorable<TRow>
+    /*internal*/public sealed class TypedCursorable<TRow> : ICursorable<TRow>
         where TRow : class
     {
         private readonly IHost _host;

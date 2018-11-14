@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Microsoft.ML.Trainers.FastTree.Internal
 {
-    internal sealed class IniFileParserInterface
+    /*internal*/public sealed class IniFileParserInterface
     {
         private static class Native
         {

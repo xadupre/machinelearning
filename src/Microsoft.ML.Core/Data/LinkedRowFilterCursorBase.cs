@@ -8,7 +8,7 @@ namespace Microsoft.ML.Runtime.Data
     /// Base class for creating a cursor of rows that filters out some input rows.
     /// </summary>
     [BestFriend]
-    internal abstract class LinkedRowFilterCursorBase : LinkedRowRootCursorBase
+    /*internal*/public abstract class LinkedRowFilterCursorBase : LinkedRowRootCursorBase
     {
         public override long Batch => Input.Batch;
 

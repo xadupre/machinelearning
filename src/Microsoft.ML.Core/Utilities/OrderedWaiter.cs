@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// be cleared once incremented, then 2 will be cleared once incremented.
     /// </summary>
     [BestFriend]
-    internal sealed class OrderedWaiter
+    /*internal*/public sealed class OrderedWaiter
     {
         /// <summary>
         /// This is an event-line pair. The intended usage is, when the line

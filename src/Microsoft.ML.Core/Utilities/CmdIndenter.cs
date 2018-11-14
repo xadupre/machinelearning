@@ -12,7 +12,7 @@ using Microsoft.ML.Runtime.CommandLine;
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
     [BestFriend]
-    internal static class CmdIndenter
+    /*internal*/public static class CmdIndenter
     {
         /// <summary>
         /// Get indented version of command line or same string if we unable to produce it.

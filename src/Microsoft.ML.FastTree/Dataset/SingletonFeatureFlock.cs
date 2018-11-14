@@ -12,7 +12,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// The singleton feature flock is the simplest possible sort of flock, that is, a flock
     /// over one feature.
     /// </summary>
-    internal sealed class SingletonFeatureFlock : FeatureFlockBase
+    /*internal*/public sealed class SingletonFeatureFlock : FeatureFlockBase
     {
         private readonly IntArray _bins;
         private readonly double[] _binUpperBounds;

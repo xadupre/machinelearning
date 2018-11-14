@@ -15,7 +15,7 @@ namespace Microsoft.ML.StaticPipe
     {
         public IDataView AsDynamic { get; }
 
-        internal DataView(IHostEnvironment env, IDataView view, StaticSchemaShape shape)
+        /*internal*/public DataView(IHostEnvironment env, IDataView view, StaticSchemaShape shape)
             : base(env, shape)
         {
             Env.AssertValue(view);

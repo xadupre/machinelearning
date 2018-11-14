@@ -36,7 +36,7 @@ namespace Microsoft.ML.Runtime.Data
             public bool KeepHidden;
         }
 
-        internal const string Summary = "Given input data, a loader, and possibly transforms, save the data to a new file as parameterized by a saver.";
+        /*internal*/public const string Summary = "Given input data, a loader, and possibly transforms, save the data to a new file as parameterized by a saver.";
 
         public SaveDataCommand(IHostEnvironment env, Arguments args)
             : base(env, args, nameof(SaveDataCommand))
@@ -107,7 +107,7 @@ namespace Microsoft.ML.Runtime.Data
             public IComponentFactory<IDataSaver> Saver;
         }
 
-        internal const string Summary = "Given input data, a loader, and possibly transforms, display a sample of the data file.";
+        /*internal*/public const string Summary = "Given input data, a loader, and possibly transforms, display a sample of the data file.";
 
         public ShowDataCommand(IHostEnvironment env, Arguments args)
             : base(env, args, nameof(ShowDataCommand))

@@ -17,7 +17,7 @@ namespace Microsoft.ML.Runtime.Data.IO
     /// Codecs should be thread safe, though the readers and writers they spawn do not need to
     /// be thread safe.
     /// </summary>
-    internal interface IValueCodec
+    /*internal*/public interface IValueCodec
     {
         /// <summary>
         /// This is the codec's identifying name. This is utilized both by the codec factory's
@@ -45,7 +45,7 @@ namespace Microsoft.ML.Runtime.Data.IO
     /// </summary>
     /// <typeparam name="T">The type for which we can spawn readers and writers.
     /// Note that <c>Type.RawType == typeof(T)</c>.</typeparam>
-    internal interface IValueCodec<T> : IValueCodec
+    /*internal*/public interface IValueCodec<T> : IValueCodec
     {
         /// <summary>
         /// Returns a writer for this codec, capable of writing a series of values to a block
@@ -65,7 +65,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         IValueReader<T> OpenReader(Stream stream, int items);
     }
 
-    internal interface IValueWriter : IDisposable
+    /*internal*/public interface IValueWriter : IDisposable
     {
         /// <summary>
         /// Finishes writing to the stream. No further values should be written using the
@@ -95,7 +95,7 @@ namespace Microsoft.ML.Runtime.Data.IO
     /// that should easily fit in main memory, both for reading and writing. Some writers
     /// take advantage of this to organize their values for more efficient reading.
     /// </summary>
-    internal interface IValueWriter<T> : IValueWriter
+    /*internal*/public interface IValueWriter<T> : IValueWriter
     {
         /// <summary>
         /// Writes a single value to the writer.
@@ -121,7 +121,7 @@ namespace Microsoft.ML.Runtime.Data.IO
     /// just writes packed binary values with no descriptive information, the corresponding
     /// read will have no ability to tell when it is supposed to "end.")
     /// </summary>
-    internal interface IValueReader<T> : IDisposable
+    /*internal*/public interface IValueReader<T> : IDisposable
     {
         /// <summary>
         /// Moves to the next element.

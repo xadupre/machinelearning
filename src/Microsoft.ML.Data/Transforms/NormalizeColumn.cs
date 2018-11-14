@@ -229,24 +229,24 @@ namespace Microsoft.ML.Transforms.Normalizers
             public int MinBinSize = Defaults.MinBinSize;
         }
 
-        internal const string MinMaxNormalizerSummary = "Normalizes the data based on the observed minimum and maximum values of the data.";
-        internal const string MeanVarNormalizerSummary = "Normalizes the data based on the computed mean and variance of the data.";
-        internal const string LogMeanVarNormalizerSummary = "Normalizes the data based on the computed mean and variance of the logarithm of the data.";
-        internal const string BinNormalizerSummary = "The values are assigned into equidensity bins and a value is mapped to its bin_number/number_of_bins.";
-        internal const string SupervisedBinNormalizerSummary = "Similar to BinNormalizer, but calculates bins based on correlation with the label column, not equi-density. "
+        /*internal*/public const string MinMaxNormalizerSummary = "Normalizes the data based on the observed minimum and maximum values of the data.";
+        /*internal*/public const string MeanVarNormalizerSummary = "Normalizes the data based on the computed mean and variance of the data.";
+        /*internal*/public const string LogMeanVarNormalizerSummary = "Normalizes the data based on the computed mean and variance of the logarithm of the data.";
+        /*internal*/public const string BinNormalizerSummary = "The values are assigned into equidensity bins and a value is mapped to its bin_number/number_of_bins.";
+        /*internal*/public const string SupervisedBinNormalizerSummary = "Similar to BinNormalizer, but calculates bins based on correlation with the label column, not equi-density. "
             + "The new value is bin_number / number_of_bins.";
 
-        internal const string MinMaxNormalizerUserName = "Min-Max Normalizer";
-        internal const string MeanVarNormalizerUserName = "MeanVar Normalizer";
-        internal const string LogMeanVarNormalizerUserName = "LogMeanVar Normalizer";
-        internal const string BinNormalizerUserName = "Binning Normalizer";
-        internal const string SupervisedBinNormalizerUserName = "Supervised Binning Normalizer";
+        /*internal*/public const string MinMaxNormalizerUserName = "Min-Max Normalizer";
+        /*internal*/public const string MeanVarNormalizerUserName = "MeanVar Normalizer";
+        /*internal*/public const string LogMeanVarNormalizerUserName = "LogMeanVar Normalizer";
+        /*internal*/public const string BinNormalizerUserName = "Binning Normalizer";
+        /*internal*/public const string SupervisedBinNormalizerUserName = "Supervised Binning Normalizer";
 
-        internal const string MinMaxNormalizerShortName = "MinMax";
-        internal const string MeanVarNormalizerShortName = "MeanVar";
-        internal const string LogMeanVarNormalizerShortName = "LogMeanVar";
-        internal const string BinNormalizerShortName = "Bin";
-        internal const string SupervisedBinNormalizerShortName = "SupBin";
+        /*internal*/public const string MinMaxNormalizerShortName = "MinMax";
+        /*internal*/public const string MeanVarNormalizerShortName = "MeanVar";
+        /*internal*/public const string LogMeanVarNormalizerShortName = "LogMeanVar";
+        /*internal*/public const string BinNormalizerShortName = "Bin";
+        /*internal*/public const string SupervisedBinNormalizerShortName = "SupBin";
 
         /// <summary>
         /// A helper method to create a MinMax normalizer.
@@ -371,7 +371,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             return normalizer.Fit(input).MakeDataTransform(input);
         }
 
-        internal abstract partial class AffineColumnFunction : IColumnFunction
+        /*internal*/public abstract partial class AffineColumnFunction : IColumnFunction
         {
             protected readonly IHost Host;
 
@@ -486,7 +486,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal abstract partial class CdfColumnFunction : IColumnFunction
+        /*internal*/public abstract partial class CdfColumnFunction : IColumnFunction
         {
             protected readonly IHost Host;
 
@@ -621,7 +621,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal abstract partial class BinColumnFunction : IColumnFunction
+        /*internal*/public abstract partial class BinColumnFunction : IColumnFunction
         {
             protected readonly IHost Host;
 
@@ -928,7 +928,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             protected abstract bool AcceptColumnValue(in VBuffer<TFloat> buffer);
         }
 
-        internal static partial class MinMaxUtils
+        /*internal*/public static partial class MinMaxUtils
         {
             public static IColumnFunctionBuilder CreateBuilder(MinMaxArguments args, IHost host,
                 int icol, int srcIndex, ColumnType srcType, IRowCursor cursor)
@@ -964,7 +964,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static partial class MeanVarUtils
+        /*internal*/public static partial class MeanVarUtils
         {
             public static IColumnFunctionBuilder CreateBuilder(MeanVarArguments args, IHost host,
                 int icol, int srcIndex, ColumnType srcType, IRowCursor cursor)
@@ -1004,7 +1004,7 @@ namespace Microsoft.ML.Transforms.Normalizers
 
         }
 
-        internal static partial class LogMeanVarUtils
+        /*internal*/public static partial class LogMeanVarUtils
         {
             public static IColumnFunctionBuilder CreateBuilder(LogMeanVarArguments args, IHost host,
                 int icol, int srcIndex, ColumnType srcType, IRowCursor cursor)
@@ -1043,7 +1043,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static partial class BinUtils
+        /*internal*/public static partial class BinUtils
         {
             public static IColumnFunctionBuilder CreateBuilder(BinArguments args, IHost host,
                 int icol, int srcIndex, ColumnType srcType, IRowCursor cursor)
@@ -1082,7 +1082,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static class SupervisedBinUtils
+        /*internal*/public static class SupervisedBinUtils
         {
             public static IColumnFunctionBuilder CreateBuilder(SupervisedBinArguments args, IHost host,
                 int icol, int srcIndex, ColumnType srcType, IRowCursor cursor)
@@ -1163,9 +1163,9 @@ namespace Microsoft.ML.Transforms.Normalizers
         }
     }
 
-    internal static class MeanVarUtils
+    /*internal*/public static class MeanVarUtils
     {
-        internal static void AdjustForZeros(ref Double mean, ref Double m2, ref long count, long numZeros)
+        /*internal*/public static void AdjustForZeros(ref Double mean, ref Double m2, ref long count, long numZeros)
         {
             Contracts.Assert(m2 >= 0);
             Contracts.Assert(count >= 0);

@@ -233,9 +233,9 @@ namespace Microsoft.ML.Runtime
             /// </summary>
             public readonly string Identifier;
 
-            internal Action Done;
+            /*internal*/public Action Done;
 
-            internal Bundle(ServerChannel sch)
+            /*internal*/public Bundle(ServerChannel sch)
             {
                 Contracts.AssertValue(sch);
 

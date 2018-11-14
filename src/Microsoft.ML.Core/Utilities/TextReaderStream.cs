@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// input line, including the last one.
     /// </summary>
     [BestFriend]
-    internal sealed class TextReaderStream : Stream
+    /*internal*/public sealed class TextReaderStream : Stream
     {
         private readonly TextReader _baseReader;
         private readonly Encoding _encoding;

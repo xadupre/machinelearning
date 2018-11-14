@@ -15,7 +15,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
     {
         private const string Category = "Naming";
 
-        internal const string Id = "MSML_TypeParamName";
+        /*internal*/public const string Id = "MSML_TypeParamName";
         private const string Title = "Type parameter name not standard";
         private const string Format = "Type parameter name '{0}' not standard";
         private const string Description =

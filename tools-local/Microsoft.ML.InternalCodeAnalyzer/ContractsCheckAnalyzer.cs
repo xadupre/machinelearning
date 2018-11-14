@@ -20,7 +20,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
 
         private const string Category = "Contracts";
 
-        internal static class NameofDiagnostic
+        /*internal*/public static class NameofDiagnostic
         {
             public const string Id = "MSML_ContractsNameUsesNameof";
             private const string Title = "Contracts argument for names is not a nameof";
@@ -29,12 +29,12 @@ namespace Microsoft.ML.InternalCodeAnalyzer
                 "For Contracts.Checks or Excepts with some form of parameter name, unless that " +
                 "argument is a nameof(...) expression there's almost certainly something wrong.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ExceptionDiagnostic
+        /*internal*/public static class ExceptionDiagnostic
         {
             public const string Id = "MSML_ContractsExceptAsExpression";
             private const string Title = "Contracts.Except used as expression";
@@ -43,30 +43,30 @@ namespace Microsoft.ML.InternalCodeAnalyzer
                 "Contracts.Except and similar methods do not themselves throw, but provide an " +
                 "exception that can be thrown. This call did nothing with the exception.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class SimpleMessageDiagnostic
+        /*internal*/public static class SimpleMessageDiagnostic
         {
             public const string Id = "MSML_ContractsCheckMessageNotLiteralOrIdentifier";
             private const string Title = "Contracts.Check argument for message may involve formatting";
             private const string Format = "On call to '{0}' message '{1}' could not be identified as being either a string literal or variable";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true,
                     description: Descriptions.ContractsCheckMessageNotLiteralOrIdentifier);
         }
 
-        internal static class DecodeMessageWithLoadContextDiagnostic
+        /*internal*/public static class DecodeMessageWithLoadContextDiagnostic
         {
             public const string Id = "MSML_NoMessagesForLoadContext";
             private const string Title = "Contracts.Check argument for message may involve formatting";
             private const string Format = "On call to '{0}' message '{1}' was provided, but this method had a ModelLoadContext";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true,
                     description: Descriptions.NoMessagesForLoadContext);

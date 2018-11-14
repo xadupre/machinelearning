@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.ML.Runtime.Model.Pfa
 {
     [BestFriend]
-    internal static class PfaUtils
+    /*internal*/public static class PfaUtils
     {
         public static JObject AddReturn(this JObject toEdit, string name, JToken value)
         {

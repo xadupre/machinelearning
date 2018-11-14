@@ -21,7 +21,7 @@ namespace Microsoft.ML
     public abstract class TrainContextBase
     {
         protected readonly IHost Host;
-        internal IHostEnvironment Environment => Host;
+        /*internal*/public IHostEnvironment Environment => Host;
 
         /// <summary>
         /// Split the dataset into the train set and test set according to the given fraction.
@@ -162,7 +162,7 @@ namespace Microsoft.ML
         /// </summary>
         public abstract class ContextInstantiatorBase
         {
-            internal TrainContextBase Owner { get; }
+            /*internal*/public TrainContextBase Owner { get; }
 
             protected ContextInstantiatorBase(TrainContextBase ctx)
             {
@@ -189,7 +189,7 @@ namespace Microsoft.ML
 
         public sealed class BinaryClassificationTrainers : ContextInstantiatorBase
         {
-            internal BinaryClassificationTrainers(BinaryClassificationContext ctx)
+            /*internal*/public BinaryClassificationTrainers(BinaryClassificationContext ctx)
                 : base(ctx)
             {
             }
@@ -303,7 +303,7 @@ namespace Microsoft.ML
 
         public sealed class ClusteringTrainers : ContextInstantiatorBase
         {
-            internal ClusteringTrainers(ClusteringContext ctx)
+            /*internal*/public ClusteringTrainers(ClusteringContext ctx)
                 : base(ctx)
             {
             }
@@ -377,7 +377,7 @@ namespace Microsoft.ML
 
         public sealed class MulticlassClassificationTrainers : ContextInstantiatorBase
         {
-            internal MulticlassClassificationTrainers(MulticlassClassificationContext ctx)
+            /*internal*/public MulticlassClassificationTrainers(MulticlassClassificationContext ctx)
                 : base(ctx)
             {
             }
@@ -450,7 +450,7 @@ namespace Microsoft.ML
 
         public sealed class RegressionTrainers : ContextInstantiatorBase
         {
-            internal RegressionTrainers(RegressionContext ctx)
+            /*internal*/public RegressionTrainers(RegressionContext ctx)
                 : base(ctx)
             {
             }
@@ -514,7 +514,7 @@ namespace Microsoft.ML
 
         public sealed class RankingTrainers : ContextInstantiatorBase
         {
-            internal RankingTrainers(RankingContext ctx)
+            /*internal*/public RankingTrainers(RankingContext ctx)
                 : base(ctx)
             {
             }

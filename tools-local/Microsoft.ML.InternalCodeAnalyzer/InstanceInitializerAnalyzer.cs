@@ -15,7 +15,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
     public sealed class InstanceInitializerAnalyzer : DiagnosticAnalyzer
     {
         private const string Category = "Declaration";
-        internal const string DiagnosticId = "MSML_NoInstanceInitializers";
+        /*internal*/public const string DiagnosticId = "MSML_NoInstanceInitializers";
 
         private const string Title = "No initializers on instance fields or properties";
         private const string Format = "Member {0} has a {1} initializer outside the constructor";

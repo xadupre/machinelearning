@@ -11,12 +11,12 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// that it works just fine with zero deltas, to "overload" rows into having their targets, thus
     /// allowing a single sumup to accumulate multiple "features" on a single row.
     /// </summary>
-    internal sealed class NHotFeatureFlock : SinglePartitionedIntArrayFlockBase<DeltaSparseIntArray>
+    /*internal*/public sealed class NHotFeatureFlock : SinglePartitionedIntArrayFlockBase<DeltaSparseIntArray>
     {
         // We abuse a property of the sparse int array that it never actually
         // checks or enforces that the deltas are non-zero.
 
-        // These are the same as the internal structures to the delta sparse int array.
+        // These are the same as the /*internal*/public structures to the delta sparse int array.
         private readonly DenseIntArray _values;
         private readonly byte[] _deltas;
 

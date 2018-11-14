@@ -101,7 +101,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             ctx.Writer.Write(_percentile);
         }
 
-        internal static void CountGreaterOrEqualValues(FixedSizeQueue<Single> others, Single theValue, out int greaterVals, out int equalVals, out int totalVals)
+        /*internal*/public static void CountGreaterOrEqualValues(FixedSizeQueue<Single> others, Single theValue, out int greaterVals, out int equalVals, out int totalVals)
         {
             // The current linear algorithm for counting greater and equal elements takes O(n),
             // but it can be improved to O(log n) if a separate Binary Search Tree data structure is used.

@@ -102,7 +102,7 @@ namespace Microsoft.ML.Transforms.Text
 
         private const string RegistrationName = "WordBagTransform";
 
-        internal const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text. It does so by building "
+        /*internal*/public const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text. It does so by building "
             + "a dictionary of ngrams and using the id in the dictionary as the index in the bag.";
 
         public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
@@ -260,10 +260,10 @@ namespace Microsoft.ML.Transforms.Text
             public Column[] Column;
         }
 
-        internal const string Summary = "A transform that turns a collection of tokenized text ReadOnlyMemory, or vectors of keys into numerical " +
+        /*internal*/public const string Summary = "A transform that turns a collection of tokenized text ReadOnlyMemory, or vectors of keys into numerical " +
             "feature vectors. The feature vectors are counts of ngrams (sequences of consecutive *tokens* -words or keys- of length 1-n).";
 
-        internal const string LoaderSignature = "NgramExtractor";
+        /*internal*/public const string LoaderSignature = "NgramExtractor";
 
         public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input,
             TermLoaderArguments termLoaderArgs = null)
@@ -472,7 +472,7 @@ namespace Microsoft.ML.Transforms.Text
     /// <summary>
     /// An implementation of <see cref="INgramExtractorFactory"/> to create <see cref="NgramExtractorTransform"/>.
     /// </summary>
-    internal class NgramExtractorFactory : INgramExtractorFactory
+    /*internal*/public class NgramExtractorFactory : INgramExtractorFactory
     {
         private readonly NgramExtractorTransform.NgramExtractorArguments _extractorArgs;
         private readonly TermLoaderArguments _termLoaderArgs;
@@ -497,7 +497,7 @@ namespace Microsoft.ML.Transforms.Text
     /// <summary>
     /// An implementation of <see cref="INgramExtractorFactory"/> to create <see cref="NgramHashExtractorTransform"/>.
     /// </summary>
-    internal class NgramHashExtractorFactory : INgramExtractorFactory
+    /*internal*/public class NgramHashExtractorFactory : INgramExtractorFactory
     {
         private readonly NgramHashExtractorTransform.NgramHashExtractorArguments _extractorArgs;
         private readonly TermLoaderArguments _termLoaderArgs;

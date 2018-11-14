@@ -8,9 +8,9 @@ using System.Security;
 
 namespace Microsoft.ML.Runtime.Internal.CpuMath
 {
-    internal static unsafe class Thunk
+    /*internal*/public static unsafe class Thunk
     {
-        internal const string NativePath = "CpuMathNative";
+        /*internal*/public const string NativePath = "CpuMathNative";
 
         [DllImport(NativePath), SuppressUnmanagedCodeSecurity]
         public static extern void MatMul(/*const*/ float* pmat, /*const*/ float* psrc, float* pdst, int crow, int ccol);

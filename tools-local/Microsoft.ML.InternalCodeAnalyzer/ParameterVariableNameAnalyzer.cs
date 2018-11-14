@@ -16,7 +16,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
     {
         private const string Category = "Naming";
 
-        internal const string Id = "MSML_ParameterLocalVarName";
+        /*internal*/public const string Id = "MSML_ParameterLocalVarName";
         private const string Title = "Parameter or local variable name not standard";
         private const string Format = "{1} name '{0}' not standard";
         private const string Description =

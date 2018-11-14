@@ -207,7 +207,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         // scenarioWithoutHistory - simple test scenario we want to track the history and look for best iteration
         // lossIndex - index of lossFunction in case Test returns more than one loss (default should be 0)
         // lower is better: are we looking for minimum or maximum of loss function?
-        internal TestHistory(Test scenarioWithoutHistory, int lossIndex)
+        /*internal*/public TestHistory(Test scenarioWithoutHistory, int lossIndex)
             : base(null)
         {
             History = new List<TestResult[]>();
@@ -341,7 +341,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         private readonly string _sortingAlgorithm;
         protected readonly short[] Labels;
 
-        internal NdcgTest(ScoreTracker scoreTracker, short[] labels, string sortingAlgorithm)
+        /*internal*/public NdcgTest(ScoreTracker scoreTracker, short[] labels, string sortingAlgorithm)
             : base(scoreTracker)
         {
             Labels = labels;

@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// Contains extension methods that aid in building cross platform.
     /// </summary>
     [BestFriend]
-    internal static class PlatformUtils
+    /*internal*/public static class PlatformUtils
     {
         public static ReadOnlyCollection<T> AsReadOnly<T>(this T[] items)
         {

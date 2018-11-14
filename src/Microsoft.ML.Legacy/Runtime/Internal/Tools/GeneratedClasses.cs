@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Microsoft.ML.Runtime.Internal.Tools
 {
-    internal sealed class GeneratedClasses
+    /*internal*/public sealed class GeneratedClasses
     {
         private sealed class ApiClass
         {
@@ -87,14 +87,14 @@ namespace Microsoft.ML.Runtime.Internal.Tools
             return name;
         }
 
-        internal bool IsGenerated(string fullName)
+        /*internal*/public bool IsGenerated(string fullName)
         {
             if (!_typesSymbolTable.ContainsKey(fullName))
                 return false;
             return _typesSymbolTable[fullName].Generated;
         }
 
-        internal void MarkAsGenerated(string fullName)
+        /*internal*/public void MarkAsGenerated(string fullName)
         {
             _typesSymbolTable[fullName].Generated = true;
         }

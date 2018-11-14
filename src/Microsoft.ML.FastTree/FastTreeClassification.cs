@@ -68,7 +68,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         protected override uint VerCategoricalSplitSerialized => 0x00010005;
 
-        internal FastTreeBinaryPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
+        /*internal*/public FastTreeBinaryPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
             : base(env, RegistrationName, trainedEnsemble, featureCount, innerArgs)
         {
         }
@@ -108,9 +108,9 @@ namespace Microsoft.ML.Trainers.FastTree
         /// The LoadName for the assembly containing the trainer.
         /// </summary>
         public const string LoadNameValue = "FastTreeBinaryClassification";
-        internal const string UserNameValue = "FastTree (Boosted Trees) Classification";
-        internal const string Summary = "Uses a logit-boost boosted tree learner to perform binary classification.";
-        internal const string ShortName = "ftc";
+        /*internal*/public const string UserNameValue = "FastTree (Boosted Trees) Classification";
+        /*internal*/public const string Summary = "Uses a logit-boost boosted tree learner to perform binary classification.";
+        /*internal*/public const string ShortName = "ftc";
 
         private bool[] _trainSetLabels;
         private double _sigmoidParameter;
@@ -145,7 +145,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Initializes a new instance of <see cref="FastTreeBinaryClassificationTrainer"/> by using the legacy <see cref="Arguments"/> class.
         /// </summary>
-        internal FastTreeBinaryClassificationTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public FastTreeBinaryClassificationTrainer(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
             // Set the sigmoid parameter to the 2 * learning rate, for traditional FastTreeClassification loss
@@ -283,7 +283,7 @@ namespace Microsoft.ML.Trainers.FastTree
             };
         }
 
-        internal sealed class ObjectiveImpl : ObjectiveFunctionBase, IStepSearch
+        /*internal*/public sealed class ObjectiveImpl : ObjectiveFunctionBase, IStepSearch
         {
             private readonly bool[] _labels;
             private readonly bool _unbalancedSets; //Should we use balanced or unbalanced loss function

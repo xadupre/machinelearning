@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Microsoft.ML.Runtime.Data.Utilities
 {
-    internal static class PartitionedPathUtils
+    /*internal*/public static class PartitionedPathUtils
     {
         /// <summary>
         /// Make a full path realtive to a base path.
@@ -17,7 +17,7 @@ namespace Microsoft.ML.Runtime.Data.Utilities
         /// <param name="path">The full path.</param>
         /// <returns>The relative path.</returns>
         /// <exception cref="InvalidOperationException">If the paths are not relative.</exception>
-        internal static string MakePathRelative(string basepath, string path)
+        /*internal*/public static string MakePathRelative(string basepath, string path)
         {
             Contracts.AssertNonEmpty(basepath);
             Contracts.AssertNonEmpty(path);
@@ -62,7 +62,7 @@ namespace Microsoft.ML.Runtime.Data.Utilities
         /// </summary>
         /// <param name="path">The path string to split.</param>
         /// <returns>An enumerable list of all non-empty directories.</returns>
-        internal static IEnumerable<string> SplitDirectories(string path)
+        /*internal*/public static IEnumerable<string> SplitDirectories(string path)
         {
             char[] separators = { Path.DirectorySeparatorChar };
 

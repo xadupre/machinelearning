@@ -11,7 +11,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     [BestFriend]
-    internal class HideEnumValueAttribute : Attribute
+    /*internal*/public class HideEnumValueAttribute : Attribute
     {
         public HideEnumValueAttribute()
         {

@@ -8,7 +8,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal abstract class EntryPointGeneratorBase : GeneratorBase
+    /*internal*/public abstract class EntryPointGeneratorBase : GeneratorBase
     {
         protected override void GenerateContent(IndentingTextWriter writer, string prefix, ComponentCatalog.LoadableClassInfo component, string moduleId)
         {

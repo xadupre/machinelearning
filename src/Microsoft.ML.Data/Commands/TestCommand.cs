@@ -51,7 +51,7 @@ namespace Microsoft.ML.Runtime.Data
             public string OutputDataFile;
         }
 
-        internal const string Summary = "Scores and evaluates a data file.";
+        /*internal*/public const string Summary = "Scores and evaluates a data file.";
 
         public TestCommand(IHostEnvironment env, Arguments args)
             : base(env, args, nameof(TestCommand))

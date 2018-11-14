@@ -22,11 +22,11 @@ namespace Microsoft.ML.Transforms
     /// After adaptation, you'd call GetTensor() on the IdvToTensorAdapter object to get the Tensor equivalent of
     /// each row.
     /// </summary>
-    internal sealed class IdvToTensorAdapter
+    /*internal*/public sealed class IdvToTensorAdapter
     {
         // Idv information
         private readonly string _idvColumnName;
-        internal readonly int IdvColumnIndex;
+        /*internal*/public readonly int IdvColumnIndex;
         private readonly bool _idvIsVectorColumn;
         public readonly ColumnType IdvColumnType;
 
@@ -122,7 +122,7 @@ namespace Microsoft.ML.Transforms
     /// needed by Onnx transform, which only needs a single model. This facad simplifies the
     /// usage of onnx model.
     /// </summary>
-    internal sealed class OnnxModel
+    /*internal*/public sealed class OnnxModel
     {
         /// <summary>
         /// OnnxModelInfo contains the data that we should get from
@@ -240,7 +240,7 @@ namespace Microsoft.ML.Transforms
         }
     }
 
-    internal sealed class OnnxUtils
+    /*internal*/public sealed class OnnxUtils
     {
         /// <summary>
         /// Sonoma API only provides Tensor() constructors with overloaded

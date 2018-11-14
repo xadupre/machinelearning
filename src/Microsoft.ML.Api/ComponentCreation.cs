@@ -381,14 +381,14 @@ namespace Microsoft.ML.Runtime.Api
             return p == null ? null : new Predictor(p);
         }
 
-        internal static ITrainer CreateTrainer<TArgs>(this IHostEnvironment env, TArgs arguments, out string loadName)
+        /*internal*/public static ITrainer CreateTrainer<TArgs>(this IHostEnvironment env, TArgs arguments, out string loadName)
             where TArgs : class, new()
         {
             Contracts.CheckValue(env, nameof(env));
             return CreateCore<ITrainer, TArgs, SignatureTrainer>(env, arguments, out loadName);
         }
 
-        internal static ITrainer CreateTrainer(this IHostEnvironment env, string settings, out string loadName)
+        /*internal*/public static ITrainer CreateTrainer(this IHostEnvironment env, string settings, out string loadName)
         {
             Contracts.CheckValue(env, nameof(env));
             return CreateCore<ITrainer>(env, typeof(SignatureTrainer), settings, out loadName);

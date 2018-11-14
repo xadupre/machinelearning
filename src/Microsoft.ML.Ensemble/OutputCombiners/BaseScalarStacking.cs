@@ -11,12 +11,12 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 {
     public abstract class BaseScalarStacking : BaseStacking<Single>
     {
-        internal BaseScalarStacking(IHostEnvironment env, string name, ArgumentsBase args)
+        /*internal*/public BaseScalarStacking(IHostEnvironment env, string name, ArgumentsBase args)
             : base(env, name, args)
         {
         }
 
-        internal BaseScalarStacking(IHostEnvironment env, string name, ModelLoadContext ctx)
+        /*internal*/public BaseScalarStacking(IHostEnvironment env, string name, ModelLoadContext ctx)
             : base(env, name, ctx)
         {
         }

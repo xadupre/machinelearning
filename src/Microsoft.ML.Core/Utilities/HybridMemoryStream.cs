@@ -16,7 +16,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// The temporary file will be destroyed if the object is properly disposed.
     /// </summary>
     [BestFriend]
-    internal sealed class HybridMemoryStream : Stream
+    /*internal*/public sealed class HybridMemoryStream : Stream
     {
         private MemoryStream _memStream;
         private Stream _overflowStream;

@@ -7,7 +7,7 @@ using System;
 namespace Microsoft.ML.Runtime.Api
 {
     /// <summary>
-    /// An opaque 'holder' of the predictor, meant to insulate the user from the internal TLC predictor structure,
+    /// An opaque 'holder' of the predictor, meant to insulate the user from the /*internal*/public TLC predictor structure,
     /// which is subject to change.
     /// </summary>
     public sealed class Predictor
@@ -15,9 +15,9 @@ namespace Microsoft.ML.Runtime.Api
         /// <summary>
         /// The actual predictor.
         /// </summary>
-        internal readonly IPredictor Pred;
+        /*internal*/public readonly IPredictor Pred;
 
-        internal Predictor(IPredictor pred)
+        /*internal*/public Predictor(IPredictor pred)
         {
             Contracts.AssertValue(pred);
             Pred = pred;

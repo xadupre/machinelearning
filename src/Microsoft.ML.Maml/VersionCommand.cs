@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime.Tools
 {
     public sealed class VersionCommand : ICommand
     {
-        internal const string Summary = "Prints the TLC version.";
+        /*internal*/public const string Summary = "Prints the TLC version.";
 
         private readonly IHost _host;
 

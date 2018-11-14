@@ -28,8 +28,8 @@ namespace Microsoft.ML.Transforms
         private readonly Action<TSrc, TDst> _mapAction;
         private readonly string _contractName;
 
-        internal InternalSchemaDefinition AddedSchema { get; }
-        internal SchemaDefinition InputSchemaDefinition { get; }
+        /*internal*/public InternalSchemaDefinition AddedSchema { get; }
+        /*internal*/public SchemaDefinition InputSchemaDefinition { get; }
 
         public bool IsRowToRowMapper => true;
         /// <summary>

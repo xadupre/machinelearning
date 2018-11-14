@@ -8,7 +8,7 @@ using System.Security;
 
 namespace Microsoft.ML.Runtime.Data.IO.Zlib
 {
-    internal static class Zlib
+    /*internal*/public static class Zlib
     {
         public const string DllPath = "zlib.dll";
 
@@ -49,7 +49,7 @@ namespace Microsoft.ML.Runtime.Data.IO.Zlib
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal unsafe struct ZStream
+    /*internal*/public unsafe struct ZStream
     {
         /// <summary>
         /// Pointer to input buffer. Zlib inflate and deflate routine consumes data from this buffer.
@@ -82,16 +82,16 @@ namespace Microsoft.ML.Runtime.Data.IO.Zlib
         /// </summary>
         public byte* Msg;
         /// <summary>
-        /// Internal state struct.
+        /// /*internal*/public state struct.
         /// </summary>
         public IntPtr State;
 
         /// <summary>
-        /// Used to allocate the internal state.
+        /// Used to allocate the /*internal*/public state.
         /// </summary>
         public IntPtr Zalloc;
         /// <summary>
-        /// Used to free the internal state.
+        /// Used to free the /*internal*/public state.
         /// </summary>
         public IntPtr Zfree;
         /// <summary>

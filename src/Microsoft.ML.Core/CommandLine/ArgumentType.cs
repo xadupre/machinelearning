@@ -11,7 +11,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// </summary>
     [Flags]
     [BestFriend]
-    internal enum ArgumentType
+    /*internal*/public enum ArgumentType
     {
         /// <summary>
         /// Indicates that this field is required. An error will be displayed

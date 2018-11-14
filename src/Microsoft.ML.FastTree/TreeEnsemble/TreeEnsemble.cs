@@ -209,7 +209,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             return i + 3;
         }
 
-        internal JToken AsPfa(BoundPfaContext ctx, JToken feat)
+        /*internal*/public JToken AsPfa(BoundPfaContext ctx, JToken feat)
         {
             var toAdd = new JArray();
             foreach (var tree in Trees)
@@ -341,7 +341,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         /// <paramref name="builder"/> is used as a buffer to accumulate the contributions across trees.
         /// If <paramref name="builder"/> is null, it will be created, otherwise it will be reused.
         /// </summary>
-        internal void GetFeatureContributions(in VBuffer<float> features, ref VBuffer<float> contribs, ref BufferBuilder<float> builder)
+        /*internal*/public void GetFeatureContributions(in VBuffer<float> features, ref VBuffer<float> contribs, ref BufferBuilder<float> builder)
         {
             // The feature contributions are equal to the sum of per-tree contributions.
 

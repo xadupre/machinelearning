@@ -23,7 +23,7 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     public sealed class ComponentCatalog
     {
-        internal ComponentCatalog()
+        /*internal*/public ComponentCatalog()
         {
             _lock = new object();
             _cachedAssemblies = new HashSet<string>();
@@ -45,7 +45,7 @@ namespace Microsoft.ML.Runtime
             /// <summary>
             /// Used for dictionary lookup based on signature and name.
             /// </summary>
-            internal readonly struct Key : IEquatable<Key>
+            /*internal*/public readonly struct Key : IEquatable<Key>
             {
                 public readonly string Name;
                 public readonly Type Signature;
@@ -76,7 +76,7 @@ namespace Microsoft.ML.Runtime
             /// Count of component construction arguments, NOT including the arguments object (if there is one).
             /// This matches the number of arguments for the signature type delegate(s).
             /// </summary>
-            internal int ExtraArgCount => ArgType == null ? CtorTypes.Length : CtorTypes.Length - 1;
+            /*internal*/public int ExtraArgCount => ArgType == null ? CtorTypes.Length : CtorTypes.Length - 1;
 
             public Type Type { get; }
 
@@ -147,7 +147,7 @@ namespace Microsoft.ML.Runtime
 
             private Type[] CtorTypes { get; }
 
-            internal LoadableClassInfo(LoadableClassAttributeBase attr, MethodInfo getter, ConstructorInfo ctor, MethodInfo create, bool requireEnvironment)
+            /*internal*/public LoadableClassInfo(LoadableClassAttributeBase attr, MethodInfo getter, ConstructorInfo ctor, MethodInfo create, bool requireEnvironment)
             {
                 Contracts.AssertValue(attr);
                 Contracts.AssertValue(attr.InstanceType);
@@ -181,7 +181,7 @@ namespace Microsoft.ML.Runtime
                 Contracts.Assert(ArgType == null || CtorTypes.Length > 0 && CtorTypes[0] == ArgType);
             }
 
-            internal object CreateInstanceCore(object[] ctorArgs)
+            /*internal*/public object CreateInstanceCore(object[] ctorArgs)
             {
                 Contracts.Assert(Utils.Size(ctorArgs) == CtorTypes.Length + ((RequireEnvironment) ? 1 : 0));
 
@@ -278,7 +278,7 @@ namespace Microsoft.ML.Runtime
             public readonly Type[] OutputKinds;
             public readonly ObsoleteAttribute ObsoleteAttribute;
 
-            internal EntryPointInfo(MethodInfo method,
+            /*internal*/public EntryPointInfo(MethodInfo method,
                 TlcModule.EntryPointAttribute attribute, ObsoleteAttribute obsoleteAttribute)
             {
                 Contracts.AssertValue(method);
@@ -343,7 +343,7 @@ namespace Microsoft.ML.Runtime
             public readonly Type InterfaceType;
             public readonly string[] Aliases;
 
-            internal ComponentInfo(Type interfaceType, string kind, Type argumentType, TlcModule.ComponentAttribute attribute)
+            /*internal*/public ComponentInfo(Type interfaceType, string kind, Type argumentType, TlcModule.ComponentAttribute attribute)
             {
                 Contracts.AssertValue(interfaceType);
                 Contracts.AssertNonEmpty(kind);

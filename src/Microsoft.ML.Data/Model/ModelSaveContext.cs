@@ -38,13 +38,13 @@ namespace Microsoft.ML.Runtime.Model
         /// The strings that will be saved in the main stream's string table.
         /// </summary>
         [BestFriend]
-        internal readonly NormStr.Pool Strings;
+        /*internal*/public readonly NormStr.Pool Strings;
 
         /// <summary>
         /// The main stream's model header.
         /// </summary>
         [BestFriend]
-        internal ModelHeader Header;
+        /*internal*/public ModelHeader Header;
 
         /// <summary>
         /// The min file position of the main stream.
@@ -74,7 +74,7 @@ namespace Microsoft.ML.Runtime.Model
         /// <summary>
         /// Create a <see cref="ModelSaveContext"/> supporting saving to a repository, for implementors of <see cref="ICanSaveModel"/>.
         /// </summary>
-        internal ModelSaveContext(RepositoryWriter rep, string dir, string name)
+        /*internal*/public ModelSaveContext(RepositoryWriter rep, string dir, string name)
         {
             Contracts.CheckValue(rep, nameof(rep));
             Repository = rep;
@@ -110,7 +110,7 @@ namespace Microsoft.ML.Runtime.Model
         /// <summary>
         /// Create a <see cref="ModelSaveContext"/> supporting saving to a single-stream, for implementors of <see cref="ICanSaveInBinaryFormat"/>.
         /// </summary>
-        internal ModelSaveContext(BinaryWriter writer, IExceptionContext ectx = null)
+        /*internal*/public ModelSaveContext(BinaryWriter writer, IExceptionContext ectx = null)
         {
             Contracts.AssertValueOrNull(ectx);
             _ectx = ectx;

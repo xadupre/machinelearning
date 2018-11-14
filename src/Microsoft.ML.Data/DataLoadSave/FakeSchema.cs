@@ -17,7 +17,7 @@ namespace Microsoft.ML.Data.DataLoadSave
     /// It will pretend that all vector sizes are equal to 10, all key value counts are equal to 10,
     /// and all values are defaults (for metadata).
     /// </summary>
-    internal sealed class FakeSchema : ISchema
+    /*internal*/public sealed class FakeSchema : ISchema
     {
         private const int AllVectorSizes = 10;
         private const int AllKeySizes = 10;

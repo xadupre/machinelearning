@@ -113,7 +113,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// <param name="weights">The weights for the linear predictor. Note that this
         /// will take ownership of the <see cref="VBuffer{T}"/>.</param>
         /// <param name="bias">The bias added to every output score.</param>
-        internal LinearPredictor(IHostEnvironment env, string name, in VBuffer<Float> weights, Float bias)
+        /*internal*/public LinearPredictor(IHostEnvironment env, string name, in VBuffer<Float> weights, Float bias)
             : base(env, name)
         {
             Host.CheckParam(FloatUtils.IsFinite(weights.GetValues()), nameof(weights), "Cannot initialize linear predictor with non-finite weights");
@@ -671,7 +671,7 @@ namespace Microsoft.ML.Runtime.Learners
                 loaderAssemblyName: typeof(PoissonRegressionPredictor).Assembly.FullName);
         }
 
-        internal PoissonRegressionPredictor(IHostEnvironment env, in VBuffer<Float> weights, Float bias)
+        /*internal*/public PoissonRegressionPredictor(IHostEnvironment env, in VBuffer<Float> weights, Float bias)
             : base(env, RegistrationName, in weights, bias)
         {
         }

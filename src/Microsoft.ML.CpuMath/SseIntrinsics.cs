@@ -22,7 +22,7 @@ using nuint = System.UInt64;
 
 namespace Microsoft.ML.Runtime.Internal.CpuMath
 {
-    internal static class SseIntrinsics
+    /*internal*/public static class SseIntrinsics
     {
         public static readonly uint[] LeadingAlignmentMask = new uint[16]
         {
@@ -40,25 +40,25 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
             0x00000000, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
         };
 
-        internal static readonly Vector128<float> AbsMask128 = Sse2.IsSupported ?
+        /*internal*/public static readonly Vector128<float> AbsMask128 = Sse2.IsSupported ?
             Sse.StaticCast<int, float>(Sse2.SetAllVector128(0x7FFFFFFF)) :
             Sse.SetAllVector128(BitConverter.Int32BitsToSingle(0x7FFFFFFF));
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static unsafe Vector128<float> Load1(float* src, int* idx)
+        /*internal*/public static unsafe Vector128<float> Load1(float* src, int* idx)
              => Sse.SetScalarVector128(src[idx[0]]);
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static unsafe Vector128<float> Load4(float* src, int* idx)
+        /*internal*/public static unsafe Vector128<float> Load4(float* src, int* idx)
             => Sse.SetVector128(src[idx[3]], src[idx[2]], src[idx[1]], src[idx[0]]);
 
         // The control byte shuffles the four 32-bit floats of x: ABCD -> BCDA.
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static Vector128<float> Rotate(in Vector128<float> x)
+        /*internal*/public static Vector128<float> Rotate(in Vector128<float> x)
             => Sse.Shuffle(x, x, 0x39);
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static unsafe void Store4(in Vector128<float> x, float* dst, int* idx)
+        /*internal*/public static unsafe void Store4(in Vector128<float> x, float* dst, int* idx)
         {
             Sse.StoreScalar(dst + idx[0], x);
             Vector128<float> rotated = Rotate(in x);
@@ -70,7 +70,7 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
         }
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static Vector128<float> VectorSum128(in Vector128<float> vector)
+        /*internal*/public static Vector128<float> VectorSum128(in Vector128<float> vector)
         {
             if (Sse3.IsSupported)
             {
@@ -86,7 +86,7 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
         }
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static Vector128<float> VectorMax128(in Vector128<float> vector)
+        /*internal*/public static Vector128<float> VectorMax128(in Vector128<float> vector)
         {
             // The control byte shuffles the four 32-bit floats of partialMax: ABCD -> BADC.
             Vector128<float> x1 = Sse.Shuffle(vector, vector, 0xB1);
@@ -104,7 +104,7 @@ namespace Microsoft.ML.Runtime.Internal.CpuMath
         }
 
         [MethodImplAttribute(MethodImplOptions.AggressiveInlining)]
-        internal static Vector128<float> GetNewDst128(in Vector128<float> xDst1, in Vector128<float> xThreshold)
+        /*internal*/public static Vector128<float> GetNewDst128(in Vector128<float> xDst1, in Vector128<float> xThreshold)
         {
             Vector128<float> signMask = Sse.SetAllVector128(-0.0f); // 0x8000 0000
             Vector128<float> xSign = Sse.And(xDst1, signMask); // result = 0x8000 0000 if xDst1 is negative or 0x0000 0000 otherwise

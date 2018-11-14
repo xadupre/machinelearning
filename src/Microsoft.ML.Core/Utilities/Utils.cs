@@ -17,7 +17,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
 {
 
     [BestFriend]
-    internal static partial class Utils
+    /*internal*/public static partial class Utils
     {
         // Maximum size of one-dimensional array.
         // See: https://msdn.microsoft.com/en-us/library/hh285054(v=vs.110).aspx
@@ -864,7 +864,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
             if (size >= min)
                 return size;
             int newSize = size == 0 ? 4 : size * 2;
-            // This constant taken from the internal code of system\array.cs of mscorlib.
+            // This constant taken from the /*internal*/public code of system\array.cs of mscorlib.
             if ((uint)newSize > max)
                 newSize = max;
             if (newSize < min)

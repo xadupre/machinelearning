@@ -126,7 +126,7 @@ namespace Microsoft.ML.Trainers
             public bool NonNegative;
         };
 
-        internal const string Summary = "From pairs of row/column indices and a value of a matrix, this trains a predictor capable of filling in unknown entries of the matrix, "
+        /*internal*/public const string Summary = "From pairs of row/column indices and a value of a matrix, this trains a predictor capable of filling in unknown entries of the matrix, "
             + "using a low-rank matrix factorization. This technique is often used in recommender system, where the row and column indices indicate users and items, "
             + "and the values of the matrix are ratings. ";
 

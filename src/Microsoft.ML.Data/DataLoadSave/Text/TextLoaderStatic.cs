@@ -121,7 +121,7 @@ namespace Microsoft.ML.Runtime.Data
         {
             private readonly Reconciler _rec;
 
-            internal Context(Reconciler rec)
+            /*internal*/public Context(Reconciler rec)
             {
                 Contracts.AssertValue(rec);
                 _rec = rec;
@@ -251,7 +251,7 @@ namespace Microsoft.ML.Runtime.Data
                     _maxKeyValue = maxKeyValue;
                 }
 
-                // Translate the internal variable representation to columns of TextLoader.
+                // Translate the /*internal*/public variable representation to columns of TextLoader.
                 public Column Create()
                 {
                     return new Column()

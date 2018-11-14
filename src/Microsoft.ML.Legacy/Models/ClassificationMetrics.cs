@@ -19,7 +19,7 @@ namespace Microsoft.ML.Legacy.Models
         {
         }
 
-        internal static List<ClassificationMetrics> FromMetrics(IHostEnvironment env, IDataView overallMetrics, IDataView confusionMatrix,
+        /*internal*/public static List<ClassificationMetrics> FromMetrics(IHostEnvironment env, IDataView overallMetrics, IDataView confusionMatrix,
             int confusionMatriceStartIndex = 0)
         {
             Contracts.AssertValue(env);

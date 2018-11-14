@@ -42,7 +42,7 @@ namespace Microsoft.ML.Transforms.Categorical
                 Contracts.AssertValue(type);
                 Contracts.Assert(type.IsVector || type.IsPrimitive);
                 // Right now we have only two. This "public" interface externally looks like it might
-                // accept any value, but currently the internal implementations of Builder are split
+                // accept any value, but currently the /*internal*/public implementations of Builder are split
                 // along this being a purely binary option, for now (though this can easily change
                 // with mot implementations of Builder).
                 Contracts.Assert(sortOrder == SortOrder.Occurrence || sortOrder == SortOrder.Value);
@@ -502,9 +502,9 @@ namespace Microsoft.ML.Transforms.Categorical
                 OutputType = new KeyType(DataKind.U4, 0, Count == 0 ? 1 : Count);
             }
 
-            internal abstract void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory);
+            /*internal*/public abstract void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory);
 
-            internal static TermMap Load(ModelLoadContext ctx, IHostEnvironment ectx, CodecFactory codecFactory)
+            /*internal*/public static TermMap Load(ModelLoadContext ctx, IHostEnvironment ectx, CodecFactory codecFactory)
             {
                 // *** Binary format ***
                 // byte: map type code
@@ -568,9 +568,9 @@ namespace Microsoft.ML.Transforms.Categorical
                 return new HashArrayImpl<T>(codec.Type.AsPrimitive, values);
             }
 
-            internal abstract void WriteTextTerms(TextWriter writer);
+            /*internal*/public abstract void WriteTextTerms(TextWriter writer);
 
-            internal sealed class TextImpl : TermMap<ReadOnlyMemory<char>>
+            /*internal*/public sealed class TextImpl : TermMap<ReadOnlyMemory<char>>
             {
                 private readonly NormStr.Pool _pool;
 
@@ -611,7 +611,7 @@ namespace Microsoft.ML.Transforms.Categorical
                     return new TextImpl(pool);
                 }
 
-                internal override void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory)
+                /*internal*/public override void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory)
                 {
                     // *** Binary format ***
                     // byte: map type code, in this case 'Text' (0)
@@ -663,7 +663,7 @@ namespace Microsoft.ML.Transforms.Categorical
                     dst = new VBuffer<ReadOnlyMemory<char>>(_pool.Count, values, dst.Indices);
                 }
 
-                internal override void WriteTextTerms(TextWriter writer)
+                /*internal*/public override void WriteTextTerms(TextWriter writer)
                 {
                     writer.WriteLine("# Number of terms = {0}", Count);
                     foreach (var nstr in _pool)
@@ -671,7 +671,7 @@ namespace Microsoft.ML.Transforms.Categorical
                 }
             }
 
-            internal sealed class HashArrayImpl<T> : TermMap<T>
+            /*internal*/public sealed class HashArrayImpl<T> : TermMap<T>
                 where T : IEquatable<T>, IComparable<T>
             {
                 // One of the two must exist. If we need one we can initialize it
@@ -686,7 +686,7 @@ namespace Microsoft.ML.Transforms.Categorical
                     _values = values;
                 }
 
-                internal override void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory)
+                /*internal*/public override void Save(ModelSaveContext ctx, IHostEnvironment host, CodecFactory codecFactory)
                 {
                     // *** Binary format ***
                     // byte: map type code, in this case 'Codec'
@@ -743,7 +743,7 @@ namespace Microsoft.ML.Transforms.Categorical
                     dst = new VBuffer<T>(Count, values, dst.Indices);
                 }
 
-                internal override void WriteTextTerms(TextWriter writer)
+                /*internal*/public override void WriteTextTerms(TextWriter writer)
                 {
                     writer.WriteLine("# Number of terms of type '{0}' = {1}", ItemType, Count);
                     StringBuilder sb = null;

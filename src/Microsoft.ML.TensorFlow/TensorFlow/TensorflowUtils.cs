@@ -20,7 +20,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         public const string OpType = "OpType";
         public const string InputOps = "InputOps";
 
-        internal static ISchema GetModelSchema(IExceptionContext ectx, TFGraph graph, string opType = null)
+        /*internal*/public static ISchema GetModelSchema(IExceptionContext ectx, TFGraph graph, string opType = null)
         {
             var res = new List<KeyValuePair<string, ColumnType>>();
             var opTypeGetters = new List<MetadataUtils.MetadataGetter<ReadOnlyMemory<char>>>();
@@ -120,7 +120,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal static PrimitiveType Tf2MlNetType(TFDataType type)
+        /*internal*/public static PrimitiveType Tf2MlNetType(TFDataType type)
         {
             var mlNetType = Tf2MlNetTypeOrNull(type);
             if (mlNetType == null)
@@ -157,7 +157,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal static TFSession LoadTFSession(IExceptionContext ectx, byte[] modelBytes, string modelFile = null)
+        /*internal*/public static TFSession LoadTFSession(IExceptionContext ectx, byte[] modelBytes, string modelFile = null)
         {
             var graph = new TFGraph();
             try
@@ -190,7 +190,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
 
         // A TensorFlow frozen model is a single file. An un-frozen (SavedModel) on the other hand has a well-defined folder structure.
         // Given a modelPath, this utility method determines if we should treat it as a SavedModel or not
-        internal static bool IsSavedModel(IHostEnvironment env, string modelPath)
+        /*internal*/public static bool IsSavedModel(IHostEnvironment env, string modelPath)
         {
             Contracts.Check(env != null, nameof(env));
             env.CheckNonWhiteSpace(modelPath, nameof(modelPath));
@@ -204,7 +204,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         ///  Given a folder path, create it with proper ACL if it doesn't exist.
         ///  Fails if the folder name is empty, or can't create the folder.
         /// </summary>
-        internal static void CreateFolderWithAclIfNotExists(IHostEnvironment env, string folder)
+        /*internal*/public static void CreateFolderWithAclIfNotExists(IHostEnvironment env, string folder)
         {
             Contracts.Check(env != null, nameof(env));
             env.CheckNonWhiteSpace(folder, nameof(folder));
@@ -240,7 +240,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal static void DeleteFolderWithRetries(IHostEnvironment env, string folder)
+        /*internal*/public static void DeleteFolderWithRetries(IHostEnvironment env, string folder)
         {
             Contracts.Check(env != null, nameof(env));
             int currentRetry = 0;
@@ -314,7 +314,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             return new TensorFlowModelInfo(env, session, modelPath);
         }
 
-        internal static TFSession GetSession(IHostEnvironment env, string modelPath)
+        /*internal*/public static TFSession GetSession(IHostEnvironment env, string modelPath)
         {
             Contracts.Check(env != null, nameof(env));
             if (IsSavedModel(env, modelPath))
@@ -328,7 +328,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             return LoadTFSession(env, bytes, modelPath);
         }
 
-        internal static unsafe void FetchData<T>(IntPtr data, T[] result)
+        /*internal*/public static unsafe void FetchData<T>(IntPtr data, T[] result)
         {
             var size = result.Length;
 
@@ -340,7 +340,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             handle.Free();
         }
 
-        internal static bool IsTypeSupported(TFDataType tfoutput)
+        /*internal*/public static bool IsTypeSupported(TFDataType tfoutput)
         {
             switch (tfoutput)
             {

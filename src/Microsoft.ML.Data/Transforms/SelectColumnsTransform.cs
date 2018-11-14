@@ -61,7 +61,7 @@ namespace Microsoft.ML.Transforms
         /// <param name="ignoreMissing">If false will check for any columns given in <paramref name="keepColumns"/>
         ///     or <paramref name="dropColumns"/> that are missing from the input. If a missing colums exists a
         ///     SchemaMistmatch exception is thrown. If true, the check is not made.</param>
-        internal ColumnSelectingEstimator(IHostEnvironment env, string[] keepColumns,
+        /*internal*/public ColumnSelectingEstimator(IHostEnvironment env, string[] keepColumns,
                                     string[] dropColumns, bool keepHidden = SelectColumnsTransform.Defaults.KeepHidden,
                                     bool ignoreMissing = SelectColumnsTransform.Defaults.IgnoreMissing)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(ColumnSelectingEstimator)),
@@ -114,20 +114,20 @@ namespace Microsoft.ML.Transforms
     /// </summary>
     public sealed class SelectColumnsTransform : ITransformer, ICanSaveModel
     {
-        internal const string Summary = "Selects which columns from the dataset to keep.";
-        internal const string UserName = "Select Columns Transform";
-        internal const string ShortName = "Select";
-        internal const string LoaderSignature = "SelectColumnsTransform";
+        /*internal*/public const string Summary = "Selects which columns from the dataset to keep.";
+        /*internal*/public const string UserName = "Select Columns Transform";
+        /*internal*/public const string ShortName = "Select";
+        /*internal*/public const string LoaderSignature = "SelectColumnsTransform";
 
         // Back-compat signatures to support loading Drop/Keep and Choose Transforms
-        internal const string DropLoaderSignature = "DropColumnsTransform";
-        internal const string ChooseLoaderSignature = "ChooseColumnsTransform";
-        internal const string ChooseLoaderSignatureOld = "ChooseColumnsFunction";
+        /*internal*/public const string DropLoaderSignature = "DropColumnsTransform";
+        /*internal*/public const string ChooseLoaderSignature = "ChooseColumnsTransform";
+        /*internal*/public const string ChooseLoaderSignatureOld = "ChooseColumnsFunction";
 
         private readonly IHost _host;
         private string[] _selectedColumns;
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const bool KeepHidden = false;
             public const bool IgnoreMissing = false;

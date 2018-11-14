@@ -15,14 +15,14 @@ namespace Microsoft.ML.InternalCodeAnalyzer
     public sealed class BestFriendAnalyzer : DiagnosticAnalyzer
     {
         private const string Category = "Access";
-        internal const string DiagnosticId = "MSML_NoBestFriendInternal";
+        /*internal*/public const string DiagnosticId = "MSML_NoBestFriendInternal";
 
-        private const string Title = "Cross-assembly internal access requires referenced item to have " + AttributeName + " attribute.";
-        private const string Format = "Access of '{0}' is a cross assembly internal " +
+        private const string Title = "Cross-assembly /*internal*/public access requires referenced item to have " + AttributeName + " attribute.";
+        private const string Format = "Access of '{0}' is a cross assembly /*internal*/public " +
             "reference, and the declaring assembly wants these accesses to be on something " +
             "with the attribute " + AttributeName + ".";
         private const string Description =
-            "The identifier indicated is defined as an internal member of an assembly that has the " +
+            "The identifier indicated is defined as an /*internal*/public member of an assembly that has the " +
             AssemblyAttributeName + " assembly-level attribute set. Even with friend access to that " +
             "assembly, such a usage requires that the item have the " + AttributeName + " on it.";
 

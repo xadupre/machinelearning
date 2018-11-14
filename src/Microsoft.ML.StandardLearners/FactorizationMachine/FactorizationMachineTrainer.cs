@@ -36,10 +36,10 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
     public sealed class FieldAwareFactorizationMachineTrainer : TrainerBase<FieldAwareFactorizationMachinePredictor>,
         IEstimator<FieldAwareFactorizationMachinePredictionTransformer>
     {
-        internal const string Summary = "Train a field-aware factorization machine for binary classification";
-        internal const string UserName = "Field-aware Factorization Machine";
-        internal const string LoadName = "FieldAwareFactorizationMachine";
-        internal const string ShortName = "ffm";
+        /*internal*/public const string Summary = "Train a field-aware factorization machine for binary classification";
+        /*internal*/public const string UserName = "Field-aware Factorization Machine";
+        /*internal*/public const string LoadName = "FieldAwareFactorizationMachine";
+        /*internal*/public const string ShortName = "ffm";
 
         public sealed class Arguments : LearnerInputBaseWithLabel
         {

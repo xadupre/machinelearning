@@ -15,7 +15,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     using FloatType = System.Double;
 #endif
 
-    internal sealed class SegmentIntArray : IntArray
+    /*internal*/public sealed class SegmentIntArray : IntArray
     {
         private readonly byte[] _segType;
         private readonly int[] _segLength;

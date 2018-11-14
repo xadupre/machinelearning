@@ -141,7 +141,7 @@ namespace Microsoft.ML.Tests.TrainerEstimators
         const int _synthesizedMatrixColumnCount = 60;
         const int _synthesizedMatrixRowCount = 100;
 
-        internal class MatrixElement
+        /*internal*/public class MatrixElement
         {
             // Matrix column index starts from 1 and is at most _synthesizedMatrixColumnCount.
             // Contieuous=true means that all values from 1 to _synthesizedMatrixColumnCount are allowed keys.
@@ -155,7 +155,7 @@ namespace Microsoft.ML.Tests.TrainerEstimators
             public float Value;
         }
 
-        internal class MatrixElementForScore
+        /*internal*/public class MatrixElementForScore
         {
             [KeyType(Contiguous = true, Count = _synthesizedMatrixColumnCount, Min = _synthesizedMatrixFirstColumnIndex)]
             public uint MatrixColumnIndex;
@@ -228,7 +228,7 @@ namespace Microsoft.ML.Tests.TrainerEstimators
                 Assert.True(pred.Score != 0);
         }
 
-        internal class MatrixElementZeroBased
+        /*internal*/public class MatrixElementZeroBased
         {
             // Matrix column index starts from 0 and is at most _synthesizedMatrixColumnCount-1.
             // Contieuous=true means that all values from 0 to _synthesizedMatrixColumnCount-1 are allowed keys.
@@ -242,7 +242,7 @@ namespace Microsoft.ML.Tests.TrainerEstimators
             public float Value;
         }
 
-        internal class MatrixElementZeroBasedForScore
+        /*internal*/public class MatrixElementZeroBasedForScore
         {
             // Matrix column index starts from 0 and is at most _synthesizedMatrixColumnCount-1.
             // Contieuous=true means that all values from 0 to _synthesizedMatrixColumnCount-1 are allowed keys.

@@ -18,7 +18,7 @@ using nuint = System.UInt64;
 
 namespace Microsoft.ML.Runtime.Internal.CpuMath
 {
-    internal static class AvxIntrinsics
+    /*internal*/public static class AvxIntrinsics
     {
         public static readonly uint[] LeadingAlignmentMask = new uint[64]
         {

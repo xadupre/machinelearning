@@ -212,11 +212,11 @@ namespace Microsoft.ML.Transforms
             }
         }
 
-        internal const string Summary = "If the source column does not exist after deserialization," +
+        /*internal*/public const string Summary = "If the source column does not exist after deserialization," +
             " create a column with the right type and default values.";
-        internal const string UserName = "Optional Column Transform";
+        /*internal*/public const string UserName = "Optional Column Transform";
         public const string LoaderSignature = "OptColTransform";
-        internal const string ShortName = "optional";
+        /*internal*/public const string ShortName = "optional";
 
         private static VersionInfo GetVersionInfo()
         {

@@ -14,7 +14,7 @@ namespace Microsoft.ML.StaticPipe
     {
         public IDataReaderEstimator<TIn, TDataReader> AsDynamic { get; }
 
-        internal DataReaderEstimator(IHostEnvironment env, IDataReaderEstimator<TIn, TDataReader> estimator, StaticSchemaShape shape)
+        /*internal*/public DataReaderEstimator(IHostEnvironment env, IDataReaderEstimator<TIn, TDataReader> estimator, StaticSchemaShape shape)
             : base(env, shape)
         {
             Env.AssertValue(estimator);

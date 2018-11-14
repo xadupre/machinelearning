@@ -64,7 +64,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
             }
         }
 
-        internal EarlyStoppingCriterion(TArguments args, bool lowerIsBetter)
+        /*internal*/public EarlyStoppingCriterion(TArguments args, bool lowerIsBetter)
         {
             Args = args;
             LowerIsBetter = lowerIsBetter;

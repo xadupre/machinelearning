@@ -17,7 +17,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Microsoft.ML.Runtime.Api
 {
-    internal static class SerializableLambdaTransform
+    /*internal*/public static class SerializableLambdaTransform
     {
         // This static class exists so that we can expose the Create loader delegate without having
         // to specify bogus type arguments on the generic class.
@@ -174,7 +174,7 @@ namespace Microsoft.ML.Runtime.Api
         }
 #if CORECLR
         [Serializable]
-        internal sealed class CoreHackMethodInfo
+        /*internal*/public sealed class CoreHackMethodInfo
         {
             public string MethodName;
             public string AssemblyName;

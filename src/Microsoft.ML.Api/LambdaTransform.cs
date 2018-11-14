@@ -35,7 +35,7 @@ namespace Microsoft.ML.Runtime.Api
         /// stream</returns>
         public delegate ITransformTemplate LoadDelegate(BinaryReader reader, IHostEnvironment env, IDataView input);
 
-        internal const string LoaderSignature = "CustomTransformer";
+        /*internal*/public const string LoaderSignature = "CustomTransformer";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -48,7 +48,7 @@ namespace Microsoft.ML.Runtime.Api
                 loaderAssemblyName: typeof(LambdaTransform).Assembly.FullName);
         }
 
-        internal static void SaveCustomTransformer(IExceptionContext ectx, ModelSaveContext ctx, string contractName)
+        /*internal*/public static void SaveCustomTransformer(IExceptionContext ectx, ModelSaveContext ctx, string contractName)
         {
             ectx.CheckValue(ctx, nameof(ctx));
             ectx.CheckValue(contractName, nameof(contractName));
@@ -203,7 +203,7 @@ namespace Microsoft.ML.Runtime.Api
     ///  * a custom save action that serializes the transform 'state' to the binary writer.
     ///  * a custom load action that de-serializes the transform from the binary reader. This must be a public static method of a public class.
     /// </summary>
-    internal abstract class LambdaTransformBase
+    /*internal*/public abstract class LambdaTransformBase
     {
         private readonly Action<BinaryWriter> _saveAction;
         private readonly byte[] _loadFuncBytes;

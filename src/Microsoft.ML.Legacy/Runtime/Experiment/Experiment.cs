@@ -208,7 +208,7 @@ namespace Microsoft.ML.Runtime
             return output;
         }
 
-        internal void Add(CommonInputs.ITransformInput input, CommonOutputs.ITransformOutput output)
+        /*internal*/public void Add(CommonInputs.ITransformInput input, CommonOutputs.ITransformOutput output)
         {
             AddEntryPoint(GetEntryPointName(input.GetType()), input, output);
         }
@@ -220,7 +220,7 @@ namespace Microsoft.ML.Runtime
             return output;
         }
 
-        internal void Add(CommonInputs.ITrainerInput input, CommonOutputs.ITrainerOutput output)
+        /*internal*/public void Add(CommonInputs.ITrainerInput input, CommonOutputs.ITrainerOutput output)
         {
             AddEntryPoint(GetEntryPointName(input.GetType()), input, output);
         }
@@ -285,10 +285,10 @@ namespace Microsoft.ML.Runtime
 
     public abstract class ComponentKind
     {
-        internal ComponentKind() { }
+        /*internal*/public ComponentKind() { }
 
         [JsonIgnore]
-        internal abstract string ComponentName { get; }
+        /*internal*/public abstract string ComponentName { get; }
     }
 
     public static class ExperimentUtils

@@ -15,7 +15,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.ML.Runtime.Internal.Tools
 {
-    internal static class CSharpGeneratorUtils
+    /*internal*/public static class CSharpGeneratorUtils
     {
         public sealed class EntryPointGenerationMetadata
         {

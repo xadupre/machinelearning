@@ -34,7 +34,7 @@ namespace Microsoft.ML.Runtime.LightGBM
         private int _tlcNumClass;
         public override PredictionKind PredictionKind => PredictionKind.MultiClassClassification;
 
-        internal LightGbmMulticlassTrainer(IHostEnvironment env, LightGbmArguments args)
+        /*internal*/public LightGbmMulticlassTrainer(IHostEnvironment env, LightGbmArguments args)
              : base(env, LoadNameValue, args, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
             _numClass = -1;

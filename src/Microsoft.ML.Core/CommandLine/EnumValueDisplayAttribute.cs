@@ -11,7 +11,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     [BestFriend]
-    internal class EnumValueDisplayAttribute : Attribute
+    /*internal*/public class EnumValueDisplayAttribute : Attribute
     {
         public readonly string Name;
 

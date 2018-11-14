@@ -64,9 +64,9 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             public Column[] Column;
         }
 
-        internal const string Summary = "Convert image into grayscale.";
+        /*internal*/public const string Summary = "Convert image into grayscale.";
 
-        internal const string UserName = "Image Greyscale Transform";
+        /*internal*/public const string UserName = "Image Greyscale Transform";
         public const string LoaderSignature = "ImageGrayscaleTransform";
         private static VersionInfo GetVersionInfo()
         {
@@ -245,7 +245,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             PipelineColumn Input { get; }
         }
 
-        internal sealed class OutPipelineColumn<T> : Custom<T>, IColInput
+        /*internal*/public sealed class OutPipelineColumn<T> : Custom<T>, IColInput
         {
             public PipelineColumn Input { get; }
 

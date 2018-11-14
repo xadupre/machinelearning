@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     [BestFriend]
-    internal class ArgumentAttribute : Attribute
+    /*internal*/public class ArgumentAttribute : Attribute
     {
         public enum VisibilityType
         {

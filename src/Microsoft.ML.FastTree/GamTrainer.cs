@@ -91,7 +91,7 @@ namespace Microsoft.ML.Trainers.FastTree
             public bool EnablePruning = true;
         }
 
-        internal const string Summary = "Trains a gradient boosted stump per feature, on all features simultaneously, " +
+        /*internal*/public const string Summary = "Trains a gradient boosted stump per feature, on all features simultaneously, " +
                                          "to fit target values using least-squares. It mantains " +
                                          "no interactions between features.";
         private const string RegisterName = "GamTraining";
@@ -215,7 +215,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         protected abstract void DefinePruningTest();
 
-        internal abstract void CheckLabel(RoleMappedData data);
+        /*internal*/public abstract void CheckLabel(RoleMappedData data);
 
         private void ConvertData(RoleMappedData trainData, RoleMappedData validationData)
         {
@@ -834,7 +834,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <paramref name="builder"/> is used as a buffer to accumulate the contributions across trees.
         /// If <paramref name="builder"/> is null, it will be created, otherwise it will be reused.
         /// </summary>
-        internal void GetFeatureContributions(in VBuffer<float> features, ref VBuffer<float> contribs, ref BufferBuilder<float> builder)
+        /*internal*/public void GetFeatureContributions(in VBuffer<float> features, ref VBuffer<float> contribs, ref BufferBuilder<float> builder)
         {
             if (builder == null)
                 builder = new BufferBuilder<float>(R4Adder.Instance);
@@ -883,7 +883,7 @@ namespace Microsoft.ML.Trainers.FastTree
             return;
         }
 
-        internal double GetFeatureBinsAndScore(in VBuffer<float> features, int[] bins)
+        /*internal*/public double GetFeatureBinsAndScore(in VBuffer<float> features, int[] bins)
         {
             Host.CheckParam(features.Length == _inputLength, nameof(features));
             Host.CheckParam(Utils.Size(bins) == _numFeatures, nameof(bins));
@@ -991,7 +991,7 @@ namespace Microsoft.ML.Trainers.FastTree
                 [Argument(ArgumentType.AtMostOnce, HelpText = "Whether to open the GAM visualization page URL", ShortName = "o", SortOrder = 3)]
                 public bool Open = true;
 
-                internal Arguments SetServerIfNeeded(IHostEnvironment env)
+                /*internal*/public Arguments SetServerIfNeeded(IHostEnvironment env)
                 {
                     // We assume that if someone invoked this, they really did mean to start the web server.
                     if (env != null && Server == null)

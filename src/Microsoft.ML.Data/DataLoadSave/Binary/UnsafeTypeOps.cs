@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
     /// including many unsafe operations.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal abstract class UnsafeTypeOps<T>
+    /*internal*/public abstract class UnsafeTypeOps<T>
     {
         public abstract int Size { get; }
         public abstract void Apply(ReadOnlySpan<T> array, Action<IntPtr> func);
@@ -26,7 +26,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
         public abstract T Read(BinaryReader reader);
     }
 
-    internal static class UnsafeTypeOpsFactory
+    /*internal*/public static class UnsafeTypeOpsFactory
     {
         private static Dictionary<Type, object> _type2ops;
 

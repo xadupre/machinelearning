@@ -11,9 +11,9 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.FactorizationMachine
 {
-    internal sealed class FieldAwareFactorizationMachineUtils
+    /*internal*/public sealed class FieldAwareFactorizationMachineUtils
     {
-        internal static int GetAlignedVectorLength(int length)
+        /*internal*/public static int GetAlignedVectorLength(int length)
         {
             int res = length % 4;
             if (res == 0)
@@ -22,7 +22,7 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
                 return length + (4 - res);
         }
 
-        internal static bool LoadOneExampleIntoBuffer(ValueGetter<VBuffer<float>>[] getters, VBuffer<float> featureBuffer, bool norm, ref int count,
+        /*internal*/public static bool LoadOneExampleIntoBuffer(ValueGetter<VBuffer<float>>[] getters, VBuffer<float> featureBuffer, bool norm, ref int count,
             int[] fieldIndexBuffer, int[] featureIndexBuffer, float[] featureValueBuffer)
         {
             count = 0;
@@ -53,7 +53,7 @@ namespace Microsoft.ML.Runtime.FactorizationMachine
         }
     }
 
-    internal sealed class FieldAwareFactorizationMachineScalarRowMapper : ISchemaBoundRowMapper
+    /*internal*/public sealed class FieldAwareFactorizationMachineScalarRowMapper : ISchemaBoundRowMapper
     {
         private readonly FieldAwareFactorizationMachinePredictor _pred;
 

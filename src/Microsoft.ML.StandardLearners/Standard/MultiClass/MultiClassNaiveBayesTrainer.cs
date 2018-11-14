@@ -31,9 +31,9 @@ namespace Microsoft.ML.Trainers
     public sealed class MultiClassNaiveBayesTrainer : TrainerEstimatorBase<MulticlassPredictionTransformer<MultiClassNaiveBayesPredictor>, MultiClassNaiveBayesPredictor>
     {
         public const string LoadName = "MultiClassNaiveBayes";
-        internal const string UserName = "Multiclass Naive Bayes";
-        internal const string ShortName = "MNB";
-        internal const string Summary = "Trains a multiclass Naive Bayes predictor that supports binary feature values.";
+        /*internal*/public const string UserName = "Multiclass Naive Bayes";
+        /*internal*/public const string ShortName = "MNB";
+        /*internal*/public const string Summary = "Trains a multiclass Naive Bayes predictor that supports binary feature values.";
 
         public sealed class Arguments : LearnerInputBaseWithLabel
         {
@@ -63,7 +63,7 @@ namespace Microsoft.ML.Trainers
         /// <summary>
         /// Initializes a new instance of <see cref="MultiClassNaiveBayesTrainer"/>
         /// </summary>
-        internal MultiClassNaiveBayesTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public MultiClassNaiveBayesTrainer(IHostEnvironment env, Arguments args)
             : base(Contracts.CheckRef(env, nameof(env)).Register(LoadName), TrainerUtils.MakeR4VecFeature(args.FeatureColumn),
                   TrainerUtils.MakeU4ScalarColumn(args.LabelColumn))
         {
@@ -244,7 +244,7 @@ namespace Microsoft.ML.Trainers
             }
         }
 
-        internal MultiClassNaiveBayesPredictor(IHostEnvironment env, int[] labelHistogram, int[][] featureHistogram, int featureCount)
+        /*internal*/public MultiClassNaiveBayesPredictor(IHostEnvironment env, int[] labelHistogram, int[][] featureHistogram, int featureCount)
             : base(env, LoaderSignature)
         {
             Host.AssertValue(labelHistogram);

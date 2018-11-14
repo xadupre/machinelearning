@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// <summary>
     /// Contains methods to create ONNX models in protocol buffer.
     /// </summary>
-    internal static class OnnxUtils
+    /*internal*/public static class OnnxUtils
     {
         private static TypeProto MakeType(TypeProto typeProto, TensorProto.Types.DataType dataType,
             List<long> dims, List<bool> dimsParam)

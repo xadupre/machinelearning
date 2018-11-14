@@ -62,7 +62,7 @@ namespace Microsoft.ML.Transforms.Text
 
             // For all source columns, use these friendly names for the source
             // column names instead of the real column names.
-            internal string[] FriendlyNames;
+            /*internal*/public string[] FriendlyNames;
 
             public static Column Parse(string str)
             {
@@ -306,7 +306,7 @@ namespace Microsoft.ML.Transforms.Text
             }
         }
 
-        internal const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive values of length 1-n) in a given vector of keys. "
+        /*internal*/public const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive values of length 1-n) in a given vector of keys. "
             + "It does so by hashing each ngram and using the hash value as the index in the bag.";
 
         public const string LoaderSignature = "NgramHashTransform";

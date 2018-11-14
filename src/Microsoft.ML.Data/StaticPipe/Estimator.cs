@@ -17,7 +17,7 @@ namespace Microsoft.ML.StaticPipe
         public IEstimator<TTransformer> AsDynamic { get; }
         private readonly StaticSchemaShape _inShape;
 
-        internal Estimator(IHostEnvironment env, IEstimator<TTransformer> estimator, StaticSchemaShape inShape, StaticSchemaShape outShape)
+        /*internal*/public Estimator(IHostEnvironment env, IEstimator<TTransformer> estimator, StaticSchemaShape inShape, StaticSchemaShape outShape)
             : base(env, outShape)
         {
             Env.CheckValue(estimator, nameof(estimator));

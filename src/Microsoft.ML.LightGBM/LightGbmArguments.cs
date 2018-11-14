@@ -82,9 +82,9 @@ namespace Microsoft.ML.Runtime.LightGBM
             return strBuf.ToString();
         }
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
-            internal const int NumBoostRound = 100;
+            /*internal*/public const int NumBoostRound = 100;
         }
 
         public sealed class TreeBooster : BoosterParameter<TreeBooster.Arguments>
@@ -365,7 +365,7 @@ namespace Microsoft.ML.Runtime.LightGBM
         [Argument(ArgumentType.Multiple, HelpText = "Parallel LightGBM Learning Algorithm", ShortName = "parag")]
         public ISupportParallel ParallelTrainer = new SingleTrainerFactory();
 
-        internal Dictionary<string, object> ToDictionary(IHost host)
+        /*internal*/public Dictionary<string, object> ToDictionary(IHost host)
         {
             Contracts.CheckValue(host, nameof(host));
             Contracts.CheckUserArg(MaxBin > 0, nameof(MaxBin), "must be > 0.");

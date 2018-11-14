@@ -83,11 +83,11 @@ namespace Microsoft.ML.Runtime.Data
             public bool TreatBigIntegersAsDates = true;
         }
 
-        internal const string Summary = "IDataView loader for Parquet files.";
-        internal const string LoaderName = "Parquet Loader";
-        internal const string LoaderSignature = "ParquetLoader";
-        internal const string ShortName = "Parquet";
-        internal const string ModelSignature = "PARQELDR";
+        /*internal*/public const string Summary = "IDataView loader for Parquet files.";
+        /*internal*/public const string LoaderName = "Parquet Loader";
+        /*internal*/public const string LoaderSignature = "ParquetLoader";
+        /*internal*/public const string ShortName = "Parquet";
+        /*internal*/public const string ModelSignature = "PARQELDR";
 
         private const string SchemaCtxName = "Schema.idv";
 

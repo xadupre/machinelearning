@@ -13,7 +13,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A class that bins vectors of doubles into a specified number of equal mass bins.
     /// </summary>
-    internal sealed class BinFinder
+    /*internal*/public sealed class BinFinder
     {
         private readonly GreedyBinFinder _finder;
         private double[] _distinctValues;

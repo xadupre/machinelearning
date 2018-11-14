@@ -945,7 +945,7 @@ namespace Microsoft.ML.Runtime.Data
             }
         }
 
-        internal const string Summary = "Loads text data file.";
+        /*internal*/public const string Summary = "Loads text data file.";
 
         public const string LoaderSignature = "TextLoader";
 

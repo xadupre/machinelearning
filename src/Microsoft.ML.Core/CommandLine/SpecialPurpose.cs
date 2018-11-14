@@ -5,7 +5,7 @@
 namespace Microsoft.ML.Runtime.CommandLine
 {
     [BestFriend]
-    internal static class SpecialPurpose
+    /*internal*/public static class SpecialPurpose
     {
         /// <summary>
         /// This is used to specify a column mapping of a data transform.

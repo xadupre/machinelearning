@@ -135,7 +135,7 @@ namespace Microsoft.ML.Transforms.Conversions
 
         public const string LoaderSignature = "KeyToVectorTransform";
         public const string UserName = "KeyToVectorTransform";
-        internal const string Summary = "Converts a key column to an indicator vector.";
+        /*internal*/public const string Summary = "Converts a key column to an indicator vector.";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -735,7 +735,7 @@ namespace Microsoft.ML.Transforms.Conversions
 
     public sealed class KeyToVectorMappingEstimator : TrivialEstimator<KeyToVectorTransform>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const bool Bag = false;
         }

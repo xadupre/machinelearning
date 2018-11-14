@@ -143,7 +143,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return nb == 0 ? Single.NaN : sumValues / nb;
         }
 
-        internal static Single ComputeMovingAverageNonUniform(FixedSizeQueue<Single> others, Single input, Single[] weights, int lag)
+        /*internal*/public static Single ComputeMovingAverageNonUniform(FixedSizeQueue<Single> others, Single input, Single[] weights, int lag)
         {
             Single sumWeights = 0;
             Single sumValues = 0;
@@ -178,7 +178,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// NaN value: only NaN values in the sliding window or +/- Infinite
         /// Inifinite value: one infinite value in the sliding window (sign is no relevant)
         /// </summary>
-        internal static Single ComputeMovingAverageUniform(FixedSizeQueue<Single> others, Single input, int lag,
+        /*internal*/public static Single ComputeMovingAverageUniform(FixedSizeQueue<Single> others, Single input, int lag,
                                                          Single lastDropped, ref Single currentSum,
                                                          ref bool initUniformMovingAverage,
                                                          ref int nbNanValues)

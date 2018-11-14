@@ -13,7 +13,7 @@ namespace Microsoft.ML.Runtime.Model
     public sealed partial class ModelLoadContext : IDisposable
     {
         public const string ModelStreamName = "Model.key";
-        internal const string NameBinary = "Model.bin";
+        /*internal*/public const string NameBinary = "Model.bin";
 
         /// <summary>
         /// Return whether this context contains a directory and stream for a sub-model with

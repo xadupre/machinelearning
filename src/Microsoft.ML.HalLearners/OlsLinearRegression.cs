@@ -52,7 +52,7 @@ namespace Microsoft.ML.Trainers.HalLearners
         public const string LoadNameValue = "OLSLinearRegression";
         public const string UserNameValue = "Ordinary Least Squares (Regression)";
         public const string ShortName = "ols";
-        internal const string Summary = "The ordinary least square regression fits the target function as a linear function of the numerical features "
+        /*internal*/public const string Summary = "The ordinary least square regression fits the target function as a linear function of the numerical features "
             + "that minimizes the square loss function.";
 
         private readonly float _l2Weight;
@@ -84,7 +84,7 @@ namespace Microsoft.ML.Trainers.HalLearners
         /// <summary>
         /// Initializes a new instance of <see cref="OlsLinearRegressionTrainer"/>
         /// </summary>
-        internal OlsLinearRegressionTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public OlsLinearRegressionTrainer(IHostEnvironment env, Arguments args)
             : base(Contracts.CheckRef(env, nameof(env)).Register(LoadNameValue), TrainerUtils.MakeR4VecFeature(args.FeatureColumn),
                   TrainerUtils.MakeR4ScalarLabel(args.LabelColumn), TrainerUtils.MakeR4ScalarWeightColumn(args.WeightColumn, args.WeightColumn.IsExplicit))
         {
@@ -372,7 +372,7 @@ namespace Microsoft.ML.Trainers.HalLearners
             return new OlsLinearRegressionPredictor(Host, in weights, bias, standardErrors, tValues, pValues, rSquared, rSquaredAdjusted);
         }
 
-        internal static class Mkl
+        /*internal*/public static class Mkl
         {
             private const string DllName = "MklImports";
 
@@ -603,7 +603,7 @@ namespace Microsoft.ML.Trainers.HalLearners
         public IReadOnlyCollection<Double> PValues
         { get { return _pValues.AsReadOnly(); } }
 
-        internal OlsLinearRegressionPredictor(IHostEnvironment env, in VBuffer<float> weights, float bias,
+        /*internal*/public OlsLinearRegressionPredictor(IHostEnvironment env, in VBuffer<float> weights, float bias,
             Double[] standardErrors, Double[] tValues, Double[] pValues, Double rSquared, Double rSquaredAdjusted)
             : base(env, RegistrationName, in weights, bias)
         {

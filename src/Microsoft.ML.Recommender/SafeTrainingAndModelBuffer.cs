@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.Recommender.Internal
     /// Contains mirrors of unmanaged struct import extern functions from mf.h / mf.cpp, which implements Matrix Factorization in native C++.
     /// It also wraps/bridges the train, traintest and cv interfaces ready for ML.NET infra.
     /// </summary>
-    internal sealed class SafeTrainingAndModelBuffer : IDisposable
+    /*internal*/public sealed class SafeTrainingAndModelBuffer : IDisposable
     {
         [StructLayout(LayoutKind.Explicit)]
         private struct MFNode

@@ -16,7 +16,7 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// <summary>
     /// Lock for LightGBM trainer.
     /// </summary>
-    internal static class LightGbmShared
+    /*internal*/public static class LightGbmShared
     {
         // Lock for the operations that are multi-threading inside in LightGBM DLL.
         public static readonly object LockForMultiThreadingInside = new object();

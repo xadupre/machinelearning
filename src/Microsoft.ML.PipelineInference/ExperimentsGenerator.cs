@@ -26,7 +26,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
             // for one pattern there will be one learner, but several combinations.
             public readonly TrainerSweeper TrainerSweeper;
 
-            internal Sweep(Pattern pattern, TrainerSweeper trainerSweeper)
+            /*internal*/public Sweep(Pattern pattern, TrainerSweeper trainerSweeper)
             {
                 Pattern = pattern;
                 TrainerSweeper = trainerSweeper;
@@ -42,7 +42,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
             public readonly RecipeInference.SuggestedRecipe.SuggestedLearner Learner;
             public readonly string Loader;
 
-            internal Pattern(TransformInference.SuggestedTransform[] transforms,
+            /*internal*/public Pattern(TransformInference.SuggestedTransform[] transforms,
                 RecipeInference.SuggestedRecipe.SuggestedLearner learner,
                 string loader)
             {
@@ -79,7 +79,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
         {
             public List<string> Parameters;
 
-            internal TrainerSweeper()
+            /*internal*/public TrainerSweeper()
             {
                 Parameters = new List<string>();
             }

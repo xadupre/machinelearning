@@ -11,7 +11,7 @@ using System.Threading;
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
     [BestFriend]
-    internal static class CharUtils
+    /*internal*/public static class CharUtils
     {
         private const int CharsCount = 0x10000;
         private static volatile char[] _lowerInvariantChars;

@@ -535,7 +535,7 @@ namespace Microsoft.ML.Runtime.Data
             public readonly List<Double> WeightedRecall;
             public readonly List<Double> WeightedFalsePositiveRate;
 
-            internal readonly AuPrcAggregatorBase AuPrcAggregator;
+            /*internal*/public readonly AuPrcAggregatorBase AuPrcAggregator;
             public double WeightedAuPrc;
             public double UnweightedAuPrc;
 
@@ -865,7 +865,7 @@ namespace Microsoft.ML.Runtime.Data
                 return val;
             }
 
-            internal Result(IExceptionContext ectx, IRow overallResult)
+            /*internal*/public Result(IExceptionContext ectx, IRow overallResult)
             {
                 double Fetch(string name) => Fetch<double>(ectx, overallResult, name);
                 Auc = Fetch(BinaryClassifierEvaluator.Auc);
@@ -914,7 +914,7 @@ namespace Microsoft.ML.Runtime.Data
             /// </summary>
             public double Entropy { get; }
 
-            internal CalibratedResult(IExceptionContext ectx, IRow overallResult)
+            /*internal*/public CalibratedResult(IExceptionContext ectx, IRow overallResult)
                 : base(ectx, overallResult)
             {
                 double Fetch(string name) => Fetch<double>(ectx, overallResult, name);

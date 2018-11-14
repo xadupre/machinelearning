@@ -13,9 +13,9 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     public sealed class ModelOperationsCatalog
     {
-        internal IHostEnvironment Environment { get; }
+        /*internal*/public IHostEnvironment Environment { get; }
 
-        internal ModelOperationsCatalog(IHostEnvironment env)
+        /*internal*/public ModelOperationsCatalog(IHostEnvironment env)
         {
             Contracts.AssertValue(env);
             Environment = env;

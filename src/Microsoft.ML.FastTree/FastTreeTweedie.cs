@@ -35,10 +35,10 @@ namespace Microsoft.ML.Trainers.FastTree
     public sealed partial class FastTreeTweedieTrainer
          : BoostingFastTreeTrainerBase<FastTreeTweedieTrainer.Arguments, RegressionPredictionTransformer<FastTreeTweediePredictor>, FastTreeTweediePredictor>
     {
-        internal const string LoadNameValue = "FastTreeTweedieRegression";
-        internal const string UserNameValue = "FastTree (Boosted Trees) Tweedie Regression";
-        internal const string Summary = "Trains gradient boosted decision trees to fit target values using a Tweedie loss function. This learner is a generalization of Poisson, compound Poisson, and gamma regression.";
-        internal const string ShortName = "fttweedie";
+        /*internal*/public const string LoadNameValue = "FastTreeTweedieRegression";
+        /*internal*/public const string UserNameValue = "FastTree (Boosted Trees) Tweedie Regression";
+        /*internal*/public const string Summary = "Trains gradient boosted decision trees to fit target values using a Tweedie loss function. This learner is a generalization of Poisson, compound Poisson, and gamma regression.";
+        /*internal*/public const string ShortName = "fttweedie";
 
         private TestHistory _firstTestSetHistory;
         private Test _trainRegressionTest;
@@ -80,7 +80,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Initializes a new instance of <see cref="FastTreeTweedieTrainer"/> by using the legacy <see cref="Arguments"/> class.
         /// </summary>
-        internal FastTreeTweedieTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public FastTreeTweedieTrainer(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
             Initialize();
@@ -465,7 +465,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         protected override uint VerCategoricalSplitSerialized => 0x00010003;
 
-        internal FastTreeTweediePredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
+        /*internal*/public FastTreeTweediePredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
             : base(env, RegistrationName, trainedEnsemble, featureCount, innerArgs)
         {
         }

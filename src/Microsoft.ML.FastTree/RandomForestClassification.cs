@@ -123,10 +123,10 @@ namespace Microsoft.ML.Trainers.FastTree
             public int MaxCalibrationExamples = 1000000;
         }
 
-        internal const string LoadNameValue = "FastForestClassification";
-        internal const string UserNameValue = "Fast Forest Classification";
-        internal const string Summary = "Uses a random forest learner to perform binary classification.";
-        internal const string ShortName = "ff";
+        /*internal*/public const string LoadNameValue = "FastForestClassification";
+        /*internal*/public const string UserNameValue = "Fast Forest Classification";
+        /*internal*/public const string Summary = "Uses a random forest learner to perform binary classification.";
+        /*internal*/public const string ShortName = "ff";
 
         private bool[] _trainSetLabels;
 

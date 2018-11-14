@@ -47,9 +47,9 @@ namespace Microsoft.ML.Runtime.Data
             }
         }
 
-        internal const string Summary = "Removes NAs from vector columns.";
-        internal const string FriendlyName = "NA Drop Transform";
-        internal const string ShortName = "NADrop";
+        /*internal*/public const string Summary = "Removes NAs from vector columns.";
+        /*internal*/public const string FriendlyName = "NA Drop Transform";
+        /*internal*/public const string ShortName = "NADrop";
         public const string LoaderSignature = "NADropTransform";
 
         private static VersionInfo GetVersionInfo()

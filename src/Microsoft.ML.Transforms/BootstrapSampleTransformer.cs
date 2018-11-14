@@ -49,8 +49,8 @@ namespace Microsoft.ML.Transforms
             public int PoolSize = Defaults.PoolSize;
         }
 
-        internal const string Summary = "Approximate bootstrap sampling.";
-        internal const string UserName = "Bootstrap Sample Transform";
+        /*internal*/public const string Summary = "Approximate bootstrap sampling.";
+        /*internal*/public const string UserName = "Bootstrap Sample Transform";
 
         public const string LoaderSignature = "BootstrapSampleTransform";
         private static VersionInfo GetVersionInfo()
@@ -64,7 +64,7 @@ namespace Microsoft.ML.Transforms
                 loaderAssemblyName: typeof(BootstrapSampleTransformer).Assembly.FullName);
         }
 
-        internal const string RegistrationName = "BootstrapSample";
+        /*internal*/public const string RegistrationName = "BootstrapSample";
 
         public override bool CanShuffle { get { return false; } }
 

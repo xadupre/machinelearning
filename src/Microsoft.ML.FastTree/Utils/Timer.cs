@@ -187,7 +187,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         /// <summary>
         /// Returns the total number of CPU ticks spent in the specified timer so far.
         /// </summary>
-        internal static long GetTicks(TimerEvent e)
+        /*internal*/public static long GetTicks(TimerEvent e)
         {
             return _state.TickTotals == null ? 0 : _state.TickTotals[(int)e];
         }

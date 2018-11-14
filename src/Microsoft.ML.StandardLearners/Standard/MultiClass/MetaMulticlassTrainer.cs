@@ -65,7 +65,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// <param name="labelColumn">The label column for the metalinear trainer and the binary trainer.</param>
         /// <param name="singleEstimator">The binary estimator.</param>
         /// <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="PlattCalibratorTrainer"/></param>
-        internal MetaMulticlassTrainer(IHostEnvironment env, ArgumentsBase args, string name, string labelColumn = null,
+        /*internal*/public MetaMulticlassTrainer(IHostEnvironment env, ArgumentsBase args, string name, string labelColumn = null,
             TScalarTrainer singleEstimator = null, ICalibratorTrainer calibrator = null)
         {
             Host = Contracts.CheckRef(env, nameof(env)).Register(name);
@@ -83,7 +83,7 @@ namespace Microsoft.ML.Runtime.Learners
             if (args.Calibrator != null)
                 Calibrator = args.Calibrator.CreateComponent(Host);
 
-            // Regarding caching, no matter what the internal predictor, we're performing many passes
+            // Regarding caching, no matter what the /*internal*/public predictor, we're performing many passes
             // simply by virtue of this being a meta-trainer, so we will still cache.
             Info = new TrainerInfo(normalization: _trainer.Info.NeedNormalization);
         }

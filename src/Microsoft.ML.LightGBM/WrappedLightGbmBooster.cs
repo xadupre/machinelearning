@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// <summary>
     /// Wrapper of Booster object of LightGBM.
     /// </summary>
-    internal sealed class Booster : IDisposable
+    /*internal*/public sealed class Booster : IDisposable
     {
         private readonly bool _hasValid;
         private readonly bool _hasMetric;

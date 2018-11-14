@@ -50,7 +50,7 @@ namespace Microsoft.ML.Runtime.LightGBM
         protected override uint VerCategoricalSplitSerialized => 0x00010005;
         public override PredictionKind PredictionKind => PredictionKind.Regression;
 
-        internal LightGbmRegressionPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
+        /*internal*/public LightGbmRegressionPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
             : base(env, RegistrationName, trainedEnsemble, featureCount, innerArgs)
         {
         }
@@ -78,10 +78,10 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// <include file='doc.xml' path='doc/members/member[@name="LightGBM"]/*' />
     public sealed class LightGbmRegressorTrainer : LightGbmTrainerBase<float, RegressionPredictionTransformer<LightGbmRegressionPredictor>, LightGbmRegressionPredictor>
     {
-        internal const string Summary = "LightGBM Regression";
-        internal const string LoadNameValue = "LightGBMRegression";
-        internal const string ShortName = "LightGBMR";
-        internal const string UserNameValue = "LightGBM Regressor";
+        /*internal*/public const string Summary = "LightGBM Regression";
+        /*internal*/public const string LoadNameValue = "LightGBMRegression";
+        /*internal*/public const string ShortName = "LightGBMR";
+        /*internal*/public const string UserNameValue = "LightGBM Regressor";
 
         public override PredictionKind PredictionKind => PredictionKind.Regression;
 
@@ -113,7 +113,7 @@ namespace Microsoft.ML.Runtime.LightGBM
         {
         }
 
-        internal LightGbmRegressorTrainer(IHostEnvironment env, LightGbmArguments args)
+        /*internal*/public LightGbmRegressorTrainer(IHostEnvironment env, LightGbmArguments args)
              : base(env, LoadNameValue, args, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
         }

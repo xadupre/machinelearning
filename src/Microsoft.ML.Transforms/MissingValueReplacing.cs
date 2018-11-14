@@ -143,13 +143,13 @@ namespace Microsoft.ML.Transforms
                 loaderAssemblyName: typeof(MissingValueReplacingTransformer).Assembly.FullName);
         }
 
-        internal const string Summary = "Create an output column of the same type and size of the input column, where missing values "
+        /*internal*/public const string Summary = "Create an output column of the same type and size of the input column, where missing values "
          + "are replaced with either the default value or the mean/min/max value (for non-text columns only).";
 
-        internal const string FriendlyName = "NA Replace Transform";
-        internal const string ShortName = "NARep";
+        /*internal*/public const string FriendlyName = "NA Replace Transform";
+        /*internal*/public const string ShortName = "NARep";
 
-        internal static string TestType(ColumnType type)
+        /*internal*/public static string TestType(ColumnType type)
         {
             // Item type must have an NA value that exists and is not equal to its default value.
             Func<ColumnType, string> func = TestType<int>;
@@ -207,7 +207,7 @@ namespace Microsoft.ML.Transforms
                 Replacement = replacementMode;
             }
 
-            internal string ReplacementString { get; set; }
+            /*internal*/public string ReplacementString { get; set; }
         }
 
         private static (string input, string output)[] GetColumnPairs(ColumnInfo[] columns)

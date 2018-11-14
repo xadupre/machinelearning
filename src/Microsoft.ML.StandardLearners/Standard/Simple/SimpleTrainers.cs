@@ -41,9 +41,9 @@ namespace Microsoft.ML.Runtime.Learners
     public sealed class RandomTrainer : TrainerBase<RandomPredictor>,
         ITrainerEstimator<BinaryPredictionTransformer<RandomPredictor>, RandomPredictor>
     {
-        internal const string LoadNameValue = "RandomPredictor";
-        internal const string UserNameValue = "Random Predictor";
-        internal const string Summary = "A toy predictor that returns a random value.";
+        /*internal*/public const string LoadNameValue = "RandomPredictor";
+        /*internal*/public const string UserNameValue = "Random Predictor";
+        /*internal*/public const string Summary = "A toy predictor that returns a random value.";
 
         public sealed class Arguments
         {
@@ -232,8 +232,8 @@ namespace Microsoft.ML.Runtime.Learners
     public sealed class PriorTrainer : TrainerBase<PriorPredictor>,
         ITrainerEstimator<BinaryPredictionTransformer<PriorPredictor>, PriorPredictor>
     {
-        internal const string LoadNameValue = "PriorPredictor";
-        internal const string UserNameValue = "Prior Predictor";
+        /*internal*/public const string LoadNameValue = "PriorPredictor";
+        /*internal*/public const string UserNameValue = "Prior Predictor";
 
         public sealed class Arguments
         {

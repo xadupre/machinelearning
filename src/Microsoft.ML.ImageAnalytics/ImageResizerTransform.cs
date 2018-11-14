@@ -141,10 +141,10 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             }
         }
 
-        internal const string Summary = "Scales an image to specified dimensions using one of the three scale types: isotropic with padding, "
+        /*internal*/public const string Summary = "Scales an image to specified dimensions using one of the three scale types: isotropic with padding, "
             + "isotropic with cropping or anisotropic. In case of isotropic padding, transparent color is used to pad resulting image.";
 
-        internal const string UserName = "Image Resizer Transform";
+        /*internal*/public const string UserName = "Image Resizer Transform";
         public const string LoaderSignature = "ImageScalerTransform";
         private static VersionInfo GetVersionInfo()
         {
@@ -460,7 +460,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             return new SchemaShape(result.Values);
         }
 
-        internal sealed class OutPipelineColumn : Custom<Bitmap>
+        /*internal*/public sealed class OutPipelineColumn : Custom<Bitmap>
         {
             private readonly PipelineColumn _input;
             private readonly int _width;

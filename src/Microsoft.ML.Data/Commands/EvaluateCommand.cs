@@ -134,7 +134,7 @@ namespace Microsoft.ML.Runtime.Data
             public IComponentFactory<IMamlEvaluator> Evaluator;
         }
 
-        internal const string Summary = "Runs a previously trained predictor on the data.";
+        /*internal*/public const string Summary = "Runs a previously trained predictor on the data.";
 
         public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
@@ -192,7 +192,7 @@ namespace Microsoft.ML.Runtime.Data
             public string OutputDataFile;
         }
 
-        internal const string Summary = "Evaluates the metrics for a scored data file.";
+        /*internal*/public const string Summary = "Evaluates the metrics for a scored data file.";
 
         public EvaluateCommand(IHostEnvironment env, Arguments args)
             : base(env, args, nameof(EvaluateCommand))

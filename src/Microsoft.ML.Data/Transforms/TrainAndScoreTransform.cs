@@ -45,7 +45,7 @@ namespace Microsoft.ML.Transforms
             public string InputModelFile;
         }
 
-        internal const string Summary = "Runs a previously trained predictor on the data.";
+        /*internal*/public const string Summary = "Runs a previously trained predictor on the data.";
 
         /// <summary>
         /// Convenience method for creating <see cref="ScoreTransform"/>.
@@ -153,7 +153,7 @@ namespace Microsoft.ML.Transforms
             public IComponentFactory<IDataView, ISchemaBoundMapper, RoleMappedSchema, IDataScorerTransform> Scorer;
         }
 
-        internal const string Summary = "Trains a predictor, or loads it from a file, and runs it on the data.";
+        /*internal*/public const string Summary = "Trains a predictor, or loads it from a file, and runs it on the data.";
 
         /// <summary>
         /// Convenience method for creating <see cref="TrainAndScoreTransform"/>.

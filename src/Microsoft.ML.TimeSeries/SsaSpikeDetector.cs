@@ -33,7 +33,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// </summary>
     public sealed class SsaSpikeDetector : SsaAnomalyDetectionBase
     {
-        internal const string Summary = "This transform detects the spikes in a seasonal time-series using Singular Spectrum Analysis (SSA).";
+        /*internal*/public const string Summary = "This transform detects the spikes in a seasonal time-series using Singular Spectrum Analysis (SSA).";
         public const string LoaderSignature = "SsaSpikeDetector";
         public const string UserName = "SSA Spike Detection";
         public const string ShortName = "spike";
@@ -101,7 +101,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 loaderAssemblyName: typeof(SsaSpikeDetector).Assembly.FullName);
         }
 
-        internal SsaSpikeDetector(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public SsaSpikeDetector(IHostEnvironment env, Arguments args, IDataView input)
             : base(new BaseArguments(args), LoaderSignature, env)
         {
             Model.Train(new RoleMappedData(input, null, InputColumnName));
@@ -117,7 +117,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new SsaSpikeDetector(env, args, input).MakeDataTransform(input);
         }
 
-        internal SsaSpikeDetector(IHostEnvironment env, Arguments args)
+        /*internal*/public SsaSpikeDetector(IHostEnvironment env, Arguments args)
             : base(new BaseArguments(args), LoaderSignature, env)
         {
             // This constructor is empty.
@@ -143,7 +143,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new SsaSpikeDetector(env, ctx);
         }
 
-        internal SsaSpikeDetector(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public SsaSpikeDetector(IHostEnvironment env, ModelLoadContext ctx)
             : base(env, ctx, LoaderSignature)
         {
             // *** Binary format ***

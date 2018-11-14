@@ -76,7 +76,7 @@ namespace Microsoft.ML.Runtime.Data
             public bool ContinueTrain;
         }
 
-        internal const string Summary = "Trains a predictor using the train file and then scores and evaluates the predictor using the test file.";
+        /*internal*/public const string Summary = "Trains a predictor using the train file and then scores and evaluates the predictor using the test file.";
         public const string LoadName = "TrainTest";
 
         public TrainTestCommand(IHostEnvironment env, Arguments args)

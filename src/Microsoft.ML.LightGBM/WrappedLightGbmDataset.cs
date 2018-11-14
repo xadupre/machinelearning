@@ -11,7 +11,7 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// <summary>
     /// Wrapper of Dataset object of LightGBM.
     /// </summary>
-    internal sealed class Dataset : IDisposable
+    /*internal*/public sealed class Dataset : IDisposable
     {
         private IntPtr _handle;
         private int _lastPushedRowID;

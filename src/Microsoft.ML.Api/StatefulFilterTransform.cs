@@ -20,7 +20,7 @@ namespace Microsoft.ML.Runtime.Api
     /// <typeparam name="TSrc">The type that describes what 'source' columns are consumed from the input <see cref="IDataView"/>.</typeparam>
     /// <typeparam name="TDst">The type that describes what new columns are added by this transform.</typeparam>
     /// <typeparam name="TState">The type that describes per-cursor state.</typeparam>
-    internal sealed class StatefulFilterTransform<TSrc, TDst, TState> : LambdaTransformBase, ITransformTemplate
+    /*internal*/public sealed class StatefulFilterTransform<TSrc, TDst, TState> : LambdaTransformBase, ITransformTemplate
         where TSrc : class, new()
         where TDst : class, new()
         where TState : class, new()

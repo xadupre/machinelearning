@@ -10,7 +10,7 @@ using Microsoft.CodeAnalysis;
 
 namespace Microsoft.ML.CodeAnalyzer.Tests.Helpers
 {
-    internal static class TestUtils
+    /*internal*/public static class TestUtils
     {
         public static DiagnosticResult CreateDiagnosticResult(this DiagnosticDescriptor desc, int line, int column, params object[] formatArgs)
         {

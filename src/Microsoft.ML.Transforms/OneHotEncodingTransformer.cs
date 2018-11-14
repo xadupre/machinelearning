@@ -115,7 +115,7 @@ namespace Microsoft.ML.Transforms.Categorical
             }
         }
 
-        internal const string Summary = "Converts the categorical value into an indicator array by building a dictionary of categories based on the "
+        /*internal*/public const string Summary = "Converts the categorical value into an indicator array by building a dictionary of categories based on the "
             + "data and using the id in the dictionary as the index in the array.";
 
         public const string UserName = "Categorical Transform";
@@ -169,7 +169,7 @@ namespace Microsoft.ML.Transforms.Categorical
     /// </summary>
     public sealed class OneHotEncodingEstimator : IEstimator<OneHotEncodingTransformer>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const OneHotEncodingTransformer.OutputKind OutKind = OneHotEncodingTransformer.OutputKind.Ind;
         }
@@ -185,7 +185,7 @@ namespace Microsoft.ML.Transforms.Categorical
                 OutputKind = outputKind;
             }
 
-            internal void SetTerms(string terms)
+            /*internal*/public void SetTerms(string terms)
             {
                 Terms = terms;
             }
@@ -259,7 +259,7 @@ namespace Microsoft.ML.Transforms.Categorical
 
         public OneHotEncodingTransformer Fit(IDataView input) => new OneHotEncodingTransformer(_term, _toSomething, input);
 
-        internal void WrapTermWithDelegate(Action<TermTransform> onFit)
+        /*internal*/public void WrapTermWithDelegate(Action<TermTransform> onFit)
         {
             _term = (ValueToKeyMappingEstimator)_term.WithOnFitDelegate(onFit);
         }

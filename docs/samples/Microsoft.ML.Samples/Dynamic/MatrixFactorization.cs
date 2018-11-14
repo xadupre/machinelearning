@@ -25,7 +25,7 @@ namespace Microsoft.ML.Samples.Dynamic
         const int _synthesizedMatrixRowCount = 100;
 
         // A data structure used to encode a single value in matrix
-        internal class MatrixElement
+        /*internal*/public class MatrixElement
         {
             // Matrix column index starts from _synthesizedMatrixFirstColumnIndex and is at most
             // _synthesizedMatrixFirstColumnIndex + _synthesizedMatrixColumnCount - 1.
@@ -43,7 +43,7 @@ namespace Microsoft.ML.Samples.Dynamic
 
         // A data structure used to encode prediction result. Comparing with MatrixElement, The field Value in MatrixElement is
         // renamed to Score because Score is the default name of matrix factorization's output.
-        internal class MatrixElementForScore
+        /*internal*/public class MatrixElementForScore
         {
             [KeyType(Contiguous = true, Count = _synthesizedMatrixColumnCount, Min = _synthesizedMatrixFirstColumnIndex)]
             public uint MatrixColumnIndex;

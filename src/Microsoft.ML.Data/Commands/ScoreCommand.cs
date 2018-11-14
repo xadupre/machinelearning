@@ -74,7 +74,7 @@ namespace Microsoft.ML.Runtime.Data
             public string[] OutputColumn;
         }
 
-        internal const string Summary = "Scores a data file.";
+        /*internal*/public const string Summary = "Scores a data file.";
 
         public ScoreCommand(IHostEnvironment env, Arguments args)
             : base(env, args, nameof(ScoreCommand))

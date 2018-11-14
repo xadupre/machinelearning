@@ -22,7 +22,7 @@ namespace Microsoft.ML.Runtime.Data
     /// </summary>
     public delegate void SignatureLoadColumnFunction(ModelLoadContext ctx, IHost host, ColumnType typeSrc);
 
-    internal interface IColumnFunctionBuilder
+    /*internal*/public interface IColumnFunctionBuilder
     {
         /// <summary>
         /// Trains on the current value.
@@ -52,7 +52,7 @@ namespace Microsoft.ML.Runtime.Data
         void Finish();
     }
 
-    internal interface IColumnFunction : ICanSaveModel
+    /*internal*/public interface IColumnFunction : ICanSaveModel
     {
         Delegate GetGetter(IRow input, int icol);
 

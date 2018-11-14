@@ -16,7 +16,7 @@ namespace Microsoft.ML.Runtime.Api
     /// <summary>
     /// A helper class to create data views based on the user-provided types.
     /// </summary>
-    internal static class DataViewConstructionUtils
+    /*internal*/public static class DataViewConstructionUtils
     {
         public static IDataView CreateFromList<TRow>(IHostEnvironment env, IList<TRow> data,
             SchemaDefinition schemaDefinition = null)
@@ -791,7 +791,7 @@ namespace Microsoft.ML.Runtime.Api
             }
         }
 
-        internal static Schema.Column[] GetSchemaColumns(InternalSchemaDefinition schemaDefn)
+        /*internal*/public static Schema.Column[] GetSchemaColumns(InternalSchemaDefinition schemaDefn)
         {
             Contracts.AssertValue(schemaDefn);
             var columns = new Schema.Column[schemaDefn.Columns.Length];
@@ -825,7 +825,7 @@ namespace Microsoft.ML.Runtime.Api
 
         public abstract ValueGetter<TDst> GetGetter<TDst>();
 
-        internal abstract Delegate GetGetterDelegate();
+        /*internal*/public abstract Delegate GetGetterDelegate();
 
         protected MetadataInfo(string kind, ColumnType metadataType)
         {
@@ -945,7 +945,7 @@ namespace Microsoft.ML.Runtime.Api
             throw Contracts.ExceptNotImpl("Type '{0}' is not yet supported.", typeT.FullName);
         }
 
-        internal override Delegate GetGetterDelegate() => Utils.MarshalInvoke(GetGetter<int>, MetadataType.RawType);
+        /*internal*/public override Delegate GetGetterDelegate() => Utils.MarshalInvoke(GetGetter<int>, MetadataType.RawType);
 
         public class TElement
         {

@@ -268,7 +268,7 @@ namespace Microsoft.ML.Transforms.Categorical
 
         public const string LoaderSignature = "TermLookupTransform";
 
-        internal const string Summary = "Maps text values columns to new columns using a map dataset.";
+        /*internal*/public const string Summary = "Maps text values columns to new columns using a map dataset.";
 
         private static VersionInfo GetVersionInfo()
         {

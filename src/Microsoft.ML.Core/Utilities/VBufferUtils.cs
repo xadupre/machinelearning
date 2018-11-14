@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// Convenience utilities for vector operations on <see cref="VBuffer{T}"/>.
     /// </summary>
     [BestFriend]
-    internal static class VBufferUtils
+    /*internal*/public static class VBufferUtils
     {
         private const float SparsityThreshold = 0.25f;
 
@@ -27,7 +27,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
         /// <see cref="VBuffer{T}"/> in C++/CLI projects, we cannot have a generic struct with a nested class
         /// that has the outer struct type as a field.
         /// </summary>
-        internal static IEnumerable<KeyValuePair<int, T>> Items<T>(T[] values, int[] indices, int length, int count, bool all)
+        /*internal*/public static IEnumerable<KeyValuePair<int, T>> Items<T>(T[] values, int[] indices, int length, int count, bool all)
         {
             Contracts.AssertValueOrNull(values);
             Contracts.Assert(0 <= count && count <= Utils.Size(values));
@@ -62,7 +62,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
             }
         }
 
-        internal static IEnumerable<T> DenseValues<T>(T[] values, int[] indices, int length, int count)
+        /*internal*/public static IEnumerable<T> DenseValues<T>(T[] values, int[] indices, int length, int count)
         {
             Contracts.AssertValueOrNull(values);
             Contracts.Assert(0 <= count && count <= Utils.Size(values));
@@ -653,7 +653,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
 
         /// <summary>
         /// The actual implementation of <see cref="ApplyWith"/> and
-        /// <see cref="ApplyWithEitherDefined{TSrc,TDst}"/>, that has internal branches on the implementation
+        /// <see cref="ApplyWithEitherDefined{TSrc,TDst}"/>, that has /*internal*/public branches on the implementation
         /// where necessary depending on whether this is an inner or outer join of the
         /// indices of <paramref name="src"/> on <paramref name="dst"/>.
         /// </summary>
@@ -925,7 +925,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
 
         /// <summary>
         /// The actual implementation of <see cref="ApplyWithCopy{TSrc,TDst}"/> and
-        /// <see cref="ApplyWithEitherDefinedCopy{TSrc,TDst}"/>, that has internal branches on the implementation
+        /// <see cref="ApplyWithEitherDefinedCopy{TSrc,TDst}"/>, that has /*internal*/public branches on the implementation
         /// where necessary depending on whether this is an inner or outer join of the
         /// indices of <paramref name="src"/> on <paramref name="dst"/>.
         /// </summary>

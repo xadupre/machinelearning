@@ -7,7 +7,7 @@ using System.Text;
 namespace Microsoft.ML.Runtime.CommandLine
 {
     [BestFriend]
-    internal sealed class CmdLexer
+    /*internal*/public sealed class CmdLexer
     {
         private CharCursor _curs;
 
@@ -162,7 +162,7 @@ namespace Microsoft.ML.Runtime.CommandLine
 
         // This collects the contents of a curly group, shedding the curlies and associated escaping.
         // Compare to GatherCurlyGroup, that keeps the curlies and associated escaping.
-        internal void GatherCurlyContents(StringBuilder bldr)
+        /*internal*/public void GatherCurlyContents(StringBuilder bldr)
         {
             Contracts.Assert(_curs.ChCur == '{');
 

@@ -50,7 +50,7 @@ namespace Microsoft.ML.Transforms.Conversions
             }
         }
 
-        internal const string Summary = "Converts a key column to a binary encoded vector.";
+        /*internal*/public const string Summary = "Converts a key column to a binary encoded vector.";
         public const string UserName = "KeyToBinaryVectorTransform";
         public const string LoaderSignature = "KeyToBinaryTransform";
 

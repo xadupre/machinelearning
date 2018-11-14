@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.UniversalModelFormat.Onnx;
 
 namespace Microsoft.ML.Runtime.Model.Onnx
 {
-    internal sealed class OnnxNodeImpl : OnnxNode
+    /*internal*/public sealed class OnnxNodeImpl : OnnxNode
     {
         private readonly NodeProto _node;
 

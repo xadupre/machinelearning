@@ -15,9 +15,9 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     public sealed class DataOperations
     {
-        internal IHostEnvironment Environment { get; }
+        /*internal*/public IHostEnvironment Environment { get; }
 
-        internal DataOperations(IHostEnvironment env)
+        /*internal*/public DataOperations(IHostEnvironment env)
         {
             Contracts.AssertValue(env);
             Environment = env;

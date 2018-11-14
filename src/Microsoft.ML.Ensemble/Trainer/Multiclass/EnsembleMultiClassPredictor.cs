@@ -43,7 +43,7 @@ namespace Microsoft.ML.Runtime.Ensemble
         public ColumnType InputType { get { return _inputType; } }
         public ColumnType OutputType { get { return _outputType; } }
 
-        internal EnsembleMultiClassPredictor(IHostEnvironment env, FeatureSubsetModel<TVectorPredictor>[] models,
+        /*internal*/public EnsembleMultiClassPredictor(IHostEnvironment env, FeatureSubsetModel<TVectorPredictor>[] models,
             IMultiClassOutputCombiner combiner, Single[] weights = null)
             : base(env, RegistrationName, models, combiner, weights)
         {

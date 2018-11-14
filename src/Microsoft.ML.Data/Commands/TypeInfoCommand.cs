@@ -19,8 +19,8 @@ namespace Microsoft.ML.Data.Commands
 {
     public sealed class TypeInfoCommand : ICommand
     {
-        internal const string LoadName = "TypeInfo";
-        internal const string Summary = "Displays information about the standard primitive " +
+        /*internal*/public const string LoadName = "TypeInfo";
+        /*internal*/public const string Summary = "Displays information about the standard primitive " +
             "non-key types, and conversions between them.";
 
         public sealed class Arguments

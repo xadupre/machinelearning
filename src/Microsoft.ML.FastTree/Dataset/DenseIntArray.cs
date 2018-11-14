@@ -19,7 +19,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// Abstract class implementing some common functions of the dense int array types.
     /// </summary>
-    internal abstract class DenseIntArray : IntArray, IIntArrayForwardIndexer
+    /*internal*/public abstract class DenseIntArray : IntArray, IIntArrayForwardIndexer
     {
         public override IntArrayType Type { get { return IntArrayType.Dense; } }
 
@@ -127,7 +127,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         #endregion
     }
 
-    internal abstract class DenseDataCallbackIntArray : DenseIntArray
+    /*internal*/public abstract class DenseDataCallbackIntArray : DenseIntArray
     {
         protected DenseDataCallbackIntArray(int length)
             : base(length)
@@ -140,7 +140,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A "null" feature representing only zeros.
     /// </summary>
-    internal sealed class Dense0BitIntArray : DenseIntArray
+    /*internal*/public sealed class Dense0BitIntArray : DenseIntArray
     {
         public override IntArrayBits BitsPerItem { get { return IntArrayBits.Bits0; } }
 
@@ -202,7 +202,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A class to represent features using 10 bits.
     /// </summary>
-    internal sealed class Dense10BitIntArray : DenseIntArray
+    /*internal*/public sealed class Dense10BitIntArray : DenseIntArray
     {
         private const int _bits = 10;
         private const int _mask = (1 << _bits) - 1;
@@ -381,7 +381,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// </summary>
     /// <remarks>Represents values -1...(2^s-2)
     /// 0-bit array only represents the value -1</remarks>
-    internal sealed class Dense8BitIntArray : DenseDataCallbackIntArray
+    /*internal*/public sealed class Dense8BitIntArray : DenseDataCallbackIntArray
     {
         private byte[] _data;
 
@@ -462,7 +462,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A class to represent features using 4 bits.
     /// </summary>
-    internal sealed class Dense4BitIntArray : DenseIntArray
+    /*internal*/public sealed class Dense4BitIntArray : DenseIntArray
     {
         /// <summary>
         /// For a given byte, the high 4 bits is the first value, the low 4 bits is the next value.
@@ -583,7 +583,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A class to represent features using 16 bits.
     /// </summary>
-    internal sealed class Dense16BitIntArray : DenseDataCallbackIntArray
+    /*internal*/public sealed class Dense16BitIntArray : DenseDataCallbackIntArray
     {
         private ushort[] _data;
 
@@ -668,7 +668,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <summary>
     /// A class to represent features using 32 bits.
     /// </summary>
-    internal sealed class Dense32BitIntArray : DenseDataCallbackIntArray
+    /*internal*/public sealed class Dense32BitIntArray : DenseDataCallbackIntArray
     {
         private int[] _data;
 

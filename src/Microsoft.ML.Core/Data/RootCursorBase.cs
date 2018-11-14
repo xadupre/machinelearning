@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Data
     /// use <see cref="SynchronizedCursorBase{TBase}"/> .
     /// </summary>
     [BestFriend]
-    internal abstract class RootCursorBase : ICursor
+    /*internal*/public abstract class RootCursorBase : ICursor
     {
         protected readonly IChannel Ch;
 

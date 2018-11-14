@@ -46,8 +46,8 @@ namespace Microsoft.ML.Runtime.Data
 #endif
         }
 
-        internal const string LoadName = "ShowSchema";
-        internal const string Summary = "Given input data, a loader, and possibly transforms, display the schema.";
+        /*internal*/public const string LoadName = "ShowSchema";
+        /*internal*/public const string Summary = "Given input data, a loader, and possibly transforms, display the schema.";
 
         public ShowSchemaCommand(IHostEnvironment env, Arguments args)
                 : base(env, args, nameof(ShowSchemaCommand))
@@ -78,7 +78,7 @@ namespace Microsoft.ML.Runtime.Data
         /// This shows the schema of the given <paramref name="data"/>, ignoring the data specification
         /// in the <paramref name="args"/> parameter. Test code invokes this, hence it is internal.
         /// </summary>
-        internal static void RunOnData(TextWriter writer, Arguments args, IDataView data)
+        /*internal*/public static void RunOnData(TextWriter writer, Arguments args, IDataView data)
         {
             Contracts.AssertValue(writer);
             Contracts.AssertValue(args);

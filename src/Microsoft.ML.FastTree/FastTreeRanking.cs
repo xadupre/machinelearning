@@ -45,10 +45,10 @@ namespace Microsoft.ML.Trainers.FastTree
         : BoostingFastTreeTrainerBase<FastTreeRankingTrainer.Arguments, RankingPredictionTransformer<FastTreeRankingPredictor>, FastTreeRankingPredictor>,
           IHasLabelGains
     {
-        internal const string LoadNameValue = "FastTreeRanking";
-        internal const string UserNameValue = "FastTree (Boosted Trees) Ranking";
-        internal const string Summary = "Trains gradient boosted decision trees to the LambdaRank quasi-gradient.";
-        internal const string ShortName = "ftrank";
+        /*internal*/public const string LoadNameValue = "FastTreeRanking";
+        /*internal*/public const string UserNameValue = "FastTree (Boosted Trees) Ranking";
+        /*internal*/public const string Summary = "Trains gradient boosted decision trees to the LambdaRank quasi-gradient.";
+        /*internal*/public const string ShortName = "ftrank";
 
         private IEnsembleCompressor<short> _ensembleCompressor;
         private Test _specialTrainSetTest;
@@ -90,7 +90,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Initializes a new instance of <see cref="FastTreeRankingTrainer"/> by using the legacy <see cref="Arguments"/> class.
         /// </summary>
-        internal FastTreeRankingTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public FastTreeRankingTrainer(IHostEnvironment env, Arguments args)
         : base(env, args, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
         }
@@ -1114,7 +1114,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         protected override uint VerCategoricalSplitSerialized => 0x00010005;
 
-        internal FastTreeRankingPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
+        /*internal*/public FastTreeRankingPredictor(IHostEnvironment env, TreeEnsemble trainedEnsemble, int featureCount, string innerArgs)
             : base(env, RegistrationName, trainedEnsemble, featureCount, innerArgs)
         {
         }

@@ -4,7 +4,7 @@
 
 namespace Microsoft.ML.Benchmarks
 {
-    internal class Errors
+    /*internal*/public class Errors
     {
         public static string DatasetNotFound = "Could not find {0} Please ensure you have run 'build.cmd -- /t:DownloadExternalTestFiles /p:IncludeBenchmarkData=true' from the root";
     }

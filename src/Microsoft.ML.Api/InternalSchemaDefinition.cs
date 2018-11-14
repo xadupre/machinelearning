@@ -14,9 +14,9 @@ namespace Microsoft.ML.Runtime.Api
     using Conditional = System.Diagnostics.ConditionalAttribute;
 
     /// <summary>
-    /// An internal class that holds the (already validated) mapping between a custom type and an IDataView schema.
+    /// An /*internal*/public class that holds the (already validated) mapping between a custom type and an IDataView schema.
     /// </summary>
-    internal sealed class InternalSchemaDefinition
+    /*internal*/public sealed class InternalSchemaDefinition
     {
         public readonly Column[] Columns;
 

@@ -540,7 +540,7 @@ namespace Microsoft.ML.CpuMath.UnitTests
         }
     }
 
-    internal class FloatEqualityComparer : IEqualityComparer<float>
+    /*internal*/public class FloatEqualityComparer : IEqualityComparer<float>
     {
         public bool Equals(float a, float b)
         {
@@ -553,7 +553,7 @@ namespace Microsoft.ML.CpuMath.UnitTests
         }
     }
 
-    internal class FloatEqualityComparerForMatMul : IEqualityComparer<float>
+    /*internal*/public class FloatEqualityComparerForMatMul : IEqualityComparer<float>
     {
         public bool Equals(float a, float b)
         {

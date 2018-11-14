@@ -15,7 +15,7 @@ using System.Reflection;
 
 namespace Microsoft.ML.Runtime
 {
-    internal static class AssemblyRegistration
+    /*internal*/public static class AssemblyRegistration
     {
         private static readonly Lazy<bool> _assemblyInitializer = new Lazy<bool>(LoadStandardAssemblies);
 
@@ -28,7 +28,9 @@ namespace Microsoft.ML.Runtime
                 Contracts.Assert(_assemblyInitializer.Value);
             }
 
+#pragma warning disable CS0436 // Type conflicts with imported type
             AssemblyLoadingUtils.RegisterCurrentLoadedAssemblies(environment);
+#pragma warning restore CS0436 // Type conflicts with imported type
         }
 
         /// <summary>

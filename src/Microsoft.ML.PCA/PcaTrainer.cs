@@ -43,9 +43,9 @@ namespace Microsoft.ML.Trainers.PCA
     public sealed class RandomizedPcaTrainer : TrainerEstimatorBase<AnomalyPredictionTransformer<PcaPredictor>, PcaPredictor>
     {
         public const string LoadNameValue = "pcaAnomaly";
-        internal const string UserNameValue = "PCA Anomaly Detector";
-        internal const string ShortName = "pcaAnom";
-        internal const string Summary = "This algorithm trains an approximate PCA using Randomized SVD algorithm. "
+        /*internal*/public const string UserNameValue = "PCA Anomaly Detector";
+        /*internal*/public const string ShortName = "pcaAnom";
+        /*internal*/public const string Summary = "This algorithm trains an approximate PCA using Randomized SVD algorithm. "
             + "This PCA can be made into Kernel PCA by using Random Fourier Features transform.";
 
         public class Arguments : UnsupervisedLearnerInputBaseWithWeight
@@ -102,7 +102,7 @@ namespace Microsoft.ML.Trainers.PCA
 
         }
 
-        internal RandomizedPcaTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public RandomizedPcaTrainer(IHostEnvironment env, Arguments args)
             :this(env, args, args.FeatureColumn, args.WeightColumn)
         {
 
@@ -112,7 +112,7 @@ namespace Microsoft.ML.Trainers.PCA
             int rank = 20, int oversampling = 20, bool center = true, int? seed = null)
             : base(Contracts.CheckRef(env, nameof(env)).Register(LoadNameValue), TrainerUtils.MakeR4VecFeature(featureColumn), null, TrainerUtils.MakeR4ScalarWeightColumn(weightColumn))
         {
-            // if the args are not null, we got here from maml, and the internal ctor.
+            // if the args are not null, we got here from maml, and the /*internal*/public ctor.
             if (args != null)
             {
                 _rank = args.Rank;
@@ -398,7 +398,7 @@ namespace Microsoft.ML.Trainers.PCA
             get { return PredictionKind.AnomalyDetection; }
         }
 
-        internal PcaPredictor(IHostEnvironment env, int rank, VBuffer<float>[] eigenVectors, in VBuffer<float> mean)
+        /*internal*/public PcaPredictor(IHostEnvironment env, int rank, VBuffer<float>[] eigenVectors, in VBuffer<float> mean)
             : base(env, RegistrationName)
         {
             _dimension = eigenVectors[0].Length;

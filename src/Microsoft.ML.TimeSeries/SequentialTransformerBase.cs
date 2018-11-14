@@ -37,7 +37,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             protected SequentialTransformerBase<TInput, TOutput, TState> ParentTransform;
 
             /// <summary>
-            /// The internal windowed buffer for buffering the values in the input sequence.
+            /// The /*internal*/public windowed buffer for buffering the values in the input sequence.
             /// </summary>
             private protected FixedSizeQueue<TInput> WindowedBuffer;
 
@@ -186,8 +186,8 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// </summary>
         private protected int InitialWindowSize;
 
-        internal readonly string InputColumnName;
-        internal readonly string OutputColumnName;
+        /*internal*/public readonly string InputColumnName;
+        /*internal*/public readonly string OutputColumnName;
         private protected ColumnType OutputColumnType;
 
         public bool IsRowToRowMapper => false;

@@ -100,12 +100,12 @@ namespace Microsoft.ML.Transforms
             }
         }
 
-        internal const string Summary = "Handle missing values by replacing them with either the default value or the "
+        /*internal*/public const string Summary = "Handle missing values by replacing them with either the default value or the "
             + "mean/min/max value (for non-text columns only). An indicator column can optionally be concatenated, if the" +
             "input column type is numeric.";
 
-        internal const string FriendlyName = "NA Handle Transform";
-        internal const string ShortName = "NAHandle";
+        /*internal*/public const string FriendlyName = "NA Handle Transform";
+        /*internal*/public const string ShortName = "NAHandle";
 
         /// <summary>
         /// A helper method to create <see cref="MissingValueHandlingTransformer"/> for public facing API.

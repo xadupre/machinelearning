@@ -20,7 +20,7 @@ namespace Microsoft.ML.Legacy.Models
         {
         }
 
-        internal static List<ClusterMetrics> FromOverallMetrics(IHostEnvironment env, IDataView overallMetrics)
+        /*internal*/public static List<ClusterMetrics> FromOverallMetrics(IHostEnvironment env, IDataView overallMetrics)
         {
             Contracts.AssertValue(env);
             env.AssertValue(overallMetrics);

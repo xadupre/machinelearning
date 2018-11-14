@@ -15,13 +15,13 @@ namespace Microsoft.ML.Analyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public sealed class TypeIsSchemaShapeAnalyzer : DiagnosticAnalyzer
     {
-        internal static class ShapeDiagnostic
+        /*internal*/public static class ShapeDiagnostic
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_TypeShouldBeSchemaShape";
             private const string Title = "The type is not a schema shape";
             private const string Format = "Type{0} is neither a PipelineColumn nor a ValueTuple, nor a class of an allowed form.";
-            internal const string Description =
+            /*internal*/public const string Description =
                 "Within statically typed pipeline elements of ML.NET, the shape of the schema is determined by a 'shape' type. " +
                 "A valid 'shape' type is either an instance of one of the PipelineColumn subclasses (for example, Scalar<bool> " +
                 "or something like that), or a ValueTuple containing only valid 'shape' types, or a class whose only publicly " +
@@ -30,107 +30,107 @@ namespace Microsoft.ML.Analyzer
                 "property accessors and the constructor takes as many parameters as there are properties. (So, ValueTuples " +
                 "containing other value tuples are fine, so long as they terminate in a PipelineColumn subclass.)";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeParameterDiagnostic
+        /*internal*/public static class ShapeParameterDiagnostic
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_TypeParameterShouldBeSchemaShape";
             private const string Title = "The type is not a schema shape";
             private const string Format = "Type parameter {0} is not marked with [IsShape] or appropriate type constraints.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "If using type parameters when interacting with the statically typed pipelines, the type parameter ought to be " +
                 "constrained in such a way that it, either by applying the [IsShape] attribute or by having type constraints to " +
                 "indicate that it is valid, for example, constraining the type to descend from PipelineColumn.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticConstructor
+        /*internal*/public static class ShapeClassDiagnosticConstructor
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassShouldHaveOnePublicConstructor";
             private const string Title = "The class does not have exactly one public constructor.";
             private const string Format = "Member's type {0} does not have exactly one public constructor.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type does not have exactly one public constructor.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticField
+        /*internal*/public static class ShapeClassDiagnosticField
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassShouldHaveNoPublicFields";
             private const string Title = "The class should not have publicly accessible fields.";
             private const string Format = "Type {0} has publicly accessible field {1}.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type has publicly accessible fields.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticGettable
+        /*internal*/public static class ShapeClassDiagnosticGettable
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassGettableProperty";
             private const string Title = "All properties should be gettable.";
             private const string Format = "Type {0} has property {1} without a public getter.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type has a property without a getter.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticNoArgsSettable
+        /*internal*/public static class ShapeClassDiagnosticNoArgsSettable
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassWithParameterlessConstructorSettableProperties";
             private const string Title = "If the class has a constructor with no parameters, all properties should be settable.";
             private const string Format = "Type {0} has property {1} that is not settable.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type has a parameterless constructor, but a field that is not settable.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticArgsSettable
+        /*internal*/public static class ShapeClassDiagnosticArgsSettable
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassWithParameterfulConstructorSettableProperties";
             private const string Title = "If the class has a constructor with parameters, but some properties are settable.";
             private const string Format = "Type {0} has property {1} that is settable.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type has a constructor with parameters, but some of the properties also have setters.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class ShapeClassDiagnosticCorrespondence
+        /*internal*/public static class ShapeClassDiagnosticCorrespondence
         {
             private const string Category = "Type Check";
             public const string Id = "MSML_SchemaShapeClassConstructorAndPropertiesCorrespond";
             private const string Title = "If the class has a constructor with parameters, there ought to be a one to one correspondence between the parameters and the properties.";
             private const string Format = "Type {0} appears to not have an exact correspondence among the number or type of constructor parameters and properties.";
-            internal const string Description = ShapeDiagnostic.Description + " " +
+            /*internal*/public const string Description = ShapeDiagnostic.Description + " " +
                 "This type has a constructor with parameters, but it appears that the number or types of the properties do not correspond to the parameters in the constructor.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
         }
@@ -180,7 +180,7 @@ namespace Microsoft.ML.Analyzer
             if (leafType == null)
                 return;
 
-            // This internal helper method recursively determines whether an attributed type parameter
+            // This /*internal*/public helper method recursively determines whether an attributed type parameter
             // has a valid type. It is called externally from the loop over invocations.
             bool CheckType(ITypeSymbol type, out string path, out ITypeSymbol problematicType, out SpecificError specificError)
             {

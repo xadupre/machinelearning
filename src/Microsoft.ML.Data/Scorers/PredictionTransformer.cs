@@ -182,7 +182,7 @@ namespace Microsoft.ML.Runtime.Data
             BindableMapper = ScoreUtils.GetSchemaBindableMapper(Host, model);
         }
 
-        internal SingleFeaturePredictionTransformerBase(IHost host, ModelLoadContext ctx)
+        /*internal*/public SingleFeaturePredictionTransformerBase(IHost host, ModelLoadContext ctx)
             : base(host, ctx)
         {
             FeatureColumn = ctx.LoadStringOrNull();
@@ -442,7 +442,7 @@ namespace Microsoft.ML.Runtime.Data
             Scorer = GetGenericScorer();
         }
 
-        internal RegressionPredictionTransformer(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public RegressionPredictionTransformer(IHostEnvironment env, ModelLoadContext ctx)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(RegressionPredictionTransformer<TModel>)), ctx)
         {
             Scorer = GetGenericScorer();
@@ -483,7 +483,7 @@ namespace Microsoft.ML.Runtime.Data
             Scorer = GetGenericScorer();
         }
 
-        internal RankingPredictionTransformer(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public RankingPredictionTransformer(IHostEnvironment env, ModelLoadContext ctx)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(RankingPredictionTransformer<TModel>)), ctx)
         {
             Scorer = GetGenericScorer();
@@ -563,7 +563,7 @@ namespace Microsoft.ML.Runtime.Data
         }
     }
 
-    internal static class BinaryPredictionTransformer
+    /*internal*/public static class BinaryPredictionTransformer
     {
         public const string LoaderSignature = "BinaryPredXfer";
 
@@ -571,7 +571,7 @@ namespace Microsoft.ML.Runtime.Data
             => new BinaryPredictionTransformer<IPredictorProducing<float>>(env, ctx);
     }
 
-    internal static class MulticlassPredictionTransformer
+    /*internal*/public static class MulticlassPredictionTransformer
     {
         public const string LoaderSignature = "MulticlassPredXfer";
 
@@ -579,7 +579,7 @@ namespace Microsoft.ML.Runtime.Data
             => new MulticlassPredictionTransformer<IPredictorProducing<VBuffer<float>>>(env, ctx);
     }
 
-    internal static class RegressionPredictionTransformer
+    /*internal*/public static class RegressionPredictionTransformer
     {
         public const string LoaderSignature = "RegressionPredXfer";
 
@@ -587,7 +587,7 @@ namespace Microsoft.ML.Runtime.Data
             => new RegressionPredictionTransformer<IPredictorProducing<float>>(env, ctx);
     }
 
-    internal static class RankingPredictionTransformer
+    /*internal*/public static class RankingPredictionTransformer
     {
         public const string LoaderSignature = "RankingPredXfer";
 
@@ -595,7 +595,7 @@ namespace Microsoft.ML.Runtime.Data
             => new RankingPredictionTransformer<IPredictorProducing<float>>(env, ctx);
     }
 
-    internal static class AnomalyPredictionTransformer
+    /*internal*/public static class AnomalyPredictionTransformer
     {
         public const string LoaderSignature = "AnomalyPredXfer";
 
@@ -603,7 +603,7 @@ namespace Microsoft.ML.Runtime.Data
             => new AnomalyPredictionTransformer<IPredictorProducing<float>>(env, ctx);
     }
 
-    internal static class ClusteringPredictionTransformer
+    /*internal*/public static class ClusteringPredictionTransformer
     {
         public const string LoaderSignature = "ClusteringPredXfer";
 

@@ -374,7 +374,7 @@ namespace Microsoft.ML.Runtime.Numeric
     /// <summary>
     /// Terminates the optimization if NA value appears in result or no progress is made.
     /// </summary>
-    internal static class TerminateTester
+    /*internal*/public static class TerminateTester
     {
         /// <summary>
         /// Test whether the optimization should terminate. Returns true if x contains NA or +/-Inf or x equals xprev.
@@ -382,7 +382,7 @@ namespace Microsoft.ML.Runtime.Numeric
         /// <param name="x">The current value.</param>
         /// <param name="xprev">The value from the previous iteration.</param>
         /// <returns>True if the optimization routine should terminate at this iteration.</returns>
-        internal static bool ShouldTerminate(in VBuffer<Float> x, in VBuffer<Float> xprev)
+        /*internal*/public static bool ShouldTerminate(in VBuffer<Float> x, in VBuffer<Float> xprev)
         {
             Contracts.Assert(x.Length == xprev.Length, "Vectors must have the same dimensionality.");
             Contracts.Assert(FloatUtils.IsFinite(xprev.GetValues()));

@@ -33,9 +33,9 @@ namespace Microsoft.ML.Trainers.Online
     public sealed class AveragedPerceptronTrainer : AveragedLinearTrainer<BinaryPredictionTransformer<LinearBinaryPredictor>, LinearBinaryPredictor>
     {
         public const string LoadNameValue = "AveragedPerceptron";
-        internal const string UserNameValue = "Averaged Perceptron";
-        internal const string ShortName = "ap";
-        internal const string Summary = "Averaged Perceptron Binary Classifier.";
+        /*internal*/public const string UserNameValue = "Averaged Perceptron";
+        /*internal*/public const string ShortName = "ap";
+        /*internal*/public const string Summary = "Averaged Perceptron Binary Classifier.";
 
         private readonly Arguments _args;
 
@@ -50,7 +50,7 @@ namespace Microsoft.ML.Trainers.Online
             [Argument(ArgumentType.AtMostOnce, HelpText = "The maximum number of examples to use when training the calibrator", Visibility = ArgumentAttribute.VisibilityType.EntryPointsOnly)]
             public int MaxCalibrationExamples = 1000000;
 
-            internal override IComponentFactory<IScalarOutputLoss> LossFunctionFactory => LossFunction;
+            /*internal*/public override IComponentFactory<IScalarOutputLoss> LossFunctionFactory => LossFunction;
         }
 
         private sealed class TrainState : AveragedTrainStateBase
@@ -83,7 +83,7 @@ namespace Microsoft.ML.Trainers.Online
             }
         }
 
-        internal AveragedPerceptronTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public AveragedPerceptronTrainer(IHostEnvironment env, Arguments args)
             : base(args, env, UserNameValue, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
             _args = args;

@@ -110,7 +110,9 @@ namespace Microsoft.ML.Runtime.Sweeper
                 string currentDirectory = Path.GetDirectoryName(typeof(ExeConfigRunnerBase).Module.FullyQualifiedName);
 
                 using (var ch = Host.Start("Finish"))
+#pragma warning disable CS0436 // Type conflicts with imported type
                 using (AssemblyLoadingUtils.CreateAssemblyRegistrar(Host, currentDirectory))
+#pragma warning restore CS0436 // Type conflicts with imported type
                 {
                     var runs = RunNums.ToArray();
                     var args = Utils.BuildArray(RunNums.Count + 2,

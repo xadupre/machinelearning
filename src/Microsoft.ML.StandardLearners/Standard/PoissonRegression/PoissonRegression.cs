@@ -29,10 +29,10 @@ namespace Microsoft.ML.Trainers
     /// <include file='doc.xml' path='doc/members/member[@name="PoissonRegression"]/*' />
     public sealed class PoissonRegression : LbfgsTrainerBase<PoissonRegression.Arguments, RegressionPredictionTransformer<PoissonRegressionPredictor>, PoissonRegressionPredictor>
     {
-        internal const string LoadNameValue = "PoissonRegression";
-        internal const string UserNameValue = "Poisson Regression";
-        internal const string ShortName = "PR";
-        internal const string Summary = "Poisson Regression assumes the unknown function, denoted Y has a Poisson distribution.";
+        /*internal*/public const string LoadNameValue = "PoissonRegression";
+        /*internal*/public const string UserNameValue = "Poisson Regression";
+        /*internal*/public const string ShortName = "PR";
+        /*internal*/public const string Summary = "Poisson Regression assumes the unknown function, denoted Y has a Poisson distribution.";
 
         public sealed class Arguments : ArgumentsBase
         {
@@ -73,7 +73,7 @@ namespace Microsoft.ML.Trainers
         /// <summary>
         /// Initializes a new instance of <see cref="PoissonRegression"/>
         /// </summary>
-        internal PoissonRegression(IHostEnvironment env, Arguments args)
+        /*internal*/public PoissonRegression(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
         }

@@ -167,7 +167,7 @@ namespace Microsoft.ML.Runtime.Data
         /// <summary>
         /// The loading constructor of transformer chain. Reverse of <see cref="Save(ModelSaveContext)"/>.
         /// </summary>
-        internal TransformerChain(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public TransformerChain(IHostEnvironment env, ModelLoadContext ctx)
         {
             int len = ctx.Reader.ReadInt32();
             _transformers = new ITransformer[len];

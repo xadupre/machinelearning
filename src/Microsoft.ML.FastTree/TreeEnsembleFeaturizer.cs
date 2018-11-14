@@ -38,7 +38,7 @@ namespace Microsoft.ML.Runtime.Data
     /// A bindable mapper wrapper for tree ensembles, that creates a bound mapper with three outputs:
     /// 1. A vector containing the individual tree outputs of the tree ensemble.
     /// 2. An indicator vector for the leaves that the feature vector falls on in the tree ensemble.
-    /// 3. An indicator vector for the internal nodes on the paths that the feature vector falls on in the tree ensemble.
+    /// 3. An indicator vector for the /*internal*/public nodes on the paths that the feature vector falls on in the tree ensemble.
     /// </summary>
     public sealed class TreeEnsembleFeaturizerBindableMapper : ISchemaBindableMapper, ICanSaveModel
     {
@@ -198,11 +198,11 @@ namespace Microsoft.ML.Runtime.Data
                 var leafIdType = new VectorType(NumberType.Float, _owner._totalLeafCount);
                 // An indicator vector with length = the total number of nodes in the ensemble, indicating the nodes on
                 // the paths of the example in all the trees in the ensemble.
-                // The total number of nodes in a binary tree is equal to the number of internal nodes + the number of leaf nodes,
-                // and it is also equal to the number of children of internal nodes (which is 2 * the number of internal nodes)
+                // The total number of nodes in a binary tree is equal to the number of /*internal*/public nodes + the number of leaf nodes,
+                // and it is also equal to the number of children of /*internal*/public nodes (which is 2 * the number of /*internal*/public nodes)
                 // plus one (since the root node is not a child of any node). So we have #internal + #leaf = 2*(#internal) + 1,
                 // which means that #internal = #leaf - 1.
-                // Therefore, the number of internal nodes in the ensemble is #leaf - #trees.
+                // Therefore, the number of /*internal*/public nodes in the ensemble is #leaf - #trees.
                 var pathIdType = new VectorType(NumberType.Float, _owner._totalLeafCount - _owner._ensemble.TrainedEnsemble.NumTrees);
                 Schema = Schema.Create(new SchemaImpl(ectx, owner, treeValueType, leafIdType, pathIdType));
             }
@@ -587,7 +587,7 @@ namespace Microsoft.ML.Runtime.Data
             public IPredictorModel PredictorModel;
         }
 
-        internal const string TreeEnsembleSummary =
+        /*internal*/public const string TreeEnsembleSummary =
             "Trains a tree ensemble, or loads it from a file, then maps a numeric feature vector " +
             "to three outputs: 1. A vector containing the individual tree outputs of the tree ensemble. " +
             "2. A vector indicating the leaves that the feature vector falls on in the tree ensemble. " +
@@ -596,7 +596,7 @@ namespace Microsoft.ML.Runtime.Data
             "will train a default FastTree model. " +
             "This can handle key labels by training a regression model towards their optionally permuted indices.";
 
-        internal const string UserName = "Tree Ensemble Featurization Transform";
+        /*internal*/public const string UserName = "Tree Ensemble Featurization Transform";
 
         public static IDataScorerTransform Create(IHostEnvironment env,
             TreeEnsembleFeaturizerBindableMapper.Arguments args, IDataView data, ISchemaBoundMapper mapper, RoleMappedSchema trainSchema)

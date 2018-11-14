@@ -122,7 +122,7 @@ namespace Microsoft.ML.Transforms.Categorical
             public OneHotEncodingTransformer.OutputKind OutputKind = Defaults.OutputKind;
         }
 
-        internal const string Summary = "Converts the categorical value into an indicator array by hashing the value and using the hash as an index in the "
+        /*internal*/public const string Summary = "Converts the categorical value into an indicator array by hashing the value and using the hash as an index in the "
             + "bag. If the input column is a vector, a single indicator bag is returned for it.";
 
         public const string UserName = "Categorical Hash Transform";
@@ -148,7 +148,7 @@ namespace Microsoft.ML.Transforms.Categorical
             return new OneHotHashEncodingEstimator(env, name, source, outputKind).Fit(input).Transform(input) as IDataView;
         }
 
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             var h = env.Register("Categorical");
@@ -174,7 +174,7 @@ namespace Microsoft.ML.Transforms.Categorical
 
         private readonly TransformerChain<ITransformer> _transformer;
 
-        internal OneHotHashEncodingTransformer(HashingEstimator hash, IEstimator<ITransformer> keyToVector, IDataView input)
+        /*internal*/public OneHotHashEncodingTransformer(HashingEstimator hash, IEstimator<ITransformer> keyToVector, IDataView input)
         {
             var chain = hash.Append(keyToVector);
             _transformer = chain.Fit(input);
@@ -196,7 +196,7 @@ namespace Microsoft.ML.Transforms.Categorical
     /// </summary>
     public sealed class OneHotHashEncodingEstimator : IEstimator<OneHotHashEncodingTransformer>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const int HashBits = 16;
             public const uint Seed = 314489979;

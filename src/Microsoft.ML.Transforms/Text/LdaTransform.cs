@@ -303,9 +303,9 @@ namespace Microsoft.ML.Transforms.Text
 
         private const string RegistrationName = "LightLda";
         private const string WordTopicModelFilename = "word_topic_summary.txt";
-        internal const string Summary = "The LDA transform implements LightLDA, a state-of-the-art implementation of Latent Dirichlet Allocation.";
-        internal const string UserName = "Latent Dirichlet Allocation Transform";
-        internal const string ShortName = "LightLda";
+        /*internal*/public const string Summary = "The LDA transform implements LightLDA, a state-of-the-art implementation of Latent Dirichlet Allocation.";
+        /*internal*/public const string UserName = "Latent Dirichlet Allocation Transform";
+        /*internal*/public const string ShortName = "LightLda";
 
         public LdaTransform(IHostEnvironment env, Arguments args, IDataView input)
             : base(env, RegistrationName, args.Column, input, TestType)

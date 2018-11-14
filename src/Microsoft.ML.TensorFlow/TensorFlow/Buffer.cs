@@ -19,10 +19,10 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// <remarks>
     /// <code>
     /// [TensorFlow.MonoPInvokeCallback (typeof (BufferReleaseFunc))]
-    /// internal static void MyFreeFunc (IntPtr data, IntPtr length){..}
+    /// /*internal*/public static void MyFreeFunc (IntPtr data, IntPtr length){..}
     /// </code>
     /// </remarks>
-    internal sealed class MonoPInvokeCallbackAttribute : Attribute
+    /*internal*/public sealed class MonoPInvokeCallbackAttribute : Attribute
     {
         /// <summary>
         /// Use this constructor to annotate the type of the callback function that
@@ -33,11 +33,11 @@ namespace Microsoft.ML.Transforms.TensorFlow
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct LLBuffer
+    /*internal*/public struct LLBuffer
     {
-        internal IntPtr data;
-        internal size_t length;
-        internal IntPtr data_deallocator;
+        /*internal*/public IntPtr data;
+        /*internal*/public size_t length;
+        /*internal*/public IntPtr data_deallocator;
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// </remarks>
     // TODO: the string ctor
     // TODO: perhaps we should have an implicit byte [] conversion that just calls ToArray?
-    internal class TFBuffer : TFDisposable
+    /*internal*/public class TFBuffer : TFDisposable
     {
         // extern TF_Buffer * TF_NewBufferFromString (const void *proto, size_t proto_len);
         [DllImport(NativeBinding.TensorFlowLibrary)]
@@ -73,7 +73,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe LLBuffer* TF_NewBuffer();
 
-        internal TFBuffer(IntPtr handle) : base(handle) { }
+        /*internal*/public TFBuffer(IntPtr handle) : base(handle) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TensorFlow.TFBuffer"/> class.
@@ -94,7 +94,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         ///
         /// <code>
         /// [TensorFlow.MonoPInvokeCallback (typeof (BufferReleaseFunc))]
-        /// internal static void MyFreeFunc (IntPtr data, IntPtr length){..}
+        /// /*internal*/public static void MyFreeFunc (IntPtr data, IntPtr length){..}
         /// </code>
         /// </remarks>
         public delegate void BufferReleaseFunc(IntPtr data, IntPtr lenght);
@@ -123,13 +123,13 @@ namespace Microsoft.ML.Transforms.TensorFlow
         }
 
         [MonoPInvokeCallback(typeof(BufferReleaseFunc))]
-        internal static void FreeBlock(IntPtr data, IntPtr length)
+        /*internal*/public static void FreeBlock(IntPtr data, IntPtr length)
         {
             Marshal.FreeHGlobal(data);
         }
 
-        internal static IntPtr FreeBufferFunc;
-        internal static BufferReleaseFunc FreeBlockDelegate;
+        /*internal*/public static IntPtr FreeBufferFunc;
+        /*internal*/public static BufferReleaseFunc FreeBlockDelegate;
 
         static TFBuffer()
         {
@@ -173,13 +173,13 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal unsafe LLBuffer* LLBuffer => (LLBuffer*)handle;
+        /*internal*/public unsafe LLBuffer* LLBuffer => (LLBuffer*)handle;
 
         // extern void TF_DeleteBuffer (TF_Buffer *);
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern unsafe void TF_DeleteBuffer(LLBuffer* buffer);
 
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             unsafe { TF_DeleteBuffer((LLBuffer*)handle); }
         }

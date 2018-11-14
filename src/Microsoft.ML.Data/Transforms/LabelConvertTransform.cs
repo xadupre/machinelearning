@@ -48,7 +48,7 @@ namespace Microsoft.ML.Transforms
             public Column[] Column;
         }
 
-        internal const string Summary = "Convert a label column into a standard floating point representation.";
+        /*internal*/public const string Summary = "Convert a label column into a standard floating point representation.";
 
         public const string LoaderSignature = "LabelConvertTransform";
         private static VersionInfo GetVersionInfo()

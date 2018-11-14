@@ -65,8 +65,8 @@ namespace Microsoft.ML.Runtime.Data
 
     public sealed class SimplePartitionedPathParser : IPartitionedPathParser, ICanSaveModel
     {
-        internal const string Summary = "A simple parser that extracts directory names as column values. Column names are defined as arguments.";
-        internal const string UserName = "Simple Partitioned Path Parser";
+        /*internal*/public const string Summary = "A simple parser that extracts directory names as column values. Column names are defined as arguments.";
+        /*internal*/public const string UserName = "Simple Partitioned Path Parser";
         public const string LoadName = "SimplePathParser";
         public const string ShortName = "SmplPP";
 
@@ -200,8 +200,8 @@ namespace Microsoft.ML.Runtime.Data
 
     public sealed class ParquetPartitionedPathParser : IPartitionedPathParser, ICanSaveModel
     {
-        internal const string Summary = "Extract name/value pairs from Parquet formatted directory names. Example path: Year=2018/Month=12/data1.parquet";
-        internal const string UserName = "Parquet Partitioned Path Parser";
+        /*internal*/public const string Summary = "Extract name/value pairs from Parquet formatted directory names. Example path: Year=2018/Month=12/data1.parquet";
+        /*internal*/public const string UserName = "Parquet Partitioned Path Parser";
         public const string LoadName = "ParquetPathParser";
         public const string ShortName = "ParqPP";
 

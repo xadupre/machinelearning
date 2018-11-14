@@ -190,7 +190,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             }
         }
 
-        internal RegressionTree(int[] splitFeatures, Double[] splitGain, Double[] gainPValue,
+        /*internal*/public RegressionTree(int[] splitFeatures, Double[] splitGain, Double[] gainPValue,
             Float[] rawThresholds, Float[] defaultValueForMissing, int[] lteChild, int[] gtChild, Double[] leafValues,
             int[][] categoricalSplitFeatures, bool[] categoricalSplit)
             : this()
@@ -238,7 +238,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             }
         }
 
-        internal RegressionTree(ModelLoadContext ctx, bool usingDefaultValue, bool categoricalSplits)
+        /*internal*/public RegressionTree(ModelLoadContext ctx, bool usingDefaultValue, bool categoricalSplits)
             : this()
         {
             // *** Binary format ***
@@ -602,7 +602,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         public int NumNodes => NumLeaves - 1;
 
         /// <summary>
-        /// The maximum number of leaves the internal structure of this tree can support.
+        /// The maximum number of leaves the /*internal*/public structure of this tree can support.
         /// </summary>
         public int MaxNumLeaves => LeafValues.Length;
 
@@ -783,7 +783,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         }
 
         /// <summary>
-        /// Returns the leaf node for the given feature vector, and populates 'path' with the list of internal nodes in the
+        /// Returns the leaf node for the given feature vector, and populates 'path' with the list of /*internal*/public nodes in the
         /// path from the root to that leaf. If 'path' is null a new list is initialized. All elements in 'path' are cleared
         /// before filling in the current path nodes.
         /// </summary>
@@ -1290,7 +1290,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             return output.ToString();
         }
 
-        internal JToken AsPfa(JToken feat)
+        /*internal*/public JToken AsPfa(JToken feat)
         {
             return AsPfaCore(feat, 0);
         }
@@ -1376,7 +1376,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             Parallel.Invoke(new ParallelOptions { MaxDegreeOfParallelism = BlockingThreadPool.NumThreads }, actions);
         }
 
-        internal void AddOutputsToScores(Dataset dataset, double[] scores, int[] docIndices)
+        /*internal*/public void AddOutputsToScores(Dataset dataset, double[] scores, int[] docIndices)
         {
             // Just break it up into NumThreads chunks. This minimizes the number of recomputations
             //  neccessary in the rowwise indexer.

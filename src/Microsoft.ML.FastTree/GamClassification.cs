@@ -38,9 +38,9 @@ namespace Microsoft.ML.Trainers.FastTree
             public bool UnbalancedSets = false;
         }
 
-        internal const string LoadNameValue = "BinaryClassificationGamTrainer";
-        internal const string UserNameValue = "Generalized Additive Model for Binary Classification";
-        internal const string ShortName = "gam";
+        /*internal*/public const string LoadNameValue = "BinaryClassificationGamTrainer";
+        /*internal*/public const string UserNameValue = "Generalized Additive Model for Binary Classification";
+        /*internal*/public const string ShortName = "gam";
         private readonly double _sigmoidParameter;
 
         public override PredictionKind PredictionKind => PredictionKind.BinaryClassification;
@@ -49,7 +49,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Initializes a new instance of <see cref="BinaryClassificationGamTrainer"/>
         /// </summary>
-        internal BinaryClassificationGamTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public BinaryClassificationGamTrainer(IHostEnvironment env, Arguments args)
              : base(env, args, LoadNameValue, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
             _sigmoidParameter = 1;
@@ -77,7 +77,7 @@ namespace Microsoft.ML.Trainers.FastTree
             _sigmoidParameter = 1;
         }
 
-        internal override void CheckLabel(RoleMappedData data)
+        /*internal*/public override void CheckLabel(RoleMappedData data)
         {
             data.CheckBinaryLabel();
         }

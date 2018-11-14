@@ -32,7 +32,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// </summary>
     public sealed class IidSpikeDetector : IidAnomalyDetectionBase
     {
-        internal const string Summary = "This transform detects the spikes in a i.i.d. sequence using adaptive kernel density estimation.";
+        /*internal*/public const string Summary = "This transform detects the spikes in a i.i.d. sequence using adaptive kernel density estimation.";
         public const string LoaderSignature = "IidSpikeDetector";
         public const string UserName = "IID Spike Detection";
         public const string ShortName = "ispike";
@@ -106,7 +106,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new IidSpikeDetector(env, args).MakeDataTransform(input);
         }
 
-        internal IidSpikeDetector(IHostEnvironment env, Arguments args)
+        /*internal*/public IidSpikeDetector(IHostEnvironment env, Arguments args)
             : base(new BaseArguments(args), LoaderSignature, env)
         {
             // This constructor is empty.

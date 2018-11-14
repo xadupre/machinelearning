@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.ML.Runtime.Model.Pfa
 {
     [BestFriend]
-    internal interface ICanSavePfa
+    /*internal*/public interface ICanSavePfa
     {
         /// <summary>
         /// Whether this object really is capable of saving itself as part of a PFA
@@ -24,7 +24,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// This component know how to save himself in Pfa format.
     /// </summary>
     [BestFriend]
-    internal interface ISaveAsPfa : ICanSavePfa
+    /*internal*/public interface ISaveAsPfa : ICanSavePfa
     {
         /// <summary>
         /// Save as PFA. For any columns that are output, this interface should use
@@ -40,7 +40,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// This data model component is savable as PFA. See https://dmg.org/pfa/ .
     /// </summary>
     [BestFriend]
-    internal interface ITransformCanSavePfa : ISaveAsPfa, IDataTransform
+    /*internal*/public interface ITransformCanSavePfa : ISaveAsPfa, IDataTransform
     {
     }
 
@@ -50,7 +50,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// this mapper, and has already been bound to it.
     /// </summary>
     [BestFriend]
-    internal interface IBindableCanSavePfa : ICanSavePfa, ISchemaBindableMapper
+    /*internal*/public interface IBindableCanSavePfa : ICanSavePfa, ISchemaBindableMapper
     {
         /// <summary>
         /// Save as PFA. If <see cref="ICanSavePfa.CanSavePfa"/> is
@@ -75,7 +75,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// <see cref="Microsoft.ML.Runtime.Internal.Calibration.ICalibrator"/> instances.
     /// </summary>
     [BestFriend]
-    internal interface ISingleCanSavePfa : ICanSavePfa
+    /*internal*/public interface ISingleCanSavePfa : ICanSavePfa
     {
         /// <summary>
         /// Implementors of this method are responsible for providing the PFA expression that
@@ -97,7 +97,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// instances.
     /// </summary>
     [BestFriend]
-    internal interface IDistCanSavePfa : ISingleCanSavePfa, IValueMapperDist
+    /*internal*/public interface IDistCanSavePfa : ISingleCanSavePfa, IValueMapperDist
     {
         /// <summary>
         /// The call for distribution predictors. Unlike <see cref="ISingleCanSavePfa.SaveAsPfa"/>,

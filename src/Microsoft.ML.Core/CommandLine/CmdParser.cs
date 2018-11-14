@@ -20,11 +20,11 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// <summary>
     /// A delegate used in error reporting.
     /// </summary>
-    internal delegate void ErrorReporter(string message);
+    /*internal*/public delegate void ErrorReporter(string message);
 
     [Flags]
     [BestFriend]
-    internal enum SettingsFlags
+    /*internal*/public enum SettingsFlags
     {
         None = 0x00,
 
@@ -202,7 +202,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     /// arguments can be specified multiple times.
     /// </summary>
     [BestFriend]
-    internal sealed class CmdParser
+    /*internal*/public sealed class CmdParser
     {
         private const int SpaceBeforeParam = 2;
         private readonly ErrorReporter _reporter;
@@ -1264,7 +1264,7 @@ namespace Microsoft.ML.Runtime.CommandLine
                     _arg = arg;
                 }
 
-                internal static ArgInfo GetInfo(Type type, object defaults = null)
+                /*internal*/public static ArgInfo GetInfo(Type type, object defaults = null)
                 {
                     Contracts.CheckValue(type, nameof(type));
                     Contracts.CheckValueOrNull(defaults);

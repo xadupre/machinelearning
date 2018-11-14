@@ -77,7 +77,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
         /// <summary>Assertions over a column of <see cref="KeyType"/> with <see cref="DataKind.U8"/> <see cref="ColumnType.RawKind"/>.</summary>
         public KeyTypeSelectorAssertions<ulong> KeyU8 => default;
 
-        internal static SchemaAssertionContext Inst = new SchemaAssertionContext();
+        /*internal*/public static SchemaAssertionContext Inst = new SchemaAssertionContext();
 
         private SchemaAssertionContext() { }
 

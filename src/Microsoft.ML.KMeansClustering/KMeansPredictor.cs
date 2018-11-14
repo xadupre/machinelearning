@@ -258,7 +258,7 @@ namespace Microsoft.ML.Trainers.KMeans
         }
 
         /// <summary>
-        /// Initialize internal parameters: L2 norms of the _centroids.
+        /// Initialize /*internal*/public parameters: L2 norms of the _centroids.
         /// </summary>
         private void InitPredictor()
         {

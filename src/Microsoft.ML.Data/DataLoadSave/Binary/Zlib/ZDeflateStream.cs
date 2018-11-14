@@ -176,9 +176,9 @@ namespace Microsoft.ML.Runtime.Data.IO.Zlib
         }
 
         /// <summary>
-        /// Check zlib internal buffer and if it's full flush its results to compressed stream.
+        /// Check zlib /*internal*/public buffer and if it's full flush its results to compressed stream.
         /// </summary>
-        /// <param name="pOutput">link internal buffer</param>
+        /// <param name="pOutput">link /*internal*/public buffer</param>
         private unsafe void RefreshOutput(byte* pOutput)
         {
 #if DEBUG

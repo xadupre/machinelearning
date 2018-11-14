@@ -161,7 +161,7 @@ namespace Microsoft.ML.StaticPipe
             return rec.Score;
         }
 
-        internal static void CheckUserValues(PipelineColumn label, Vector<float> features, Scalar<float> weights,
+        /*internal*/public static void CheckUserValues(PipelineColumn label, Vector<float> features, Scalar<float> weights,
             int numLeaves,
             int numTrees,
             int minDatapointsInLeaves,

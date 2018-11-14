@@ -16,7 +16,7 @@ namespace Microsoft.ML.Legacy
     /// The debug proxy class for a LearningPipeline.
     /// Displays the current columns and values in the debugger Watch window.
     /// </summary>
-    internal sealed class LearningPipelineDebugProxy
+    /*internal*/public sealed class LearningPipelineDebugProxy
     {
         // load more rows than we display in order for transforms like CategoricalOneHotVectorizer
         // to see more rows, and get a more accurate cardinality of the column.
@@ -221,7 +221,7 @@ namespace Microsoft.ML.Legacy
     }
 
     [DebuggerDisplay("{Name} {Type}{SlotNames}")]
-    internal class PipelineItemDebugColumn
+    /*internal*/public class PipelineItemDebugColumn
     {
         public string Name { get; set; }
         public string Type { get; set; }
@@ -234,7 +234,7 @@ namespace Microsoft.ML.Legacy
     }
 
     [DebuggerDisplay("{Values}")]
-    internal class PipelineItemDebugRow
+    /*internal*/public class PipelineItemDebugRow
     {
         public string Values { get; set; }
     }

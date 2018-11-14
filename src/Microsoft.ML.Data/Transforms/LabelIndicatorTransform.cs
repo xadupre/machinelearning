@@ -25,8 +25,8 @@ namespace Microsoft.ML.Transforms
     /// </summary>
     public sealed class LabelIndicatorTransform : OneToOneTransformBase
     {
-        internal const string Summary = "Remaps labels from multiclass to binary, for OVA.";
-        internal const string UserName = "Label Indicator Transform";
+        /*internal*/public const string Summary = "Remaps labels from multiclass to binary, for OVA.";
+        /*internal*/public const string UserName = "Label Indicator Transform";
         public const string LoaderSignature = "LabelIndicatorTransform";
         public const string LoadName = LoaderSignature;
 

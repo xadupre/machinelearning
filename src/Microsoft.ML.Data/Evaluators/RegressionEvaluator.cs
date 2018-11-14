@@ -203,7 +203,7 @@ namespace Microsoft.ML.Runtime.Data
             /// </summary>
             public double RSquared { get; }
 
-            internal Result(IExceptionContext ectx, IRow overallResult)
+            /*internal*/public Result(IExceptionContext ectx, IRow overallResult)
             {
                 double Fetch(string name) => RowCursorUtils.Fetch<double>(ectx, overallResult, name);
                 L1 = Fetch(RegressionEvaluator.L1);

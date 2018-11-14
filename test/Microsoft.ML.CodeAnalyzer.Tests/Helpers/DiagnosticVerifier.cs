@@ -268,9 +268,9 @@ namespace Microsoft.ML.CodeAnalyzer.Tests.Helpers
         protected static MetadataReference RefFromType<TType>()
             => MetadataReference.CreateFromFile(typeof(TType).Assembly.Location);
 
-        internal const string DefaultFilePathPrefix = "Test";
-        internal const string CSharpDefaultFileExt = "cs";
-        internal const string TestProjectName = "TestProject";
+        /*internal*/public const string DefaultFilePathPrefix = "Test";
+        /*internal*/public const string CSharpDefaultFileExt = "cs";
+        /*internal*/public const string TestProjectName = "TestProject";
 
         #region  Get Diagnostics
 
@@ -372,7 +372,7 @@ namespace Microsoft.ML.CodeAnalyzer.Tests.Helpers
         /// </summary>
         /// <param name="sources">Classes in the form of strings</param>
         /// <returns>A Project created out of the Documents created from the source strings</returns>
-        internal static Project CreateProject(string projectName, ref Solution solution, params string[] sources)
+        /*internal*/public static Project CreateProject(string projectName, ref Solution solution, params string[] sources)
         {
             string fileNamePrefix = DefaultFilePathPrefix;
 

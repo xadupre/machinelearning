@@ -236,9 +236,9 @@ namespace Microsoft.ML.Transforms
             }
         }
 
-        internal const string Summary = "Adds a column with a generated number sequence.";
-        internal const string UserName = "Generate Number Transform";
-        internal const string ShortName = "Generate";
+        /*internal*/public const string Summary = "Adds a column with a generated number sequence.";
+        /*internal*/public const string UserName = "Generate Number Transform";
+        /*internal*/public const string ShortName = "Generate";
 
         public const string LoadName = "GenerateNumberTransform";
         public const string LoaderSignature = "GenNumTransform";

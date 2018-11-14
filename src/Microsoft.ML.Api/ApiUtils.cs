@@ -9,11 +9,11 @@ using Microsoft.ML.Runtime.Data;
 
 namespace Microsoft.ML.Runtime.Api
 {
-    internal delegate void Peek<in TRow, TValue>(TRow row, long position, ref TValue value);
+    /*internal*/public delegate void Peek<in TRow, TValue>(TRow row, long position, ref TValue value);
 
-    internal delegate void Poke<TRow, TValue>(TRow dst, TValue src);
+    /*internal*/public delegate void Poke<TRow, TValue>(TRow dst, TValue src);
 
-    internal static class ApiUtils
+    /*internal*/public static class ApiUtils
     {
         private static OpCode GetAssignmentOpCode(Type t)
         {
@@ -48,7 +48,7 @@ namespace Microsoft.ML.Runtime.Api
         /// into the provided buffer. So, the call is 'peek(userObject, ref destination)' and the logic is
         /// indentical to 'destination = userObject.##FIELD##', where ##FIELD## is defined per peek method.
         /// </summary>
-        internal static Delegate GeneratePeek<TOwn, TRow>(InternalSchemaDefinition.Column column)
+        /*internal*/public static Delegate GeneratePeek<TOwn, TRow>(InternalSchemaDefinition.Column column)
         {
             switch (column.MemberInfo)
             {
@@ -124,7 +124,7 @@ namespace Microsoft.ML.Runtime.Api
         /// to the provided value. So, the call is 'peek(userObject, providedValue)' and the logic is
         /// indentical to 'userObject.##FIELD## = providedValue', where ##FIELD## is defined per poke method.
         /// </summary>
-        internal static Delegate GeneratePoke<TOwn, TRow>(InternalSchemaDefinition.Column column)
+        /*internal*/public static Delegate GeneratePoke<TOwn, TRow>(InternalSchemaDefinition.Column column)
         {
             switch (column.MemberInfo)
             {

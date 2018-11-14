@@ -35,9 +35,9 @@ namespace Microsoft.ML.Trainers.SymSgd
     /// <include file='doc.xml' path='doc/members/member[@name="SymSGD"]/*' />
     public sealed class SymSgdClassificationTrainer : TrainerEstimatorBase<BinaryPredictionTransformer<TPredictor>, TPredictor>
     {
-        internal const string LoadNameValue = "SymbolicSGD";
-        internal const string UserNameValue = "Symbolic SGD (binary)";
-        internal const string ShortName = "SymSGD";
+        /*internal*/public const string LoadNameValue = "SymbolicSGD";
+        /*internal*/public const string UserNameValue = "Symbolic SGD (binary)";
+        /*internal*/public const string ShortName = "SymSGD";
 
         public sealed class Arguments : LearnerInputBaseWithLabel
         {
@@ -178,7 +178,7 @@ namespace Microsoft.ML.Trainers.SymSgd
         /// <summary>
         /// Initializes a new instance of <see cref="SymSgdClassificationTrainer"/>
         /// </summary>
-        internal SymSgdClassificationTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public SymSgdClassificationTrainer(IHostEnvironment env, Arguments args)
             : base(Contracts.CheckRef(env, nameof(env)).Register(LoadNameValue), TrainerUtils.MakeR4VecFeature(args.FeatureColumn),
                   TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
@@ -757,7 +757,7 @@ namespace Microsoft.ML.Trainers.SymSgd
             //To triger the loading of MKL library since SymSGD native library depends on it.
             static Native() => ErrorMessage(0);
 
-            internal const string DllName = "SymSgdNative";
+            /*internal*/public const string DllName = "SymSgdNative";
 
             [DllImport(DllName), SuppressUnmanagedCodeSecurity]
             private static extern void LearnAll(int totalNumInstances, int* instSizes, int** instIndices,
@@ -862,7 +862,7 @@ namespace Microsoft.ML.Trainers.SymSgd
         /// This is the state of a SymSGD learner that is shared between the managed and native code.
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
-        internal unsafe struct State
+        /*internal*/public unsafe struct State
         {
 #pragma warning disable 649 // never assigned
             [FieldOffset(0x00)]
