@@ -479,7 +479,7 @@ namespace Microsoft.ML.Runtime.Data
         private protected virtual bool CanSaveOnnxCore => false;
 
         [BestFriend]
-        private protected OneToOneTransformBase(IHostEnvironment env, string name, OneToOneColumn[] column,
+        /*private*/ protected OneToOneTransformBase(IHostEnvironment env, string name, OneToOneColumn[] column,
             IDataView input, Func<ColumnType, string> testType)
             : base(env, name, input)
         {
@@ -493,7 +493,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected OneToOneTransformBase(IHost host, OneToOneColumn[] column,
+        /*private*/ protected OneToOneTransformBase(IHost host, OneToOneColumn[] column,
             IDataView input, Func<ColumnType, string> testType)
             : base(host, input)
         {
@@ -507,7 +507,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected OneToOneTransformBase(IHost host, ModelLoadContext ctx,
+        /*private*/ protected OneToOneTransformBase(IHost host, ModelLoadContext ctx,
             IDataView input, Func<ColumnType, string> testType)
             : base(host, input)
         {
@@ -524,7 +524,7 @@ namespace Microsoft.ML.Runtime.Data
         /// Re-applying constructor.
         /// </summary>
         [BestFriend]
-        private protected OneToOneTransformBase(IHostEnvironment env, string name, OneToOneTransformBase transform,
+        /*private*/ protected OneToOneTransformBase(IHostEnvironment env, string name, OneToOneTransformBase transform,
             IDataView newInput, Func<ColumnType, string> checkType)
             : base(env, name, newInput)
         {
@@ -545,10 +545,10 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected MetadataDispatcher Metadata { get; }
+        /*private*/ protected MetadataDispatcher Metadata { get; }
 
         [BestFriend]
-        private protected void SaveBase(ModelSaveContext ctx)
+        /*private*/ protected void SaveBase(ModelSaveContext ctx)
         {
             Host.CheckValue(ctx, nameof(ctx));
             _bindings.Save(ctx);
