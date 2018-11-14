@@ -885,7 +885,7 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
         // REVIEW: The others have user/load names of calibraTION, but this has calibratOR.
         public const string UserName = "Naive Calibrator";
         public const string LoadName = "NaiveCalibrator";
-        internal const string Summary = "Naive calibrator divides the range of the outputs into equally sized bins. In each bin, "
+        /*internal*/public const string Summary = "Naive calibrator divides the range of the outputs into equally sized bins. In each bin, "
             + "the probability of belonging to class 1 is the number of class 1 instances in the bin, divided by the total number "
             + "of instances in the bin.";
 
@@ -1063,7 +1063,7 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
         }
 
         // get the bin for a given output
-        internal static int GetBinIdx(Float output, Float min, Float binSize, int numBins)
+        /*internal*/public static int GetBinIdx(Float output, Float min, Float binSize, int numBins)
         {
             int binIdx = (int)((output - min) / binSize);
             if (binIdx >= numBins)
@@ -1131,9 +1131,9 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
         private Double _paramA;
         private Double _paramB;
 
-        internal const string UserName = "Sigmoid Calibration";
-        internal const string LoadName = "PlattCalibration";
-        internal const string Summary = "This model was introduced by Platt in the paper Probabilistic Outputs for Support Vector Machines "
+        /*internal*/public const string UserName = "Sigmoid Calibration";
+        /*internal*/public const string LoadName = "PlattCalibration";
+        /*internal*/public const string Summary = "This model was introduced by Platt in the paper Probabilistic Outputs for Support Vector Machines "
             + "and Comparisons to Regularized Likelihood Methods";
 
         public PlattCalibratorTrainer(IHostEnvironment env)
@@ -1307,7 +1307,7 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
 
         public const string UserName = "Fixed Sigmoid Calibration";
         public const string LoadName = "FixedPlattCalibration";
-        internal const string Summary = "Sigmoid calibrator with configurable slope and offset.";
+        /*internal*/public const string Summary = "Sigmoid calibrator with configurable slope and offset.";
 
         private readonly IHost _host;
         private readonly Double _slope;
@@ -1514,7 +1514,7 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
 
         public const string UserName = "PAV Calibration";
         public const string LoadName = "PAVCalibration";
-        internal const string Summary = "Piecewise linear calibrator.";
+        /*internal*/public const string Summary = "Piecewise linear calibrator.";
 
         public PavCalibratorTrainer(IHostEnvironment env)
             : base(env, LoadName)
@@ -1593,7 +1593,7 @@ namespace Microsoft.ML.Runtime.Internal.Calibration
         private readonly Float[] _maxes;
         private readonly Float[] _values;
 
-        internal PavCalibrator(IHostEnvironment env, Float[] mins, Float[] maxes, Float[] values)
+        /*internal*/public PavCalibrator(IHostEnvironment env, Float[] mins, Float[] maxes, Float[] values)
         {
             Contracts.AssertValue(env);
             _host = env.Register(RegistrationName);

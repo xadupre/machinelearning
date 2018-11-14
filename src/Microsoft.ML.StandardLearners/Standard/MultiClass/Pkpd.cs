@@ -55,9 +55,9 @@ namespace Microsoft.ML.Runtime.Learners
     /// </summary>
     public sealed class Pkpd : MetaMulticlassTrainer<MulticlassPredictionTransformer<PkpdPredictor>, PkpdPredictor>
     {
-        internal const string LoadNameValue = "PKPD";
-        internal const string UserNameValue = "Pairwise coupling (PKPD)";
-        internal const string Summary = "In this strategy, a binary classification algorithm is used to train one classifier for each pair of classes. "
+        /*internal*/public const string LoadNameValue = "PKPD";
+        /*internal*/public const string UserNameValue = "Pairwise coupling (PKPD)";
+        /*internal*/public const string Summary = "In this strategy, a binary classification algorithm is used to train one classifier for each pair of classes. "
             + "Prediction is then performed by running these binary classifiers, and computing a score for each class by counting how many of the binary "
             + "classifiers predicted it. The prediction is the class with the highest score.";
 
@@ -73,7 +73,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// Developers should instantiate <see cref="Pkpd"/> by supplying the trainer argument directly to the <see cref="Pkpd"/> constructor
         /// using the other public constructor.
         /// </summary>
-        internal Pkpd(IHostEnvironment env, Arguments args)
+        /*internal*/public Pkpd(IHostEnvironment env, Arguments args)
             : base(env, args, LoadNameValue)
         {
         }
@@ -219,8 +219,8 @@ namespace Microsoft.ML.Runtime.Learners
         IValueMapper,
         ICanSaveModel
     {
-        internal const string LoaderSignature = "PKPDExec";
-        internal const string RegistrationName = "PKPDPredictor";
+        /*internal*/public const string LoaderSignature = "PKPDExec";
+        /*internal*/public const string RegistrationName = "PKPDPredictor";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -247,7 +247,7 @@ namespace Microsoft.ML.Runtime.Learners
         public ColumnType InputType { get; }
         public ColumnType OutputType { get; }
 
-        internal PkpdPredictor(IHostEnvironment env, TDistPredictor[][] predictors) :
+        /*internal*/public PkpdPredictor(IHostEnvironment env, TDistPredictor[][] predictors) :
             base(env, RegistrationName)
         {
             Host.Assert(Utils.Size(predictors) > 0);

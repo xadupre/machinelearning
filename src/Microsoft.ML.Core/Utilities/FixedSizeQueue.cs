@@ -13,7 +13,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     ///  an item will result in discarding the least recently added item.
     /// </summary>
     [BestFriend]
-    internal sealed class FixedSizeQueue<T>
+    /*internal*/public sealed class FixedSizeQueue<T>
     {
         private readonly T[] _array;
         private int _startIndex;

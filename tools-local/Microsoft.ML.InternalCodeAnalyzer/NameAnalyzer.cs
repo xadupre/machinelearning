@@ -12,7 +12,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Microsoft.ML.InternalCodeAnalyzer
 {
-    internal enum NameType
+    /*internal*/public enum NameType
     {
         UnderScoreCamelCased, // For example, _myPrivateField
         CamelCased,           // For example, myAwesomeParameter
@@ -24,12 +24,12 @@ namespace Microsoft.ML.InternalCodeAnalyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public sealed class NameAnalyzer : DiagnosticAnalyzer
     {
-        internal const string Category = "Naming";
+        /*internal*/public const string Category = "Naming";
 
-        internal const string NameProperty = "Original";
-        internal const string DesiredNameProperty = "Desired";
+        /*internal*/public const string NameProperty = "Original";
+        /*internal*/public const string DesiredNameProperty = "Desired";
 
-        internal static Diagnostic CreateDiagnostic(DiagnosticDescriptor rule, SyntaxToken identifier, NameType desired, params object[] args)
+        /*internal*/public static Diagnostic CreateDiagnostic(DiagnosticDescriptor rule, SyntaxToken identifier, NameType desired, params object[] args)
         {
             string text = identifier.Text;
             var props = ImmutableDictionary<string, string>.Empty
@@ -42,7 +42,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
             return Diagnostic.Create(rule, identifier.GetLocation(), props, newArgs);
         }
 
-        internal static class PrivateFieldName
+        /*internal*/public static class PrivateFieldName
         {
             public const string Id = "MSML_PrivateFieldName";
             private const string Title = "Private field name not _camelCased";
@@ -50,12 +50,12 @@ namespace Microsoft.ML.InternalCodeAnalyzer
             private const string Description =
                 "Private fields should have an _ prefix and be _lowerCamelCased, unless they are const.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
         }
 
-        internal static class GeneralName
+        /*internal*/public static class GeneralName
         {
             public const string Id = "MSML_GeneralName";
             private const string Title = "This name should be PascalCased";
@@ -63,7 +63,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer
             private const string Description =
                 "Identifier names other than parameters, local variables, private non-const fields, interfaces, and type parameters should be PascalCased.";
 
-            internal static DiagnosticDescriptor Rule =
+            /*internal*/public static DiagnosticDescriptor Rule =
                 new DiagnosticDescriptor(Id, Title, Format, Category,
                     DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
         }

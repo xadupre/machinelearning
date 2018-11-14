@@ -374,7 +374,7 @@ namespace Microsoft.ML.Data
                 }
             }
 
-            // REVIEW: Exceptions of the internal cursor, or this cursor, will occur within
+            // REVIEW: Exceptions of the /*internal*/public cursor, or this cursor, will occur within
             // the thread which will be treated as unhandled exceptions, terminating the process.
             // They will not be caught by the big catch in the main thread, as filler is not running
             // in the main thread. Some sort of scheme by which these exceptions could be
@@ -457,7 +457,7 @@ namespace Microsoft.ML.Data
         /// <summary>
         /// Joins all the cache filler threads. This method is currently supposed to be called only by tests.
         /// </summary>
-        internal void Wait()
+        /*internal*/public void Wait()
         {
             if (_cacheFillerThreads != null)
             {

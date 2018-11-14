@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         /// <summary>
-        /// Internal sub types can pass both the <paramref name="rawType"/> and <paramref name="rawKind"/> values.
+        /// /*internal*/public sub types can pass both the <paramref name="rawType"/> and <paramref name="rawKind"/> values.
         /// This asserts that they are consistent.
         /// </summary>
         private protected ColumnType(Type rawType, DataKind rawKind)
@@ -72,31 +72,31 @@ namespace Microsoft.ML.Runtime.Data
         /// For external code it would be preferable to operate over <see cref="RawType"/>.
         /// </summary>
         [BestFriend]
-        internal DataKind RawKind { get; }
+        /*internal*/public DataKind RawKind { get; }
 
         /// <summary>
         /// Whether this is a primitive type. External code should use <c>is <see cref="PrimitiveType"/></c>.
         /// </summary>
         [BestFriend]
-        internal bool IsPrimitive { get; }
+        /*internal*/public bool IsPrimitive { get; }
 
         /// <summary>
         /// Equivalent to <c>as <see cref="PrimitiveType"/></c>.
         /// </summary>
         [BestFriend]
-        internal PrimitiveType AsPrimitive => IsPrimitive ? (PrimitiveType)this : null;
+        /*internal*/public PrimitiveType AsPrimitive => IsPrimitive ? (PrimitiveType)this : null;
 
         /// <summary>
         /// Whether this type is a standard numeric type. External code should use <c>is <see cref="NumberType"/></c>.
         /// </summary>
         [BestFriend]
-        internal bool IsNumber { get; }
+        /*internal*/public bool IsNumber { get; }
 
         /// <summary>
         /// Whether this type is the standard text type. External code should use <c>is <see cref="TextType"/></c>.
         /// </summary>
         [BestFriend]
-        internal bool IsText
+        /*internal*/public bool IsText
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Microsoft.ML.Runtime.Data
         /// Whether this type is the standard boolean type. External code should use <c>is <see cref="BoolType"/></c>.
         /// </summary>
         [BestFriend]
-        internal bool IsBool
+        /*internal*/public bool IsBool
         {
             get
             {
@@ -129,7 +129,7 @@ namespace Microsoft.ML.Runtime.Data
         /// (not a <see cref="KeyType"/> or <see cref="StructuredType"/>, etc).
         /// </summary>
         [BestFriend]
-        internal bool IsStandardScalar => IsNumber || IsText || IsBool ||
+        /*internal*/public bool IsStandardScalar => IsNumber || IsText || IsBool ||
             (this is TimeSpanType) || (this is DateTimeType) || (this is DateTimeOffsetType);
 
         /// <summary>
@@ -138,13 +138,13 @@ namespace Microsoft.ML.Runtime.Data
         /// External code should use <c>is <see cref="KeyType"/></c>.
         /// </summary>
         [BestFriend]
-        internal bool IsKey { get; }
+        /*internal*/public bool IsKey { get; }
 
         /// <summary>
         /// Equivalent to <c>as <see cref="KeyType"/></c>.
         /// </summary>
         [BestFriend]
-        internal KeyType AsKey => IsKey ? (KeyType)this : null;
+        /*internal*/public KeyType AsKey => IsKey ? (KeyType)this : null;
 
         /// <summary>
         /// Zero return means either it's not a key type or the cardinality is unknown. External code should first
@@ -152,7 +152,7 @@ namespace Microsoft.ML.Runtime.Data
         /// from that.
         /// </summary>
         [BestFriend]
-        internal int KeyCount => KeyCountCore;
+        /*internal*/public int KeyCount => KeyCountCore;
 
         /// <summary>
         /// The only sub-class that should override this is <see cref="KeyType"/>.
@@ -164,39 +164,39 @@ namespace Microsoft.ML.Runtime.Data
         /// is <see cref="VectorType"/>.
         /// </summary>
         [BestFriend]
-        internal bool IsVector { get; }
+        /*internal*/public bool IsVector { get; }
 
         /// <summary>
         /// Equivalent to <c>as <see cref="VectorType"/></c>.
         /// </summary>
         [BestFriend]
-        internal VectorType AsVector => IsVector ? (VectorType)this : null;
+        /*internal*/public VectorType AsVector => IsVector ? (VectorType)this : null;
 
         /// <summary>
         /// For non-vector types, this returns the column type itself (i.e., return <c>this</c>).
         /// </summary>
         [BestFriend]
-        internal ColumnType ItemType => ItemTypeCore;
+        /*internal*/public ColumnType ItemType => ItemTypeCore;
 
         /// <summary>
         /// Whether this is a vector type with known size. Returns false for non-vector types.
         /// Equivalent to <c><see cref="VectorSize"/> &gt; 0</c>.
         /// </summary>
         [BestFriend]
-        internal bool IsKnownSizeVector => VectorSize > 0;
+        /*internal*/public bool IsKnownSizeVector => VectorSize > 0;
 
         /// <summary>
         /// Zero return means either it's not a vector or the size is unknown.
         /// </summary>
         [BestFriend]
-        internal int VectorSize => VectorSizeCore;
+        /*internal*/public int VectorSize => VectorSizeCore;
 
         /// <summary>
         /// For non-vectors, this returns one. For unknown size vectors, it returns zero.
         /// Equivalent to IsVector ? VectorSize : 1.
         /// </summary>
         [BestFriend]
-        internal int ValueCount => ValueCountCore;
+        /*internal*/public int ValueCount => ValueCountCore;
 
         /// <summary>
         /// The only sub-class that should override this is VectorType!
@@ -224,7 +224,7 @@ namespace Microsoft.ML.Runtime.Data
         /// returns true if current and other vector types have the same size and item type.
         /// </summary>
         [BestFriend]
-        internal bool SameSizeAndItemType(ColumnType other)
+        /*internal*/public bool SameSizeAndItemType(ColumnType other)
         {
             if (other == null)
                 return false;
@@ -281,7 +281,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        internal static PrimitiveType FromKind(DataKind kind)
+        /*internal*/public static PrimitiveType FromKind(DataKind kind)
         {
             if (kind == DataKind.TX)
                 return TextType.Instance;
@@ -468,7 +468,7 @@ namespace Microsoft.ML.Runtime.Data
         public static NumberType Float => R4;
 
         [BestFriend]
-        internal static new NumberType FromKind(DataKind kind)
+        /*internal*/public static new NumberType FromKind(DataKind kind)
         {
             switch (kind)
             {
@@ -501,7 +501,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        internal static NumberType FromType(Type type)
+        /*internal*/public static NumberType FromType(Type type)
         {
             DataKind kind;
             if (type.TryGetDataKind(out kind))
@@ -689,7 +689,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        internal KeyType(DataKind kind, ulong min, int count, bool contiguous = true)
+        /*internal*/public KeyType(DataKind kind, ulong min, int count, bool contiguous = true)
             : this(ToRawType(kind), kind, min, count, contiguous)
         {
         }
@@ -716,7 +716,7 @@ namespace Microsoft.ML.Runtime.Data
         /// that is, the unsigned integer kinds.
         /// </summary>
         [BestFriend]
-        internal static bool IsValidDataKind(DataKind kind)
+        /*internal*/public static bool IsValidDataKind(DataKind kind)
         {
             switch (kind)
             {
@@ -851,7 +851,7 @@ namespace Microsoft.ML.Runtime.Data
         /// Creates a <see cref="VectorType"/> whose dimensionality information is the given <paramref name="template"/>'s information.
         /// </summary>
         [BestFriend]
-        internal VectorType(PrimitiveType itemType, VectorType template)
+        /*internal*/public VectorType(PrimitiveType itemType, VectorType template)
             : base(GetRawType(itemType), default)
         {
             Contracts.CheckValue(template, nameof(template));
@@ -866,7 +866,7 @@ namespace Microsoft.ML.Runtime.Data
         /// concatenated with the specified <paramref name="dims"/>.
         /// </summary>
         [BestFriend]
-        internal VectorType(PrimitiveType itemType, VectorType template, params int[] dims)
+        /*internal*/public VectorType(PrimitiveType itemType, VectorType template, params int[] dims)
             : base(GetRawType(itemType), default)
         {
             Contracts.CheckValue(template, nameof(template));

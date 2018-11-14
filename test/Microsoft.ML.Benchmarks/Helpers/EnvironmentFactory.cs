@@ -9,9 +9,9 @@ using Microsoft.ML.Transforms;
 
 namespace Microsoft.ML.Benchmarks
 {
-    internal static class EnvironmentFactory
+    /*internal*/public static class EnvironmentFactory
     {
-        internal static ConsoleEnvironment CreateClassificationEnvironment<TLoader, TTransformer, TTrainer>()
+        /*internal*/public static ConsoleEnvironment CreateClassificationEnvironment<TLoader, TTransformer, TTrainer>()
            where TLoader : IDataReader<IMultiStreamSource>
            where TTransformer : ITransformer
            where TTrainer : ITrainer
@@ -25,7 +25,7 @@ namespace Microsoft.ML.Benchmarks
             return environment;
         }
 
-        internal static ConsoleEnvironment CreateRankingEnvironment<TEvaluator, TLoader, TTransformer, TTrainer>()
+        /*internal*/public static ConsoleEnvironment CreateRankingEnvironment<TEvaluator, TLoader, TTransformer, TTrainer>()
             where TEvaluator : IEvaluator
             where TLoader : IDataReader<IMultiStreamSource>
             where TTransformer : ITransformer

@@ -29,7 +29,7 @@ namespace Microsoft.ML.Transforms
         private readonly InternalSchemaDefinition _addedSchema;
         private readonly string _contractName;
 
-        internal InternalSchemaDefinition AddedSchema => _addedSchema;
+        /*internal*/public InternalSchemaDefinition AddedSchema => _addedSchema;
 
         public bool IsRowToRowMapper => true;
         private readonly SchemaDefinition _inputSchemaDefinition;

@@ -149,7 +149,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             public bool Green => (Colors & ColorBits.Green) != 0;
             public bool Blue => (Colors & ColorBits.Blue) != 0;
 
-            internal ColumnInfo(Column item, Arguments args)
+            /*internal*/public ColumnInfo(Column item, Arguments args)
             {
                 Contracts.CheckValue(item, nameof(item));
                 Contracts.CheckValue(args, nameof(args));
@@ -222,7 +222,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
                 }
             }
 
-            internal ColumnInfo(string input, string output, ModelLoadContext ctx)
+            /*internal*/public ColumnInfo(string input, string output, ModelLoadContext ctx)
             {
                 Contracts.AssertNonEmpty(input);
                 Contracts.AssertNonEmpty(output);
@@ -287,8 +287,8 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             }
         }
 
-        internal const string Summary = "Extract color plane(s) from an image. Options include scaling, offset and conversion to floating point.";
-        internal const string UserName = "Image Pixel Extractor Transform";
+        /*internal*/public const string Summary = "Extract color plane(s) from an image. Options include scaling, offset and conversion to floating point.";
+        /*internal*/public const string UserName = "Image Pixel Extractor Transform";
         public const string LoaderSignature = "ImagePixelExtractor";
         private static VersionInfo GetVersionInfo()
         {
@@ -674,7 +674,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             ImagePixelExtractorTransform.ColumnInfo MakeColumnInfo(string input, string output);
         }
 
-        internal sealed class OutPipelineColumn<T> : Vector<T>, IColInput
+        /*internal*/public sealed class OutPipelineColumn<T> : Vector<T>, IColInput
         {
             public Custom<Bitmap> Input { get; }
             private static readonly ImagePixelExtractorTransform.Arguments _defaultArgs = new ImagePixelExtractorTransform.Arguments();

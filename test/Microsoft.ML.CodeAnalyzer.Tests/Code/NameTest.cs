@@ -30,7 +30,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer.Tests
             VerifyCSharpDiagnostic(PrivateTestSource, expected);
         }
 
-        internal const string PrivateTestSource = @"
+        /*internal*/public const string PrivateTestSource = @"
 namespace TestNamespace
 {
     class TypeName
@@ -85,7 +85,7 @@ namespace TestNamespace
             VerifyCSharpDiagnostic(TestSource, expected);
         }
 
-        internal const string TestSource = @"
+        /*internal*/public const string TestSource = @"
 using System;
 namespace silly { }
 namespace NotSilly { }
@@ -95,8 +95,8 @@ namespace foo.bar.Biz
     {
         public int alice { get; }
         private int _bob { get; }
-        internal int _chaz;
-        internal int Debora, emily, _francis;
+        /*internal*/public int _chaz;
+        /*internal*/public int Debora, emily, _francis;
         int _george;
 
         CLASS() {  }
@@ -174,8 +174,8 @@ namespace foo.bar.Biz
     {
         public int Alice { get; }
         private int Bob { get; }
-        internal int Chaz;
-        internal int Debora, Emily, Francis;
+        /*internal*/public int Chaz;
+        /*internal*/public int Debora, Emily, Francis;
         int _george;
 
         Class() {  }

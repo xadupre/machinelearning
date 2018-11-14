@@ -65,8 +65,8 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             public string ImageFolder;
         }
 
-        internal const string Summary = "Load images from files.";
-        internal const string UserName = "Image Loader Transform";
+        /*internal*/public const string Summary = "Load images from files.";
+        /*internal*/public const string UserName = "Image Loader Transform";
         public const string LoaderSignature = "ImageLoaderTransform";
 
         public readonly string ImageFolder;
@@ -243,7 +243,7 @@ namespace Microsoft.ML.Runtime.ImageAnalytics
             return new SchemaShape(result.Values);
         }
 
-        internal sealed class OutPipelineColumn : Custom<UnknownSizeBitmap>
+        /*internal*/public sealed class OutPipelineColumn : Custom<UnknownSizeBitmap>
         {
             private readonly Scalar<string> _input;
 

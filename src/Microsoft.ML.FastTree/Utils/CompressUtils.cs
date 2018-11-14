@@ -9,7 +9,7 @@ using System.IO.Compression;
 
 namespace Microsoft.ML.Trainers.FastTree.Internal
 {
-    internal struct BufferBlock
+    /*internal*/public struct BufferBlock
     {
         public byte[] Buffer;
         public int Offset;
@@ -99,7 +99,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         }
     }
 
-    internal static class CompressUtil
+    /*internal*/public static class CompressUtil
     {
         public static byte[] Compress(byte[] uncompressed, int offset, int length)
         {

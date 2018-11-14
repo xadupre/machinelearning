@@ -20,7 +20,7 @@ namespace Microsoft.ML.Benchmarks
                 .FromAssembly(typeof(Program).Assembly)
                 .Run(args, new RecommendedConfig());
 
-        internal static string GetInvariantCultureDataPath(string name)
+        /*internal*/public static string GetInvariantCultureDataPath(string name)
         {
             // enforce Neutral Language as "en-us" because the input data files use dot as decimal separator (and it fails for cultures with ",")
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;

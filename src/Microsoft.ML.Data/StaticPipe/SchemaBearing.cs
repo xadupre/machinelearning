@@ -17,15 +17,15 @@ namespace Microsoft.ML.StaticPipe
     /// <typeparam name="TShape">The shape type parameter.</typeparam>
     public abstract class SchemaBearing<TShape>
     {
-        protected internal readonly IHostEnvironment Env;
-        internal readonly StaticSchemaShape Shape;
+        /*protected*/ /*internal*/public readonly IHostEnvironment Env;
+        /*internal*/public readonly StaticSchemaShape Shape;
 
         private StaticPipeUtils.IndexHelper<TShape> _indexer;
         /// <summary>
         /// The indexer for the object. Note component authors will not access this directly but should instead
         /// work via the public method <see cref="StaticPipeUtils.IndexHelper{T}.IndexHelper(SchemaBearing{T})"/>
         /// </summary>
-        internal StaticPipeUtils.IndexHelper<TShape> Indexer
+        /*internal*/public StaticPipeUtils.IndexHelper<TShape> Indexer
         {
             get {
                 if (_indexer == null)

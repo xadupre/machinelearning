@@ -221,9 +221,9 @@ namespace Microsoft.ML.Transforms.Projections
             }
         }
 
-        internal const string Summary = "PCA is a dimensionality-reduction transform which computes the projection of a numeric vector onto a low-rank subspace.";
-        internal const string UserName = "Principal Component Analysis Transform";
-        internal const string ShortName = "Pca";
+        /*internal*/public const string Summary = "PCA is a dimensionality-reduction transform which computes the projection of a numeric vector onto a low-rank subspace.";
+        /*internal*/public const string UserName = "Principal Component Analysis Transform";
+        /*internal*/public const string ShortName = "Pca";
 
         public const string LoaderSignature = "PcaTransform";
         private static VersionInfo GetVersionInfo()
@@ -244,7 +244,7 @@ namespace Microsoft.ML.Transforms.Projections
 
         private const string RegistrationName = "Pca";
 
-        internal PcaTransform(IHostEnvironment env, IDataView input, ColumnInfo[] columns)
+        /*internal*/public PcaTransform(IHostEnvironment env, IDataView input, ColumnInfo[] columns)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(PcaTransform)), GetColumnPairs(columns))
         {
             Host.AssertNonEmpty(ColumnPairs);
@@ -546,7 +546,7 @@ namespace Microsoft.ML.Transforms.Projections
             ValidatePcaInput(Host, inputSchema.GetColumnName(srcCol), inputSchema.GetColumnType(srcCol));
         }
 
-        internal static void ValidatePcaInput(IExceptionContext ectx, string name, ColumnType type)
+        /*internal*/public static void ValidatePcaInput(IExceptionContext ectx, string name, ColumnType type)
         {
             string inputSchema; // just used for the excpections
 
@@ -664,7 +664,7 @@ namespace Microsoft.ML.Transforms.Projections
 
     public sealed class PrincipalComponentAnalysisEstimator : IEstimator<PcaTransform>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const string WeightColumn = null;
             public const int Rank = 20;

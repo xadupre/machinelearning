@@ -56,7 +56,7 @@ namespace Microsoft.ML.Runtime.Tools
 #pragma warning restore 649 // never assigned
         }
 
-        internal const string Summary = "Prints command line help.";
+        /*internal*/public const string Summary = "Prints command line help.";
 
         private readonly IHostEnvironment _env;
         private readonly string _component;

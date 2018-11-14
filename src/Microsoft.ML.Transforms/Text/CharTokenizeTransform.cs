@@ -69,10 +69,10 @@ namespace Microsoft.ML.Transforms.Text
             // REVIEW: support encoding surrogate pairs in UTF-16?
         }
 
-        internal const string Summary = "Character-oriented tokenizer where text is considered a sequence of characters.";
+        /*internal*/public const string Summary = "Character-oriented tokenizer where text is considered a sequence of characters.";
 
-        internal const string LoaderSignature = "CharToken";
-        internal const string UserName = "Character Tokenizer Transform";
+        /*internal*/public const string LoaderSignature = "CharToken";
+        /*internal*/public const string UserName = "Character Tokenizer Transform";
 
         // Keep track of the model that was saved with ver:0x00010001
         private readonly bool _isSeparatorStartEnd;
@@ -99,7 +99,7 @@ namespace Microsoft.ML.Transforms.Text
 
         // For now, this transform supports input text formatted as UTF-16 only.
         // Note: Null-char is mapped to NA. Therefore, we have UInt16.MaxValue unique key values.
-        internal const int CharsCount = ushort.MaxValue;
+        /*internal*/public const int CharsCount = ushort.MaxValue;
         private const string RegistrationName = "CharTokenizer";
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.ML.Transforms.Text
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -561,13 +561,13 @@ namespace Microsoft.ML.Transforms.Text
     /// </summary>
     public sealed class CharacterTokenizingEstimator : TrivialEstimator<CharTokenizeTransform>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const bool UseMarkerCharacters = true;
         }
         public static bool IsColumnTypeValid(ColumnType type) => type.ItemType.IsText;
 
-        internal const string ExpectedColumnType = "Text";
+        /*internal*/public const string ExpectedColumnType = "Text";
 
         /// <summary>
         /// Tokenize incoming text in <paramref name="inputColumn"/> and output the tokens as <paramref name="outputColumn"/>.

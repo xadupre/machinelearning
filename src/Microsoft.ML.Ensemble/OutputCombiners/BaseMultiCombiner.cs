@@ -24,7 +24,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 
         protected readonly bool Normalize;
 
-        internal BaseMultiCombiner(IHostEnvironment env, string name, ArgumentsBase args)
+        /*internal*/public BaseMultiCombiner(IHostEnvironment env, string name, ArgumentsBase args)
         {
             Contracts.AssertValue(env);
             env.AssertNonWhiteSpace(name);
@@ -34,7 +34,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
             Normalize = args.Normalize;
         }
 
-        internal BaseMultiCombiner(IHostEnvironment env, string name, ModelLoadContext ctx)
+        /*internal*/public BaseMultiCombiner(IHostEnvironment env, string name, ModelLoadContext ctx)
         {
             Contracts.AssertValue(env);
             env.AssertNonWhiteSpace(name);

@@ -10,14 +10,14 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     public sealed class TransformsCatalog
     {
-        internal IHostEnvironment Environment { get; }
+        /*internal*/public IHostEnvironment Environment { get; }
 
         public CategoricalTransforms Categorical { get; }
         public ConversionTransforms Conversion { get; }
         public TextTransforms Text { get; }
         public ProjectionTransforms Projection { get; }
 
-        internal TransformsCatalog(IHostEnvironment env)
+        /*internal*/public TransformsCatalog(IHostEnvironment env)
         {
             Contracts.AssertValue(env);
             Environment = env;
@@ -30,7 +30,7 @@ namespace Microsoft.ML.Runtime
 
         public abstract class SubCatalogBase
         {
-            internal IHostEnvironment Environment { get; }
+            /*internal*/public IHostEnvironment Environment { get; }
 
             protected SubCatalogBase(TransformsCatalog owner)
             {
@@ -44,7 +44,7 @@ namespace Microsoft.ML.Runtime
         /// </summary>
         public sealed class CategoricalTransforms : SubCatalogBase
         {
-            internal CategoricalTransforms(TransformsCatalog owner) : base(owner)
+            /*internal*/public CategoricalTransforms(TransformsCatalog owner) : base(owner)
             {
             }
         }

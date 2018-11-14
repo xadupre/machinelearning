@@ -10,7 +10,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal abstract class ImplGeneratorBase : GeneratorBase
+    /*internal*/public abstract class ImplGeneratorBase : GeneratorBase
     {
         protected override void GenerateContent(IndentingTextWriter writer, string prefix, ComponentCatalog.LoadableClassInfo component, string moduleId)
         {

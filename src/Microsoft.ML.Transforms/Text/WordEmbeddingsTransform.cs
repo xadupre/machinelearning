@@ -69,10 +69,10 @@ namespace Microsoft.ML.Transforms.Text
             public string CustomLookupTable;
         }
 
-        internal const string Summary = "Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence " +
+        /*internal*/public const string Summary = "Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence " +
             "vectors using a pre-trained model";
-        internal const string UserName = "Word Embeddings Transform";
-        internal const string ShortName = "WordEmbeddings";
+        /*internal*/public const string UserName = "Word Embeddings Transform";
+        /*internal*/public const string ShortName = "WordEmbeddings";
         public const string LoaderSignature = "WordEmbeddingsTransform";
 
         public static VersionInfo GetVersionInfo()

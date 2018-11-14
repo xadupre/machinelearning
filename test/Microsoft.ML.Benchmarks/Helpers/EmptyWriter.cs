@@ -9,9 +9,9 @@ namespace Microsoft.ML.Benchmarks
 {
     // Adding this class to not print anything to the console.
     // This is required for the current version of BenchmarkDotNet
-    internal class EmptyWriter : TextWriter
+    /*internal*/public class EmptyWriter : TextWriter
     {
-        internal static readonly EmptyWriter Instance = new EmptyWriter();
+        /*internal*/public static readonly EmptyWriter Instance = new EmptyWriter();
 
         public override Encoding Encoding => null;
     }

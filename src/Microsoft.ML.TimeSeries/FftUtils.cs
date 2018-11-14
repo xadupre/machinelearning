@@ -11,7 +11,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// <summary>
     /// The utility functions that wrap the native Discrete Fast Fourier Transform functionality from Intel MKL.
     /// </summary>
-    internal static class FftUtils
+    /*internal*/public static class FftUtils
     {
         //To triger the loading of MKL library since MKL proxy native library depends on it.
         static FftUtils() => ErrorMessage(0);

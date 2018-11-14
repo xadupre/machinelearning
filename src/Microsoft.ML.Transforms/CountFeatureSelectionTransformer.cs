@@ -21,10 +21,10 @@ namespace Microsoft.ML.Transforms
     /// <include file='doc.xml' path='doc/members/member[@name="CountFeatureSelection"]' />
     public static class CountFeatureSelectionTransformer
     {
-        internal const string Summary = "Selects the slots for which the count of non-default values is greater than or equal to a threshold.";
-        internal const string UserName = "Count Feature Selection Transform";
+        /*internal*/public const string Summary = "Selects the slots for which the count of non-default values is greater than or equal to a threshold.";
+        /*internal*/public const string UserName = "Count Feature Selection Transform";
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const long Count = 1;
         }
@@ -38,7 +38,7 @@ namespace Microsoft.ML.Transforms
             public long Count = Defaults.Count;
         }
 
-        internal static string RegistrationName = "CountFeatureSelectionTransform";
+        /*internal*/public static string RegistrationName = "CountFeatureSelectionTransform";
 
         /// <summary>
         /// A helper method to create CountFeatureSelection transform for public facing API.

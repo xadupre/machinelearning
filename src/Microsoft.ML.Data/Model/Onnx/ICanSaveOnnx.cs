@@ -7,7 +7,7 @@ using Microsoft.ML.Runtime.Data;
 namespace Microsoft.ML.Runtime.Model.Onnx
 {
     [BestFriend]
-    internal interface ICanSaveOnnx
+    /*internal*/public interface ICanSaveOnnx
     {
         /// <summary>
         /// Whether this object really is capable of saving itself as part of an ONNX
@@ -23,7 +23,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// This component know how to save himself in ONNX format.
     /// </summary>
     [BestFriend]
-    internal interface ISaveAsOnnx : ICanSaveOnnx
+    /*internal*/public interface ISaveAsOnnx : ICanSaveOnnx
     {
         /// <summary>
         /// Save as ONNX.
@@ -36,7 +36,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// This data model component is savable as ONNX.
     /// </summary>
     [BestFriend]
-    internal interface ITransformCanSaveOnnx : ISaveAsOnnx, IDataTransform
+    /*internal*/public interface ITransformCanSaveOnnx : ISaveAsOnnx, IDataTransform
     {
     }
 
@@ -46,7 +46,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// this mapper, and has already been bound to it.
     /// </summary>
     [BestFriend]
-    internal interface IBindableCanSaveOnnx : ICanSaveOnnx, ISchemaBindableMapper
+    /*internal*/public interface IBindableCanSaveOnnx : ICanSaveOnnx, ISchemaBindableMapper
     {
         /// <summary>
         /// Save as ONNX. If <see cref="ICanSaveOnnx.CanSaveOnnx"/> is
@@ -71,7 +71,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// <see cref="Microsoft.ML.Runtime.Internal.Calibration.ICalibrator"/> instances.
     /// </summary>
     [BestFriend]
-    internal interface ISingleCanSaveOnnx : ICanSaveOnnx
+    /*internal*/public interface ISingleCanSaveOnnx : ICanSaveOnnx
     {
         bool SaveAsOnnx(OnnxContext ctx, string[] outputNames, string featureColumn);
     }
@@ -81,7 +81,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// instances.
     /// </summary>
     [BestFriend]
-    internal interface IDistCanSaveOnnx : ISingleCanSaveOnnx, IValueMapperDist
+    /*internal*/public interface IDistCanSaveOnnx : ISingleCanSaveOnnx, IValueMapperDist
     {
         new bool SaveAsOnnx(OnnxContext ctx, string[] outputNames, string featureColumn);
     }

@@ -427,14 +427,14 @@ namespace Microsoft.ML.Runtime.Data
         /// Redirects the channel output through the specified writers.
         /// </summary>
         /// <remarks>This method is not thread-safe.</remarks>
-        internal IDisposable RedirectChannelOutput(TextWriter newOutWriter, TextWriter newErrWriter)
+        /*internal*/public IDisposable RedirectChannelOutput(TextWriter newOutWriter, TextWriter newErrWriter)
         {
             Contracts.CheckValue(newOutWriter, nameof(newOutWriter));
             Contracts.CheckValue(newErrWriter, nameof(newErrWriter));
             return new OutputRedirector(this, newOutWriter, newErrWriter);
         }
 
-        internal void ResetProgressChannel()
+        /*internal*/public void ResetProgressChannel()
         {
             ProgressTracker.Reset();
         }

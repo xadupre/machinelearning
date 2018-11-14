@@ -26,7 +26,7 @@ namespace Microsoft.ML.Transforms.Normalizers
 {
     public sealed class NormalizingEstimator : IEstimator<NormalizerTransformer>
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const bool FixZero = true;
             public const bool MeanVarCdf = false;
@@ -73,9 +73,9 @@ namespace Microsoft.ML.Transforms.Normalizers
                 MaxTrainingExamples = maxTrainingExamples;
             }
 
-            internal abstract IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor);
+            /*internal*/public abstract IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor);
 
-            internal static ColumnBase Create(string input, string output, NormalizerMode mode)
+            /*internal*/public static ColumnBase Create(string input, string output, NormalizerMode mode)
             {
                 switch (mode)
                 {
@@ -111,7 +111,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             {
             }
 
-            internal override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
+            /*internal*/public override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
                 => NormalizeTransform.MinMaxUtils.CreateBuilder(this, host, srcIndex, srcType, cursor);
         }
 
@@ -126,7 +126,7 @@ namespace Microsoft.ML.Transforms.Normalizers
                 UseCdf = useCdf;
             }
 
-            internal override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
+            /*internal*/public override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
                 => NormalizeTransform.MeanVarUtils.CreateBuilder(this, host, srcIndex, srcType, cursor);
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.ML.Transforms.Normalizers
                 UseCdf = useCdf;
             }
 
-            internal override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
+            /*internal*/public override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
                 => NormalizeTransform.LogMeanVarUtils.CreateBuilder(this, host, srcIndex, srcType, cursor);
         }
 
@@ -156,7 +156,7 @@ namespace Microsoft.ML.Transforms.Normalizers
                 NumBins = numBins;
             }
 
-            internal override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
+            /*internal*/public override IColumnFunctionBuilder MakeBuilder(IHost host, int srcIndex, ColumnType srcType, IRowCursor cursor)
                 => NormalizeTransform.BinUtils.CreateBuilder(this, host, srcIndex, srcType, cursor);
         }
 
@@ -266,7 +266,7 @@ namespace Microsoft.ML.Transforms.Normalizers
                 ColumnFunction = columnFunction;
             }
 
-            internal static ColumnType LoadType(ModelLoadContext ctx)
+            /*internal*/public static ColumnType LoadType(ModelLoadContext ctx)
             {
                 Contracts.AssertValue(ctx);
                 // *** Binary format ***
@@ -285,7 +285,7 @@ namespace Microsoft.ML.Transforms.Normalizers
                 return isVector ? (ColumnType)(new VectorType(itemType, vectorSize)) : itemType;
             }
 
-            internal static void SaveType(ModelSaveContext ctx, ColumnType type)
+            /*internal*/public static void SaveType(ModelSaveContext ctx, ColumnType type)
             {
                 Contracts.AssertValue(ctx);
                 // *** Binary format ***
@@ -319,7 +319,7 @@ namespace Microsoft.ML.Transforms.Normalizers
         }
 
         /// <summary>An accessor of the column functions within <see cref="_columns"/>.</summary>
-        internal readonly IReadOnlyList<IColumnFunction> ColumnFunctions;
+        /*internal*/public readonly IReadOnlyList<IColumnFunction> ColumnFunctions;
 
         private readonly ColumnInfo[] _columns;
 
@@ -608,7 +608,7 @@ namespace Microsoft.ML.Transforms.Normalizers
         /// An interface implemented by items of <see cref="ColumnFunctions"/> corresponding to the
         /// <see cref="NormalizeTransform.AffineColumnFunction"/> items.
         /// </summary>
-        internal interface IAffineData<TData>
+        /*internal*/public interface IAffineData<TData>
         {
             /// <summary>
             /// The scales. In the scalar case, this is a single value. In the vector case this is of length equal
@@ -629,7 +629,7 @@ namespace Microsoft.ML.Transforms.Normalizers
         /// cumulative density function of the normal distribution parameterized with mean <see cref="Mean"/>
         /// and standard deviation <see cref="Stddev"/>.
         /// </summary>
-        internal interface ICdfData<TData>
+        /*internal*/public interface ICdfData<TData>
         {
             /// <summary>
             /// The mean(s). In the scalar case, this is a single value. In the vector case this is of length equal
@@ -653,7 +653,7 @@ namespace Microsoft.ML.Transforms.Normalizers
         /// An interface implemented by items of <see cref="ColumnFunctions"/> corresponding to the
         /// <see cref="NormalizeTransform.BinColumnFunction"/> items.
         /// </summary>
-        internal interface IBinData<TData>
+        /*internal*/public interface IBinData<TData>
         {
             /// <summary>
             /// The standard deviation(s). In the scalar case, these are the bin upper bounds for that single value.

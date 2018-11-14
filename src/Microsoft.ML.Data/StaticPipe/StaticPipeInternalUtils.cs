@@ -15,9 +15,9 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 namespace Microsoft.ML.StaticPipe.Runtime
 {
     /// <summary>
-    /// Utility functions useful for the internal implementations of the key pipeline utilities.
+    /// Utility functions useful for the /*internal*/public implementations of the key pipeline utilities.
     /// </summary>
-    internal static class StaticPipeInternalUtils
+    /*internal*/public static class StaticPipeInternalUtils
     {
         /// <summary>
         /// Given a type which is a <see cref="ValueTuple"/> tree with <see cref="PipelineColumn"/> leaves, return an instance of that
@@ -397,7 +397,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
                     {
                         // It may be that the property itself points to a value-tuple. Get it, just in case.
                         var tupleNames = prop.GetCustomAttribute<TupleElementNamesAttribute>()?.TransformNames;
-                        // Do not incremenet the total in this case. This was not a value-tuple, and any internal thing
+                        // Do not incremenet the total in this case. This was not a value-tuple, and any /*internal*/public thing
                         // that was a value-tuple should not result in an increment on the count. Correspondingly, we also
                         // start the recursion again insofar as the offset is concerned.
                         Utils.MarshalInvoke(RecurseNames<int>, prop.PropertyType,
@@ -552,7 +552,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
                 ApplyActionToTuple<T>(tuple, 0, action);
             }
 
-            internal static void ApplyActionToTuple<T>(object tuple, int root, TupleItemAction action)
+            /*internal*/public static void ApplyActionToTuple<T>(object tuple, int root, TupleItemAction action)
             {
                 Contracts.AssertValue(action);
                 Contracts.Assert(root >= 0);

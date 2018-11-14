@@ -10,7 +10,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal class LearnerImplGenerator : ImplGeneratorBase
+    /*internal*/public class LearnerImplGenerator : ImplGeneratorBase
     {
         protected override void GenerateMethodSignature(IndentingTextWriter w, string prefix, ComponentCatalog.LoadableClassInfo component)
         {
@@ -38,7 +38,7 @@ namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
         }
     }
 
-    internal sealed class LearnerEntryPointGenerator : EntryPointGeneratorBase
+    /*internal*/public sealed class LearnerEntryPointGenerator : EntryPointGeneratorBase
     {
         protected override void GenerateSummaryComment(IndentingTextWriter w, ComponentCatalog.LoadableClassInfo component)
         {

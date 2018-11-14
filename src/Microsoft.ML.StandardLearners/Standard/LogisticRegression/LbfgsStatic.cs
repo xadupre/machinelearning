@@ -179,10 +179,10 @@ namespace Microsoft.ML.StaticPipe
 
     }
 
-    internal static class LbfgsStaticUtils
+    /*internal*/public static class LbfgsStaticUtils
     {
 
-        internal static void ValidateParams(PipelineColumn label,
+        /*internal*/public static void ValidateParams(PipelineColumn label,
             Vector<float> features,
             Scalar<float> weights = null,
             float l1Weight = Arguments.Defaults.L1Weight,

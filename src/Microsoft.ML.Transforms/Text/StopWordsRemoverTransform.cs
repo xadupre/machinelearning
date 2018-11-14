@@ -223,7 +223,7 @@ namespace Microsoft.ML.Transforms.Text
             }
         }
 
-        internal const string Summary = "A Stopword remover transform based on language-specific lists of stop words (most common words) " +
+        /*internal*/public const string Summary = "A Stopword remover transform based on language-specific lists of stop words (most common words) " +
             "from Office Named Entity Recognition project. The transform is usually applied after tokenizing text, so it compares individual tokens " +
             "(case-insensitive comparison) to the stopwords.";
 
@@ -588,7 +588,7 @@ namespace Microsoft.ML.Transforms.Text
             }
         }
 
-        internal const string Summary = "A Stopword remover transform based on a user-defined list of stopwords. " +
+        /*internal*/public const string Summary = "A Stopword remover transform based on a user-defined list of stopwords. " +
             "The transform is usually applied after tokenizing text, so it compares individual tokens " +
             "(case-insensitive comparison) to the stopwords.";
 

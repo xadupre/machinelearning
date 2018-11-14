@@ -19,7 +19,7 @@ namespace Microsoft.ML.Runtime.Learners
     /// <summary>
     /// Helper methods for linear predictors
     /// </summary>
-    internal static class LinearPredictorUtils
+    /*internal*/public static class LinearPredictorUtils
     {
         // Epsilon for 0-comparisons.
         // REVIEW: Why is this doing any thresholding? Shouldn't it faithfully

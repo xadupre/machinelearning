@@ -16,7 +16,7 @@ namespace Microsoft.ML.Tests.Scenarios.PipelineApi
         /// <summary>
         /// Multi-threaded prediction. A twist on "Simple train and predict", where we account that
         /// multiple threads may want predictions at the same time. Because we deliberately do not
-        /// reallocate internal memory buffers on every single prediction, the PredictionEngine
+        /// reallocate /*internal*/public memory buffers on every single prediction, the PredictionEngine
         /// (or its estimator/transformer based successor) is, like most stateful .NET objects,
         /// fundamentally not thread safe. This is deliberate and as designed. However, some mechanism
         /// to enable multi-threaded scenarios (for example, a web server servicing requests) should be possible

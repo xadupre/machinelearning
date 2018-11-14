@@ -26,7 +26,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// <see cref="IntArray.Sumup"/> will work and accumulate the same target into multiple bins.
     /// This trick should be used with caution, and is useful for the <see cref="NHotFeatureFlock"/>.
     /// </summary>
-    internal sealed class DeltaSparseIntArray : IntArray
+    /*internal*/public sealed class DeltaSparseIntArray : IntArray
     {
         private readonly DenseIntArray _values;
         private readonly byte[] _deltas;

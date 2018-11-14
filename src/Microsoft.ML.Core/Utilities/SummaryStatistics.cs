@@ -6,12 +6,12 @@ using System;
 
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
-    internal abstract class SummaryStatisticsBase
+    /*internal*/public abstract class SummaryStatisticsBase
     {
         // Sum of squared difference from the current mean.
         protected double M2;
 
-        internal SummaryStatisticsBase()
+        /*internal*/public SummaryStatisticsBase()
         {
             Max = double.NegativeInfinity;
             Min = double.PositiveInfinity;
@@ -153,7 +153,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     }
 
     [BestFriend]
-    internal sealed class SummaryStatisticsUpToSecondOrderMoments : SummaryStatisticsBase
+    /*internal*/public sealed class SummaryStatisticsUpToSecondOrderMoments : SummaryStatisticsBase
     {
         /// <summary>
         /// A convenient way to combine the observations of two Stats objects
@@ -179,7 +179,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// All quantities are weighted, except for <c>RawCount</c>.
     /// </summary>
     [BestFriend]
-    internal sealed class SummaryStatistics : SummaryStatisticsBase
+    /*internal*/public sealed class SummaryStatistics : SummaryStatisticsBase
     {
         // Sum of cubed difference from the current mean.
         private double _m3;

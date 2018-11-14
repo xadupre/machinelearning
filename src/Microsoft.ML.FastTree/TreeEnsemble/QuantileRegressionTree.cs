@@ -27,7 +27,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         {
         }
 
-        internal QuantileRegressionTree(ModelLoadContext ctx, bool usingDefaultValue, bool categoricalSplits)
+        /*internal*/public QuantileRegressionTree(ModelLoadContext ctx, bool usingDefaultValue, bool categoricalSplits)
             : base(ctx, usingDefaultValue, categoricalSplits)
         {
             // *** Binary format ***

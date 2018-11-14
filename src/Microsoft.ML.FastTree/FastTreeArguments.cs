@@ -113,7 +113,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
             public ITrainer CreateComponent(IHostEnvironment env) => new FastTreeRankingTrainer(env, this);
 
-            internal override void Check(IExceptionContext ectx)
+            /*internal*/public override void Check(IExceptionContext ectx)
             {
                 base.Check(ectx);
 
@@ -139,12 +139,12 @@ namespace Microsoft.ML.Trainers.FastTree
         Adjacent = 2
     }
 
-    internal static class Defaults
+    /*internal*/public static class Defaults
     {
-        internal const int NumTrees = 100;
-        internal const int NumLeaves = 20;
-        internal const int MinDocumentsInLeaves = 10;
-        internal const double LearningRates = 0.2;
+        /*internal*/public const int NumTrees = 100;
+        /*internal*/public const int NumLeaves = 20;
+        /*internal*/public const int MinDocumentsInLeaves = 10;
+        /*internal*/public const double LearningRates = 0.2;
     }
 
     public abstract class TreeArgs : LearnerInputBaseWithGroupId
@@ -301,7 +301,7 @@ namespace Microsoft.ML.Trainers.FastTree
         [Argument(ArgumentType.LastOccurenceWins, HelpText = "Calculate metric values for train/valid/test every k rounds", ShortName = "tf")]
         public int TestFrequency = int.MaxValue;
 
-        internal virtual void Check(IExceptionContext ectx)
+        /*internal*/public virtual void Check(IExceptionContext ectx)
         {
             Contracts.AssertValue(ectx);
             ectx.CheckUserArg(NumThreads == null || NumThreads > 0, nameof(NumThreads), "numThreads must be positive.");
@@ -445,7 +445,7 @@ namespace Microsoft.ML.Trainers.FastTree
         public bool preloadFeatureBinsBeforeTraining;
 #endif
 
-        internal override void Check(IExceptionContext ectx)
+        /*internal*/public override void Check(IExceptionContext ectx)
         {
             base.Check(ectx);
 

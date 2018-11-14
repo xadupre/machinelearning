@@ -40,7 +40,7 @@ namespace Microsoft.ML.Runtime.Sweeper
             public int? RandomSeed;
         }
 
-        internal const string Summary = "Given a command line template and sweep ranges, creates and runs a sweep.";
+        /*internal*/public const string Summary = "Given a command line template and sweep ranges, creates and runs a sweep.";
 
         public static readonly string LocalExePath = Path.GetDirectoryName(typeof(SweepCommand).Module.FullyQualifiedName);
 

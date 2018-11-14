@@ -179,7 +179,7 @@ namespace Microsoft.ML.Transforms
             }
         }
 
-        internal const string Summary = "Removes the selected slots from the column.";
+        /*internal*/public const string Summary = "Removes the selected slots from the column.";
 
         public const string LoaderSignature = "DropSlotsTransform";
         private static VersionInfo GetVersionInfo()

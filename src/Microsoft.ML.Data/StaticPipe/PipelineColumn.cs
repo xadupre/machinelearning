@@ -18,8 +18,8 @@ namespace Microsoft.ML.StaticPipe
     /// </summary>
     public abstract class PipelineColumn
     {
-        internal readonly Reconciler ReconcilerObj;
-        internal readonly PipelineColumn[] Dependencies;
+        /*internal*/public readonly Reconciler ReconcilerObj;
+        /*internal*/public readonly PipelineColumn[] Dependencies;
 
         private protected PipelineColumn(Reconciler reconciler, PipelineColumn[] dependencies)
         {

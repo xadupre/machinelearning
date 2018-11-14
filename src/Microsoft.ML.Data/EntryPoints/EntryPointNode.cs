@@ -40,7 +40,7 @@ namespace Microsoft.ML.Runtime.EntryPoints
         public override bool CanRead => false;
     }
 
-    internal interface IVarSerializationHelper
+    /*internal*/public interface IVarSerializationHelper
     {
         string VarName { get; set; }
         bool IsValue { get; }
@@ -433,7 +433,7 @@ namespace Microsoft.ML.Runtime.EntryPoints
 
         public bool IsFinished { get; private set; }
 
-        public TimeSpan RunTime { get; internal set; }
+        public TimeSpan RunTime { get; /*internal*/ set; }
 
         private static Regex _stageIdRegex = new Regex(@"[a-zA-Z0-9]*", RegexOptions.Compiled);
         private string _stageId;

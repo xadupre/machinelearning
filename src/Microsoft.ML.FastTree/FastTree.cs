@@ -42,7 +42,7 @@ namespace Microsoft.ML.Trainers.FastTree
     /// FastTreeTrainerBase is generic class and can't have shared object among classes.
     /// This class is to provide common for all classes object which we can use for lock purpose.
     /// </summary>
-    internal static class FastTreeShared
+    /*internal*/public static class FastTreeShared
     {
         public static readonly object TrainLock = new object();
     }
@@ -127,7 +127,7 @@ namespace Microsoft.ML.Trainers.FastTree
                 Args.GroupIdColumn = Optional<string>.Explicit(groupIdColumn);
 
             // The discretization step renders this trainer non-parametric, and therefore it does not need normalization.
-            // Also since it builds its own internal discretized columnar structures, it cannot benefit from caching.
+            // Also since it builds its own /*internal*/public discretized columnar structures, it cannot benefit from caching.
             // Finally, even the binary classifiers, being logitboost, tend to not benefit from external calibration.
             Info = new TrainerInfo(normalization: false, caching: false, calibration: NeedCalibration, supportValid: true);
             // REVIEW: CLR 4.6 has a bug that is only exposed in Scope, and if we trigger GC.Collect in scope environment
@@ -148,7 +148,7 @@ namespace Microsoft.ML.Trainers.FastTree
             Host.CheckValue(args, nameof(args));
             Args = args;
             // The discretization step renders this trainer non-parametric, and therefore it does not need normalization.
-            // Also since it builds its own internal discretized columnar structures, it cannot benefit from caching.
+            // Also since it builds its own /*internal*/public discretized columnar structures, it cannot benefit from caching.
             // Finally, even the binary classifiers, being logitboost, tend to not benefit from external calibration.
             Info = new TrainerInfo(normalization: false, caching: false, calibration: NeedCalibration, supportValid: true);
             // REVIEW: CLR 4.6 has a bug that is only exposed in Scope, and if we trigger GC.Collect in scope environment
@@ -391,7 +391,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
             if (_optimizationAlgorithm.TreeLearner != null)
             {
-                // Get the size of memory in bytes needed by the tree learner internal data structures
+                // Get the size of memory in bytes needed by the tree learner /*internal*/public data structures
                 freeMemoryAllowance += _optimizationAlgorithm.TreeLearner.GetSizeOfReservedMemory();
             }
 
@@ -889,7 +889,7 @@ namespace Microsoft.ML.Trainers.FastTree
         }
     }
 
-    internal abstract class DataConverter
+    /*internal*/public abstract class DataConverter
     {
         protected readonly int NumFeatures;
         public abstract int NumExamples { get; }
@@ -2742,7 +2742,7 @@ namespace Microsoft.ML.Trainers.FastTree
         }
     }
 
-    internal sealed class ExamplesToFastTreeBins
+    /*internal*/public sealed class ExamplesToFastTreeBins
     {
         private readonly int _maxBins;
         private readonly Float _maxLabel;
@@ -3300,7 +3300,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         /// <summary>
         /// Returns the leaf node in the requested tree for the given feature vector, and populates 'path' with the list of
-        /// internal nodes in the path from the root to that leaf. If 'path' is null a new list is initialized. All elements
+        /// /*internal*/public nodes in the path from the root to that leaf. If 'path' is null a new list is initialized. All elements
         /// in 'path' are cleared before filling in the current path nodes.
         /// </summary>
         public int GetLeaf(int treeId, in VBuffer<Float> features, ref List<int> path)

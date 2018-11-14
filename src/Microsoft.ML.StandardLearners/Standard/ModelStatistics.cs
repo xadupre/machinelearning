@@ -91,7 +91,7 @@ namespace Microsoft.ML.Runtime.Learners
 
         public int ParametersCount => _paramCount;
 
-        internal LinearModelStatistics(IHostEnvironment env, long trainingExampleCount, int paramCount, Single deviance, Single nullDeviance)
+        /*internal*/public LinearModelStatistics(IHostEnvironment env, long trainingExampleCount, int paramCount, Single deviance, Single nullDeviance)
         {
             Contracts.AssertValue(env);
             env.Assert(trainingExampleCount > 0);
@@ -103,14 +103,14 @@ namespace Microsoft.ML.Runtime.Learners
             _nullDeviance = nullDeviance;
         }
 
-        internal LinearModelStatistics(IHostEnvironment env, long trainingExampleCount, int paramCount, Single deviance, Single nullDeviance, in VBuffer<Single> coeffStdError)
+        /*internal*/public LinearModelStatistics(IHostEnvironment env, long trainingExampleCount, int paramCount, Single deviance, Single nullDeviance, in VBuffer<Single> coeffStdError)
             : this(env, trainingExampleCount, paramCount, deviance, nullDeviance)
         {
             _env.Assert(coeffStdError.Count == _paramCount);
             _coeffStdError = coeffStdError;
         }
 
-        internal LinearModelStatistics(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public LinearModelStatistics(IHostEnvironment env, ModelLoadContext ctx)
         {
             Contracts.CheckValue(env, nameof(env));
             _env = env;
@@ -156,7 +156,7 @@ namespace Microsoft.ML.Runtime.Learners
             _coeffStdError = new VBuffer<Single>(length, _paramCount, stdErrorValues, stdErrorIndices);
         }
 
-        internal static LinearModelStatistics Create(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public static LinearModelStatistics Create(IHostEnvironment env, ModelLoadContext ctx)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(ctx, nameof(ctx));

@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
             [TGUI(Label = "Base predictor")]
             public IComponentFactory<ITrainer<TScalarPredictor>> BasePredictorType;
 
-            internal override IComponentFactory<ITrainer<TScalarPredictor>> GetPredictorFactory() => BasePredictorType;
+            /*internal*/public override IComponentFactory<ITrainer<TScalarPredictor>> GetPredictorFactory() => BasePredictorType;
 
             public IBinaryOutputCombiner CreateComponent(IHostEnvironment env) => new Stacking(env, this);
         }

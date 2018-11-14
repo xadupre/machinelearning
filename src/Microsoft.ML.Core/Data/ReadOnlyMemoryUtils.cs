@@ -11,7 +11,7 @@ using System.Text;
 namespace Microsoft.ML.Runtime.Data
 {
     [BestFriend]
-    internal static class ReadOnlyMemoryUtils
+    /*internal*/public static class ReadOnlyMemoryUtils
     {
 
         /// <summary>

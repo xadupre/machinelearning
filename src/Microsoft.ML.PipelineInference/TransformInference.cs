@@ -762,7 +762,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
                 }
             }
 
-            internal static class InferenceHelpers
+            /*internal*/public static class InferenceHelpers
             {
                 public static SuggestedTransform GetRemainingFeatures(List<string> newCols, IntermediateColumn[] existingColumns,
                     Type currentType, bool includeFeaturesOverride)

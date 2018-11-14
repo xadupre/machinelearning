@@ -142,7 +142,7 @@ namespace Microsoft.ML.Runtime.Data
             return new DelegateEstimator<TTransformer>(estimator, onFit);
         }
 
-        internal static T[] AppendElement<T>(this T[] array, T element)
+        /*internal*/public static T[] AppendElement<T>(this T[] array, T element)
         {
             T[] result = new T[Utils.Size(array) + 1];
             Array.Copy(array, result, result.Length - 1);

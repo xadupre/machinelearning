@@ -220,7 +220,7 @@ namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
         }
     }
 
-    internal static class GeneratorUtils
+    /*internal*/public static class GeneratorUtils
     {
         public static bool IsOfType(this ComponentCatalog.LoadableClassInfo component, Type type)
         {

@@ -50,13 +50,13 @@ namespace Microsoft.ML.Transforms
 
         private readonly IHost _host;
         private readonly Arguments _args;
-        internal readonly OnnxModel Model;
+        /*internal*/public readonly OnnxModel Model;
         private const string RegistrationName = "OnnxTransform";
 
-        internal const string Summary = "Transforms the data using the Onnx model.";
-        internal const string UserName = "ONNX Scoring Transform";
-        internal const string ShortName = "Onnx";
-        internal const string LoaderSignature = "OnnxTransform";
+        /*internal*/public const string Summary = "Transforms the data using the Onnx model.";
+        /*internal*/public const string UserName = "ONNX Scoring Transform";
+        /*internal*/public const string ShortName = "Onnx";
+        /*internal*/public const string LoaderSignature = "OnnxTransform";
 
         public readonly string Input;
         public readonly string Output;

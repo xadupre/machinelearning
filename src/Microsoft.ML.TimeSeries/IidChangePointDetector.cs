@@ -33,7 +33,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// </summary>
     public sealed class IidChangePointDetector : IidAnomalyDetectionBase
     {
-        internal const string Summary = "This transform detects the change-points in an i.i.d. sequence using adaptive kernel density estimation and martingales.";
+        /*internal*/public const string Summary = "This transform detects the change-points in an i.i.d. sequence using adaptive kernel density estimation and martingales.";
         public const string LoaderSignature = "IidChangePointDetector";
         public const string UserName = "IID Change Point Detection";
         public const string ShortName = "ichgpnt";
@@ -110,7 +110,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new IidChangePointDetector(env, args).MakeDataTransform(input);
         }
 
-        internal IidChangePointDetector(IHostEnvironment env, Arguments args)
+        /*internal*/public IidChangePointDetector(IHostEnvironment env, Arguments args)
             : base(new BaseArguments(args), LoaderSignature, env)
         {
             switch (Martingale)
@@ -150,7 +150,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new IidChangePointDetector(env, ctx);
         }
 
-        internal IidChangePointDetector(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public IidChangePointDetector(IHostEnvironment env, ModelLoadContext ctx)
             : base(env, ctx, LoaderSignature)
         {
             // *** Binary format ***

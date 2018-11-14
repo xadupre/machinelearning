@@ -28,10 +28,10 @@ namespace Microsoft.ML.Trainers
     /// <include file='doc.xml' path='doc/members/member[@name="SDCA"]/*' />
     public sealed class SdcaRegressionTrainer : SdcaTrainerBase<SdcaRegressionTrainer.Arguments, RegressionPredictionTransformer<LinearRegressionPredictor>, LinearRegressionPredictor>
     {
-        internal const string LoadNameValue = "SDCAR";
-        internal const string UserNameValue = "Fast Linear Regression (SA-SDCA)";
-        internal const string ShortName = "sasdcar";
-        internal const string Summary = "The SDCA linear regression trainer.";
+        /*internal*/public const string LoadNameValue = "SDCAR";
+        /*internal*/public const string UserNameValue = "Fast Linear Regression (SA-SDCA)";
+        /*internal*/public const string ShortName = "sasdcar";
+        /*internal*/public const string Summary = "The SDCA linear regression trainer.";
 
         public sealed class Arguments : ArgumentsBase
         {
@@ -85,7 +85,7 @@ namespace Microsoft.ML.Trainers
             Loss = _loss;
         }
 
-        internal SdcaRegressionTrainer(IHostEnvironment env, Arguments args, string featureColumn, string labelColumn, string weightColumn = null)
+        /*internal*/public SdcaRegressionTrainer(IHostEnvironment env, Arguments args, string featureColumn, string labelColumn, string weightColumn = null)
             : base(env, args, TrainerUtils.MakeR4ScalarLabel(labelColumn), TrainerUtils.MakeR4ScalarWeightColumn(weightColumn))
         {
             Host.CheckValue(labelColumn, nameof(labelColumn));
@@ -95,7 +95,7 @@ namespace Microsoft.ML.Trainers
             Loss = _loss;
         }
 
-        internal SdcaRegressionTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public SdcaRegressionTrainer(IHostEnvironment env, Arguments args)
             : this(env, args, args.FeatureColumn, args.LabelColumn)
         {
         }

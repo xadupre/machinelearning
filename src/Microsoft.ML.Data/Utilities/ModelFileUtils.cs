@@ -216,7 +216,7 @@ namespace Microsoft.ML.Runtime.Model
         /// <summary>
         /// Save schema associations of role/column-name in <paramref name="rep"/>.
         /// </summary>
-        internal static void SaveRoleMappings(IHostEnvironment env, IChannel ch, RoleMappedSchema schema, RepositoryWriter rep)
+        /*internal*/public static void SaveRoleMappings(IHostEnvironment env, IChannel ch, RoleMappedSchema schema, RepositoryWriter rep)
         {
             // REVIEW: Should we also save this stuff, for instance, in some portion of the
             // score command or transform?

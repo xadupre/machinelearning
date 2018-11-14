@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.Api
     /// <summary>
     /// Utility methods for code generation.
     /// </summary>
-    internal static class CodeGenerationUtils
+    /*internal*/public static class CodeGenerationUtils
     {
         /// <summary>
         /// Replace placeholders with provided values. Assert that every placeholder is found.

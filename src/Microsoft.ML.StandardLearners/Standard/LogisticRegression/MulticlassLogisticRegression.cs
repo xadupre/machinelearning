@@ -42,8 +42,8 @@ namespace Microsoft.ML.Runtime.Learners
         MulticlassPredictionTransformer<MulticlassLogisticRegressionPredictor>, MulticlassLogisticRegressionPredictor>
     {
         public const string LoadNameValue = "MultiClassLogisticRegression";
-        internal const string UserNameValue = "Multi-class Logistic Regression";
-        internal const string ShortName = "mlr";
+        /*internal*/public const string UserNameValue = "Multi-class Logistic Regression";
+        /*internal*/public const string ShortName = "mlr";
 
         public sealed class Arguments : ArgumentsBase
         {
@@ -105,7 +105,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// <summary>
         /// Initializes a new instance of <see cref="MulticlassLogisticRegression"/>
         /// </summary>
-        internal MulticlassLogisticRegression(IHostEnvironment env, Arguments args)
+        /*internal*/public MulticlassLogisticRegression(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeU4ScalarColumn(args.LabelColumn))
         {
             ShowTrainingStats = Args.ShowTrainingStats;
@@ -397,7 +397,7 @@ namespace Microsoft.ML.Runtime.Learners
         bool ICanSavePfa.CanSavePfa => true;
         bool ICanSaveOnnx.CanSaveOnnx(OnnxContext ctx) => true;
 
-        internal MulticlassLogisticRegressionPredictor(IHostEnvironment env, in VBuffer<float> weights, int numClasses, int numFeatures, string[] labelNames, LinearModelStatistics stats = null)
+        /*internal*/public MulticlassLogisticRegressionPredictor(IHostEnvironment env, in VBuffer<float> weights, int numClasses, int numFeatures, string[] labelNames, LinearModelStatistics stats = null)
             : base(env, RegistrationName)
         {
             Contracts.Assert(weights.Length == numClasses + numClasses * numFeatures);
@@ -926,7 +926,7 @@ namespace Microsoft.ML.Runtime.Learners
                 _weights[i].CopyTo(ref weights[i]);
         }
 
-        internal IEnumerable<float> DenseWeightsEnumerable()
+        /*internal*/public IEnumerable<float> DenseWeightsEnumerable()
         {
             Contracts.Assert(_weights.Length == _biases.Length);
 
@@ -947,7 +947,7 @@ namespace Microsoft.ML.Runtime.Learners
             return _biases;
         }
 
-        internal string GetLabelName(int classNumber)
+        /*internal*/public string GetLabelName(int classNumber)
         {
             const string classNumberFormat = "Class_{0}";
             Contracts.Assert(0 <= classNumber && classNumber < _numClasses);

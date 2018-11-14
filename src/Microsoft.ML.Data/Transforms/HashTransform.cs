@@ -151,7 +151,7 @@ namespace Microsoft.ML.Transforms.Conversions
                 InvertHash = invertHash;
             }
 
-            internal ColumnInfo(string input, string output, ModelLoadContext ctx)
+            /*internal*/public ColumnInfo(string input, string output, ModelLoadContext ctx)
             {
                 Input = input;
                 Output = output;
@@ -165,7 +165,7 @@ namespace Microsoft.ML.Transforms.Conversions
                 Ordered = ctx.Reader.ReadBoolByte();
             }
 
-            internal void Save(ModelSaveContext ctx)
+            /*internal*/public void Save(ModelSaveContext ctx)
             {
                 // *** Binary format ***
                 // int: HashBits
@@ -182,7 +182,7 @@ namespace Microsoft.ML.Transforms.Conversions
 
         private const string RegistrationName = "Hash";
 
-        internal const string Summary = "Converts column values into hashes. This transform accepts text and keys as inputs. It works on single- and vector-valued columns, "
+        /*internal*/public const string Summary = "Converts column values into hashes. This transform accepts text and keys as inputs. It works on single- and vector-valued columns, "
             + "and hashes each slot in a vector separately.";
 
         public const string LoaderSignature = "HashTransform";
@@ -243,7 +243,7 @@ namespace Microsoft.ML.Transforms.Conversions
             }
         }
 
-        internal HashTransformer(IHostEnvironment env, IDataView input, ColumnInfo[] columns) :
+        /*internal*/public HashTransformer(IHostEnvironment env, IDataView input, ColumnInfo[] columns) :
             base(Contracts.CheckRef(env, nameof(env)).Register(RegistrationName), GetColumnPairs(columns))
         {
             _columns = columns.ToArray();
@@ -1175,10 +1175,10 @@ namespace Microsoft.ML.Transforms.Conversions
     /// </summary>
     public sealed class HashingEstimator : IEstimator<HashTransformer>
     {
-        internal const int NumBitsMin = 1;
-        internal const int NumBitsLim = 32;
+        /*internal*/public const int NumBitsMin = 1;
+        /*internal*/public const int NumBitsLim = 32;
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const int HashBits = NumBitsLim - 1;
             public const uint Seed = 314489979;
@@ -1189,13 +1189,13 @@ namespace Microsoft.ML.Transforms.Conversions
         private readonly IHost _host;
         private readonly HashTransformer.ColumnInfo[] _columns;
 
-        internal static bool IsColumnTypeValid(ColumnType type)
+        /*internal*/public static bool IsColumnTypeValid(ColumnType type)
         {
             var itemType = type.ItemType;
             return itemType.IsText || itemType.IsKey || itemType.IsNumber || itemType.IsBool;
         }
 
-        internal const string ExpectedColumnType = "Expected Text, Key, numeric or Boolean item type";
+        /*internal*/public const string ExpectedColumnType = "Expected Text, Key, numeric or Boolean item type";
 
         /// <summary>
         /// Initializes a new instance of <see cref="HashingEstimator"/>.

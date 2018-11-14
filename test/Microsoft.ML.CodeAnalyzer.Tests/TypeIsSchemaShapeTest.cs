@@ -10,7 +10,7 @@ namespace Microsoft.ML.Analyzer.Tests
     public sealed class TypeIsSchemaShapeTest : DiagnosticVerifier<TypeIsSchemaShapeAnalyzer>
     {
         private static string _srcResource;
-        internal static string Source => TestUtils.EnsureSourceLoaded(ref _srcResource, "TypeIsSchemaShapeResource.cs");
+        /*internal*/public static string Source => TestUtils.EnsureSourceLoaded(ref _srcResource, "TypeIsSchemaShapeResource.cs");
 
         [Fact]
         public void ReturnTypeIsSchemaShape()
@@ -32,7 +32,7 @@ namespace Microsoft.ML.Analyzer.Tests
         }
 
         private static string _srcResourceChained;
-        internal static string SourceChained => TestUtils.EnsureSourceLoaded(
+        /*internal*/public static string SourceChained => TestUtils.EnsureSourceLoaded(
             ref _srcResourceChained, "TypeIsSchemaShapeResourceChained.cs");
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Microsoft.ML.Analyzer.Tests
         }
 
         private static string _srcResourceClass;
-        internal static string SourceClass => TestUtils.EnsureSourceLoaded(
+        /*internal*/public static string SourceClass => TestUtils.EnsureSourceLoaded(
             ref _srcResourceClass, "TypeIsSchemaShapeClassResource.cs");
 
         [Fact]

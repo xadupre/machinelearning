@@ -51,7 +51,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             [Argument(ArgumentType.Multiple, HelpText = "Base predictor type", ShortName = "bp,basePredictorTypes", SortOrder = 1, Visibility = ArgumentAttribute.VisibilityType.CmdLineOnly, SignatureType = typeof(SignatureBinaryClassifierTrainer))]
             public IComponentFactory<ITrainer<TScalarPredictor>>[] BasePredictors;
 
-            internal override IComponentFactory<ITrainer<TScalarPredictor>>[] GetPredictorFactories() => BasePredictors;
+            /*internal*/public override IComponentFactory<ITrainer<TScalarPredictor>>[] GetPredictorFactories() => BasePredictors;
 
             public Arguments()
             {

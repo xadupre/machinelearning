@@ -35,12 +35,12 @@ namespace Microsoft.ML.Runtime.Data
 
     public sealed class ConcatTransform : ITransformer, ICanSaveModel
     {
-        internal const string Summary = "Concatenates one or more columns of the same item type.";
-        internal const string UserName = "Concat Transform";
-        internal const string LoadName = "Concat";
+        /*internal*/public const string Summary = "Concatenates one or more columns of the same item type.";
+        /*internal*/public const string UserName = "Concat Transform";
+        /*internal*/public const string LoadName = "Concat";
 
-        internal const string LoaderSignature = "ConcatTransform";
-        internal const string LoaderSignatureOld = "ConcatFunction";
+        /*internal*/public const string LoaderSignature = "ConcatTransform";
+        /*internal*/public const string LoaderSignatureOld = "ConcatFunction";
 
         public sealed class Column : ManyToOneColumn
         {

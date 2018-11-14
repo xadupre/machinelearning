@@ -29,11 +29,11 @@ namespace Microsoft.ML.Transforms.Text
             public string Name;
         }
 
-        internal const string Summary = "A transform that analyzes a text document as input, and produces the probability of it " +
+        /*internal*/public const string Summary = "A transform that analyzes a text document as input, and produces the probability of it " +
             "being of a positive sentiment.";
-        internal const string LoaderSignature = "SentimentAnalyzer";
-        internal const string UserName = "Sentiment Analyzing Transform";
-        internal const string ShortName = "Senti";
+        /*internal*/public const string LoaderSignature = "SentimentAnalyzer";
+        /*internal*/public const string UserName = "Sentiment Analyzing Transform";
+        /*internal*/public const string ShortName = "Senti";
 
         // These strings come from column name choices used originally in the
         // saved sentiment analyzer model.

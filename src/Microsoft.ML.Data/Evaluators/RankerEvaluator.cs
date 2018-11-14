@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime.Data
             public bool OutputGroupSummary;
         }
 
-        internal const string LoadName = "RankingEvaluator";
+        /*internal*/public const string LoadName = "RankingEvaluator";
 
         public const string Ndcg = "NDCG";
         public const string Dcg = "DCG";
@@ -569,7 +569,7 @@ namespace Microsoft.ML.Runtime.Data
                 return val;
             }
 
-            internal Result(IExceptionContext ectx, IRow overallResult)
+            /*internal*/public Result(IExceptionContext ectx, IRow overallResult)
             {
                 VBuffer<double> Fetch(string name) => Fetch<VBuffer<double>>(ectx, overallResult, name);
 
@@ -983,7 +983,7 @@ namespace Microsoft.ML.Runtime.Data
         }
     }
 
-    internal static class RankerUtils
+    /*internal*/public static class RankerUtils
     {
         private static volatile Double[] _discountMap;
         public static Double[] DiscountMap

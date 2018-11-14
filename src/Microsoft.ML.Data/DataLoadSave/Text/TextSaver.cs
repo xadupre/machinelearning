@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             public bool OutputHeader = true;
         }
 
-        internal const string Summary = "Writes data into a text file.";
+        /*internal*/public const string Summary = "Writes data into a text file.";
 
         private abstract class ValueWriter
         {
@@ -789,12 +789,12 @@ namespace Microsoft.ML.Runtime.Data.IO
         }
     }
 
-    internal static class TextSaverUtils
+    /*internal*/public static class TextSaverUtils
     {
         /// <summary>
         /// Converts a ReadOnlySpan to a StringBuilder using TextSaver escaping and string quoting rules.
         /// </summary>
-        internal static void MapText(ReadOnlySpan<char> span, ref StringBuilder sb, char sep)
+        /*internal*/public static void MapText(ReadOnlySpan<char> span, ref StringBuilder sb, char sep)
         {
             if (sb == null)
                 sb = new StringBuilder();
@@ -846,7 +846,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             }
         }
 
-        internal static void MapTimeSpan(in TimeSpan src, ref StringBuilder sb)
+        /*internal*/public static void MapTimeSpan(in TimeSpan src, ref StringBuilder sb)
         {
             if (sb == null)
                 sb = new StringBuilder();
@@ -856,7 +856,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             sb.AppendFormat("\"{0:c}\"", src);
         }
 
-        internal static void MapDateTime(in DateTime src, ref StringBuilder sb)
+        /*internal*/public static void MapDateTime(in DateTime src, ref StringBuilder sb)
         {
             if (sb == null)
                 sb = new StringBuilder();
@@ -866,7 +866,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             sb.AppendFormat("\"{0:o}\"", src);
         }
 
-        internal static void MapDateTimeZone(in DateTimeOffset src, ref StringBuilder sb)
+        /*internal*/public static void MapDateTimeZone(in DateTimeOffset src, ref StringBuilder sb)
         {
             if (sb == null)
                 sb = new StringBuilder();

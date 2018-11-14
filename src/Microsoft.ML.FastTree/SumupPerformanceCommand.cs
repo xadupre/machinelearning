@@ -27,7 +27,7 @@ namespace Microsoft.ML.Trainers.FastTree
     using Stopwatch = System.Diagnostics.Stopwatch;
 
     /// <summary>
-    /// This is an internal utility command to measure the performance of the IntArray sumup operation.
+    /// This is an /*internal*/public utility command to measure the performance of the IntArray sumup operation.
     /// </summary>
     public sealed class SumupPerformanceCommand : ICommand
     {

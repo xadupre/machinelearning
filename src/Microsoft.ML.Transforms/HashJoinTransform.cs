@@ -149,11 +149,11 @@ namespace Microsoft.ML.Transforms.Conversions
             }
         }
 
-        internal const string RegistrationName = "HashJoin";
+        /*internal*/public const string RegistrationName = "HashJoin";
 
-        internal const string Summary = "Converts column values into hashes. This transform accepts both numeric and text inputs, both single and vector-valued columns. ";
+        /*internal*/public const string Summary = "Converts column values into hashes. This transform accepts both numeric and text inputs, both single and vector-valued columns. ";
 
-        internal const string UserName = "Hash Join Transform";
+        /*internal*/public const string UserName = "Hash Join Transform";
 
         public const string LoaderSignature = "HashJoinTransform";
         private static VersionInfo GetVersionInfo()

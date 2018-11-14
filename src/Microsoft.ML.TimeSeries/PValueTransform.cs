@@ -24,7 +24,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// </summary>
     public sealed class PValueTransform : SequentialTransformBase<Single, Single, PValueTransform.State>
     {
-        internal const string Summary = "This P-Value transform calculates the p-value of the current input in the sequence with regard to the values in the sliding window.";
+        /*internal*/public const string Summary = "This P-Value transform calculates the p-value of the current input in the sequence with regard to the values in the sliding window.";
         public const string LoaderSignature = "PValueTransform";
         public const string UserName = "p-Value Transform";
         public const string ShortName = "PVal";

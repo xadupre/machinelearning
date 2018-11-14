@@ -13,7 +13,7 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// Wrapper of the c interfaces of LightGBM.
     /// Refer to https://github.com/Microsoft/LightGBM/blob/master/include/LightGBM/c_api.h to get the details.
     /// </summary>
-    internal static class WrappedLightGbmInterface
+    /*internal*/public static class WrappedLightGbmInterface
     {
         public enum CApiDType : int
         {
@@ -183,7 +183,7 @@ namespace Microsoft.ML.Runtime.LightGBM
         #endregion
     }
 
-    internal static class LightGbmInterfaceUtils
+    /*internal*/public static class LightGbmInterfaceUtils
     {
         /// <summary>
         /// Checks if LightGBM has a pending error message. Raises an exception in that case.

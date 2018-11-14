@@ -137,9 +137,9 @@ namespace Microsoft.ML.StaticPipe
         }
     }
 
-    internal static class OnlineLinearStaticUtils{
+    /*internal*/public static class OnlineLinearStaticUtils{
 
-        internal static void CheckUserParams(PipelineColumn label,
+        /*internal*/public static void CheckUserParams(PipelineColumn label,
             PipelineColumn features,
             PipelineColumn weights,
             float learningRate,

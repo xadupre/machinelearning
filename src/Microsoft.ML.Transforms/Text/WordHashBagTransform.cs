@@ -81,7 +81,7 @@ namespace Microsoft.ML.Transforms.Text
         }
         private const string RegistrationName = "WordHashBagTransform";
 
-        internal const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text. "
+        /*internal*/public const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text. "
             + "It does so by hashing each ngram and using the hash value as the index in the bag.";
 
         public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
@@ -299,9 +299,9 @@ namespace Microsoft.ML.Transforms.Text
             public Column[] Column;
         }
 
-        internal const string Summary = "A transform that turns a collection of tokenized text (vector of ReadOnlyMemory) into numerical feature vectors using the hashing trick.";
+        /*internal*/public const string Summary = "A transform that turns a collection of tokenized text (vector of ReadOnlyMemory) into numerical feature vectors using the hashing trick.";
 
-        internal const string LoaderSignature = "NgramHashExtractor";
+        /*internal*/public const string LoaderSignature = "NgramHashExtractor";
 
         public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input,
             TermLoaderArguments termLoaderArgs = null)
@@ -374,7 +374,7 @@ namespace Microsoft.ML.Transforms.Text
                         SkipLength = column.SkipLength,
                         Ordered = column.Ordered,
                         InvertHash = column.InvertHash,
-                        // REVIEW: This is an ugly internal hack to get around
+                        // REVIEW: This is an ugly /*internal*/public hack to get around
                         // the problem that we want the *original* source names surfacing
                         // in the descriptions where appropriate, rather than _tmp000 and
                         // what have you. The alternative is we do something elaborate

@@ -435,7 +435,7 @@ namespace Microsoft.ML.Runtime.Numeric
 
     // REVIEW: This is test code. Is this useless at this point, or
     // possibly something we should put into our unit tests?
-    internal static class Test
+    /*internal*/public static class Test
     {
         private static VBuffer<Float> _c1;
         private static VBuffer<Float> _c2;

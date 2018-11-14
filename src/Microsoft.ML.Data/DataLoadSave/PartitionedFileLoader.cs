@@ -48,8 +48,8 @@ namespace Microsoft.ML.Runtime.Data
     /// </example>
     public sealed class PartitionedFileLoader : IDataLoader
     {
-        internal const string Summary = "Loads a horizontally partitioned file set.";
-        internal const string UserName = "Partitioned Loader";
+        /*internal*/public const string Summary = "Loads a horizontally partitioned file set.";
+        /*internal*/public const string UserName = "Partitioned Loader";
         public const string LoadName = "PartitionedLoader";
         public const string ShortName = "Part";
 

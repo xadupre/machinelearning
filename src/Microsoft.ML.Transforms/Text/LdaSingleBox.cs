@@ -11,7 +11,7 @@ using System.Security;
 namespace Microsoft.ML.Runtime.TextAnalytics
 {
 
-    internal static class LdaInterface
+    /*internal*/public static class LdaInterface
     {
         public struct LdaEngine
         {
@@ -20,68 +20,68 @@ namespace Microsoft.ML.Runtime.TextAnalytics
 
         private const string NativeDll = "LdaNative";
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern LdaEngine CreateEngine(int numTopic, int numVocab, float alphaSum, float beta, int numIter,
+        /*internal*/public static extern LdaEngine CreateEngine(int numTopic, int numVocab, float alphaSum, float beta, int numIter,
             int likelihoodInterval, int numThread, int mhstep, int maxDocToken);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void AllocateModelMemory(LdaEngine engine, int numTopic, int numVocab, long tableSize, long aliasTableSize);
+        /*internal*/public static extern void AllocateModelMemory(LdaEngine engine, int numTopic, int numVocab, long tableSize, long aliasTableSize);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void AllocateDataMemory(LdaEngine engine, int docNum, long corpusSize);
+        /*internal*/public static extern void AllocateDataMemory(LdaEngine engine, int docNum, long corpusSize);
 
         [DllImport(NativeDll, CharSet = CharSet.Ansi), SuppressUnmanagedCodeSecurity]
-        internal static extern void Train(LdaEngine engine, string trainOutput);
+        /*internal*/public static extern void Train(LdaEngine engine, string trainOutput);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void GetModelStat(LdaEngine engine, out long memBlockSize, out long aliasMemBlockSize);
+        /*internal*/public static extern void GetModelStat(LdaEngine engine, out long memBlockSize, out long aliasMemBlockSize);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void Test(LdaEngine engine, int numBurninIter, float[] pLogLikelihood);
+        /*internal*/public static extern void Test(LdaEngine engine, int numBurninIter, float[] pLogLikelihood);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void CleanData(LdaEngine engine);
+        /*internal*/public static extern void CleanData(LdaEngine engine);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void CleanModel(LdaEngine engine);
+        /*internal*/public static extern void CleanModel(LdaEngine engine);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void DestroyEngine(LdaEngine engine);
+        /*internal*/public static extern void DestroyEngine(LdaEngine engine);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void GetWordTopic(LdaEngine engine, int wordId, int[] pTopic, int[] pProb, ref int length);
+        /*internal*/public static extern void GetWordTopic(LdaEngine engine, int wordId, int[] pTopic, int[] pProb, ref int length);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void SetWordTopic(LdaEngine engine, int wordId, int[] pTopic, int[] pProb, int length);
+        /*internal*/public static extern void SetWordTopic(LdaEngine engine, int wordId, int[] pTopic, int[] pProb, int length);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void SetAlphaSum(LdaEngine engine, float avgDocLength);
+        /*internal*/public static extern void SetAlphaSum(LdaEngine engine, float avgDocLength);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern int FeedInData(LdaEngine engine, int[] termId, int[] termFreq, int termNum, int numVocab);
+        /*internal*/public static extern int FeedInData(LdaEngine engine, int[] termId, int[] termFreq, int termNum, int numVocab);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern int FeedInDataDense(LdaEngine engine, int[] termFreq, int termNum, int numVocab);
+        /*internal*/public static extern int FeedInDataDense(LdaEngine engine, int[] termFreq, int termNum, int numVocab);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void GetDocTopic(LdaEngine engine, int docId, int[] pTopic, int[] pProb, ref int numTopicReturn);
+        /*internal*/public static extern void GetDocTopic(LdaEngine engine, int docId, int[] pTopic, int[] pProb, ref int numTopicReturn);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void GetTopicSummary(LdaEngine engine, int topicId, int[] pWords, float[] pProb, ref int numTopicReturn);
+        /*internal*/public static extern void GetTopicSummary(LdaEngine engine, int topicId, int[] pWords, float[] pProb, ref int numTopicReturn);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void TestOneDoc(LdaEngine engine, int[] termId, int[] termFreq, int termNum, int[] pTopics, int[] pProbs, ref int numTopicsMax, int numBurnIter, bool reset);
+        /*internal*/public static extern void TestOneDoc(LdaEngine engine, int[] termId, int[] termFreq, int termNum, int[] pTopics, int[] pProbs, ref int numTopicsMax, int numBurnIter, bool reset);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void TestOneDocDense(LdaEngine engine, int[] termFreq, int termNum, int[] pTopics, int[] pProbs, ref int numTopicsMax, int numBurninIter, bool reset);
+        /*internal*/public static extern void TestOneDocDense(LdaEngine engine, int[] termFreq, int termNum, int[] pTopics, int[] pProbs, ref int numTopicsMax, int numBurninIter, bool reset);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void InitializeBeforeTrain(LdaEngine engine);
+        /*internal*/public static extern void InitializeBeforeTrain(LdaEngine engine);
 
         [DllImport(NativeDll), SuppressUnmanagedCodeSecurity]
-        internal static extern void InitializeBeforeTest(LdaEngine engine);
+        /*internal*/public static extern void InitializeBeforeTest(LdaEngine engine);
     }
 
-    internal sealed class LdaSingleBox : IDisposable
+    /*internal*/public sealed class LdaSingleBox : IDisposable
     {
         private LdaInterface.LdaEngine _engine;
         private bool _isDisposed;
@@ -288,7 +288,7 @@ namespace Microsoft.ML.Runtime.TextAnalytics
             // (1) TestOneDoc
             // (2) TestOneDocRestart
             // The second one is the same as the first one except that it will reset
-            // the states of the internal random number generator, so that it yields reproducable results for the same input
+            // the states of the /*internal*/public random number generator, so that it yields reproducable results for the same input
             LdaInterface.TestOneDocDense(_engine, pVal, termNum, pTopic, pProb, ref numTopicReturn, numBurninIter, reset);
 
             // PREfast suspects that the value of numTopicReturn could be changed in _engine->TestOneDoc, which might result in read overrun in the following loop.

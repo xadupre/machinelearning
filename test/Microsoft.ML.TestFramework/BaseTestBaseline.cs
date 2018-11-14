@@ -28,7 +28,7 @@ namespace Microsoft.ML.Runtime.RunTests
         {
         }
 
-        internal const string RawSuffix = ".raw";
+        /*internal*/public const string RawSuffix = ".raw";
         private const string LogSuffix = ".log";
         private readonly string _logRootRelPath = Path.Combine("Logs", BuildString); // Relative to OutDir.
 

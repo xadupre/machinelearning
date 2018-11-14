@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.ML.Trainers.FastTree.Internal
 {
-    internal static class ThreadTaskManager
+    /*internal*/public static class ThreadTaskManager
     {
         private static object _lockObject = new object();
 

@@ -12,12 +12,12 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 {
     public abstract class BaseMultiAverager : BaseMultiCombiner
     {
-        internal BaseMultiAverager(IHostEnvironment env, string name, ArgumentsBase args)
+        /*internal*/public BaseMultiAverager(IHostEnvironment env, string name, ArgumentsBase args)
             : base(env, name, args)
         {
         }
 
-        internal BaseMultiAverager(IHostEnvironment env, string name, ModelLoadContext ctx)
+        /*internal*/public BaseMultiAverager(IHostEnvironment env, string name, ModelLoadContext ctx)
             : base(env, name, ctx)
         {
         }

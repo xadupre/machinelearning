@@ -15,7 +15,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     using FloatType = Double;
 #endif
 
-    internal sealed class DeltaRepeatIntArray : IntArray
+    /*internal*/public sealed class DeltaRepeatIntArray : IntArray
     {
         private readonly DenseIntArray _values;
         private readonly int _length;

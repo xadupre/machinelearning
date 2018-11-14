@@ -47,7 +47,7 @@ namespace Microsoft.ML.Runtime.Data
             _host = env.Register(RegistrationName);
         }
 
-        internal const string Summary = "Does nothing.";
+        /*internal*/public const string Summary = "Does nothing.";
 
         public const string LoaderSignature = "NopTransform";
 
@@ -62,7 +62,7 @@ namespace Microsoft.ML.Runtime.Data
                 loaderAssemblyName: typeof(NopTransform).Assembly.FullName);
         }
 
-        internal static string RegistrationName = "NopTransform";
+        /*internal*/public static string RegistrationName = "NopTransform";
 
         public static NopTransform Create(IHostEnvironment env, ModelLoadContext ctx, IDataView input)
         {

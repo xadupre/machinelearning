@@ -63,9 +63,9 @@ namespace Microsoft.ML.Transforms
     public sealed class CopyColumnsTransform : OneToOneTransformerBase
     {
         public const string LoaderSignature = "CopyTransform";
-        internal const string Summary = "Copy a source column to a new column.";
-        internal const string UserName = "Copy Columns Transform";
-        internal const string ShortName = "Copy";
+        /*internal*/public const string Summary = "Copy a source column to a new column.";
+        /*internal*/public const string UserName = "Copy Columns Transform";
+        /*internal*/public const string ShortName = "Copy";
 
         public IReadOnlyCollection<(string Source, string Name)> Columns => ColumnPairs.AsReadOnly();
 
@@ -167,7 +167,7 @@ namespace Microsoft.ML.Transforms
 
             public bool CanSaveOnnx(OnnxContext ctx) => ctx.GetOnnxVersion() == OnnxVersion.Experimental;
 
-            internal Mapper(CopyColumnsTransform parent, Schema inputSchema, (string Source, string Name)[] columns)
+            /*internal*/public Mapper(CopyColumnsTransform parent, Schema inputSchema, (string Source, string Name)[] columns)
                 : base(parent.Host.Register(nameof(Mapper)), parent, inputSchema)
             {
                 _schema = inputSchema;

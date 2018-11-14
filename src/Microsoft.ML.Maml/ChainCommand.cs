@@ -25,7 +25,7 @@ namespace Microsoft.ML.Runtime.Tools
 #pragma warning restore 649 // never assigned
         }
 
-        internal const string Summary = "A command that chains multiple other commands.";
+        /*internal*/public const string Summary = "A command that chains multiple other commands.";
 
         private readonly IHost _host;
 

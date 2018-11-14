@@ -22,21 +22,21 @@ namespace Microsoft.ML.Transforms.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    /*internal*/public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        /*internal*/public Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        /*internal*/public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.ML.Transforms.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        /*internal*/public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -157,7 +157,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///لدى
         ///لقا [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Arabic {
+        /*internal*/public static string Arabic {
             get {
                 return ResourceManager.GetString("Arabic", resourceCulture);
             }
@@ -245,7 +245,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///kde
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Czech {
+        /*internal*/public static string Czech {
             get {
                 return ResourceManager.GetString("Czech", resourceCulture);
             }
@@ -341,7 +341,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///næsten
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Danish {
+        /*internal*/public static string Danish {
             get {
                 return ResourceManager.GetString("Danish", resourceCulture);
             }
@@ -398,7 +398,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///zou
         ///.
         /// </summary>
-        internal static string Dutch {
+        /*internal*/public static string Dutch {
             get {
                 return ResourceManager.GetString("Dutch", resourceCulture);
             }
@@ -479,7 +479,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///due
         ///du [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string English {
+        /*internal*/public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///toute
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string French {
+        /*internal*/public static string French {
             get {
                 return ResourceManager.GetString("French", resourceCulture);
             }
@@ -668,7 +668,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///darfst
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string German {
+        /*internal*/public static string German {
             get {
                 return ResourceManager.GetString("German", resourceCulture);
             }
@@ -759,7 +759,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///persone
         ///più [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Italian {
+        /*internal*/public static string Italian {
             get {
                 return ResourceManager.GetString("Italian", resourceCulture);
             }
@@ -812,7 +812,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///しかし
         ///.
         /// </summary>
-        internal static string Japanese {
+        /*internal*/public static string Japanese {
             get {
                 return ResourceManager.GetString("Japanese", resourceCulture);
             }
@@ -909,7 +909,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///rett
         ///rikti [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Norwegian_Bokmal {
+        /*internal*/public static string Norwegian_Bokmal {
             get {
                 return ResourceManager.GetString("Norwegian_Bokmal", resourceCulture);
             }
@@ -1004,7 +1004,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///nigdy
         ///n [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Polish {
+        /*internal*/public static string Polish {
             get {
                 return ResourceManager.GetString("Polish", resourceCulture);
             }
@@ -1086,7 +1086,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///ligado
         ///maio [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Portuguese {
+        /*internal*/public static string Portuguese {
             get {
                 return ResourceManager.GetString("Portuguese", resourceCulture);
             }
@@ -1168,7 +1168,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///ligado
         ///maio [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Portuguese_Brazilian {
+        /*internal*/public static string Portuguese_Brazilian {
             get {
                 return ResourceManager.GetString("Portuguese_Brazilian", resourceCulture);
             }
@@ -1251,7 +1251,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///никогда
         ///ник [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Russian {
+        /*internal*/public static string Russian {
             get {
                 return ResourceManager.GetString("Russian", resourceCulture);
             }
@@ -1324,7 +1324,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///considerada
         ///consider [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Spanish {
+        /*internal*/public static string Spanish {
             get {
                 return ResourceManager.GetString("Spanish", resourceCulture);
             }
@@ -1408,7 +1408,7 @@ namespace Microsoft.ML.Transforms.Properties {
         ///en
         ///enk [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Swedish {
+        /*internal*/public static string Swedish {
             get {
                 return ResourceManager.GetString("Swedish", resourceCulture);
             }

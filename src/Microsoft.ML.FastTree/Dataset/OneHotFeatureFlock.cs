@@ -11,7 +11,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// A feature flock for a set of features where per example at most one of the features has a
     /// non-zero bin.
     /// </summary>
-    internal sealed class OneHotFeatureFlock : SinglePartitionedIntArrayFlockBase<IntArray>
+    /*internal*/public sealed class OneHotFeatureFlock : SinglePartitionedIntArrayFlockBase<IntArray>
     {
         public OneHotFeatureFlock(IntArray bins, int[] hotFeatureStarts, double[][] binUpperBounds, bool categorical)
             : base(bins, hotFeatureStarts, binUpperBounds, categorical)

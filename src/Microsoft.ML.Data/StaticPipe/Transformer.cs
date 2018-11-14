@@ -15,7 +15,7 @@ namespace Microsoft.ML.StaticPipe
         public TTransformer AsDynamic { get; }
         private readonly StaticSchemaShape _inShape;
 
-        internal Transformer(IHostEnvironment env, TTransformer transformer, StaticSchemaShape inShape, StaticSchemaShape outShape)
+        /*internal*/public Transformer(IHostEnvironment env, TTransformer transformer, StaticSchemaShape inShape, StaticSchemaShape outShape)
             : base(env, outShape)
         {
             Env.AssertValue(transformer);

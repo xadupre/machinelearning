@@ -73,10 +73,10 @@ namespace Microsoft.ML.Transforms.Text
             public bool KeepNumbers = TextNormalizingEstimator.Defaults.KeepNumbers;
         }
 
-        internal const string Summary = "A text normalization transform that allows normalizing text case, removing diacritical marks, punctuation marks and/or numbers." +
+        /*internal*/public const string Summary = "A text normalization transform that allows normalizing text case, removing diacritical marks, punctuation marks and/or numbers." +
             " The transform operates on text input as well as vector of tokens/text (vector of ReadOnlyMemory).";
 
-        internal const string LoaderSignature = "TextNormalizerTransform";
+        /*internal*/public const string LoaderSignature = "TextNormalizerTransform";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -440,7 +440,7 @@ namespace Microsoft.ML.Transforms.Text
             None = 2
         }
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const CaseNormalizationMode TextCase = CaseNormalizationMode.Lower;
             public const bool KeepDiacritics = false;
@@ -451,7 +451,7 @@ namespace Microsoft.ML.Transforms.Text
 
         public static bool IsColumnTypeValid(ColumnType type) => (type.ItemType.IsText);
 
-        internal const string ExpectedColumnType = "Text or vector of text.";
+        /*internal*/public const string ExpectedColumnType = "Text or vector of text.";
 
         /// <summary>
         /// Normalizes incoming text in <paramref name="inputColumn"/> by changing case, removing diacritical marks, punctuation marks and/or numbers

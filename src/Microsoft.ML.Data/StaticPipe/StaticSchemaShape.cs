@@ -18,7 +18,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
     /// and their primary purpose is to ensure that the schemas of the dynamic structures and the
     /// statically declared structures are compatible.
     /// </summary>
-    internal sealed class StaticSchemaShape
+    /*internal*/public sealed class StaticSchemaShape
     {
         /// <summary>
         /// The enumeration of name/type pairs. Do not modify.

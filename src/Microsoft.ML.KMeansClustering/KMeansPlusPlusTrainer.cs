@@ -31,9 +31,9 @@ namespace Microsoft.ML.Trainers.KMeans
     public class KMeansPlusPlusTrainer : TrainerEstimatorBase<ClusteringPredictionTransformer<KMeansPredictor>, KMeansPredictor>
     {
         public const string LoadNameValue = "KMeansPlusPlus";
-        internal const string UserNameValue = "KMeans++ Clustering";
-        internal const string ShortName = "KM";
-        internal const string Summary = "K-means is a popular clustering algorithm. With K-means, the data is clustered into a specified "
+        /*internal*/public const string UserNameValue = "KMeans++ Clustering";
+        /*internal*/public const string ShortName = "KM";
+        /*internal*/public const string Summary = "K-means is a popular clustering algorithm. With K-means, the data is clustered into a specified "
             + "number of clusters in order to minimize the within-cluster sum of squares. K-means++ improves upon K-means by using a better "
             + "method for choosing the initial cluster centers.";
 
@@ -44,10 +44,10 @@ namespace Microsoft.ML.Trainers.KMeans
             KMeansParallel = 2
         }
 
-        internal static class Defaults{
+        /*internal*/public static class Defaults{
 
             /// <value>The number of clusters.</value>
-            internal const int K = 5;
+            /*internal*/public const int K = 5;
         }
 
         public class Arguments : UnsupervisedLearnerInputBaseWithWeight
@@ -113,7 +113,7 @@ namespace Microsoft.ML.Trainers.KMeans
         {
         }
 
-        internal KMeansPlusPlusTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public KMeansPlusPlusTrainer(IHostEnvironment env, Arguments args)
             : this(env, args, null)
         {
 
@@ -281,7 +281,7 @@ namespace Microsoft.ML.Trainers.KMeans
         => new ClusteringPredictionTransformer<KMeansPredictor>(Host, model, trainSchema, _featureColumn);
     }
 
-    internal static class KMeansPlusPlusInit
+    /*internal*/public static class KMeansPlusPlusInit
     {
         private const float Epsilon = (float)1e-15;
 
@@ -408,7 +408,7 @@ namespace Microsoft.ML.Trainers.KMeans
     /// and KMeansBarBarInitialization. It effectively bounds MaxInstancesToAccelerate and
     /// initializes RowIndexGetter.
     /// </summary>
-    internal sealed class KMeansAcceleratedRowMap
+    /*internal*/public sealed class KMeansAcceleratedRowMap
     {
         // Retrieves the row's index for per-instance data. If the
         // row is not assigned an index (it occurred after 'maxInstancesToAccelerate')
@@ -488,7 +488,7 @@ namespace Microsoft.ML.Trainers.KMeans
         }
     }
 
-    internal static class KMeansBarBarInitialization
+    /*internal*/public static class KMeansBarBarInitialization
     {
         /// <summary>
         /// Data for optimizing KMeans|| initialization. Very similar to SharedState class
@@ -724,7 +724,7 @@ namespace Microsoft.ML.Trainers.KMeans
             int bytesPerInstance =
                 sizeof(int)                            // for bestCluster
                 + sizeof(float)                        // for bestWeight
-                + (isParallel ? sizeof(int) + 16 : 0); // for parallel rowCursor index lookup HashArray storage (16 bytes for RowId, 4 bytes for internal 'next' index)
+                + (isParallel ? sizeof(int) + 16 : 0); // for parallel rowCursor index lookup HashArray storage (16 bytes for RowId, 4 bytes for /*internal*/public 'next' index)
 
             maxInstancesToAccelerate = Math.Max(0, (accelMemBudgetMb * 1024 * 1024 - clusterBytes) / bytesPerInstance);
         }
@@ -941,7 +941,7 @@ namespace Microsoft.ML.Trainers.KMeans
         }
     }
 
-    internal static class KMeansRandomInit
+    /*internal*/public static class KMeansRandomInit
     {
         /// <summary>
         /// Initialize starting centroids via reservoir sampling.
@@ -967,7 +967,7 @@ namespace Microsoft.ML.Trainers.KMeans
         }
     }
 
-    internal static class KMeansLloydsYinYangTrain
+    /*internal*/public static class KMeansLloydsYinYangTrain
     {
         private abstract class WorkChunkStateBase
         {
@@ -1427,7 +1427,7 @@ namespace Microsoft.ML.Trainers.KMeans
                 sizeof(int) +                             // for bestCluster
                 sizeof(float) +                           // for upperBound
                 sizeof(float) +                           // for lowerBound
-                (numThreads > 1 ? sizeof(int) + 16 : 0); // for parallel rowCursor index lookup HashArray storage (16 bytes for RowId, 4 bytes for internal 'next' index)
+                (numThreads > 1 ? sizeof(int) + 16 : 0); // for parallel rowCursor index lookup HashArray storage (16 bytes for RowId, 4 bytes for /*internal*/public 'next' index)
 
             long maxInstancesToAccelerate = Math.Max(0, (accelMemBudgetMb * 1024 * 1024 - bytesPerCluster * k) / bytesPerInstance);
 
@@ -1515,7 +1515,7 @@ namespace Microsoft.ML.Trainers.KMeans
 #endif
     }
 
-    internal static class KMeansUtils
+    /*internal*/public static class KMeansUtils
     {
         public struct WeightedPoint
         {

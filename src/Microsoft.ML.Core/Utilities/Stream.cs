@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
-    internal static partial class Utils
+    /*internal*/public static partial class Utils
     {
         private const int _bulkReadThresholdInBytes = 4096;
 
@@ -407,7 +407,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
         /// </summary>
         public static void WriteLeb128Int(this BinaryWriter writer, ulong value)
         {
-            // Copied from the internal source code for Write7BitEncodedInt()
+            // Copied from the /*internal*/public source code for Write7BitEncodedInt()
             while (value >= 0x80)
             {
                 writer.Write((byte)(value | 0x80));
@@ -890,7 +890,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
         /// </summary>
         public static ulong ReadLeb128Int(this BinaryReader reader)
         {
-            // Copied from the internal source code for Read7BitEncodedInt()
+            // Copied from the /*internal*/public source code for Read7BitEncodedInt()
             ulong value = 0;
             int shift = 0;
             byte b;

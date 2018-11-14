@@ -207,7 +207,7 @@ namespace Microsoft.ML.Runtime.Api
         public sealed class Column
         {
             private readonly Dictionary<string, MetadataInfo> _metadata;
-            internal Dictionary<string, MetadataInfo> Metadata { get { return _metadata; } }
+            /*internal*/public Dictionary<string, MetadataInfo> Metadata { get { return _metadata; } }
 
             /// <summary>
             /// The name of the member the column is taken from. The API

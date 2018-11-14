@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.Internal.Calibration;
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
     [BestFriend]
-    internal static class IniFileUtils
+    /*internal*/public static class IniFileUtils
     {
         // This could be done better by having something that actually parses the .ini file and provides more
         //  functionality. For now, we'll just provide the minimum needed. If we went the nicer route, probably would

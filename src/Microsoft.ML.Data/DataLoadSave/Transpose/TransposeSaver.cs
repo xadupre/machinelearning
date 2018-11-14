@@ -37,8 +37,8 @@ namespace Microsoft.ML.Runtime.Data.IO
             public bool Silent;
         }
 
-        internal const string Summary = "Writes data into a transposed binary TDV file.";
-        internal const string LoadName = "TransposeSaver";
+        /*internal*/public const string Summary = "Writes data into a transposed binary TDV file.";
+        /*internal*/public const string LoadName = "TransposeSaver";
         private const ulong WriterVersion = 0x0001000100010001;
 
         private readonly IHost _host;

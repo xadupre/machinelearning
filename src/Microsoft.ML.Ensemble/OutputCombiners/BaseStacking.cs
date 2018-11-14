@@ -25,7 +25,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
             [TGUI(Label = "Validation Dataset Proportion")]
             public Single ValidationDatasetProportion = 0.3f;
 
-            internal abstract IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> GetPredictorFactory();
+            /*internal*/public abstract IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> GetPredictorFactory();
         }
 
         protected readonly IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> BasePredictorType;
@@ -34,7 +34,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 
         public Single ValidationDatasetProportion { get; }
 
-        internal BaseStacking(IHostEnvironment env, string name, ArgumentsBase args)
+        /*internal*/public BaseStacking(IHostEnvironment env, string name, ArgumentsBase args)
         {
             Contracts.AssertValue(env);
             env.AssertNonWhiteSpace(name);
@@ -49,7 +49,7 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
             Host.CheckValue(BasePredictorType, nameof(BasePredictorType));
         }
 
-        internal BaseStacking(IHostEnvironment env, string name, ModelLoadContext ctx)
+        /*internal*/public BaseStacking(IHostEnvironment env, string name, ModelLoadContext ctx)
         {
             Contracts.AssertValue(env);
             env.AssertNonWhiteSpace(name);

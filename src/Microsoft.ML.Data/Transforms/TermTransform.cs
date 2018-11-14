@@ -143,7 +143,7 @@ namespace Microsoft.ML.Transforms.Categorical
             public Column[] Column;
         }
 
-        internal sealed class ColInfo
+        /*internal*/public sealed class ColInfo
         {
             public readonly string Name;
             public readonly string Source;
@@ -176,7 +176,7 @@ namespace Microsoft.ML.Transforms.Categorical
             public readonly string[] Term;
             public readonly bool TextKeyValues;
 
-            protected internal string Terms { get; set; }
+            /*protected*/ /*internal*/public string Terms { get; set; }
         }
 
         public const string Summary = "Converts input values (words, numbers, etc.) to index in a dictionary.";
@@ -240,7 +240,7 @@ namespace Microsoft.ML.Transforms.Categorical
             return columns.Select(x => (x.Input, x.Output)).ToArray();
         }
 
-        internal string TestIsKnownDataKind(ColumnType type)
+        /*internal*/public string TestIsKnownDataKind(ColumnType type)
         {
             if (type.ItemType.RawKind != default && (type.IsVector || type.IsPrimitive))
                 return null;
@@ -269,7 +269,7 @@ namespace Microsoft.ML.Transforms.Categorical
             this(env, input, columns, null, null, null)
         { }
 
-        internal TermTransform(IHostEnvironment env, IDataView input,
+        /*internal*/public TermTransform(IHostEnvironment env, IDataView input,
             ColumnInfo[] columns,
             string file = null, string termsColumn = null,
             IComponentFactory<IMultiStreamSource, IDataLoader> loaderFactory = null)

@@ -22,7 +22,7 @@ namespace Microsoft.ML.Transforms
     /// </summary>
     public class TensorFlowModelInfo
     {
-        internal TFSession Session { get; }
+        /*internal*/public TFSession Session { get; }
         public string ModelPath { get; }
 
         private readonly IHostEnvironment _env;
@@ -33,7 +33,7 @@ namespace Microsoft.ML.Transforms
         /// <param name="env">An <see cref="IHostEnvironment"/> object.</param>
         /// <param name="session">TensorFlow session object.</param>
         /// <param name="modelLocation">Location of the model from where <paramref name="session"/> was loaded.</param>
-        internal TensorFlowModelInfo(IHostEnvironment env, TFSession session, string modelLocation)
+        /*internal*/public TensorFlowModelInfo(IHostEnvironment env, TFSession session, string modelLocation)
         {
             Session = session;
             ModelPath = modelLocation;

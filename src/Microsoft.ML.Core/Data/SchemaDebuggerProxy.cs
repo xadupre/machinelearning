@@ -12,7 +12,7 @@ namespace Microsoft.ML.Core.Data
     /// <summary>
     /// The debugger proxy for <see cref="Schema"/>.
     /// </summary>
-    internal sealed class SchemaDebuggerProxy
+    /*internal*/public sealed class SchemaDebuggerProxy
     {
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.RootHidden)]
         public Schema.Column[] Columns { get; }
@@ -26,7 +26,7 @@ namespace Microsoft.ML.Core.Data
     /// <summary>
     /// The debugger proxy for <see cref="Schema.Metadata"/>.
     /// </summary>
-    internal sealed class MetadataDebuggerProxy
+    /*internal*/public sealed class MetadataDebuggerProxy
     {
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.RootHidden)]
         public IReadOnlyList<KeyValuePair<string, object>> Values { get; }

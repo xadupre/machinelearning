@@ -166,12 +166,12 @@ namespace Microsoft.ML.Runtime.Data
                 _input.GetMetadata(kind, Sources[col], ref value);
             }
 
-            internal bool[] GetActive(Func<int, bool> predicate)
+            /*internal*/public bool[] GetActive(Func<int, bool> predicate)
             {
                 return Utils.BuildArray(ColumnCount, predicate);
             }
 
-            internal Func<int, bool> GetDependencies(Func<int, bool> predicate)
+            /*internal*/public Func<int, bool> GetDependencies(Func<int, bool> predicate)
             {
                 Contracts.AssertValue(predicate);
                 var active = new bool[_input.ColumnCount];
@@ -185,7 +185,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         public const string LoaderSignature = "ChooseColumnsIdxTrans";
-        internal const string LoaderSignatureOld = "ChooseColumnsIdxFunc";
+        /*internal*/public const string LoaderSignatureOld = "ChooseColumnsIdxFunc";
         private static VersionInfo GetVersionInfo()
         {
             return new VersionInfo(

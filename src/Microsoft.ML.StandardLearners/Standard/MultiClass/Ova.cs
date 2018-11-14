@@ -40,9 +40,9 @@ namespace Microsoft.ML.Runtime.Learners
 
     public sealed class Ova : MetaMulticlassTrainer<MulticlassPredictionTransformer<OvaPredictor>, OvaPredictor>
     {
-        internal const string LoadNameValue = "OVA";
-        internal const string UserNameValue = "One-vs-All";
-        internal const string Summary = "In this strategy, a binary classification algorithm is used to train one classifier for each class, "
+        /*internal*/public const string LoadNameValue = "OVA";
+        /*internal*/public const string UserNameValue = "One-vs-All";
+        /*internal*/public const string Summary = "In this strategy, a binary classification algorithm is used to train one classifier for each class, "
             + "which distinguishes that class from all other classes. Prediction is then performed by running these binary classifiers, "
             + "and choosing the prediction with the highest confidence score.";
 
@@ -236,7 +236,7 @@ namespace Microsoft.ML.Runtime.Learners
         bool ICanSavePfa.CanSavePfa => _impl.CanSavePfa;
 
         [BestFriend]
-        internal static OvaPredictor Create(IHost host, bool useProb, TScalarPredictor[] predictors)
+        /*internal*/public static OvaPredictor Create(IHost host, bool useProb, TScalarPredictor[] predictors)
         {
             ImplBase impl;
 
@@ -438,7 +438,7 @@ namespace Microsoft.ML.Runtime.Learners
             public override IValueMapper[] Predictors { get; }
             public override bool CanSavePfa { get; }
 
-            internal ImplRaw(TScalarPredictor[] predictors)
+            /*internal*/public ImplRaw(TScalarPredictor[] predictors)
             {
                 Contracts.CheckNonEmpty(predictors, nameof(predictors));
 
@@ -502,7 +502,7 @@ namespace Microsoft.ML.Runtime.Learners
             public override IValueMapper[] Predictors => _mappers;
             public override bool CanSavePfa { get; }
 
-            internal ImplDist(IValueMapperDist[] predictors)
+            /*internal*/public ImplDist(IValueMapperDist[] predictors)
             {
                 Contracts.Check(Utils.Size(predictors) > 0);
 

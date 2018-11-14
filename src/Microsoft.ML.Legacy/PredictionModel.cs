@@ -19,13 +19,13 @@ namespace Microsoft.ML.Legacy
         private readonly TransformModel _predictorModel;
         private readonly IHostEnvironment _env;
 
-        internal PredictionModel(Stream stream)
+        /*internal*/public PredictionModel(Stream stream)
         {
             _env = new ConsoleEnvironment();
             _predictorModel = new TransformModel(_env, stream);
         }
 
-        internal TransformModel PredictorModel
+        /*internal*/public TransformModel PredictorModel
         {
             get { return _predictorModel; }
         }
@@ -179,7 +179,7 @@ namespace Microsoft.ML.Legacy
     {
         private BatchPredictionEngine<TInput, TOutput> _predictor;
 
-        internal PredictionModel(BatchPredictionEngine<TInput, TOutput> predictor, Stream stream)
+        /*internal*/public PredictionModel(BatchPredictionEngine<TInput, TOutput> predictor, Stream stream)
             : base(stream)
         {
             _predictor = predictor;

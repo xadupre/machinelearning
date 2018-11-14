@@ -84,7 +84,7 @@ namespace Microsoft.ML.Transforms.Text
 
         public sealed class Arguments : TransformInputBase
         {
-            internal const int DefaultMaxTerms = 10000000;
+            /*internal*/public const int DefaultMaxTerms = 10000000;
 
             [Argument(ArgumentType.Multiple, HelpText = "New column definition(s) (optional form: name:src)", ShortName = "col", SortOrder = 1)]
             public Column[] Column;
@@ -188,10 +188,10 @@ namespace Microsoft.ML.Transforms.Text
         private const uint VerTfIdfSupported = 0x00010002;
 
         public const string LoaderSignature = "NgramTransform";
-        internal const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive values of length 1-n) in a given vector of keys. "
+        /*internal*/public const string Summary = "Produces a bag of counts of ngrams (sequences of consecutive values of length 1-n) in a given vector of keys. "
             + "It does so by building a dictionary of ngrams and using the id in the dictionary as the index in the bag.";
 
-        internal const string UserName = "NGram Transform";
+        /*internal*/public const string UserName = "NGram Transform";
 
         private static VersionInfo GetVersionInfo()
         {

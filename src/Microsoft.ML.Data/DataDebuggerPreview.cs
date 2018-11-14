@@ -17,7 +17,7 @@ namespace Microsoft.ML.Data
     /// </summary>
     public sealed class DataDebuggerPreview
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const int MaxRows = 100;
         }
@@ -26,7 +26,7 @@ namespace Microsoft.ML.Data
         public ImmutableArray<ColumnInfo> ColumnView { get; }
         public ImmutableArray<RowInfo> RowView { get; }
 
-        internal DataDebuggerPreview(IDataView data, int maxRows = Defaults.MaxRows)
+        /*internal*/public DataDebuggerPreview(IDataView data, int maxRows = Defaults.MaxRows)
         {
             Contracts.CheckValue(data, nameof(data));
             Contracts.CheckParam(maxRows >= 0, nameof(maxRows));
@@ -89,7 +89,7 @@ namespace Microsoft.ML.Data
             public override string ToString()
                 => $"{Values.Length} columns";
 
-            internal RowInfo(int n)
+            /*internal*/public RowInfo(int n)
             {
                 Values = new KeyValuePair<string, object>[n];
             }
@@ -102,7 +102,7 @@ namespace Microsoft.ML.Data
 
             public override string ToString() => $"{Column.Name}: {Column.Type}";
 
-            internal ColumnInfo(Schema.Column column, object[] values)
+            /*internal*/public ColumnInfo(Schema.Column column, object[] values)
             {
                 Column = column;
                 Values = values;

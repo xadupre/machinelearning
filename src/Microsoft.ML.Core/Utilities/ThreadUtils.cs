@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
-    internal static partial class Utils
+    /*internal*/public static partial class Utils
     {
         public static Thread CreateBackgroundThread(ParameterizedThreadStart start)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// the set exception as an inner exception, in the wrapping thread.
     /// </summary>
     [BestFriend]
-    internal sealed class ExceptionMarshaller : IDisposable
+    /*internal*/public sealed class ExceptionMarshaller : IDisposable
     {
         private readonly CancellationTokenSource _ctSource;
         private readonly object _lock;
@@ -132,7 +132,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// running on top of the ThreadPool.
     /// </summary>
     [BestFriend]
-    internal sealed class LimitedConcurrencyLevelTaskScheduler : TaskScheduler
+    /*internal*/public sealed class LimitedConcurrencyLevelTaskScheduler : TaskScheduler
     {
         // Whether the current thread is processing work items.
         [ThreadStatic]

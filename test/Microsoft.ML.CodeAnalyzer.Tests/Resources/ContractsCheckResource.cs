@@ -62,10 +62,10 @@ namespace TestNamespace
 namespace Microsoft.ML.Runtime
 {
     [Flags]
-    internal enum MessageSensitivity
+    /*internal*/public enum MessageSensitivity
     {
         None = 0,
         Unknown = ~None
     }
-    internal interface IHostEnvironment : IExceptionContext { }
+    /*internal*/public interface IHostEnvironment : IExceptionContext { }
 }

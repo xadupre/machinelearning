@@ -7,16 +7,16 @@ using System;
 namespace Microsoft.ML
 {
     /// <summary>
-    /// Intended to be applied to types and members marked as internal to indicate that friend access of this
-    /// internal item is OK from another assembly. This restriction applies only to assemblies that declare the
+    /// Intended to be applied to types and members marked as /*internal*/public to indicate that friend access of this
+    /// /*internal*/public item is OK from another assembly. This restriction applies only to assemblies that declare the
     /// <see cref="WantsToBeBestFriendsAttribute"/> assembly level attribute. Note that this attribute is not
-    /// transferrable: an internal member with this attribute does not somehow make a containing internal type
-    /// accessible. Conversely, neither does marking an internal type make any unmarked internal members accessible.
+    /// transferrable: an /*internal*/public member with this attribute does not somehow make a containing /*internal*/public type
+    /// accessible. Conversely, neither does marking an /*internal*/public type make any unmarked /*internal*/public members accessible.
     /// </summary>
     [BestFriend]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Constructor
         | AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Delegate, AllowMultiple = false, Inherited = false)]
-    /*internal*/ sealed class BestFriendAttribute : Attribute
+    /*internal*/public sealed class BestFriendAttribute : Attribute
     {
     }
 
@@ -27,7 +27,7 @@ namespace Microsoft.ML
     /// </summary>
     [BestFriend]
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-    /*internal*/ sealed class WantsToBeBestFriendsAttribute : Attribute
+    /*internal*/public sealed class WantsToBeBestFriendsAttribute : Attribute
     {
     }
 }

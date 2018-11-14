@@ -46,7 +46,7 @@ namespace Microsoft.ML.Runtime.Data
         /// </summary>
         /// <param name="env">The host environment</param>
         /// <param name="view">The view whose columns we want to transpose</param>
-        /// <param name="forceSave">Whether the internal transposer should always unconditionally
+        /// <param name="forceSave">Whether the /*internal*/public transposer should always unconditionally
         /// save the column we are transposing. Can be useful if the original dataview is possibly
         /// slow to iterate over that column.</param>
         /// <param name="columns">The non-empty list of columns to transpose</param>
@@ -66,7 +66,7 @@ namespace Microsoft.ML.Runtime.Data
         /// </summary>
         /// <param name="env">The host environment</param>
         /// <param name="view">The view whose columns we want to transpose</param>
-        /// <param name="forceSave">Whether the internal transposer should always unconditionally
+        /// <param name="forceSave">Whether the /*internal*/public transposer should always unconditionally
         /// save the column we are transposing. Can be useful if the original dataview is possibly
         /// slow to iterate over that column.</param>
         /// <param name="columns">The non-empty list of columns to transpose</param>
@@ -1555,7 +1555,7 @@ namespace Microsoft.ML.Runtime.Data
                 public string GetColumnName(int col)
                 {
                     Host.CheckParam(col == 0, nameof(col));
-                    // There is no real need for this to have the real name as the internal IDV
+                    // There is no real need for this to have the real name as the /*internal*/public IDV
                     // substream does not have its name accessed, but we'll save it just the same.
                     // I am tempted though to just have this thing always claim its name is 'Pancakes'.
                     return _parent._data.Schema.GetColumnName(_parent._col);
@@ -1727,7 +1727,7 @@ namespace Microsoft.ML.Runtime.Data
         /// <see cref="ITransposeDataView"/> implementations that are wrapping a data view
         /// that might not implement that interface.
         /// </summary>
-        internal sealed class SimpleTransposeSchema : ITransposeSchema
+        /*internal*/public sealed class SimpleTransposeSchema : ITransposeSchema
         {
             private readonly ISchema _schema;
 

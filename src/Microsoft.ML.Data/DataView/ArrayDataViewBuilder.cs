@@ -408,7 +408,7 @@ namespace Microsoft.ML.Runtime.Data
 
         /// <summary>
         /// A column where the input and output types are the same, and simple assignment does
-        /// not compromise ownership of the internal vlaues.
+        /// not compromise ownership of the /*internal*/public vlaues.
         /// </summary>
         private sealed class AssignmentColumn<T> : Column<T, T>
         {

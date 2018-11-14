@@ -571,7 +571,7 @@ namespace Microsoft.ML.Runtime.Data
             /// </remarks>
             public double[] PerClassLogLoss { get; }
 
-            internal Result(IExceptionContext ectx, IRow overallResult, int topK)
+            /*internal*/public Result(IExceptionContext ectx, IRow overallResult, int topK)
             {
                 double FetchDouble(string name) => RowCursorUtils.Fetch<double>(ectx, overallResult, name);
                 AccuracyMicro = FetchDouble(MultiClassClassifierEvaluator.AccuracyMicro);

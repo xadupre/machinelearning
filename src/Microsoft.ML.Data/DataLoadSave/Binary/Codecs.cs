@@ -13,7 +13,7 @@ using Microsoft.ML.Runtime.Internal.Internallearn;
 
 namespace Microsoft.ML.Runtime.Data.IO
 {
-    internal sealed partial class CodecFactory
+    /*internal*/public sealed partial class CodecFactory
     {
         /// <summary>
         /// A convenient base class for value writers.
@@ -793,7 +793,7 @@ namespace Microsoft.ML.Runtime.Data.IO
 
             private readonly CodecFactory _factory;
             private readonly VectorType _type;
-            // The codec for the internal elements.
+            // The codec for the /*internal*/public elements.
             private readonly IValueCodec<T> _innerCodec;
             private readonly MadeObjectPool<T[]> _bufferPool;
             private readonly MadeObjectPool<int[]> _intBufferPool;
@@ -1139,17 +1139,17 @@ namespace Microsoft.ML.Runtime.Data.IO
 
         private bool GetVBufferCodec(Stream definitionStream, out IValueCodec codec)
         {
-            // The first value in the definition stream will be the internal codec.
+            // The first value in the definition stream will be the /*internal*/public codec.
             IValueCodec innerCodec;
             if (!TryReadCodec(definitionStream, out innerCodec))
             {
                 codec = default(IValueCodec);
                 return false;
             }
-            // From this internal codec, get the VBuffer type of the codec we will return.
+            // From this /*internal*/public codec, get the VBuffer type of the codec we will return.
             var itemType = innerCodec.Type as PrimitiveType;
             Contracts.CheckDecode(itemType != null);
-            // Following the internal type definition is the dimensions.
+            // Following the /*internal*/public type definition is the dimensions.
             VectorType type;
             using (BinaryReader reader = OpenBinaryReader(definitionStream))
             {
@@ -1258,7 +1258,7 @@ namespace Microsoft.ML.Runtime.Data.IO
 
         private bool GetKeyCodec(Stream definitionStream, out IValueCodec codec)
         {
-            // The first value in the definition stream will be the internal codec.
+            // The first value in the definition stream will be the /*internal*/public codec.
             IValueCodec innerCodec;
             if (!TryReadCodec(definitionStream, out innerCodec))
             {
@@ -1294,7 +1294,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         {
             if (!type.IsKey)
                 throw Contracts.ExceptParam(nameof(type), "type must be a key type");
-            // Create the internal codec the key codec will use to do the actual reading/writing.
+            // Create the /*internal*/public codec the key codec will use to do the actual reading/writing.
             IValueCodec innerCodec;
             if (!TryGetCodec(NumberType.FromKind(type.RawKind), out innerCodec))
             {

@@ -53,7 +53,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
             return new DataReaderEstimator<TIn, TOutShape, IDataReader<TIn>>(env, readerEstimator, schema);
         }
 
-        internal static IDataReaderEstimator<TIn, IDataReader<TIn>>
+        /*internal*/public static IDataReaderEstimator<TIn, IDataReader<TIn>>
             GeneralFunctionAnalyzer<TIn, TDelegateInput, TOutShape>(
             IHostEnvironment env,
             IChannel ch,
@@ -376,7 +376,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
         /// </summary>
         /// <typeparam name="T">The shape type.</typeparam>
         /// <param name="schematized">The object for which we get the environment.</param>
-        /// <returns>The internal <see cref="IHostEnvironment"/> of the object.</returns>
+        /// <returns>The /*internal*/public <see cref="IHostEnvironment"/> of the object.</returns>
         public static IHostEnvironment GetEnvironment<T>(SchemaBearing<T> schematized)
         {
             Contracts.CheckValue(schematized, nameof(schematized));
@@ -445,7 +445,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
             /// object, since its construction is somewhat expensive.
             /// </summary>
             /// <param name="schematized">Constructs the helper for this object.</param>
-            internal IndexHelper(SchemaBearing<T> schematized)
+            /*internal*/public IndexHelper(SchemaBearing<T> schematized)
             {
                 Indices = StaticPipeInternalUtils.MakeAnalysisInstance<T>(out var rec);
                 // We define this delegate just to get its return parameter, so the name extractor has something

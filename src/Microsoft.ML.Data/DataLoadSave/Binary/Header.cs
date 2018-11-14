@@ -38,7 +38,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         public const ulong WriterVersion = 0x0001000100010006; // Replace DvTypes with .NET Standard data types.
         public const ulong CanBeReadByVersion = 0x0001000100010006;
 
-        internal static string VersionToString(ulong v)
+        /*internal*/public static string VersionToString(ulong v)
         {
             return string.Format("{0}.{1}.{2}.{3}",
                 (v >> 48) & 0xffff, (v >> 32) & 0xffff,

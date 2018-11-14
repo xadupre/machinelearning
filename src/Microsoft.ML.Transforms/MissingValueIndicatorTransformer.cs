@@ -60,7 +60,7 @@ namespace Microsoft.ML.Transforms
             public Column[] Column;
         }
 
-        internal const string LoadName = "NaIndicatorTransform";
+        /*internal*/public const string LoadName = "NaIndicatorTransform";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -73,10 +73,10 @@ namespace Microsoft.ML.Transforms
                 loaderAssemblyName: typeof(MissingValueIndicatorTransformer).Assembly.FullName);
         }
 
-        internal const string Summary = "Create a boolean output column with the same number of slots as the input column, where the output value"
+        /*internal*/public const string Summary = "Create a boolean output column with the same number of slots as the input column, where the output value"
             + " is true if the value in the input column is missing.";
-        internal const string FriendlyName = "NA Indicator Transform";
-        internal const string ShortName = "NAInd";
+        /*internal*/public const string FriendlyName = "NA Indicator Transform";
+        /*internal*/public const string ShortName = "NAInd";
 
         private const string RegistrationName = nameof(MissingValueIndicatorTransformer);
 
@@ -92,7 +92,7 @@ namespace Microsoft.ML.Transforms
         {
         }
 
-        internal MissingValueIndicatorTransformer(IHostEnvironment env, Arguments args)
+        /*internal*/public MissingValueIndicatorTransformer(IHostEnvironment env, Arguments args)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(MissingValueIndicatorTransformer)), GetColumnPairs(args.Column))
         {
         }
@@ -107,7 +107,7 @@ namespace Microsoft.ML.Transforms
             => columns.Select(c => (c.Source ?? c.Name, c.Name)).ToArray();
 
         // Factory method for SignatureLoadModel
-        internal static MissingValueIndicatorTransformer Create(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public static MissingValueIndicatorTransformer Create(IHostEnvironment env, ModelLoadContext ctx)
         {
             Contracts.CheckValue(env, nameof(env));
             ctx.CheckAtModel(GetVersionInfo());
@@ -116,15 +116,15 @@ namespace Microsoft.ML.Transforms
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
             => new MissingValueIndicatorTransformer(env, args).MakeDataTransform(input);
 
         // Factory method for SignatureLoadDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, ModelLoadContext ctx, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, ModelLoadContext ctx, IDataView input)
             => Create(env, ctx).MakeDataTransform(input);
 
         // Factory method for SignatureLoadRowMapper.
-        internal static IRowMapper Create(IHostEnvironment env, ModelLoadContext ctx, ISchema inputSchema)
+        /*internal*/public static IRowMapper Create(IHostEnvironment env, ModelLoadContext ctx, ISchema inputSchema)
             => Create(env, ctx).MakeRowMapper(Schema.Create(inputSchema));
 
         /// <summary>

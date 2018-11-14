@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// Note: Supports adding and looking up of items but does not support removal of items.
     /// </summary>
     [BestFriend]
-    internal sealed class HashArray<TItem>
+    /*internal*/public sealed class HashArray<TItem>
         // REVIEW: May want to not consider not making TItem have to be IComparable but instead
         // could support user specified sort order.
         where TItem : IEquatable<TItem>, IComparable<TItem>

@@ -13,7 +13,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// Implements a heap.
     /// </summary>
     [BestFriend]
-    internal sealed class Heap<T>
+    /*internal*/public sealed class Heap<T>
     {
         private readonly List<T> _rgv; // The heap elements. The 0th element is a dummy.
         private readonly Func<T, T, bool> _fnReverse;
@@ -197,7 +197,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// <summary>
     /// For the heap to allow deletion, the heap node has to derive from this class.
     /// </summary>
-    internal abstract class HeapNode
+    /*internal*/public abstract class HeapNode
     {
         // Where this node lives in the heap. Zero means it isn't in the heap.
         private int _index;

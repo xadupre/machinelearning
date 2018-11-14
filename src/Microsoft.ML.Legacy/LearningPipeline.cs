@@ -64,7 +64,7 @@ namespace Microsoft.ML.Legacy
         /// </summary>
         /// <param name="seed">Specify seed for random generator</param>
         /// <param name="conc">Specify concurrency factor (default value - autoselection)</param>
-        internal LearningPipeline(int? seed = null, int conc = 0)
+        /*internal*/public LearningPipeline(int? seed = null, int conc = 0)
         {
             Items = new List<ILearningPipelineItem>();
             _seed = seed;
@@ -250,7 +250,7 @@ namespace Microsoft.ML.Legacy
         /// <returns>
         /// The IDataView that was returned by the pipeline.
         /// </returns>
-        internal IDataView Execute(IHostEnvironment environment)
+        /*internal*/public IDataView Execute(IHostEnvironment environment)
         {
             Experiment experiment = environment.CreateExperiment();
             ILearningPipelineStep step = null;

@@ -4,7 +4,7 @@
 
 namespace Microsoft.ML.InternalCodeAnalyzer
 {
-    internal static class Utils
+    /*internal*/public static class Utils
     {
         /// <summary>
         /// Checks whether a name is properly <c>camelCased</c> or <c>PascalCased</c>.

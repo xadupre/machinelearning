@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.Ensemble
 {
-    internal static class EnsembleUtils
+    /*internal*/public static class EnsembleUtils
     {
         /// <summary>
         /// Return a dataset with non-selected features zeroed out.

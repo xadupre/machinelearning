@@ -104,7 +104,7 @@ namespace Microsoft.ML.Runtime
 
     public sealed class LogLoss : ISupportSdcaClassificationLoss
     {
-        internal const string Summary = "The log loss function for classification. Supported by SDCA.";
+        /*internal*/public const string Summary = "The log loss function for classification. Supported by SDCA.";
         private const Float Threshold = 0.5f;
 
         public Double Loss(Float output, Float label)
@@ -173,11 +173,11 @@ namespace Microsoft.ML.Runtime
             IClassificationLoss IComponentFactory<IClassificationLoss>.CreateComponent(IHostEnvironment env) => new HingeLoss(this);
         }
 
-        internal const string Summary = "The Hinge loss function for classification. Supported by SDCA.";
+        /*internal*/public const string Summary = "The Hinge loss function for classification. Supported by SDCA.";
         private const Float Threshold = 0.5f;
         private readonly Float _margin;
 
-        internal HingeLoss(Arguments args)
+        /*internal*/public HingeLoss(Arguments args)
         {
             _margin = args.Margin;
         }
@@ -245,7 +245,7 @@ namespace Microsoft.ML.Runtime
             IClassificationLoss IComponentFactory<IClassificationLoss>.CreateComponent(IHostEnvironment env) => new SmoothedHingeLoss(env, this);
         }
 
-        internal const string Summary = "The smooth Hinge loss function for classification. Supported by SDCA.";
+        /*internal*/public const string Summary = "The smooth Hinge loss function for classification. Supported by SDCA.";
         private const Float Threshold = 0.5f;
         // The smoothed Hinge loss is 1/(_SmoothParam) smooth (its definition can be found in http://jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf (page 568 Definition 1)
         private readonly Float _smoothConst;
@@ -342,7 +342,7 @@ namespace Microsoft.ML.Runtime
             public IClassificationLoss CreateComponent(IHostEnvironment env) => new ExpLoss(this);
         }
 
-        internal const string Summary = "The exponential loss function for classification.";
+        /*internal*/public const string Summary = "The exponential loss function for classification.";
 
         private readonly Float _beta;
 
@@ -375,7 +375,7 @@ namespace Microsoft.ML.Runtime
 
     public sealed class SquaredLoss : ISupportSdcaRegressionLoss
     {
-        internal const string Summary = "The squared loss function for regression.";
+        /*internal*/public const string Summary = "The squared loss function for regression.";
 
         public Double Loss(Float output, Float label)
         {
@@ -417,7 +417,7 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     public sealed class PoissonLoss : IRegressionLoss
     {
-        internal const string Summary = "The Poisson loss function for regression.";
+        /*internal*/public const string Summary = "The Poisson loss function for regression.";
 
         public Double Loss(Float output, Float label)
         {
@@ -449,7 +449,7 @@ namespace Microsoft.ML.Runtime
             public IRegressionLoss CreateComponent(IHostEnvironment env) => new TweedieLoss(this);
         }
 
-        internal const string Summary = "The Tweedie loss function for regression.";
+        /*internal*/public const string Summary = "The Tweedie loss function for regression.";
 
         private readonly Double _index;  // The index parameter specified by the user.
         private readonly Double _index1; // 1 minus the index parameter.

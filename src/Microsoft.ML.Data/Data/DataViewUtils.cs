@@ -367,7 +367,7 @@ namespace Microsoft.ML.Runtime.Data
                         var localCursor = inputs[t];
                         ch.Assert(localCursor.State == CursorState.NotStarted);
                         // Note that these all take ownership of their respective cursors,
-                        // so they all handle their disposal internal to the thread.
+                        // so they all handle their disposal /*internal*/public to the thread.
                         workers[t] = Utils.CreateBackgroundThread(() =>
                         {
                             // This will be the last batch sent in the finally. If iteration procedes without
@@ -1135,7 +1135,7 @@ namespace Microsoft.ML.Runtime.Data
         /// at the cost of being totally synchronous, that is, there is no parallel benefit from
         /// having split the input cursors.
         /// </summary>
-        internal sealed class SynchronousConsolidatingCursor : RootCursorBase, IRowCursor
+        /*internal*/public sealed class SynchronousConsolidatingCursor : RootCursorBase, IRowCursor
         {
             private readonly IRowCursor[] _cursors;
             private readonly Delegate[] _getters;

@@ -15,7 +15,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// The box class that is used to box the TInput and TOutput for the LambdaTransform.
     /// </summary>
     /// <typeparam name="T">The type to be boxed, e.g. TInput or TOutput</typeparam>
-    internal sealed class DataBox<T>
+    /*internal*/public sealed class DataBox<T>
     {
         public T Value;
 
@@ -54,7 +54,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             private protected SequentialTransformBase<TInput, TOutput, TState> ParentTransform;
 
             /// <summary>
-            /// The internal windowed buffer for buffering the values in the input sequence.
+            /// The /*internal*/public windowed buffer for buffering the values in the input sequence.
             /// </summary>
             private protected FixedSizeQueue<TInput> WindowedBuffer;
 

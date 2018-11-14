@@ -75,7 +75,7 @@ namespace Microsoft.ML.Runtime.Data
             }
         }
 
-        internal const string Summary = "Produces a new column with the row ID.";
+        /*internal*/public const string Summary = "Produces a new column with the row ID.";
         public const string LoaderSignature = "ProduceIdTransform";
         private static VersionInfo GetVersionInfo()
         {

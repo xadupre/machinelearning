@@ -21,7 +21,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return Math.Abs(x) <= _tol;
         }
 
-        internal static void FindQuadraticRoots(Double b, Double c, out Complex root1, out Complex root2)
+        /*internal*/public static void FindQuadraticRoots(Double b, Double c, out Complex root1, out Complex root2)
         {
             var delta = b * b - 4 * c;
             var sqrtDelta = Math.Sqrt(Math.Abs(delta));
@@ -169,7 +169,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 SetKey();
             }
 
-            internal PolynomialFactor(decimal key)
+            /*internal*/public PolynomialFactor(decimal key)
             {
                 _key = key;
             }

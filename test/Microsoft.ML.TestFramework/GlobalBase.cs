@@ -16,7 +16,7 @@ using Xunit;
 
 namespace Microsoft.ML.Runtime.Internal.Internallearn.Test
 {
-    internal static class GlobalBase
+    /*internal*/public static class GlobalBase
     {
         public static void AssemblyInit()
         {

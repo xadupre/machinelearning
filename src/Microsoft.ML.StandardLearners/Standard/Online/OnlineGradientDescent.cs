@@ -29,11 +29,11 @@ namespace Microsoft.ML.Trainers.Online
     /// <include file='doc.xml' path='doc/members/member[@name="OGD"]/*' />
     public sealed class OnlineGradientDescentTrainer : AveragedLinearTrainer<RegressionPredictionTransformer<LinearRegressionPredictor>, LinearRegressionPredictor>
     {
-        internal const string LoadNameValue = "OnlineGradientDescent";
-        internal const string UserNameValue = "Stochastic Gradient Descent (Regression)";
-        internal const string Summary = "Stochastic gradient descent is an optimization method used to train a wide range of models in machine learning. "
+        /*internal*/public const string LoadNameValue = "OnlineGradientDescent";
+        /*internal*/public const string UserNameValue = "Stochastic Gradient Descent (Regression)";
+        /*internal*/public const string Summary = "Stochastic gradient descent is an optimization method used to train a wide range of models in machine learning. "
             + "In the TLC implementation of OGD, it is for linear regression.";
-        internal const string ShortName = "ogd";
+        /*internal*/public const string ShortName = "ogd";
 
         public sealed class Arguments : AveragedLinearArguments
         {
@@ -50,12 +50,12 @@ namespace Microsoft.ML.Trainers.Online
                 DecreaseLearningRate = OgdDefaultArgs.DecreaseLearningRate;
             }
 
-            internal override IComponentFactory<IScalarOutputLoss> LossFunctionFactory => LossFunction;
+            /*internal*/public override IComponentFactory<IScalarOutputLoss> LossFunctionFactory => LossFunction;
 
-            internal class OgdDefaultArgs : AveragedDefaultArgs
+            /*internal*/public class OgdDefaultArgs : AveragedDefaultArgs
             {
-                internal new const float LearningRate = 0.1f;
-                internal new const bool DecreaseLearningRate = true;
+                /*internal*/public new const float LearningRate = 0.1f;
+                /*internal*/public new const bool DecreaseLearningRate = true;
             }
         }
 
@@ -136,7 +136,7 @@ namespace Microsoft.ML.Trainers.Online
             IRegressionLoss IComponentFactory<IRegressionLoss>.CreateComponent(IHostEnvironment env) => _loss;
         }
 
-        internal OnlineGradientDescentTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public OnlineGradientDescentTrainer(IHostEnvironment env, Arguments args)
         : base(args, env, UserNameValue, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn))
         {
             LossFunction = args.LossFunction.CreateComponent(env);

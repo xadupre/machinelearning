@@ -146,12 +146,12 @@ namespace Microsoft.ML.Transforms.Conversions
             public string Range;
         }
 
-        internal const string Summary = "Converts a column to a different type, using standard conversions.";
-        internal const string UserName = "Convert Transform";
-        internal const string ShortName = "Convert";
+        /*internal*/public const string Summary = "Converts a column to a different type, using standard conversions.";
+        /*internal*/public const string UserName = "Convert Transform";
+        /*internal*/public const string ShortName = "Convert";
 
-        internal const string LoaderSignature = "ConvertTransform";
-        internal const string LoaderSignatureOld = "ConvertFunction";
+        /*internal*/public const string LoaderSignature = "ConvertTransform";
+        /*internal*/public const string LoaderSignatureOld = "ConvertFunction";
         private static VersionInfo GetVersionInfo()
         {
             return new VersionInfo(
@@ -303,7 +303,7 @@ namespace Microsoft.ML.Transforms.Conversions
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -361,7 +361,7 @@ namespace Microsoft.ML.Transforms.Conversions
 
         protected override IRowMapper MakeRowMapper(Schema schema) => new Mapper(this, schema);
 
-        internal static bool GetNewType(IExceptionContext ectx, ColumnType srcType, DataKind kind, KeyRange range, out PrimitiveType itemType)
+        /*internal*/public static bool GetNewType(IExceptionContext ectx, ColumnType srcType, DataKind kind, KeyRange range, out PrimitiveType itemType)
         {
             if (range != null)
             {
@@ -521,7 +521,7 @@ namespace Microsoft.ML.Transforms.Conversions
     /// </summary>
     public sealed class ConvertingEstimator : TrivialEstimator<ConvertingTransform>
     {
-        internal sealed class Defaults
+        /*internal*/public sealed class Defaults
         {
             public const DataKind DefaultOutputKind = DataKind.R4;
         }

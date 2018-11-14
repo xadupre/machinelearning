@@ -523,7 +523,7 @@ namespace Microsoft.ML.Transforms.Normalizers
 
     public sealed partial class NormalizeTransform
     {
-        internal abstract partial class AffineColumnFunction
+        /*internal*/public abstract partial class AffineColumnFunction
         {
             public static IColumnFunction Create(IHost host, TFloat scale, TFloat offset)
             {
@@ -851,7 +851,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal abstract partial class CdfColumnFunction
+        /*internal*/public abstract partial class CdfColumnFunction
         {
             public static IColumnFunction Create(IHost host, TFloat mean, TFloat stddev, bool useLog)
             {
@@ -1026,7 +1026,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal abstract partial class BinColumnFunction
+        /*internal*/public abstract partial class BinColumnFunction
         {
             public static IColumnFunction Create(IHost host, TFloat[] binUpperBounds, bool fixZero)
             {
@@ -1265,7 +1265,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static partial class MinMaxUtils
+        /*internal*/public static partial class MinMaxUtils
         {
             public static void ComputeScaleAndOffset(bool fixZero, TFloat max, TFloat min, out TFloat scale, out TFloat offset)
             {
@@ -1322,7 +1322,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static partial class MeanVarUtils
+        /*internal*/public static partial class MeanVarUtils
         {
             public static void ComputeScaleAndOffset(Double mean, Double stddev, out TFloat scale, out TFloat offset)
             {
@@ -1374,7 +1374,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             }
         }
 
-        internal static partial class BinUtils
+        /*internal*/public static partial class BinUtils
         {
             public static TFloat GetValue(ref TFloat input, TFloat[] binUpperBounds, TFloat den, TFloat offset)
             {

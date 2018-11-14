@@ -10,7 +10,7 @@ namespace Microsoft.ML.Runtime.LightGBM
     /// <summary>
     /// Helpers to train a booster with given parameters.
     /// </summary>
-    internal static class WrappedLightGbmTraining
+    /*internal*/public static class WrappedLightGbmTraining
     {
         /// <summary>
         /// Train and return a booster.

@@ -10,9 +10,9 @@ using System.Security;
 
 namespace Microsoft.ML.Runtime.FactorizationMachine
 {
-    internal static unsafe class FieldAwareFactorizationMachineInterface
+    /*internal*/public static unsafe class FieldAwareFactorizationMachineInterface
     {
-        internal const string NativePath = "FactorizationMachineNative";
+        /*internal*/public const string NativePath = "FactorizationMachineNative";
         public const int CbAlign = 16;
 
         private static bool Compat(AlignedArray a)

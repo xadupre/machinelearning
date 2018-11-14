@@ -151,7 +151,9 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn.ResultProcessor
         /// <param name="extraAssemblies"></param>
         private Dictionary<string, string> GetDefaultSettings(IHostEnvironment env, string predictorName, string[] extraAssemblies = null)
         {
+#pragma warning disable CS0436 // Type conflicts with imported type
             AssemblyLoadingUtils.LoadAndRegister(env, extraAssemblies);
+#pragma warning restore CS0436 // Type conflicts with imported type
 
             var cls = env.ComponentCatalog.GetLoadableClassInfo<SignatureTrainer>(predictorName);
             if (cls == null)
@@ -1154,7 +1156,9 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn.ResultProcessor
         {
             string currentDirectory = Path.GetDirectoryName(typeof(ResultProcessor).Module.FullyQualifiedName);
             using (var env = new ConsoleEnvironment(42))
+#pragma warning disable CS0436 // Type conflicts with imported type
             using (AssemblyLoadingUtils.CreateAssemblyRegistrar(env, currentDirectory))
+#pragma warning restore CS0436 // Type conflicts with imported type
                 return Main(env, args);
         }
 
@@ -1197,7 +1201,9 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn.ResultProcessor
             if (cmd.IncludePerFoldResults)
                 cmd.PerFoldResultSeparator = "" + PredictionUtil.SepCharFromString(cmd.PerFoldResultSeparator);
 
+#pragma warning disable CS0436 // Type conflicts with imported type
             AssemblyLoadingUtils.LoadAndRegister(env, cmd.ExtraAssemblies);
+#pragma warning restore CS0436 // Type conflicts with imported type
 
             if (cmd.Metrics.Length == 0)
                 cmd.Metrics = null;

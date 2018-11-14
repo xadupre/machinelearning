@@ -212,21 +212,21 @@ namespace Microsoft.ML.Transforms.Projections
             }
         }
 
-        internal const string GcnSummary = "Performs a global contrast normalization on input values: Y = (s * X - M) / D, where s is a scale, M is mean and D is "
+        /*internal*/public const string GcnSummary = "Performs a global contrast normalization on input values: Y = (s * X - M) / D, where s is a scale, M is mean and D is "
             + "either L2 norm or standard deviation.";
-        internal const string UserNameGn = "Global Contrast Normalization Transform";
-        internal const string ShortNameGn = "Gcn";
+        /*internal*/public const string UserNameGn = "Global Contrast Normalization Transform";
+        /*internal*/public const string ShortNameGn = "Gcn";
 
-        internal const string Summary = "Normalize vectors (rows) individually by rescaling them to unit norm (L2, L1 or LInf). Performs the following operation on a vector X: "
+        /*internal*/public const string Summary = "Normalize vectors (rows) individually by rescaling them to unit norm (L2, L1 or LInf). Performs the following operation on a vector X: "
             + "Y = (X - M) / D, where M is mean and D is either L2 norm, L1 norm or LInf norm.";
 
-        internal const string UserNameLP = "Lp-Norm Normalizer";
-        internal const string ShortNameLP = "lpnorm";
+        /*internal*/public const string UserNameLP = "Lp-Norm Normalizer";
+        /*internal*/public const string ShortNameLP = "lpnorm";
 
         private const uint VerVectorNormalizerSupported = 0x00010002;
 
         public const string LoaderSignature = "GcnTransform";
-        internal const string LoaderSignatureOld = "GcnFunction";
+        /*internal*/public const string LoaderSignatureOld = "GcnFunction";
         private static VersionInfo GetVersionInfo()
         {
             return new VersionInfo(

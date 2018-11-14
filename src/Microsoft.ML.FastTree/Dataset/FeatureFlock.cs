@@ -232,7 +232,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
             }
         }
 
-        internal void FindBestSplitForFeature(ILeafSplitStatisticsCalculator leafCalculator,
+        /*internal*/public void FindBestSplitForFeature(ILeafSplitStatisticsCalculator leafCalculator,
             LeastSquaresRegressionTreeLearner.LeafSplitCandidates leafSplitCandidates,
             int totalCount, double sumTargets, double sumWeights,
             int featureIndex, int flockIndex, int subfeatureIndex, double minDocsInLeaf,
@@ -1105,7 +1105,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
     /// except the first (zero) bin.
     /// </summary>
     /// <typeparam name="TIntArray">The type of <see>IntArray</see> this implementation wraps</typeparam>
-    internal abstract class SinglePartitionedIntArrayFlockBase<TIntArray> : FeatureFlockBase
+    /*internal*/public abstract class SinglePartitionedIntArrayFlockBase<TIntArray> : FeatureFlockBase
         where TIntArray : IntArray
     {
         public readonly TIntArray Bins;

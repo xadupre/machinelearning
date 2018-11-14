@@ -1204,7 +1204,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         }
     }
 
-    internal interface ILeafSplitStatisticsCalculator
+    /*internal*/public interface ILeafSplitStatisticsCalculator
     {
         double CalculateSplittedLeafOutput(int count, double sumTargets, double sumWeights);
 

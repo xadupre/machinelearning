@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal abstract class GeneratorBase
+    /*internal*/public abstract class GeneratorBase
     {
         protected string Name;
         protected string Owner;

@@ -56,7 +56,7 @@ namespace Microsoft.ML.Transforms
             public int NumBins = Defaults.NumBins;
         }
 
-        internal static string RegistrationName = "MutualInformationFeatureSelectionTransform";
+        /*internal*/public static string RegistrationName = "MutualInformationFeatureSelectionTransform";
 
         /// <summary>
         /// A helper method to create <see cref="IDataTransform"/> for selecting the top k slots ordered by their mutual information.
@@ -280,7 +280,7 @@ namespace Microsoft.ML.Transforms
             return TrainCore(host, input, labelColumnName, columns, numBins, colSizes);
         }
 
-        internal static Single[][] TrainCore(IHost host, IDataView input, string labelColumnName, string[] columns, int numBins, int[] colSizes)
+        /*internal*/public static Single[][] TrainCore(IHost host, IDataView input, string labelColumnName, string[] columns, int numBins, int[] colSizes)
         {
             var impl = new Impl(host);
             return impl.GetScores(input, labelColumnName, columns, numBins, colSizes);

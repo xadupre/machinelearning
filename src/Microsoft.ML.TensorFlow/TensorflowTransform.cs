@@ -145,23 +145,23 @@ namespace Microsoft.ML.Transforms
         private readonly bool _isTemporarySavedModel;
         private const string RegistrationName = "TensorFlowTransform";
 
-        internal readonly TFSession Session;
-        internal readonly ColumnType[] OutputTypes;
-        internal readonly TFDataType[] TFOutputTypes;
-        internal readonly TFDataType[] TFInputTypes;
-        internal readonly TFShape[] TFInputShapes;
-        internal TFGraph Graph => Session.Graph;
+        /*internal*/public readonly TFSession Session;
+        /*internal*/public readonly ColumnType[] OutputTypes;
+        /*internal*/public readonly TFDataType[] TFOutputTypes;
+        /*internal*/public readonly TFDataType[] TFInputTypes;
+        /*internal*/public readonly TFShape[] TFInputShapes;
+        /*internal*/public TFGraph Graph => Session.Graph;
 
         public readonly string[] Inputs;
         public readonly string[] Outputs;
 
         public static int BatchSize = 1;
-        internal const string Summary = "Transforms the data using the TensorFlow model.";
-        internal const string UserName = "TensorFlowTransform";
-        internal const string ShortName = "TFTransform";
-        internal const string LoaderSignature = "TensorFlowTransform";
+        /*internal*/public const string Summary = "Transforms the data using the TensorFlow model.";
+        /*internal*/public const string UserName = "TensorFlowTransform";
+        /*internal*/public const string ShortName = "TFTransform";
+        /*internal*/public const string LoaderSignature = "TensorFlowTransform";
 
-        internal static class DefaultModelFileNames
+        /*internal*/public static class DefaultModelFileNames
         {
             public const string VariablesFolder = "variables";
             public const string Index = "variables.index";
@@ -284,12 +284,12 @@ namespace Microsoft.ML.Transforms
             return new TensorFlowTransform(env, args, input).MakeDataTransform(input);
         }
 
-        internal TensorFlowTransform(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public TensorFlowTransform(IHostEnvironment env, Arguments args, IDataView input)
             :this(env,args, TensorFlowUtils.LoadTensorFlowModel(env,args.ModelLocation), input)
         {
         }
 
-        internal TensorFlowTransform(IHostEnvironment env, Arguments args, TensorFlowModelInfo tensorFlowModel, IDataView input)
+        /*internal*/public TensorFlowTransform(IHostEnvironment env, Arguments args, TensorFlowModelInfo tensorFlowModel, IDataView input)
             : this(env, tensorFlowModel.Session, args.InputColumns, args.OutputColumns, TensorFlowUtils.IsSavedModel(env, args.ModelLocation) ? args.ModelLocation : null, false)
         {
 
@@ -602,7 +602,7 @@ namespace Microsoft.ML.Transforms
                 outputs[j] = ctx.LoadNonEmptyString();
         }
 
-        internal TensorFlowTransform(IHostEnvironment env, TFSession session, string[] inputs, string[] outputs, string savedModelPath, bool isTemporarySavedModel)
+        /*internal*/public TensorFlowTransform(IHostEnvironment env, TFSession session, string[] inputs, string[] outputs, string savedModelPath, bool isTemporarySavedModel)
         {
             Contracts.CheckValue(env, nameof(env));
             _host = env.Register(nameof(RegistrationName));
@@ -620,7 +620,7 @@ namespace Microsoft.ML.Transforms
             (TFOutputTypes, OutputTypes) = GetOutputInfo(_host, Session, Outputs);
         }
 
-        internal static (TFDataType[] tfInputTypes, TFShape[] tfInputShapes) GetInputInfo(IHost host, TFSession session, string[] inputs)
+        /*internal*/public static (TFDataType[] tfInputTypes, TFShape[] tfInputShapes) GetInputInfo(IHost host, TFSession session, string[] inputs)
         {
             var tfInputTypes = new TFDataType[inputs.Length];
             var tfInputShapes = new TFShape[inputs.Length];
@@ -653,7 +653,7 @@ namespace Microsoft.ML.Transforms
             return (tfInputTypes, tfInputShapes);
         }
 
-        internal static (TFDataType[] tfOutputTypes, ColumnType[] outputTypes) GetOutputInfo(IHost host, TFSession session, string[] outputs)
+        /*internal*/public static (TFDataType[] tfOutputTypes, ColumnType[] outputTypes) GetOutputInfo(IHost host, TFSession session, string[] outputs)
         {
             var tfOutputTypes = new TFDataType[outputs.Length];
             var outputTypes = new ColumnType[outputs.Length];

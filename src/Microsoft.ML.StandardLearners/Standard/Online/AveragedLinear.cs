@@ -54,14 +54,14 @@ namespace Microsoft.ML.Trainers.Online
         [Argument(ArgumentType.AtMostOnce, HelpText = "The inexactness tolerance for averaging", ShortName = "avgtol")]
         public Float AveragedTolerance = (Float)1e-2;
 
-        internal class AveragedDefaultArgs : OnlineDefaultArgs
+        /*internal*/public class AveragedDefaultArgs : OnlineDefaultArgs
         {
-            internal const Float LearningRate = 1;
-            internal const bool DecreaseLearningRate = false;
-            internal const Float L2RegularizerWeight = 0;
+            /*internal*/public const Float LearningRate = 1;
+            /*internal*/public const bool DecreaseLearningRate = false;
+            /*internal*/public const Float L2RegularizerWeight = 0;
         }
 
-        internal abstract IComponentFactory<IScalarOutputLoss> LossFunctionFactory { get; }
+        /*internal*/public abstract IComponentFactory<IScalarOutputLoss> LossFunctionFactory { get; }
     }
 
     public abstract class AveragedLinearTrainer<TTransformer, TModel> : OnlineLinearTrainer<TTransformer, TModel>

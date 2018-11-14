@@ -35,7 +35,7 @@ namespace Microsoft.ML.Trainers
         public const string LoadNameValue = "SDCAMC";
         public const string UserNameValue = "Fast Linear Multi-class Classification (SA-SDCA)";
         public const string ShortName = "sasdcamc";
-        internal const string Summary = "The SDCA linear multi-class classification trainer.";
+        /*internal*/public const string Summary = "The SDCA linear multi-class classification trainer.";
 
         public sealed class Arguments : ArgumentsBase
         {
@@ -80,7 +80,7 @@ namespace Microsoft.ML.Trainers
             Loss = _loss;
         }
 
-        internal SdcaMultiClassTrainer(IHostEnvironment env, Arguments args,
+        /*internal*/public SdcaMultiClassTrainer(IHostEnvironment env, Arguments args,
             string featureColumn, string labelColumn, string weightColumn = null)
             : base(env, args, TrainerUtils.MakeU4ScalarColumn(labelColumn), TrainerUtils.MakeR4ScalarWeightColumn(weightColumn))
         {
@@ -91,7 +91,7 @@ namespace Microsoft.ML.Trainers
             Loss = _loss;
         }
 
-        internal SdcaMultiClassTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public SdcaMultiClassTrainer(IHostEnvironment env, Arguments args)
             : this(env, args, args.FeatureColumn, args.LabelColumn)
         {
         }

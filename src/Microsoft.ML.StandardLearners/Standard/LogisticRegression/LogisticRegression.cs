@@ -34,9 +34,9 @@ namespace Microsoft.ML.Runtime.Learners
     public sealed partial class LogisticRegression : LbfgsTrainerBase<LogisticRegression.Arguments, BinaryPredictionTransformer<ParameterMixingCalibratedPredictor>, ParameterMixingCalibratedPredictor>
     {
         public const string LoadNameValue = "LogisticRegression";
-        internal const string UserNameValue = "Logistic Regression";
-        internal const string ShortName = "lr";
-        internal const string Summary = "Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can "
+        /*internal*/public const string UserNameValue = "Logistic Regression";
+        /*internal*/public const string ShortName = "lr";
+        /*internal*/public const string Summary = "Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can "
             + "be used as a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.";
 
         public sealed class Arguments : ArgumentsBase
@@ -103,7 +103,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// <summary>
         /// Initializes a new instance of <see cref="LogisticRegression"/>
         /// </summary>
-        internal LogisticRegression(IHostEnvironment env, Arguments args)
+        /*internal*/public LogisticRegression(IHostEnvironment env, Arguments args)
             : base(env, args, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn))
         {
             _posWeight = 0;
@@ -448,7 +448,7 @@ namespace Microsoft.ML.Runtime.Learners
         /// Adjust the variance for regularized cases.
         /// </summary>
         [BestFriend]
-        internal void AdjustVariance(float inverseEntry, int iRow, int iCol, float l2Weight, float[] stdErrorValues2)
+        /*internal*/public void AdjustVariance(float inverseEntry, int iRow, int iCol, float l2Weight, float[] stdErrorValues2)
         {
             var adjustment = l2Weight * inverseEntry * inverseEntry;
             stdErrorValues2[iRow] -= adjustment;

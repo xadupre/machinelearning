@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace Microsoft.ML.Runtime
 {
-    internal static class AssemblyLoadingUtils
+    /*internal*/public static class AssemblyLoadingUtils
     {
         /// <summary>
         /// Make sure the given assemblies are loaded and that their loadable classes have been catalogued.

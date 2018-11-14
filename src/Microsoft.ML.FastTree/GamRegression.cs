@@ -35,13 +35,13 @@ namespace Microsoft.ML.Trainers.FastTree
             public int PruningMetrics = 2;
         }
 
-        internal const string LoadNameValue = "RegressionGamTrainer";
-        internal const string UserNameValue = "Generalized Additive Model for Regression";
-        internal const string ShortName = "gamr";
+        /*internal*/public const string LoadNameValue = "RegressionGamTrainer";
+        /*internal*/public const string UserNameValue = "Generalized Additive Model for Regression";
+        /*internal*/public const string ShortName = "gamr";
 
         public override PredictionKind PredictionKind => PredictionKind.Regression;
 
-        internal RegressionGamTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public RegressionGamTrainer(IHostEnvironment env, Arguments args)
              : base(env, args, LoadNameValue, TrainerUtils.MakeR4ScalarLabel(args.LabelColumn)) { }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.ML.Trainers.FastTree
         {
         }
 
-        internal override void CheckLabel(RoleMappedData data)
+        /*internal*/public override void CheckLabel(RoleMappedData data)
         {
             data.CheckRegressionLabel();
         }

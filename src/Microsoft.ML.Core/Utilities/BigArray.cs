@@ -20,7 +20,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// </summary>
     /// <typeparam name="T">The type of entries.</typeparam>
     [BestFriend]
-    internal sealed class BigArray<T> : IEnumerable<T>
+    /*internal*/public sealed class BigArray<T> : IEnumerable<T>
     {
         // REVIEW: This class merges and replaces the original private BigArray implementation in CacheDataView.
         // There the block size was 25 bits. Need to understand the performance implication of this 32x change.
@@ -355,7 +355,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
                 Utils.EnsureSize(ref _entries[maMin], BlockSize, BlockSize);
                 int srcSoFar = BlockSize - miMin;
                 src.Slice(0, srcSoFar).CopyTo(_entries[maMin].AsSpan(miMin));
-                // Copy the internal segments.
+                // Copy the /*internal*/public segments.
                 for (int major = maMin + 1; major < maMax; ++major)
                 {
                     Contracts.Assert(_entries[major] == null);
@@ -382,7 +382,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
         /// </summary>
         public void CopyTo(long idx, T[] dst, int length)
         {
-            // Accesses on the internal arrays of this class should be valid even if
+            // Accesses on the /*internal*/public arrays of this class should be valid even if
             // some other thread is utilizing AddRange, since Utils.EnsureSize(...) will
             // not replace the array until any allocation or copying has already happened.
             Contracts.Assert(0 <= length && length <= Utils.Size(dst));
@@ -422,7 +422,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
                 Contracts.Assert(BlockSize <= Utils.Size(_entries[maMin]));
                 int dstSoFar = BlockSize - miMin;
                 Array.Copy(_entries[maMin], miMin, dst, 0, dstSoFar);
-                // Copy the internal segments.
+                // Copy the /*internal*/public segments.
                 for (int major = maMin + 1; major < maMax; ++major)
                 {
                     Contracts.Assert(BlockSize <= Utils.Size(_entries[major]));

@@ -21,8 +21,8 @@ namespace Microsoft.ML.Runtime.Numeric
         protected readonly bool EnforceNonNegativity;
         private ITerminationCriterion _staticTerm;
 
-        // Whether the optimizer state should keep its internal vectors dense or not.
-        // Turning on dense internal vectors can relieve load on the garbage collector,
+        // Whether the optimizer state should keep its /*internal*/public vectors dense or not.
+        // Turning on dense /*internal*/public vectors can relieve load on the garbage collector,
         // but can possibly lead to higher overall memory utilization.
         protected readonly bool KeepDense;
 
@@ -59,7 +59,7 @@ namespace Microsoft.ML.Runtime.Numeric
         /// </summary>
         /// <param name="env">The host environment</param>
         /// <param name="m">The number of previous iterations to store</param>
-        /// <param name="keepDense">Whether the optimizer will keep its internal state dense</param>
+        /// <param name="keepDense">Whether the optimizer will keep its /*internal*/public state dense</param>
         /// <param name="term">Termination criterion, defaults to MeanRelativeImprovement if null</param>
         /// <param name="enforceNonNegativity">The flag enforcing the non-negativity constraint</param>
         public Optimizer(IHostEnvironment env, int m = 20, bool keepDense = false, ITerminationCriterion term = null,
@@ -84,23 +84,23 @@ namespace Microsoft.ML.Runtime.Numeric
             /// </summary>
             public OptimizerState State { get; }
 
-            internal OptimizerException(OptimizerState state, string message)
+            /*internal*/public OptimizerException(OptimizerState state, string message)
                 : base(message)
             {
                 State = state;
             }
         }
 
-        internal virtual OptimizerState MakeState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, ref VBuffer<Float> initial)
+        /*internal*/public virtual OptimizerState MakeState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, ref VBuffer<Float> initial)
         {
             return new FunctionOptimizerState(ch, progress, function, in initial, M, TotalMemoryLimit, KeepDense, EnforceNonNegativity);
         }
 
-        internal sealed class FunctionOptimizerState : OptimizerState
+        /*internal*/public sealed class FunctionOptimizerState : OptimizerState
         {
             public override DifferentiableFunction Function { get; }
 
-            internal FunctionOptimizerState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, in VBuffer<Float> initial, int m,
+            /*internal*/public FunctionOptimizerState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, in VBuffer<Float> initial, int m,
                 long totalMemLimit, bool keepDense, bool enforceNonNegativity)
                 : base(ch, progress, in initial, m, totalMemLimit, keepDense, enforceNonNegativity)
             {
@@ -120,12 +120,12 @@ namespace Microsoft.ML.Runtime.Numeric
         public abstract class OptimizerState
         {
 #pragma warning disable MSML_GeneralName // Too annoying in this case. Consider fixing later.
-            protected internal VBuffer<Float> _x;
-            protected internal VBuffer<Float> _grad;
-            protected internal VBuffer<Float> _newX;
-            protected internal VBuffer<Float> _newGrad;
-            protected internal VBuffer<Float> _dir;
-            protected internal VBuffer<Float> _steepestDescDir;
+            protected /*internal*/ VBuffer<Float> _x;
+            protected /*internal*/ VBuffer<Float> _grad;
+            protected /*internal*/ VBuffer<Float> _newX;
+            protected /*internal*/ VBuffer<Float> _newGrad;
+            protected /*internal*/ VBuffer<Float> _dir;
+            protected /*internal*/ VBuffer<Float> _steepestDescDir;
 #pragma warning restore MSML_GeneralName
 
             /// <summary>
@@ -161,27 +161,27 @@ namespace Microsoft.ML.Runtime.Numeric
             /// <summary>
             /// The current function value
             /// </summary>
-            public Float Value { get; protected internal set; }
+            public Float Value { get; protected /*internal*/ set; }
 
             /// <summary>
             /// The function value at the last point
             /// </summary>
-            public Float LastValue { get; protected internal set; }
+            public Float LastValue { get; protected /*internal*/ set; }
 
             /// <summary>
             /// The number of iterations so far
             /// </summary>
-            public int Iter { get; protected internal set; }
+            public int Iter { get; protected /*internal*/ set; }
 
             /// <summary>
             /// The number of completed gradient calculations in the current iteration.
             /// </summary>
             /// <remarks>This is updated in derived classes, since they may call Eval at different times.</remarks>
             // REVIEW: instead, we could split into Eval and EvalCore and inject it there.
-            public int GradientCalculations { get; protected internal set; }
+            public int GradientCalculations { get; protected /*internal*/ set; }
 
             /// <summary>
-            /// Whether the optimizer state will keep its internal vectors dense or not.
+            /// Whether the optimizer state will keep its /*internal*/public vectors dense or not.
             /// This being true may lead to reduced load on the garbage collector, at the
             /// cost of possibly higher overall memory utilization.
             /// </summary>
@@ -194,7 +194,7 @@ namespace Microsoft.ML.Runtime.Numeric
             private int _m;
             private readonly long _totalMemLimit;
 
-            protected internal OptimizerState(IChannel ch, IProgressChannelProvider progress, in VBuffer<Float> initial,
+            protected /*internal*/ OptimizerState(IChannel ch, IProgressChannelProvider progress, in VBuffer<Float> initial,
                 int m, long totalMemLimit, bool keepDense, bool enforceNonNegativity)
             {
                 Contracts.AssertValue(ch);
@@ -245,7 +245,7 @@ namespace Microsoft.ML.Runtime.Numeric
                     throw Ch.Except("Optimizer unable to proceed with loss function yielding {0}", LastValue);
             }
 
-            internal void MapDirByInverseHessian()
+            /*internal*/public void MapDirByInverseHessian()
             {
                 int count = _roList.Count;
 
@@ -284,7 +284,7 @@ namespace Microsoft.ML.Runtime.Numeric
                 }
             }
 
-            internal void DiscardOldVectors()
+            /*internal*/public void DiscardOldVectors()
             {
                 _roList.Clear();
                 Array.Clear(_sList, 0, _sList.Length);
@@ -301,7 +301,7 @@ namespace Microsoft.ML.Runtime.Numeric
                     });
             }
 
-            internal virtual void UpdateDir()
+            /*internal*/public virtual void UpdateDir()
             {
                 if (EnforceNonNegativity)
                 {
@@ -324,7 +324,7 @@ namespace Microsoft.ML.Runtime.Numeric
                     FixDirZeros();
             }
 
-            internal void Shift()
+            /*internal*/public void Shift()
             {
                 if (_roList.Count < _m)
                 {
@@ -378,7 +378,7 @@ namespace Microsoft.ML.Runtime.Numeric
             /// <summary>
             /// An implementation of the line search for the Wolfe conditions, from Nocedal &amp; Wright
             /// </summary>
-            internal virtual bool LineSearch(IChannel ch, bool force)
+            /*internal*/public virtual bool LineSearch(IChannel ch, bool force)
             {
                 Contracts.AssertValue(ch);
                 Float dirDeriv = VectorUtils.DotProduct(in _dir, in _grad);

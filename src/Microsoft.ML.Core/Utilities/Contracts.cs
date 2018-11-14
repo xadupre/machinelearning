@@ -32,7 +32,7 @@ namespace Microsoft.ML.Runtime
     /// Process (unless null was passed in, which really shouldn't happen).
     /// </summary>
 #if PRIVATE_CONTRACTS
-    internal interface IExceptionContext
+    /*internal*/public interface IExceptionContext
 #else
     public interface IExceptionContext
 #endif
@@ -48,7 +48,7 @@ namespace Microsoft.ML.Runtime
 
 #if PRIVATE_CONTRACTS
     [Flags]
-    internal enum MessageSensitivity
+    /*internal*/public enum MessageSensitivity
     {
         None = 0,
         Unknown = ~None
@@ -58,7 +58,7 @@ namespace Microsoft.ML.Runtime
 #if !PRIVATE_CONTRACTS
     [BestFriend]
 #endif
-    internal static partial class Contracts
+    /*internal*/public static partial class Contracts
     {
         public const string IsMarkedKey = "ML_IsMarked";
         public const string SensitivityKey = "ML_Sensitivity";
@@ -158,7 +158,7 @@ namespace Microsoft.ML.Runtime
 
 #if !PRIVATE_CONTRACTS
         /// <summary>
-        /// This is an internal convenience implementation of an exception context to make marking
+        /// This is an /*internal*/public convenience implementation of an exception context to make marking
         /// exceptions with a specific sensitivity flag a bit less onorous. The alternative to a scheme
         /// like this, where messages are marked through use of <see cref="Process{TException}(TException)"/>,
         /// would be that every check and exception method in this file would need some "peer" where

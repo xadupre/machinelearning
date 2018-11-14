@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.Data.IO
 {
-    internal sealed class MemoryStreamPool
+    /*internal*/public sealed class MemoryStreamPool
     {
         private readonly ObjectPool<MemoryStream> _memPool;
 
@@ -36,7 +36,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         }
     }
 
-    internal sealed class MemoryStreamCollection
+    /*internal*/public sealed class MemoryStreamCollection
     {
         // The idea is that we split requestors by maximum size.
         private readonly MemoryStreamPool[] _pools;

@@ -30,7 +30,7 @@ namespace Microsoft.ML.Runtime.Api
         // The transformation engine.
         private readonly PipeEngine<TDst> _pipeEngine;
 
-        internal BatchPredictionEngine(IHostEnvironment env, Stream modelStream, bool ignoreMissingColumns,
+        /*internal*/public BatchPredictionEngine(IHostEnvironment env, Stream modelStream, bool ignoreMissingColumns,
             SchemaDefinition inputSchemaDefinition = null, SchemaDefinition outputSchemaDefinition = null)
         {
             Contracts.AssertValue(env);
@@ -44,7 +44,7 @@ namespace Microsoft.ML.Runtime.Api
             _pipeEngine = new PipeEngine<TDst>(env, pipe, ignoreMissingColumns, outputSchemaDefinition);
         }
 
-        internal BatchPredictionEngine(IHostEnvironment env, IDataView dataPipeline, bool ignoreMissingColumns,
+        /*internal*/public BatchPredictionEngine(IHostEnvironment env, IDataView dataPipeline, bool ignoreMissingColumns,
            SchemaDefinition inputSchemaDefinition = null, SchemaDefinition outputSchemaDefinition = null)
         {
             Contracts.AssertValue(env);
@@ -61,7 +61,7 @@ namespace Microsoft.ML.Runtime.Api
 
         /// <summary>
         /// Run the prediction pipe. This will enumerate the <paramref name="examples"/> exactly once,
-        /// cache all the examples (by reference) into its internal representation and then run
+        /// cache all the examples (by reference) into its /*internal*/public representation and then run
         /// the transformation pipe.
         /// </summary>
         /// <param name="examples">The examples to run the prediction on.</param>
@@ -83,13 +83,13 @@ namespace Microsoft.ML.Runtime.Api
     /// Utility class to run the pipeline to completion and produce a strongly-typed IEnumerable as a result.
     /// Doesn't allocate memory for every row: instead, yields the same row object on every step.
     /// </summary>
-    internal sealed class PipeEngine<TDst>
+    /*internal*/public sealed class PipeEngine<TDst>
         where TDst : class, new()
     {
         private readonly ICursorable<TDst> _cursorablePipe;
         private long _counter;
 
-        internal PipeEngine(IHostEnvironment env, IDataView pipe, bool ignoreMissingColumns, SchemaDefinition schemaDefinition = null)
+        /*internal*/public PipeEngine(IHostEnvironment env, IDataView pipe, bool ignoreMissingColumns, SchemaDefinition schemaDefinition = null)
         {
             Contracts.AssertValue(env);
             env.AssertValue(pipe);
@@ -140,7 +140,7 @@ namespace Microsoft.ML.Runtime.Api
         private readonly IRowReadableAs<TDst> _outputRow;
         private readonly Action _disposer;
 
-        internal PredictionEngine(IHostEnvironment env, Stream modelStream, bool ignoreMissingColumns,
+        /*internal*/public PredictionEngine(IHostEnvironment env, Stream modelStream, bool ignoreMissingColumns,
             SchemaDefinition inputSchemaDefinition = null, SchemaDefinition outputSchemaDefinition = null)
             : this(env, StreamChecker(env, modelStream), ignoreMissingColumns, inputSchemaDefinition, outputSchemaDefinition)
         {
@@ -158,13 +158,13 @@ namespace Microsoft.ML.Runtime.Api
             };
         }
 
-        internal PredictionEngine(IHostEnvironment env, IDataView dataPipe, bool ignoreMissingColumns,
+        /*internal*/public PredictionEngine(IHostEnvironment env, IDataView dataPipe, bool ignoreMissingColumns,
             SchemaDefinition inputSchemaDefinition = null, SchemaDefinition outputSchemaDefinition = null)
             : this(env, new TransformWrapper(env, env.CheckRef(dataPipe, nameof(dataPipe))), ignoreMissingColumns, inputSchemaDefinition, outputSchemaDefinition)
         {
         }
 
-        internal PredictionEngine(IHostEnvironment env, ITransformer transformer, bool ignoreMissingColumns,
+        /*internal*/public PredictionEngine(IHostEnvironment env, ITransformer transformer, bool ignoreMissingColumns,
             SchemaDefinition inputSchemaDefinition = null, SchemaDefinition outputSchemaDefinition = null)
             : this(env, TransformerChecker(env, transformer), ignoreMissingColumns, inputSchemaDefinition, outputSchemaDefinition)
         {
@@ -256,7 +256,7 @@ namespace Microsoft.ML.Runtime.Api
         /// <param name="modelStream">The model stream to load pipeline from.</param>
         /// <param name="nFeatures">Number of features.</param>
         /// <param name="featureColumnName">Name of the features column.</param>
-        internal SimplePredictionEngine(IHostEnvironment env, Stream modelStream, int nFeatures, string featureColumnName = "Features")
+        /*internal*/public SimplePredictionEngine(IHostEnvironment env, Stream modelStream, int nFeatures, string featureColumnName = "Features")
         {
             Contracts.AssertValue(env);
             Contracts.AssertValue(modelStream);

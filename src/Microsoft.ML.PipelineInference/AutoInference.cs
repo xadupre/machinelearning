@@ -459,7 +459,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
         }
 
         /// <summary>
-        /// The InferPipelines methods are just public portals to the internal function that handle different
+        /// The InferPipelines methods are just public portals to the /*internal*/public function that handle different
         /// types of data being passed in: training IDataView, path to training file, or train and test files.
         /// </summary>
         public static AutoMlMlState InferPipelines(IHostEnvironment env, PipelineOptimizerBase autoMlEngine,

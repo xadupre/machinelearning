@@ -65,7 +65,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             public const ulong WriterVersion = 0x0001000100010001; // This first version of the format.
             public const ulong CanBeReadByVersion = 0x0001000100010001;
 
-            internal static string VersionToString(ulong v)
+            /*internal*/public static string VersionToString(ulong v)
             {
                 return string.Format("{0}.{1}.{2}.{3}",
                     (v >> 48) & 0xffff, (v >> 32) & 0xffff,
@@ -344,8 +344,8 @@ namespace Microsoft.ML.Runtime.Data.IO
         /// </summary>
         private const ulong ReaderVersion = ReaderFirstVersion;
 
-        internal const string Summary = "Loads a binary transposed data file.";
-        internal const string LoadName = "TransposeLoader";
+        /*internal*/public const string Summary = "Loads a binary transposed data file.";
+        /*internal*/public const string LoadName = "TransposeLoader";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -380,7 +380,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         {
             get
             {
-                // If we have an internal view with the row-wise data actually in it,
+                // If we have an /*internal*/public view with the row-wise data actually in it,
                 // then we can use that for shuffling. Otherwise we won't support it.
                 var view = _schemaEntry.GetView();
                 if (_header.RowCount == view.GetRowCount())

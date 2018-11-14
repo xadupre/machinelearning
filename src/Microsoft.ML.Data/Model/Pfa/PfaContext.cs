@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// A context for defining a restricted sort of PFA output.
     /// </summary>
     [BestFriend]
-    internal sealed class PfaContext
+    /*internal*/public sealed class PfaContext
     {
         public JToken InputType { get; set; }
         public JToken OutputType { get; set; }

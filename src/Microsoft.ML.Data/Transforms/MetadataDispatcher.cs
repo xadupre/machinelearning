@@ -387,7 +387,7 @@ namespace Microsoft.ML.Runtime.Data
             /// This should really be private to MetadataDispatcher, but C#'s accessibility model doesn't
             /// allow restricting to an outer class.
             /// </summary>
-            internal Builder(MetadataDispatcher md, int index,
+            /*internal*/public Builder(MetadataDispatcher md, int index,
                 ISchema schemaSrc = null, int indexSrc = -1, Func<string, int, bool> filterSrc = null)
             {
                 Contracts.CheckValue(md, nameof(md));

@@ -9,7 +9,7 @@ using System.Text;
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
     [BestFriend]
-    internal sealed class IndentingTextWriter : TextWriter
+    /*internal*/public sealed class IndentingTextWriter : TextWriter
     {
         public struct Scope : IDisposable
         {

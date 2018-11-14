@@ -29,7 +29,7 @@ namespace Microsoft.ML.Runtime.Numeric
         /// <param name="biasCount">Number of biases</param>
         /// <param name="l1weight">Weight of L1 regularizer</param>
         /// <param name="m">The number of previous iterations to store</param>
-        /// <param name="keepDense">Whether the optimizer will keep its internal state dense</param>
+        /// <param name="keepDense">Whether the optimizer will keep its /*internal*/public state dense</param>
         /// <param name="term">Termination criterion</param>
         /// <param name="enforceNonNegativity">The flag enforcing the non-negativity constraint</param>
         public L1Optimizer(IHostEnvironment env, int biasCount, Float l1weight, int m = 20, bool keepDense = false,
@@ -42,7 +42,7 @@ namespace Microsoft.ML.Runtime.Numeric
             _l1weight = l1weight;
         }
 
-        internal override OptimizerState MakeState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, ref VBuffer<Float> initial)
+        /*internal*/public override OptimizerState MakeState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, ref VBuffer<Float> initial)
         {
             Contracts.AssertValue(ch);
             ch.AssertValue(progress);
@@ -73,7 +73,7 @@ namespace Microsoft.ML.Runtime.Numeric
             private readonly int _biasCount;
             private readonly Float _l1weight;
 
-            internal L1OptimizerState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, in VBuffer<Float> initial, int m, long totalMemLimit,
+            /*internal*/public L1OptimizerState(IChannel ch, IProgressChannelProvider progress, DifferentiableFunction function, in VBuffer<Float> initial, int m, long totalMemLimit,
                 int biasCount, Float l1Weight, bool keepDense, bool enforceNonNegativity)
                 : base(ch, progress, in initial, m, totalMemLimit, keepDense, enforceNonNegativity)
             {
@@ -185,7 +185,7 @@ namespace Microsoft.ML.Runtime.Numeric
                 }
             }
 
-            internal override void UpdateDir()
+            /*internal*/public override void UpdateDir()
             {
                 MakeSteepestDescDir();
                 MapDirByInverseHessian();
@@ -195,7 +195,7 @@ namespace Microsoft.ML.Runtime.Numeric
             /// <summary>
             /// Backtracking line search with Armijo-like condition, from Andrew &amp; Gao
             /// </summary>
-            internal override bool LineSearch(IChannel ch, bool force)
+            /*internal*/public override bool LineSearch(IChannel ch, bool force)
             {
                 Float dirDeriv = -VectorUtils.DotProduct(in _dir, in _steepestDescDir);
 

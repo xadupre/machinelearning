@@ -35,15 +35,15 @@ namespace Microsoft.ML.Trainers.Online
     /// </summary>
     public sealed class LinearSvm : OnlineLinearTrainer<BinaryPredictionTransformer<LinearBinaryPredictor>, LinearBinaryPredictor>
     {
-        internal const string LoadNameValue = "LinearSVM";
-        internal const string ShortName = "svm";
-        internal const string UserNameValue = "SVM (Pegasos-Linear)";
-        internal const string Summary = "The idea behind support vector machines, is to map the instances into a high dimensional space "
+        /*internal*/public const string LoadNameValue = "LinearSVM";
+        /*internal*/public const string ShortName = "svm";
+        /*internal*/public const string UserNameValue = "SVM (Pegasos-Linear)";
+        /*internal*/public const string Summary = "The idea behind support vector machines, is to map the instances into a high dimensional space "
             + "in which instances of the two classes are linearly separable, i.e., there exists a hyperplane such that all the positive examples are on one side of it, "
             + "and all the negative examples are on the other. After this mapping, quadratic programming is used to find the separating hyperplane that maximizes the "
             + "margin, i.e., the minimal distance between it and the instances.";
 
-        internal new readonly Arguments Args;
+        /*internal*/public new readonly Arguments Args;
 
         public sealed class Arguments : OnlineLinearArguments
         {

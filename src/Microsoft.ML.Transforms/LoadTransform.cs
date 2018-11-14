@@ -38,7 +38,7 @@ namespace Microsoft.ML.Transforms
             public bool Complement = false;
         }
 
-        internal const string Summary = "Loads specified transforms from the model file and applies them to current data.";
+        /*internal*/public const string Summary = "Loads specified transforms from the model file and applies them to current data.";
 
         /// <summary>
         /// A helper method to create <see cref="LoadTransform"/> for public facing API.

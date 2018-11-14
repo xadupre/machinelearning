@@ -30,8 +30,8 @@ namespace Microsoft.ML.Trainers.Recommender
     /// </summary>
     public sealed class MatrixFactorizationPredictor : IPredictor, ICanSaveModel, ICanSaveInTextFormat, ISchemaBindableMapper
     {
-        internal const string LoaderSignature = "MFPredictor";
-        internal const string RegistrationName = "MatrixFactorizationPredictor";
+        /*internal*/public const string LoaderSignature = "MFPredictor";
+        /*internal*/public const string RegistrationName = "MatrixFactorizationPredictor";
 
         private static VersionInfo GetVersionInfo()
         {
@@ -66,7 +66,7 @@ namespace Microsoft.ML.Trainers.Recommender
         public ColumnType MatrixColumnIndexType { get; }
         public ColumnType MatrixRowIndexType { get; }
 
-        internal MatrixFactorizationPredictor(IHostEnvironment env, SafeTrainingAndModelBuffer buffer, KeyType matrixColumnIndexType, KeyType matrixRowIndexType)
+        /*internal*/public MatrixFactorizationPredictor(IHostEnvironment env, SafeTrainingAndModelBuffer buffer, KeyType matrixColumnIndexType, KeyType matrixRowIndexType)
         {
             Contracts.CheckValue(env, nameof(env));
             _host = env.Register(RegistrationName);

@@ -22,7 +22,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// <see cref="Retire"/>).
     /// </summary>
     [BestFriend]
-    internal sealed class MinWaiter
+    /*internal*/public sealed class MinWaiter
     {
         /// <summary>
         /// This is an event-line pair. The intended usage is, when the line

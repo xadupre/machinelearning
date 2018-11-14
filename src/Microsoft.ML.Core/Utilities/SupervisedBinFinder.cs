@@ -21,7 +21,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// Both Single and Double precision processing is implemented, and is identical.
     /// </summary>
     [BestFriend]
-    internal sealed class SupervisedBinFinder
+    /*internal*/public sealed class SupervisedBinFinder
     {
         private readonly struct ValuePair<T> : IComparable<ValuePair<T>>
             where T : IComparable<T>

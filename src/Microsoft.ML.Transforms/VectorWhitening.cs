@@ -45,7 +45,7 @@ namespace Microsoft.ML.Transforms.Projections
     /// <include file='doc.xml' path='doc/members/member[@name="Whitening"]/*'/>
     public sealed class VectorWhiteningTransformer : OneToOneTransformerBase
     {
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const WhiteningKind Kind = WhiteningKind.Zca;
             public const float Eps = 1e-5f;
@@ -123,7 +123,7 @@ namespace Microsoft.ML.Transforms.Projections
             public readonly float Epsilon;
             public readonly int MaxRow;
             public readonly int PcaNum;
-            internal readonly bool SaveInv;
+            /*internal*/public readonly bool SaveInv;
 
             /// <summary>
             /// Describes how the transformer handles one input-output column pair.
@@ -152,7 +152,7 @@ namespace Microsoft.ML.Transforms.Projections
                 Contracts.CheckUserArg(PcaNum >= 0, nameof(PcaNum));
             }
 
-            internal ColumnInfo(Column item, Arguments args)
+            /*internal*/public ColumnInfo(Column item, Arguments args)
             {
                 Input = item.Source ?? item.Name;
                 Contracts.CheckValue(Input, nameof(Input));
@@ -169,7 +169,7 @@ namespace Microsoft.ML.Transforms.Projections
                 Contracts.CheckUserArg(PcaNum >= 0, nameof(item.PcaNum));
             }
 
-            internal ColumnInfo(ModelLoadContext ctx)
+            /*internal*/public ColumnInfo(ModelLoadContext ctx)
             {
                 Contracts.AssertValue(ctx);
 
@@ -190,7 +190,7 @@ namespace Microsoft.ML.Transforms.Projections
                 Contracts.CheckDecode(PcaNum >= 0);
             }
 
-            internal void Save(ModelSaveContext ctx)
+            /*internal*/public void Save(ModelSaveContext ctx)
             {
                 Contracts.AssertValue(ctx);
 
@@ -216,15 +216,15 @@ namespace Microsoft.ML.Transforms.Projections
 
         // Stores whitening matrix as float[] for each column. _models[i] is the whitening matrix of the i-th input column.
         private readonly float[][] _models;
-        // Stores inverse ("recover") matrix as float[] for each column. Temporarily internal as it's used in unit test.
+        // Stores inverse ("recover") matrix as float[] for each column. Temporarily /*internal*/public as it's used in unit test.
         // REVIEW: It doesn't look like this is used by non-test code. Should it be saved at all?
         private readonly float[][] _invModels;
 
-        internal const string Summary = "Apply PCA or ZCA whitening algorithm to the input.";
+        /*internal*/public const string Summary = "Apply PCA or ZCA whitening algorithm to the input.";
 
-        internal const string FriendlyName = "Whitening Transform";
-        internal const string LoaderSignature = "WhiteningTransform";
-        internal const string LoaderSignatureOld = "WhiteningFunction";
+        /*internal*/public const string FriendlyName = "Whitening Transform";
+        /*internal*/public const string LoaderSignature = "WhiteningTransform";
+        /*internal*/public const string LoaderSignatureOld = "WhiteningFunction";
         private static VersionInfo GetVersionInfo()
         {
             return new VersionInfo(
@@ -246,7 +246,7 @@ namespace Microsoft.ML.Transforms.Projections
         /// <param name="models">An array of whitening matrices where models[i] is learned from the i-th element of <paramref name="columns"/>.</param>
         /// <param name="invModels">An array of inverse whitening matrices, the i-th element being the inverse matrix of models[i].</param>
         /// <param name="columns">Describes the parameters of the whitening process for each column pair.</param>
-        internal VectorWhiteningTransformer(IHostEnvironment env, float[][] models, float[][] invModels, params ColumnInfo[] columns)
+        /*internal*/public VectorWhiteningTransformer(IHostEnvironment env, float[][] models, float[][] invModels, params ColumnInfo[] columns)
             : base(Contracts.CheckRef(env, nameof(env)).Register(nameof(VectorWhiteningTransformer)), GetColumnPairs(columns))
         {
             Host.AssertNonEmpty(ColumnPairs);
@@ -284,7 +284,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Factory method for SignatureLoadModel
-        internal static VectorWhiteningTransformer Create(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public static VectorWhiteningTransformer Create(IHostEnvironment env, ModelLoadContext ctx)
         {
             Contracts.CheckValue(env, nameof(env));
             ctx.CheckAtModel(GetVersionInfo());
@@ -292,7 +292,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             var infos = args.Column.Select(colPair => new ColumnInfo(colPair, args)).ToArray();
             (var models, var invModels) = TrainVectorWhiteningTransform(env, input, infos);
@@ -300,11 +300,11 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Factory method for SignatureLoadDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, ModelLoadContext ctx, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, ModelLoadContext ctx, IDataView input)
             => Create(env, ctx).MakeDataTransform(input);
 
         // Factory method for SignatureLoadRowMapper.
-        internal static IRowMapper Create(IHostEnvironment env, ModelLoadContext ctx, ISchema inputSchema)
+        /*internal*/public static IRowMapper Create(IHostEnvironment env, ModelLoadContext ctx, ISchema inputSchema)
             => Create(env, ctx).MakeRowMapper(Schema.Create(inputSchema));
 
         private static (string input, string output)[] GetColumnPairs(ColumnInfo[] columns)
@@ -319,7 +319,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Check if the input column's type is supported. Note that only float vector with a known shape is allowed.
-        internal static string TestColumn(ColumnType type)
+        /*internal*/public static string TestColumn(ColumnType type)
         {
             if ((type.IsVector && !type.IsKnownSizeVector && (type.AsVector.Dimensions.Length > 1)) || type.ItemType != NumberType.R4)
                 return "Expected float or float vector of known size";
@@ -356,7 +356,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Computes the transformation matrices needed for whitening process from training data.
-        internal static (float[][] models, float[][] invModels) TrainVectorWhiteningTransform(IHostEnvironment env, IDataView inputData, params ColumnInfo[] columns)
+        /*internal*/public static (float[][] models, float[][] invModels) TrainVectorWhiteningTransform(IHostEnvironment env, IDataView inputData, params ColumnInfo[] columns)
         {
             var models = new float[columns.Length][];
             var invModels = new float[columns.Length][];

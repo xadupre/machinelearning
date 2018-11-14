@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime.Data
     /// A convenience class for concatenating several schemas together.
     /// This would be necessary when combining IDataViews through any type of combining operation, for example, zip.
     /// </summary>
-    internal sealed class CompositeSchema : ISchema
+    /*internal*/public sealed class CompositeSchema : ISchema
     {
         private readonly ISchema[] _sources;
 

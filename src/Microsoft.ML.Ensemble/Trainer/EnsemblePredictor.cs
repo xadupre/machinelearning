@@ -45,7 +45,7 @@ namespace Microsoft.ML.Runtime.Ensemble
         public ColumnType OutputType => NumberType.Float;
         public override PredictionKind PredictionKind { get; }
 
-        internal EnsemblePredictor(IHostEnvironment env, PredictionKind kind,
+        /*internal*/public EnsemblePredictor(IHostEnvironment env, PredictionKind kind,
             FeatureSubsetModel<TScalarPredictor>[] models, IOutputCombiner<Single> combiner, Single[] weights = null)
             : base(env, LoaderSignature, models, combiner, weights)
         {

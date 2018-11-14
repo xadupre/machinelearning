@@ -51,7 +51,7 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         public override PredictionKind PredictionKind { get; }
 
-        internal EnsembleDistributionPredictor(IHostEnvironment env, PredictionKind kind,
+        /*internal*/public EnsembleDistributionPredictor(IHostEnvironment env, PredictionKind kind,
             FeatureSubsetModel<TDistPredictor>[] models, IOutputCombiner<Single> combiner, Single[] weights = null)
             : base(env, RegistrationName, models, combiner, weights)
         {

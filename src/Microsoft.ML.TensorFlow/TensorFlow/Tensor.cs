@@ -61,7 +61,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
     /// </code>
     /// </example>
     /// </remarks>
-    internal partial class TFTensor : TFDisposableThreadSafe
+    /*internal*/public partial class TFTensor : TFDisposableThreadSafe
     {
         /// <summary>
         /// Signature that methods must conform to to be used to release memory that was passed to a manually allocated TFTensor
@@ -87,19 +87,19 @@ namespace Microsoft.ML.Transforms.TensorFlow
         [DllImport(NativeBinding.TensorFlowLibrary)]
         private static extern size_t TF_StringEncodedSize(size_t len);
 
-        internal TFTensor(IntPtr handle) : base(handle) { }
+        /*internal*/public TFTensor(IntPtr handle) : base(handle) { }
 
-        internal static Deallocator FreeTensorDataDelegate = FreeTensorData;
-        internal static Deallocator FreeTensorHandleDelegate = FreeTensorHandle;
+        /*internal*/public static Deallocator FreeTensorDataDelegate = FreeTensorData;
+        /*internal*/public static Deallocator FreeTensorHandleDelegate = FreeTensorHandle;
 
         [MonoPInvokeCallback(typeof(Deallocator))]
-        internal static void FreeTensorData(IntPtr data, IntPtr len, IntPtr closure)
+        /*internal*/public static void FreeTensorData(IntPtr data, IntPtr len, IntPtr closure)
         {
             Marshal.FreeHGlobal(data);
         }
 
         [MonoPInvokeCallback(typeof(Deallocator))]
-        internal static void FreeTensorHandle(IntPtr data, IntPtr len, IntPtr closure)
+        /*internal*/public static void FreeTensorHandle(IntPtr data, IntPtr len, IntPtr closure)
         {
             var gch = GCHandle.FromIntPtr(closure);
             gch.Free();
@@ -422,7 +422,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         /// <param name="data">Data.</param>
         public TFTensor(Complex[] data) : base(SetupTensor(TFDataType.Complex128, data, size: 16)) { }
 
-        internal static unsafe TFTensor CreateString(byte[] buffer)
+        /*internal*/public static unsafe TFTensor CreateString(byte[] buffer)
         {
             if (buffer == null)
                 throw new ArgumentNullException(nameof(buffer));
@@ -450,13 +450,13 @@ namespace Microsoft.ML.Transforms.TensorFlow
         }
 
         // Convenience function to factor out the setup of a new tensor from an array
-        internal static IntPtr SetupTensor(TFDataType dt, long[] dims, Array data, int count, int size)
+        /*internal*/public static IntPtr SetupTensor(TFDataType dt, long[] dims, Array data, int count, int size)
         {
             return SetupTensor(dt, dims, data, 0, count, size);
         }
 
         // Convenience function to factor out the setup of a new tensor from an array
-        internal static IntPtr SetupTensor(TFDataType dt, Array data, int size)
+        /*internal*/public static IntPtr SetupTensor(TFDataType dt, Array data, int size)
         {
             long[] dims = new long[data.Rank];
             for (int i = 0; i < dims.Length; i++)
@@ -466,7 +466,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         }
 
         // Use for single dimension arrays
-        internal static IntPtr SetupTensor(TFDataType dt, TFShape shape, Array data, int start, int count, int size)
+        /*internal*/public static IntPtr SetupTensor(TFDataType dt, TFShape shape, Array data, int start, int count, int size)
         {
             if (shape == null)
                 throw new ArgumentNullException(nameof(shape));
@@ -474,7 +474,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
         }
 
         // Use for single dimension arrays
-        internal static IntPtr SetupTensor(TFDataType dt, long[] dims, Array data, int start, int count, int size)
+        /*internal*/public static IntPtr SetupTensor(TFDataType dt, long[] dims, Array data, int start, int count, int size)
         {
             if (start < 0 || start > data.Length - count)
                 throw new ArgumentException("start + count > Array size");
@@ -507,7 +507,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
 
         }
 
-        internal override void NativeDispose(IntPtr handle)
+        /*internal*/public override void NativeDispose(IntPtr handle)
         {
             TF_DeleteTensor(handle);
         }
@@ -722,12 +722,12 @@ namespace Microsoft.ML.Transforms.TensorFlow
             }
         }
 
-        internal static unsafe void Copy(IntPtr src, void* target, int size)
+        /*internal*/public static unsafe void Copy(IntPtr src, void* target, int size)
         {
             Buffer.MemoryCopy((void*)src, target, size, size);
         }
 
-        internal static unsafe void FetchFlatArray(Array target, TFDataType dt, IntPtr data)
+        /*internal*/public static unsafe void FetchFlatArray(Array target, TFDataType dt, IntPtr data)
         {
             int len = target.Length;
             switch (dt)

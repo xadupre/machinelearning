@@ -63,7 +63,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
             RecipeInference.SuggestedRecipe.SuggestedLearner learner,
             string loaderSettings, IHostEnvironment env, PipelineSweeperRunSummary summary = null)
         {
-            // Make sure internal pipeline nodes and sweep params are cloned, not shared.
+            // Make sure /*internal*/public pipeline nodes and sweep params are cloned, not shared.
             // Cloning the transforms and learner rather than assigning outright
             // ensures that this will be the case. Doing this here allows us to not
             // worry about changing hyperparameter values in candidate pipelines

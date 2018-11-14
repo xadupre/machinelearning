@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// A timer scope class that starts a <see cref="Stopwatch"/> when created, calculates and prints elapsed time, physical and virtual memory usages before sending these to the telemetry when disposed.
     /// </summary>
     [BestFriend]
-    internal sealed class TimerScope : IDisposable
+    /*internal*/public sealed class TimerScope : IDisposable
     {
         // Note that this class does not own nor dispose of this channel.
         private readonly IChannel _ch;

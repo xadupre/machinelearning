@@ -46,10 +46,10 @@ namespace Microsoft.ML.Transforms
 
         public sealed class Arguments : TransformInputBase
         {
-            internal const string SkipHelp = "Number of items to skip";
-            internal const string TakeHelp = "Number of items to take";
-            internal const long DefaultSkip = 0;
-            internal const long DefaultTake = long.MaxValue;
+            /*internal*/public const string SkipHelp = "Number of items to skip";
+            /*internal*/public const string TakeHelp = "Number of items to take";
+            /*internal*/public const long DefaultSkip = 0;
+            /*internal*/public const long DefaultTake = long.MaxValue;
 
             [Argument(ArgumentType.AtMostOnce, HelpText = SkipHelp, ShortName = "s", SortOrder = 1)]
             public long? Skip;

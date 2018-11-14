@@ -31,46 +31,46 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// <summary>
         /// Initializes the state of the modeler
         /// </summary>
-        internal abstract void InitState();
+        /*internal*/public abstract void InitState();
 
         /// <summary>
         /// Consumes one element from the input sequence.
         /// </summary>
         /// <param name="input">An element in the sequence</param>
         /// <param name="updateModel">determines whether the sequence model should be updated according to the input</param>
-        internal abstract void Consume(ref TInput input, bool updateModel = false);
+        /*internal*/public abstract void Consume(ref TInput input, bool updateModel = false);
 
         /// <summary>
         /// Trains the sequence model on a given sequence.
         /// </summary>
         /// <param name="data">The input sequence used for training</param>
-        internal abstract void Train(FixedSizeQueue<TInput> data);
+        /*internal*/public abstract void Train(FixedSizeQueue<TInput> data);
 
         /// <summary>
         /// Trains the sequence model on a given sequence. The method accepts an object of RoleMappedData,
         /// and assumes the input column is the 'Feature' column of type TInput.
         /// </summary>
         /// <param name="data">The input sequence used for training</param>
-        internal abstract void Train(RoleMappedData data);
+        /*internal*/public abstract void Train(RoleMappedData data);
 
         /// <summary>
         /// Forecasts the next 'horizon' elements in the output sequence.
         /// </summary>
         /// <param name="result">The forecast result for the given horizon along with optional information depending on the algorithm</param>
         /// <param name="horizon">The forecast horizon</param>
-        internal abstract void Forecast(ref ForecastResultBase<TOutput> result, int horizon = 1);
+        /*internal*/public abstract void Forecast(ref ForecastResultBase<TOutput> result, int horizon = 1);
 
         /// <summary>
         /// Predicts the next element in the output sequence.
         /// </summary>
         /// <param name="output">The output ref parameter the will contain the prediction result</param>
-        internal abstract void PredictNext(ref TOutput output);
+        /*internal*/public abstract void PredictNext(ref TOutput output);
 
         /// <summary>
         /// Creates a clone of the model.
         /// </summary>
         /// <returns>A clone of the object</returns>
-        internal abstract SequenceModelerBase<TInput, TOutput> Clone();
+        /*internal*/public abstract SequenceModelerBase<TInput, TOutput> Clone();
 
         /// <summary>
         /// Implementation of <see cref="ICanSaveModel.Save(ModelSaveContext)"/>.

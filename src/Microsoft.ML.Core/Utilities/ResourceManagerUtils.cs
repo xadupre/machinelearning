@@ -17,7 +17,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// a pre-defined location, that can be overridden by defining Environment variable <see cref="CustomResourcesUrlEnvVariable"/>.
     /// </summary>
     [BestFriend]
-    internal sealed class ResourceManagerUtils
+    /*internal*/public sealed class ResourceManagerUtils
     {
         private static volatile ResourceManagerUtils _instance;
         public static ResourceManagerUtils Instance
@@ -60,8 +60,8 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
         public sealed class ResourceDownloadResults
         {
             public readonly string FileName;
-            internal readonly string ErrorMessage;
-            internal readonly string DownloadUrl;
+            /*internal*/public readonly string ErrorMessage;
+            /*internal*/public readonly string DownloadUrl;
 
             public ResourceDownloadResults(string fileName, string errorMessage, string downloadUrl = null)
             {

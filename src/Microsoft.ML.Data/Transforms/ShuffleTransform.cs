@@ -60,7 +60,7 @@ namespace Microsoft.ML.Transforms
             public int? ForceShuffleSeed;
         }
 
-        internal const string Summary = "Reorders rows in the dataset by pseudo-random shuffling.";
+        /*internal*/public const string Summary = "Reorders rows in the dataset by pseudo-random shuffling.";
 
         public const string LoaderSignature = "ShuffleTrans";
         private static VersionInfo GetVersionInfo()
@@ -208,7 +208,7 @@ namespace Microsoft.ML.Transforms
         /// <summary>
         /// Utility to check whether all types in an input schema are shufflable.
         /// </summary>
-        internal static bool CanShuffleAll(ISchema schema)
+        /*internal*/public static bool CanShuffleAll(ISchema schema)
         {
             for (int c = 0; c < schema.ColumnCount; ++c)
             {
@@ -368,7 +368,7 @@ namespace Microsoft.ML.Transforms
                 /// <summary>
                 /// Creates a shuffle pipe, given a value getter.
                 /// </summary>
-                /// <param name="bufferSize">The size of the internal array.</param>
+                /// <param name="bufferSize">The size of the /*internal*/public array.</param>
                 /// <param name="type">The column type, which determines what type of pipe is created</param>
                 /// <param name="getter">A getter that should be a value getter corresponding to the
                 /// column type</param>
@@ -395,7 +395,7 @@ namespace Microsoft.ML.Transforms
 
                 /// <summary>
                 /// Reads the cursor column's current value, and store it in the indicated index,
-                /// in the internal array.
+                /// in the /*internal*/public array.
                 /// </summary>
                 public abstract void Fill(int idx);
 
@@ -469,7 +469,7 @@ namespace Microsoft.ML.Transforms
 
             // This acts as mapping from the "circular" index to the actual index within the pipe.
             private readonly int[] _pipeIndices;
-            // These shuffle pipes are the actual internal type-specific buffers. There is one of
+            // These shuffle pipes are the actual /*internal*/public type-specific buffers. There is one of
             // these per active column, as well as those for additional side information.
             private readonly ShufflePipe[] _pipes;
             // Each delegate here corresponds to a pipe holding column data.

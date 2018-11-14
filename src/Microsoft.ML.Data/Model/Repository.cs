@@ -53,7 +53,7 @@ namespace Microsoft.ML.Runtime.Model
             /// </summary>
             public Stream Stream { get; }
 
-            internal Entry(Repository rep, string path, Stream stream)
+            /*internal*/public Entry(Repository rep, string path, Stream stream)
             {
                 _rep = rep;
                 Path = path;
@@ -99,7 +99,7 @@ namespace Microsoft.ML.Runtime.Model
 
         protected bool Disposed => _disposed;
 
-        internal Repository(bool needDir, IExceptionContext ectx)
+        /*internal*/public Repository(bool needDir, IExceptionContext ectx)
         {
             Contracts.AssertValueOrNull(ectx);
             _ectx = ectx;

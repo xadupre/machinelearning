@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime.Internal.Utilities
     /// byte sequences encoded with LEB128. Empty sequences (or null) are also valid.
     /// </summary>
     [BestFriend]
-    internal sealed class SequencePool
+    /*internal*/public sealed class SequencePool
     {
         // uint sequences are hashed into _mask+1 buckets. _buckets contains the ID of the first
         // sequence that falls in it (or -1 if it is empty).

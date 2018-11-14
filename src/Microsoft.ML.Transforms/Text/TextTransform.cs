@@ -253,11 +253,11 @@ namespace Microsoft.ML.Transforms.Text
             }
         }
 
-        internal const string Summary = "A transform that turns a collection of text documents into numerical feature vectors. " +
+        /*internal*/public const string Summary = "A transform that turns a collection of text documents into numerical feature vectors. " +
             "The feature vectors are normalized counts of (word and/or character) ngrams in a given tokenized text.";
 
-        internal const string UserName = "Text Transform";
-        internal const string LoaderSignature = "Text";
+        /*internal*/public const string UserName = "Text Transform";
+        /*internal*/public const string LoaderSignature = "Text";
 
         public const Language DefaultLanguage = Language.English;
 
@@ -641,7 +641,7 @@ namespace Microsoft.ML.Transforms.Text
             }
         }
 
-        internal sealed class OutPipelineColumn : Vector<float>
+        /*internal*/public sealed class OutPipelineColumn : Vector<float>
         {
             public readonly Scalar<string>[] Inputs;
 

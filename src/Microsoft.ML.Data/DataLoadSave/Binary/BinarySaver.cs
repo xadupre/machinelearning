@@ -45,7 +45,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             public bool Silent;
         }
 
-        internal const string Summary = "Writes data into a native binary IDV file.";
+        /*internal*/public const string Summary = "Writes data into a native binary IDV file.";
 
         private readonly IHost _host;
         private readonly CodecFactory _factory;

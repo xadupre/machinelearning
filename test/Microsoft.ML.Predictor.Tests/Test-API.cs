@@ -59,7 +59,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn.Test
 
             ///*********  Several ways to save models. Only binary can be used to-reload in TLC. *******//
 
-            // Save the model in internal binary format that can be used for loading it.
+            // Save the model in /*internal*/public binary format that can be used for loading it.
             string modelFilename = Path.GetTempFileName();
             PredictorUtils.Save(modelFilename, predictor, instances, null);
 
@@ -162,7 +162,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn.Test
 
                 ///*********  Several ways to save models. Only binary can be used to-reload in TLC. *******//
 
-                // Save the model in internal binary format that can be used for loading it.
+                // Save the model in /*internal*/public binary format that can be used for loading it.
                 string modelFilename = Path.GetTempFileName();
                 PredictorUtils.Save(modelFilename, predictor, instances, null);
 

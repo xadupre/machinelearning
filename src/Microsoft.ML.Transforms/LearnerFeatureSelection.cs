@@ -23,7 +23,7 @@ namespace Microsoft.ML.Transforms
     /// </summary>
     public static class LearnerFeatureSelectionTransform
     {
-        internal const string Summary = "Selects the slots for which the absolute value of the corresponding weight in a linear learner is greater than a threshold.";
+        /*internal*/public const string Summary = "Selects the slots for which the absolute value of the corresponding weight in a linear learner is greater than a threshold.";
 
         public sealed class Arguments
         {
@@ -63,7 +63,7 @@ namespace Microsoft.ML.Transforms
             [Argument(ArgumentType.LastOccurenceWins, HelpText = "Whether we should cache input training data", ShortName = "cache")]
             public bool? CacheData;
 
-            internal void Check(IExceptionContext ectx)
+            /*internal*/public void Check(IExceptionContext ectx)
             {
                 if (Threshold.HasValue == NumSlotsToKeep.HasValue)
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.ML.Transforms
             }
         }
 
-        internal static string RegistrationName = "LearnerFeatureSelectionTransform";
+        /*internal*/public static string RegistrationName = "LearnerFeatureSelectionTransform";
 
         /// <summary>
         /// Create method corresponding to SignatureDataTransform.

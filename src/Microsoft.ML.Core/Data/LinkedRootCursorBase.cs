@@ -9,7 +9,7 @@ namespace Microsoft.ML.Runtime.Data
     /// MoveNext/MoveMany.
     /// </summary>
     [BestFriend]
-    internal abstract class LinkedRootCursorBase<TInput> : RootCursorBase
+    /*internal*/public abstract class LinkedRootCursorBase<TInput> : RootCursorBase
         where TInput : class, ICursor
     {
         private readonly ICursor _root;

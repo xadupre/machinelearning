@@ -34,7 +34,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// </summary>
     public sealed class SsaChangePointDetector : SsaAnomalyDetectionBase
     {
-        internal const string Summary = "This transform detects the change-points in a seasonal time-series using Singular Spectrum Analysis (SSA).";
+        /*internal*/public const string Summary = "This transform detects the change-points in a seasonal time-series using Singular Spectrum Analysis (SSA).";
         public const string LoaderSignature = "SsaChangePointDetector";
         public const string UserName = "SSA Change Point Detection";
         public const string ShortName = "chgpnt";
@@ -104,7 +104,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 loaderAssemblyName: typeof(SsaChangePointDetector).Assembly.FullName);
         }
 
-        internal SsaChangePointDetector(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public SsaChangePointDetector(IHostEnvironment env, Arguments args, IDataView input)
             : this(env, args)
         {
             Model.Train(new RoleMappedData(input, null, InputColumnName));
@@ -120,7 +120,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new SsaChangePointDetector(env, args, input).MakeDataTransform(input);
         }
 
-        internal SsaChangePointDetector(IHostEnvironment env, Arguments args)
+        /*internal*/public SsaChangePointDetector(IHostEnvironment env, Arguments args)
             : base(new BaseArguments(args), LoaderSignature, env)
         {
             switch (Martingale)
@@ -160,7 +160,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return new SsaChangePointDetector(env, ctx);
         }
 
-        internal SsaChangePointDetector(IHostEnvironment env, ModelLoadContext ctx)
+        /*internal*/public SsaChangePointDetector(IHostEnvironment env, ModelLoadContext ctx)
             : base(env, ctx, LoaderSignature)
         {
             // *** Binary format ***

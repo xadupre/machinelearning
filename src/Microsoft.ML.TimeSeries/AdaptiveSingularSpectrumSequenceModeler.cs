@@ -42,8 +42,8 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             public VBuffer<Single> LowerBound;
             public Single ConfidenceLevel;
 
-            internal bool CanComputeForecastIntervals;
-            internal Single BoundOffset;
+            /*internal*/public bool CanComputeForecastIntervals;
+            /*internal*/public Single BoundOffset;
 
             public bool IsVarianceValid { get { return CanComputeForecastIntervals; } }
         }
@@ -738,7 +738,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             return minIndex + 1;
         }
 
-        internal override void InitState()
+        /*internal*/public override void InitState()
         {
             for (int i = 0; i < _windowSize - 2; ++i)
                 _state[i] = 0;
@@ -1111,7 +1111,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// </summary>
         /// <param name="input">The next observation on the series.</param>
         /// <param name="updateModel">Determines whether the model parameters also need to be updated upon consuming the new observation (default = false).</param>
-        internal override void Consume(ref Single input, bool updateModel = false)
+        /*internal*/public override void Consume(ref Single input, bool updateModel = false)
         {
             if (Single.IsNaN(input))
                 return;
@@ -1174,7 +1174,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// Train the model parameters based on a training series.
         /// </summary>
         /// <param name="data">The training time-series.</param>
-        internal override void Train(FixedSizeQueue<Single> data)
+        /*internal*/public override void Train(FixedSizeQueue<Single> data)
         {
             _host.CheckParam(data != null, nameof(data), "The input series for training cannot be null.");
             _host.CheckParam(data.Count >= _trainSize, nameof(data), "The input series for training does not have enough points for training.");
@@ -1215,7 +1215,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// Train the model parameters based on a training series.
         /// </summary>
         /// <param name="data">The training time-series.</param>
-        internal override void Train(RoleMappedData data)
+        /*internal*/public override void Train(RoleMappedData data)
         {
             _host.CheckParam(data != null, nameof(data), "The input series for training cannot be null.");
             if (data.Schema.Feature.Type != NumberType.Float)
@@ -1425,7 +1425,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// </summary>
         /// <param name="result">The forecast result.</param>
         /// <param name="horizon">The forecast horizon.</param>
-        internal override void Forecast(ref ForecastResultBase<Single> result, int horizon = 1)
+        /*internal*/public override void Forecast(ref ForecastResultBase<Single> result, int horizon = 1)
         {
             _host.CheckParam(horizon >= 1, nameof(horizon), "The horizon parameter should be greater than 0.");
             if (result == null)
@@ -1497,12 +1497,12 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
         /// Predicts the next value on the series.
         /// </summary>
         /// <param name="output">The prediction result.</param>
-        internal override void PredictNext(ref Single output)
+        /*internal*/public override void PredictNext(ref Single output)
         {
             output = _nextPrediction;
         }
 
-        internal override SequenceModelerBase<Single, Single> Clone()
+        /*internal*/public override SequenceModelerBase<Single, Single> Clone()
         {
             return new AdaptiveSingularSpectrumSequenceModeler(this);
         }

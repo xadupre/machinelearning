@@ -200,7 +200,7 @@ namespace Microsoft.ML.Trainers
             [TlcModule.SweepableDiscreteParam("BiasLearningRate", new object[] { 0.0f, 0.01f, 0.1f, 1f })]
             public float BiasLearningRate = 0;
 
-            internal virtual void Check(IHostEnvironment env)
+            /*internal*/public virtual void Check(IHostEnvironment env)
             {
                 Contracts.AssertValue(env);
                 env.CheckUserArg(L2Const == null || L2Const >= 0, nameof(L2Const), "L2 constant must be non-negative.");
@@ -257,14 +257,14 @@ namespace Microsoft.ML.Trainers
             return args;
         }
 
-        internal SdcaTrainerBase(IHostEnvironment env, string featureColumn, SchemaShape.Column labelColumn,
+        /*internal*/public SdcaTrainerBase(IHostEnvironment env, string featureColumn, SchemaShape.Column labelColumn,
            SchemaShape.Column weight = null, Action<TArgs> advancedSettings = null, float? l2Const = null,
             float? l1Threshold = null, int? maxIterations = null)
           : this(env, ArgsInit(featureColumn, labelColumn, advancedSettings), labelColumn, weight, l2Const, l1Threshold, maxIterations)
         {
         }
 
-        internal SdcaTrainerBase(IHostEnvironment env, TArgs args, SchemaShape.Column label, SchemaShape.Column weight = null,
+        /*internal*/public SdcaTrainerBase(IHostEnvironment env, TArgs args, SchemaShape.Column label, SchemaShape.Column weight = null,
             float? l2Const = null, float? l1Threshold = null, int? maxIterations = null)
             : base(Contracts.CheckRef(env, nameof(env)).Register(RegisterName), TrainerUtils.MakeR4VecFeature(args.FeatureColumn), label, weight)
         {
@@ -1368,7 +1368,7 @@ namespace Microsoft.ML.Trainers
     /// <summary>
     /// Sum with underflow compensation for better numerical stability.
     /// </summary>
-    internal sealed class CompensatedSum
+    /*internal*/public sealed class CompensatedSum
     {
         private Double _roundOffError;
         private Double _sum;
@@ -1387,7 +1387,7 @@ namespace Microsoft.ML.Trainers
     public sealed class SdcaBinaryTrainer : SdcaTrainerBase<SdcaBinaryTrainer.Arguments, BinaryPredictionTransformer<TScalarPredictor>, TScalarPredictor>
     {
         public const string LoadNameValue = "SDCA";
-        internal const string UserNameValue = "Fast Linear (SA-SDCA)";
+        /*internal*/public const string UserNameValue = "Fast Linear (SA-SDCA)";
 
         public sealed class Arguments : ArgumentsBase
         {
@@ -1403,7 +1403,7 @@ namespace Microsoft.ML.Trainers
             [Argument(ArgumentType.AtMostOnce, HelpText = "The maximum number of examples to use when training the calibrator", Visibility = ArgumentAttribute.VisibilityType.EntryPointsOnly)]
             public int MaxCalibrationExamples = 1000000;
 
-            internal override void Check(IHostEnvironment env)
+            /*internal*/public override void Check(IHostEnvironment env)
             {
                 base.Check(env);
                 env.CheckUserArg(PositiveInstanceWeight > 0, nameof(PositiveInstanceWeight), "Weight for positive instances must be positive");
@@ -1476,7 +1476,7 @@ namespace Microsoft.ML.Trainers
             }
         }
 
-        internal SdcaBinaryTrainer(IHostEnvironment env, Arguments args,
+        /*internal*/public SdcaBinaryTrainer(IHostEnvironment env, Arguments args,
             string featureColumn, string labelColumn, string weightColumn = null)
             : base(env, args, TrainerUtils.MakeBoolScalarLabel(labelColumn), TrainerUtils.MakeR4ScalarWeightColumn(weightColumn))
         {
@@ -1578,9 +1578,9 @@ namespace Microsoft.ML.Trainers
     public sealed class StochasticGradientDescentClassificationTrainer :
         LinearTrainerBase<BinaryPredictionTransformer<TScalarPredictor>, TScalarPredictor>
     {
-        internal const string LoadNameValue = "BinarySGD";
-        internal const string UserNameValue = "Hogwild SGD (binary)";
-        internal const string ShortName = "HogwildSGD";
+        /*internal*/public const string LoadNameValue = "BinarySGD";
+        /*internal*/public const string UserNameValue = "Hogwild SGD (binary)";
+        /*internal*/public const string ShortName = "HogwildSGD";
 
         public sealed class Arguments : LearnerInputBaseWithWeight
         {
@@ -1626,7 +1626,7 @@ namespace Microsoft.ML.Trainers
             [Argument(ArgumentType.AtMostOnce, HelpText = "The maximum number of examples to use when training the calibrator", Visibility = ArgumentAttribute.VisibilityType.EntryPointsOnly)]
             public int MaxCalibrationExamples = 1000000;
 
-            internal void Check(IHostEnvironment env)
+            /*internal*/public void Check(IHostEnvironment env)
             {
                 Contracts.CheckValue(env, nameof(env));
                 env.CheckUserArg(L2Weight >= 0, nameof(L2Weight), "Must be non-negative.");
@@ -1646,11 +1646,11 @@ namespace Microsoft.ML.Trainers
                 if (ConvergenceTolerance <= 0)
                     ConvergenceTolerance = float.Epsilon;
             }
-            internal static class Defaults
+            /*internal*/public static class Defaults
             {
-                internal const float L2Weight = 1e-6f;
-                internal const int MaxIterations = 20;
-                internal const double InitLearningRate = 0.01;
+                /*internal*/public const float L2Weight = 1e-6f;
+                /*internal*/public const int MaxIterations = 20;
+                /*internal*/public const double InitLearningRate = 0.01;
             }
         }
 
@@ -1713,7 +1713,7 @@ namespace Microsoft.ML.Trainers
         /// <summary>
         /// Initializes a new instance of <see cref="StochasticGradientDescentClassificationTrainer"/>
         /// </summary>
-        internal StochasticGradientDescentClassificationTrainer(IHostEnvironment env, Arguments args)
+        /*internal*/public StochasticGradientDescentClassificationTrainer(IHostEnvironment env, Arguments args)
             : base(env, args.FeatureColumn, TrainerUtils.MakeBoolScalarLabel(args.LabelColumn), args.WeightColumn)
         {
             args.Check(env);
