@@ -368,7 +368,7 @@ namespace Microsoft.ML.Runtime.Data
         void ISaveAsOnnx.SaveAsOnnx(OnnxContext ctx) => SaveAsOnnxCore(ctx);
 
         [BestFriend]
-        private protected virtual void SaveAsOnnxCore(OnnxContext ctx)
+        /*private*/ protected virtual void SaveAsOnnxCore(OnnxContext ctx)
         {
             Host.CheckValue(ctx, nameof(ctx));
             Host.Assert(Bindable is IBindableCanSaveOnnx);

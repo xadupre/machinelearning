@@ -62,7 +62,7 @@ namespace Microsoft.ML.Transforms.Normalizers
             public readonly string Output;
             public readonly long MaxTrainingExamples;
 
-            private protected ColumnBase(string input, string output, long maxTrainingExamples)
+            /*private*/ protected ColumnBase(string input, string output, long maxTrainingExamples)
             {
                 Contracts.CheckNonEmpty(input, nameof(input));
                 Contracts.CheckNonEmpty(output, nameof(output));
@@ -97,7 +97,7 @@ namespace Microsoft.ML.Transforms.Normalizers
         {
             public readonly bool FixZero;
 
-            private protected FixZeroColumnBase(string input, string output, long maxTrainingExamples, bool fixZero)
+            /*private*/ protected FixZeroColumnBase(string input, string output, long maxTrainingExamples, bool fixZero)
                 : base(input, output, maxTrainingExamples)
             {
                 FixZero = fixZero;

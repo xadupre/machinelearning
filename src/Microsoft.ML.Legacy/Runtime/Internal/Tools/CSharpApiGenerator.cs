@@ -23,7 +23,7 @@ using static Microsoft.ML.Runtime.EntryPoints.CommonInputs;
 
 namespace Microsoft.ML.Runtime.Internal.Tools
 {
-    internal sealed class CSharpApiGenerator : IGenerator
+    /*internal*/public sealed class CSharpApiGenerator : IGenerator
     {
         public sealed class Arguments
         {

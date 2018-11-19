@@ -128,11 +128,11 @@ namespace Microsoft.ML.Trainers.FastTree
         protected int[] FeatureMap;
 
         public override TrainerInfo Info { get; }
-        private protected virtual bool NeedCalibration => false;
+        /*private*/ protected virtual bool NeedCalibration => false;
 
         protected IParallelTraining ParallelTraining;
 
-        private protected GamTrainerBase(IHostEnvironment env,
+        /*private*/ protected GamTrainerBase(IHostEnvironment env,
             string name,
             SchemaShape.Column label,
             string featureColumn,
@@ -164,7 +164,7 @@ namespace Microsoft.ML.Trainers.FastTree
             InitializeThreads();
         }
 
-        private protected GamTrainerBase(IHostEnvironment env, TArgs args, string name, SchemaShape.Column label)
+        /*private*/ protected GamTrainerBase(IHostEnvironment env, TArgs args, string name, SchemaShape.Column label)
             : base(Contracts.CheckRef(env, nameof(env)).Register(name), TrainerUtils.MakeR4VecFeature(args.FeatureColumn),
                   label, TrainerUtils.MakeR4ScalarWeightColumn(args.WeightColumn, args.WeightColumn.IsExplicit))
         {
@@ -188,7 +188,7 @@ namespace Microsoft.ML.Trainers.FastTree
             InitializeThreads();
         }
 
-        private protected void TrainBase(TrainContext context)
+        /*private*/ protected void TrainBase(TrainContext context)
         {
             using (var ch = Host.Start("Training"))
             {
@@ -644,7 +644,7 @@ namespace Microsoft.ML.Trainers.FastTree
 
         public ColumnType OutputType => NumberType.Float;
 
-        private protected GamPredictorBase(IHostEnvironment env, string name,
+        /*private*/ protected GamPredictorBase(IHostEnvironment env, string name,
             int inputLength, Dataset trainSet, double meanEffect, double[][] binEffects, int[] featureMap)
             : base(env, name)
         {
@@ -982,7 +982,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <see cref="GamPredictorBase"/>, it is convenient to have the command itself nested within the base
         /// predictor class.
         /// </summary>
-        internal sealed class VisualizationCommand : DataCommand.ImplBase<VisualizationCommand.Arguments>
+        /*internal*/public sealed class VisualizationCommand : DataCommand.ImplBase<VisualizationCommand.Arguments>
         {
             public const string Summary = "Loads a model trained with a GAM learner, and starts an interactive web session to visualize it.";
             public const string LoadName = "GamVisualization";
@@ -1425,7 +1425,7 @@ namespace Microsoft.ML.Trainers.FastTree
         }
     }
 
-    internal static class GamDefaults
+    /*internal*/public static class GamDefaults
     {
         internal const int NumIterations = 9500;
         internal const int MaxBins = 255;

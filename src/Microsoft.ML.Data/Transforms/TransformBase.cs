@@ -113,13 +113,13 @@ namespace Microsoft.ML.Runtime.Data
     public abstract class FilterBase : TransformBase, ITransformCanSavePfa
     {
         [BestFriend]
-        private protected FilterBase(IHostEnvironment env, string name, IDataView input)
+        /*private*/ protected FilterBase(IHostEnvironment env, string name, IDataView input)
             : base(env, name, input)
         {
         }
 
         [BestFriend]
-        private protected FilterBase(IHost host, IDataView input)
+        /*private*/ protected FilterBase(IHost host, IDataView input)
             : base(host, input)
         {
         }
@@ -472,11 +472,11 @@ namespace Microsoft.ML.Runtime.Data
 
         bool ICanSavePfa.CanSavePfa => CanSavePfaCore;
 
-        private protected virtual bool CanSavePfaCore => false;
+        /*private*/ protected virtual bool CanSavePfaCore => false;
 
         bool ICanSaveOnnx.CanSaveOnnx(OnnxContext ctx) => CanSaveOnnxCore;
 
-        private protected virtual bool CanSaveOnnxCore => false;
+        /*private*/ protected virtual bool CanSaveOnnxCore => false;
 
         [BestFriend]
         /*private*/ protected OneToOneTransformBase(IHostEnvironment env, string name, OneToOneColumn[] column,
@@ -620,7 +620,7 @@ namespace Microsoft.ML.Runtime.Data
         /// <returns>Shuold return the declaration corresponding to the value of this column. Will
         /// return <c>null</c> in the event that we do not know how to express this column as PFA</returns>
         [BestFriend]
-        private protected virtual JToken SaveAsPfaCore(BoundPfaContext ctx, int iinfo, ColInfo info, JToken srcToken)
+        /*private*/ protected virtual JToken SaveAsPfaCore(BoundPfaContext ctx, int iinfo, ColInfo info, JToken srcToken)
         {
             Host.AssertValue(ctx);
             Host.Assert(0 <= iinfo && iinfo < _bindings.InfoCount);
@@ -631,7 +631,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected virtual bool SaveAsOnnxCore(OnnxContext ctx, int iinfo, ColInfo info, string srcVariableName,
+        /*private*/ protected virtual bool SaveAsOnnxCore(OnnxContext ctx, int iinfo, ColInfo info, string srcVariableName,
             string dstVariableName) => false;
 
         public sealed override Schema Schema => _bindings.AsSchema;

@@ -102,12 +102,12 @@ namespace Microsoft.ML.Trainers.FastTree
 
         public bool HasCategoricalFeatures => Utils.Size(CategoricalFeatures) > 0;
 
-        private protected virtual bool NeedCalibration => false;
+        /*private*/ protected virtual bool NeedCalibration => false;
 
         /// <summary>
         /// Constructor to use when instantiating the classes deriving from here through the API.
         /// </summary>
-        private protected FastTreeTrainerBase(IHostEnvironment env,
+        /*private*/ protected FastTreeTrainerBase(IHostEnvironment env,
             SchemaShape.Column label,
             string featureColumn,
             string weightColumn,
@@ -154,7 +154,7 @@ namespace Microsoft.ML.Trainers.FastTree
         /// <summary>
         /// Legacy constructor that is used when invoking the classes deriving from this, through maml.
         /// </summary>
-        private protected FastTreeTrainerBase(IHostEnvironment env, TArgs args, SchemaShape.Column label)
+        /*private*/ protected FastTreeTrainerBase(IHostEnvironment env, TArgs args, SchemaShape.Column label)
             : base(Contracts.CheckRef(env, nameof(env)).Register(RegisterName), TrainerUtils.MakeR4VecFeature(args.FeatureColumn), label, TrainerUtils.MakeR4ScalarWeightColumn(args.WeightColumn, args.WeightColumn.IsExplicit))
         {
             Host.CheckValue(args, nameof(args));

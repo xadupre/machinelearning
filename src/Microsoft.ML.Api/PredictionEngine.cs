@@ -149,6 +149,7 @@ namespace Microsoft.ML.Runtime.Api
         }
         */
 
+            /*
         private static Func<Schema, IRowToRowMapper> StreamChecker(IHostEnvironment env, Stream modelStream)
         {
             env.CheckValue(modelStream, nameof(modelStream));
@@ -159,7 +160,7 @@ namespace Microsoft.ML.Runtime.Api
                 env.CheckParam(transformer.IsRowToRowMapper, nameof(transformer), "Must be a row to row mapper");
                 return transformer.GetRowToRowMapper(schema);
             };
-        }
+        }*/
 
         /*internal*/
         /***********

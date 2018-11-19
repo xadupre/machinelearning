@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime
     /// A telemetry message.
     /// </summary>
     [BestFriend]
-    internal abstract class TelemetryMessage
+    /*internal*/public abstract class TelemetryMessage
     {
         public static TelemetryMessage CreateCommand(string commandName, string commandText)
         {
@@ -42,7 +42,7 @@ namespace Microsoft.ML.Runtime
     /// Message with one long text and bunch of small properties (limit on value is ~1020 chars)
     /// </summary>
     [BestFriend]
-    internal sealed class TelemetryTrace : TelemetryMessage
+    /*internal*/public sealed class TelemetryTrace : TelemetryMessage
     {
         public readonly string Text;
         public readonly string Name;
@@ -60,7 +60,7 @@ namespace Microsoft.ML.Runtime
     /// Message with exception
     /// </summary>
     [BestFriend]
-    internal sealed class TelemetryException : TelemetryMessage
+    /*internal*/public sealed class TelemetryException : TelemetryMessage
     {
         public readonly Exception Exception;
         public TelemetryException(Exception exception)
@@ -74,7 +74,7 @@ namespace Microsoft.ML.Runtime
     /// Message with metric value and it properites
     /// </summary>
     [BestFriend]
-    internal sealed class TelemetryMetric : TelemetryMessage
+    /*internal*/public sealed class TelemetryMetric : TelemetryMessage
     {
         public readonly string Name;
         public readonly double Value;

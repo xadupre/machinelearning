@@ -185,7 +185,7 @@ namespace Microsoft.ML.Runtime.Data
             ctx.Writer.Write(_threshold);
         }
 
-        private protected override void SaveAsOnnxCore(OnnxContext ctx)
+        /*private*/ protected override void SaveAsOnnxCore(OnnxContext ctx)
         {
             Host.CheckValue(ctx, nameof(ctx));
             Host.Assert(Bindable is IBindableCanSaveOnnx);

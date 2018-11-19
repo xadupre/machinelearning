@@ -30,7 +30,7 @@ namespace Microsoft.ML.Runtime.Ensemble
     /// <summary>
     /// A generic ensemble classifier for multi-class classification
     /// </summary>
-    internal sealed class MulticlassDataPartitionEnsembleTrainer :
+    /*internal*/public sealed class MulticlassDataPartitionEnsembleTrainer :
         EnsembleTrainerBase<VBuffer<Single>, EnsembleMultiClassPredictor,
         IMulticlassSubModelSelector, IMultiClassOutputCombiner>,
         IModelCombiner
@@ -83,7 +83,7 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         public override PredictionKind PredictionKind => PredictionKind.MultiClassClassification;
 
-        private protected override EnsembleMultiClassPredictor CreatePredictor(List<FeatureSubsetModel<TVectorPredictor>> models)
+        /*private*/ protected override EnsembleMultiClassPredictor CreatePredictor(List<FeatureSubsetModel<TVectorPredictor>> models)
         {
             return new EnsembleMultiClassPredictor(Host, CreateModels<TVectorPredictor>(models), Combiner as IMultiClassOutputCombiner);
         }

@@ -17,7 +17,7 @@ using Microsoft.ML.Runtime.Command;
 namespace Microsoft.ML.Runtime.Sweeper
 {
     [BestFriend]
-    internal sealed class SweepCommand : ICommand
+    /*internal*/public sealed class SweepCommand : ICommand
     {
 #pragma warning disable CS0649 // The fields will still be set via the reflection driven mechanisms.
         public sealed class Arguments

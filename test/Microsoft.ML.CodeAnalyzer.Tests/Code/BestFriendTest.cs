@@ -51,7 +51,7 @@ namespace Microsoft.ML.InternalCodeAnalyzer.Tests
                 };
             using (var ms = new MemoryStream())
             {
-                // We also test whether private protected can be accessed, so we need C# 7.2 at least.
+                // We also test whether /*private*/ protected can be accessed, so we need C# 7.2 at least.
                 var parseOpts = new CSharpParseOptions(LanguageVersion.CSharp7_3);
                 var tree = CSharpSyntaxTree.ParseText(SourceDeclaration.Value, parseOpts);
                 var treeAttr = CSharpSyntaxTree.ParseText(SourceAttribute.Value, parseOpts);

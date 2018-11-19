@@ -157,7 +157,7 @@ namespace Microsoft.ML.Trainers.Online
             data.CheckRegressionLabel();
         }
 
-        private protected override TrainStateBase MakeState(IChannel ch, int numFeatures, LinearPredictor predictor)
+        /*private*/ protected override TrainStateBase MakeState(IChannel ch, int numFeatures, LinearPredictor predictor)
         {
             return new TrainState(ch, numFeatures, predictor, this);
         }

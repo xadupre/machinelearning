@@ -18,7 +18,7 @@ using Microsoft.ML.Runtime.Model;
 namespace Microsoft.ML.Runtime.Data
 {
     [BestFriend]
-    internal sealed class TrainTestCommand : DataCommand.ImplBase<TrainTestCommand.Arguments>
+    /*internal*/public sealed class TrainTestCommand : DataCommand.ImplBase<TrainTestCommand.Arguments>
     {
         public sealed class Arguments : DataCommand.ArgumentsBase
         {

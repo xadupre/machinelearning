@@ -20,7 +20,7 @@ namespace Microsoft.ML.Runtime
     /// that the library will publish some sort of restful API.
     /// </summary>
     [BestFriend]
-    internal sealed class ServerChannel : ServerChannel.IPendingBundleNotification, IDisposable
+    /*internal*/public sealed class ServerChannel : ServerChannel.IPendingBundleNotification, IDisposable
     {
         // See ServerChannel.md for a more elaborate discussion of high level usage and design.
         private readonly IChannelProvider _chp;
@@ -252,7 +252,7 @@ namespace Microsoft.ML.Runtime
     }
 
     [BestFriend]
-    internal static class ServerChannelUtilities
+    /*internal*/public static class ServerChannelUtilities
     {
         /// <summary>
         /// Convenience method for <see cref="ServerChannel.Start"/> that looks more idiomatic to typical

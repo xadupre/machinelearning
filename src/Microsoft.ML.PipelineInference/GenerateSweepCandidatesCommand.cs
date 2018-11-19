@@ -24,7 +24,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
     /// 2- the path to the datafile
     /// and generates experiment candidates by combining all the transform recipes suggested for the dataset, with all the learners available for the task.
     /// </summary>
-    internal sealed class GenerateSweepCandidatesCommand : ICommand
+    /*internal*/public sealed class GenerateSweepCandidatesCommand : ICommand
     {
 #pragma warning disable CS0649 // The fields will still be set via the reflection driven mechanisms.
         public sealed class Arguments

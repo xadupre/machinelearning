@@ -60,7 +60,7 @@ namespace Microsoft.ML.Runtime.PipelineInference
             return epName;
         }
 
-        private protected void PropagateParamSetValues(ParameterSet hyperParams,
+        /*private*/ protected void PropagateParamSetValues(ParameterSet hyperParams,
             TlcModule.SweepableParamAttribute[] sweepParams)
         {
             var spMap = sweepParams.ToDictionary(sp => sp.Name);

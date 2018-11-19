@@ -200,18 +200,18 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             private SequenceModelerBase<Single, Single> _model;
             private SsaAnomalyDetectionBase _parentAnomalyDetector;
 
-            private protected override void LearnStateFromDataCore(FixedSizeQueue<Single> data)
+            /*private*/ protected override void LearnStateFromDataCore(FixedSizeQueue<Single> data)
             {
                 // This method is empty because there is no need to implement a training logic here.
             }
 
-            private protected override void InitializeAnomalyDetector()
+            /*private*/ protected override void InitializeAnomalyDetector()
             {
                 _parentAnomalyDetector = (SsaAnomalyDetectionBase)Parent;
                 _model = _parentAnomalyDetector.Model.Clone();
             }
 
-            private protected override double ComputeRawAnomalyScore(ref Single input, FixedSizeQueue<Single> windowedBuffer, long iteration)
+            /*private*/ protected override double ComputeRawAnomalyScore(ref Single input, FixedSizeQueue<Single> windowedBuffer, long iteration)
             {
                 // Get the prediction for the next point opn the series
                 Single expectedValue = 0;

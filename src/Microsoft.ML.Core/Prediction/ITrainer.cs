@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime
     /// but rather implement the more specific <see cref="ITrainer{TPredictor}"/>.
     /// </summary>
     [BestFriend]
-    internal interface ITrainer
+    /*internal*/public interface ITrainer
     {
         /// <summary>
         /// Auxiliary information about the trainer in terms of its capabilities
@@ -69,7 +69,7 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     /// <typeparam name="TPredictor"> Type of predictor produced</typeparam>
     [BestFriend]
-    internal interface ITrainer<out TPredictor> : ITrainer
+    /*internal*/public interface ITrainer<out TPredictor> : ITrainer
         where TPredictor : IPredictor
     {
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.ML.Runtime
     }
 
     [BestFriend]
-    internal static class TrainerExtensions
+    /*internal*/public static class TrainerExtensions
     {
         /// <summary>
         /// Convenience train extension for the case where one has only a training set with no auxiliary information.

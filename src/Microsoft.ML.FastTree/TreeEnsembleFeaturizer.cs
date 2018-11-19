@@ -548,7 +548,7 @@ namespace Microsoft.ML.Runtime.Data
 
     /// <include file='doc.xml' path='doc/members/member[@name="TreeEnsembleFeaturizerTransform"]'/>
     [BestFriend]
-    internal static class TreeEnsembleFeaturizerTransform
+    /*internal*/public static class TreeEnsembleFeaturizerTransform
     {
 #pragma warning disable CS0649 // The fields will still be set via the reflection driven mechanisms.
         public sealed class Arguments : TrainAndScoreTransformer.ArgumentsBase
@@ -804,7 +804,7 @@ namespace Microsoft.ML.Runtime.Data
         }
     }
 
-    internal static partial class TreeFeaturize
+    /*internal*/public static partial class TreeFeaturize
     {
 #pragma warning disable CS0649 // The fields will still be set via the reflection driven mechanisms.
         [TlcModule.EntryPoint(Name = "Transforms.TreeLeafFeaturizer",

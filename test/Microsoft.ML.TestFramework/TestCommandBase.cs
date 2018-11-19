@@ -322,7 +322,7 @@ namespace Microsoft.ML.Runtime.RunTests
         /// </param>
         /// <param name="args">The arguments for MAML.</param>
         /// <param name="printProgress">Whether to print the progress summary. If true, progress summary will appear in the end of baseline output file.</param>
-        private protected static int MainForTest(ConsoleEnvironment env, TextWriter writer, string args, bool printProgress = false)
+        /*private*/ protected static int MainForTest(ConsoleEnvironment env, TextWriter writer, string args, bool printProgress = false)
         {
             Contracts.AssertValue(env);
             Contracts.AssertValue(writer);

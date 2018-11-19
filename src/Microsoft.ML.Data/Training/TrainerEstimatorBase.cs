@@ -52,7 +52,7 @@ namespace Microsoft.ML.Runtime.Training
         public abstract PredictionKind PredictionKind { get; }
 
         [BestFriend]
-        private protected TrainerEstimatorBase(IHost host,
+        /*private*/ protected TrainerEstimatorBase(IHost host,
             SchemaShape.Column feature,
             SchemaShape.Column label,
             SchemaShape.Column weight = null)
@@ -151,7 +151,7 @@ namespace Microsoft.ML.Runtime.Training
         }
 
         [BestFriend]
-        private protected abstract TModel TrainModelCore(TrainContext trainContext);
+        /*private*/ protected abstract TModel TrainModelCore(TrainContext trainContext);
 
         protected abstract TTransformer MakeTransformer(TModel model, Schema trainSchema);
 

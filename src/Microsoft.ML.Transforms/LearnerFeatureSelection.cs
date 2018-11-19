@@ -21,7 +21,7 @@ namespace Microsoft.ML.Transforms
     /// is greater than a threshold.
     /// Instantiates a DropSlots transform to actually drop the slots.
     /// </summary>
-    internal static class LearnerFeatureSelectionTransform
+    /*internal*/public static class LearnerFeatureSelectionTransform
     {
         /*internal*/public const string Summary = "Selects the slots for which the absolute value of the corresponding weight in a linear learner is greater than a threshold.";
 

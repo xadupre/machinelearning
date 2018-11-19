@@ -100,7 +100,7 @@ namespace Microsoft.ML.Runtime.EntryPoints
     }
 
     [BestFriend]
-    internal static class LearnerEntryPointsUtils
+    /*internal*/public static class LearnerEntryPointsUtils
     {
         public static string FindColumn(IExceptionContext ectx, ISchema schema, Optional<string> value)
         {

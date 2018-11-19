@@ -334,7 +334,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        internal static bool HasKeyValues(this SchemaShape.Column col)
+        /*internal*/public static bool HasKeyValues(this SchemaShape.Column col)
         {
             return col.Metadata.TryFindColumn(Kinds.KeyValues, out var metaCol)
                 && metaCol.Kind == SchemaShape.Column.VectorKind.Vector

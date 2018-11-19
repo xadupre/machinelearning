@@ -21,7 +21,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 
 namespace Microsoft.ML.Runtime.Data
 {
-    internal sealed class ShowSchemaCommand : DataCommand.ImplBase<ShowSchemaCommand.Arguments>
+    /*internal*/public sealed class ShowSchemaCommand : DataCommand.ImplBase<ShowSchemaCommand.Arguments>
     {
         public sealed class Arguments : DataCommand.ArgumentsBase
         {

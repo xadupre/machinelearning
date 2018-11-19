@@ -225,7 +225,7 @@ namespace Microsoft.ML.Transforms
         {
             public PipelineColumn WrappedColumn { get; }
 
-            private protected ScalarOrVectorOrVarVector(PipelineColumn col)
+            /*private*/ protected ScalarOrVectorOrVarVector(PipelineColumn col)
             {
                 Contracts.CheckValue(col, nameof(col));
                 WrappedColumn = col;

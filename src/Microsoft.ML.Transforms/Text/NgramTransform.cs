@@ -476,7 +476,7 @@ namespace Microsoft.ML.Transforms.Text
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -762,7 +762,7 @@ namespace Microsoft.ML.Transforms.Text
             TfIdf = 2
         }
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const int NgramLength = 2;
             public const bool AllLength = true;
@@ -835,7 +835,7 @@ namespace Microsoft.ML.Transforms.Text
 
         public NgramCountingTransformer Fit(IDataView input) => new NgramCountingTransformer(_host, input, _columns);
 
-        internal static bool IsColumnTypeValid(ColumnType type)
+        /*internal*/public static bool IsColumnTypeValid(ColumnType type)
         {
             if (!type.IsVector)
                 return false;
@@ -847,7 +847,7 @@ namespace Microsoft.ML.Transforms.Text
             return true;
         }
 
-        internal static bool IsSchemaColumnValid(SchemaShape.Column col)
+        /*internal*/public static bool IsSchemaColumnValid(SchemaShape.Column col)
         {
             if (col.Kind == SchemaShape.Column.VectorKind.Scalar)
                 return false;

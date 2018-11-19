@@ -12,7 +12,7 @@ namespace Microsoft.ML.Benchmarks
 {
     /*internal*/public static class EnvironmentFactory
     {
-        internal static MLContext CreateClassificationEnvironment<TLoader, TTransformer, TTrainer>()
+        /*internal*/public static MLContext CreateClassificationEnvironment<TLoader, TTransformer, TTrainer>()
            where TLoader : IDataReader<IMultiStreamSource>
            where TTransformer : ITransformer
            where TTrainer : ITrainerEstimator<ISingleFeaturePredictionTransformer<IPredictor>, IPredictor>
@@ -27,7 +27,7 @@ namespace Microsoft.ML.Benchmarks
             return ctx;
         }
 
-        internal static MLContext CreateRankingEnvironment<TEvaluator, TLoader, TTransformer, TTrainer>()
+        /*internal*/public static MLContext CreateRankingEnvironment<TEvaluator, TLoader, TTransformer, TTrainer>()
             where TEvaluator : IEvaluator
             where TLoader : IDataReader<IMultiStreamSource>
             where TTransformer : ITransformer

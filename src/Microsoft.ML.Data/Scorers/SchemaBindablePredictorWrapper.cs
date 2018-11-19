@@ -98,7 +98,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected virtual void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
+        /*private*/ protected virtual void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
         {
             ctx.Hide(outputNames);
         }
@@ -113,7 +113,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        private protected virtual bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames) => false;
+        /*private*/ protected virtual bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames) => false;
 
         public ISchemaBoundMapper Bind(IHostEnvironment env, RoleMappedSchema schema)
         {
@@ -285,7 +285,7 @@ namespace Microsoft.ML.Runtime.Data
             base.Save(ctx);
         }
 
-        private protected override void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
+        /*private*/ protected override void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
         {
             Contracts.CheckValue(ctx, nameof(ctx));
             Contracts.CheckValue(schema, nameof(schema));
@@ -301,7 +301,7 @@ namespace Microsoft.ML.Runtime.Data
             ctx.DeclareVar(outputNames[0], scoreToken);
         }
 
-        private protected override bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames)
+        /*private*/ protected override bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames)
         {
             Contracts.CheckValue(ctx, nameof(ctx));
             Contracts.CheckValue(schema, nameof(schema));
@@ -396,7 +396,7 @@ namespace Microsoft.ML.Runtime.Data
             base.Save(ctx);
         }
 
-        private protected override void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
+        /*private*/ protected override void SaveAsPfaCore(BoundPfaContext ctx, RoleMappedSchema schema, string[] outputNames)
         {
             Contracts.CheckValue(ctx, nameof(ctx));
             Contracts.CheckValue(schema, nameof(schema));
@@ -416,7 +416,7 @@ namespace Microsoft.ML.Runtime.Data
             Contracts.Assert(ctx.TokenOrNullForName(outputNames[1]) == probToken.ToString());
         }
 
-        private protected override bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames)
+        /*private*/ protected override bool SaveAsOnnxCore(OnnxContext ctx, RoleMappedSchema schema, string[] outputNames)
         {
             Contracts.CheckValue(ctx, nameof(ctx));
             Contracts.CheckValue(schema, nameof(schema));

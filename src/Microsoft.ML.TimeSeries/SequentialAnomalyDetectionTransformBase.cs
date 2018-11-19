@@ -159,7 +159,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             }
         }
 
-        private protected SequentialAnomalyDetectionTransformBase(int windowSize, int initialWindowSize, string inputColumnName, string outputColumnName, string name, IHostEnvironment env,
+        /*private*/ protected SequentialAnomalyDetectionTransformBase(int windowSize, int initialWindowSize, string inputColumnName, string outputColumnName, string name, IHostEnvironment env,
             AnomalySide anomalySide, MartingaleType martingale, AlertingScore alertingScore, Double powerMartingaleEpsilon,
             Double alertThreshold)
             : base(Contracts.CheckRef(env, nameof(env)).Register(name), windowSize, initialWindowSize, inputColumnName, outputColumnName, new VectorType(NumberType.R8, GetOutputLength(alertingScore, env)))
@@ -183,13 +183,13 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             _outputLength = GetOutputLength(ThresholdScore, Host);
         }
 
-        private protected SequentialAnomalyDetectionTransformBase(ArgumentsBase args, string name, IHostEnvironment env)
+        /*private*/ protected SequentialAnomalyDetectionTransformBase(ArgumentsBase args, string name, IHostEnvironment env)
             : this(args.WindowSize, args.InitialWindowSize, args.Source, args.Name, name, env, args.Side, args.Martingale,
                 args.AlertOn, args.PowerMartingaleEpsilon, args.AlertThreshold)
         {
         }
 
-        private protected SequentialAnomalyDetectionTransformBase(IHostEnvironment env, ModelLoadContext ctx, string name)
+        /*private*/ protected SequentialAnomalyDetectionTransformBase(IHostEnvironment env, ModelLoadContext ctx, string name)
             : base(Contracts.CheckRef(env, nameof(env)).Register(name), ctx)
         {
             // *** Binary format ***
@@ -321,7 +321,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
 
             protected Double LatestMartingaleScore => Math.Exp(_logMartingaleValue);
 
-            private protected AnomalyDetectionStateBase() : base()
+            /*private*/ protected AnomalyDetectionStateBase() : base()
             {
             }
 
@@ -361,7 +361,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 return pValue;
             }
 
-            private protected override void SetNaOutput(ref VBuffer<Double> dst)
+            /*private*/ protected override void SetNaOutput(ref VBuffer<Double> dst)
             {
                 var values = dst.Values;
                 var outputLength = Parent._outputLength;
@@ -374,7 +374,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 dst = new VBuffer<Double>(Utils.Size(values), values, dst.Indices);
             }
 
-            private protected override sealed void TransformCore(ref TInput input, FixedSizeQueue<TInput> windowedBuffer, long iteration, ref VBuffer<Double> dst)
+            /*private*/ protected override sealed void TransformCore(ref TInput input, FixedSizeQueue<TInput> windowedBuffer, long iteration, ref VBuffer<Double> dst)
             {
                 var outputLength = Parent._outputLength;
                 Host.Assert(outputLength >= 2);
@@ -510,7 +510,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
                 dst = new VBuffer<Double>(outputLength, result, dst.Indices);
             }
 
-            private protected override sealed void InitializeStateCore()
+            /*private*/ protected override sealed void InitializeStateCore()
             {
                 Parent = (SequentialAnomalyDetectionTransformBase<TInput, TState>)ParentTransform;
                 Host.Assert(WindowSize >= 0);
@@ -527,7 +527,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             /// <summary>
             /// The abstract method that realizes the initialization functionality for the anomaly detector.
             /// </summary>
-            private protected abstract void InitializeAnomalyDetector();
+            /*private*/ protected abstract void InitializeAnomalyDetector();
 
             /// <summary>
             /// The abstract method that realizes the main logic for calculating the raw anomaly score bfor the current input given a windowed buffer
@@ -537,7 +537,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
             /// <param name="iteration">A long number that indicates the number of times ComputeRawAnomalyScore has been called so far (starting value = 0).</param>
             /// <returns>The raw anomaly score for the input. The Assumption is the higher absolute value of the raw score, the more anomalous the input is.
             /// The sign of the score determines whether it's a positive anomaly or a negative one.</returns>
-            private protected abstract Double ComputeRawAnomalyScore(ref TInput input, FixedSizeQueue<TInput> windowedBuffer, long iteration);
+            /*private*/ protected abstract Double ComputeRawAnomalyScore(ref TInput input, FixedSizeQueue<TInput> windowedBuffer, long iteration);
         }
 
         protected override IRowMapper MakeRowMapper(ISchema schema) => new Mapper(Host, this, schema);

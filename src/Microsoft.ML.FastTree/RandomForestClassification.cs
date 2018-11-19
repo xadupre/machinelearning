@@ -131,7 +131,7 @@ namespace Microsoft.ML.Trainers.FastTree
         private bool[] _trainSetLabels;
 
         public override PredictionKind PredictionKind => PredictionKind.BinaryClassification;
-        private protected override bool NeedCalibration => true;
+        /*private*/ protected override bool NeedCalibration => true;
 
         /// <summary>
         /// Initializes a new instance of <see cref="FastForestClassification"/>
@@ -168,7 +168,7 @@ namespace Microsoft.ML.Trainers.FastTree
         {
         }
 
-        private protected override IPredictorWithFeatureWeights<float> TrainModelCore(TrainContext context)
+        /*private*/ protected override IPredictorWithFeatureWeights<float> TrainModelCore(TrainContext context)
         {
             Host.CheckValue(context, nameof(context));
             var trainData = context.TrainingSet;

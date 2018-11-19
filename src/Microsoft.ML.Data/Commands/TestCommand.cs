@@ -19,7 +19,7 @@ namespace Microsoft.ML.Runtime.Data
     /// <see cref="EvaluateCommand"/>, without the need to save the intermediary scored data.
     /// </summary>
     [BestFriend]
-    internal sealed class TestCommand : DataCommand.ImplBase<TestCommand.Arguments>
+    /*internal*/public sealed class TestCommand : DataCommand.ImplBase<TestCommand.Arguments>
     {
         public sealed class Arguments : DataCommand.ArgumentsBase
         {

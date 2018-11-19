@@ -22,7 +22,7 @@ namespace Microsoft.ML.Runtime.MLTesting.Inference
     /// This command generates a suggested RSP to load the text file and recipes it prior to training.
     /// The results are output to the console and also to the RSP file, if it's specified.
     /// </summary>
-    internal sealed class InferRecipesCommand : ICommand
+    /*internal*/public sealed class InferRecipesCommand : ICommand
     {
 #pragma warning disable CS0649 // The fields will still be set via the reflection driven mechanisms.
         public sealed class Arguments

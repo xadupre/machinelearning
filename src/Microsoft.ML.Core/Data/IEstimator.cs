@@ -129,7 +129,7 @@ namespace Microsoft.ML.Core.Data
         /// <param name="itemType">The item type of <paramref name="type"/>.</param>
         /// <param name="isKey">Whether <paramref name="type"/> (or its item type) is a key.</param>
         [BestFriend]
-        internal static void GetColumnTypeShape(ColumnType type,
+        /*internal*/public static void GetColumnTypeShape(ColumnType type,
             out Column.VectorKind vecKind,
             out ColumnType itemType,
             out bool isKey)

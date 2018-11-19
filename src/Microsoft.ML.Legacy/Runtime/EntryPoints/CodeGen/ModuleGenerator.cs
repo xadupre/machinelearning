@@ -22,7 +22,7 @@ using Microsoft.ML.Runtime.Tools;
 
 namespace Microsoft.ML.Runtime.EntryPoints.CodeGen
 {
-    internal sealed class ModuleGenerator : IGenerator
+    /*internal*/public sealed class ModuleGenerator : IGenerator
     {
         private readonly string _modulePrefix;
         private readonly bool _generateModule;

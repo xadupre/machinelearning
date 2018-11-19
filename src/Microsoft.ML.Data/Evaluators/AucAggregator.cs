@@ -364,7 +364,7 @@ namespace Microsoft.ML.Runtime.Data
             public abstract Double ComputeWeightedAuPrc(out Double unweighted);
         }
 
-        private protected abstract class AuPrcAggregatorBase<T> : AuPrcAggregatorBase
+        /*private*/ protected abstract class AuPrcAggregatorBase<T> : AuPrcAggregatorBase
         {
             protected readonly ReservoirSamplerWithoutReplacement<T> Reservoir;
 
@@ -393,7 +393,7 @@ namespace Microsoft.ML.Runtime.Data
             protected abstract Double ComputeWeightedAuPrcCore(out Double unweighted);
         }
 
-        private protected sealed class UnweightedAuPrcAggregator : AuPrcAggregatorBase<UnweightedAuPrcAggregator.Info>
+        /*private*/ protected sealed class UnweightedAuPrcAggregator : AuPrcAggregatorBase<UnweightedAuPrcAggregator.Info>
         {
             public struct Info
             {
@@ -466,7 +466,7 @@ namespace Microsoft.ML.Runtime.Data
             }
         }
 
-        private protected sealed class WeightedAuPrcAggregator : AuPrcAggregatorBase<WeightedAuPrcAggregator.Info>
+        /*private*/ protected sealed class WeightedAuPrcAggregator : AuPrcAggregatorBase<WeightedAuPrcAggregator.Info>
         {
             public struct Info
             {

@@ -30,7 +30,7 @@ namespace Bubba
         /*internal*/public const int Listen = 2;// Should succeed.
 
         [BestFriend]
-        private protected C(int a) { } // Should succeed.
+        /*private*/ protected C(int a) { } // Should succeed.
         /*internal*/public C(float a) { } // Should Fail.
     }
 
@@ -38,7 +38,7 @@ namespace Bubba
     {
         [BestFriend]
         /*internal*/public D(int a) { } // Should succeed.
-        private protected D(float a) { } // Should Fail.
+        /*private*/ protected D(float a) { } // Should Fail.
     }
 
     /*internal*/public interface IA { } // Should Fail.

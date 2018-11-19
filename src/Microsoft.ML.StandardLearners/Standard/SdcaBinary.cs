@@ -61,14 +61,14 @@ namespace Microsoft.ML.Trainers
         /// </summary>
         protected abstract bool ShuffleData { get; }
 
-        private protected LinearTrainerBase(IHostEnvironment env, string featureColumn, SchemaShape.Column labelColumn,
+        /*private*/ protected LinearTrainerBase(IHostEnvironment env, string featureColumn, SchemaShape.Column labelColumn,
             string weightColumn = null)
             : base(Contracts.CheckRef(env, nameof(env)).Register(RegisterName), TrainerUtils.MakeR4VecFeature(featureColumn),
                           labelColumn, TrainerUtils.MakeR4ScalarWeightColumn(weightColumn))
         {
         }
 
-        private protected override TModel TrainModelCore(TrainContext context)
+        /*private*/ protected override TModel TrainModelCore(TrainContext context)
         {
             Host.CheckValue(context, nameof(context));
             using (var ch = Host.Start("Training"))

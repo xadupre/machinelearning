@@ -21,7 +21,7 @@ namespace Microsoft.ML.StaticPipe
         /*internal*/public readonly Reconciler ReconcilerObj;
         /*internal*/public readonly PipelineColumn[] Dependencies;
 
-        private protected PipelineColumn(Reconciler reconciler, PipelineColumn[] dependencies)
+        /*private*/ protected PipelineColumn(Reconciler reconciler, PipelineColumn[] dependencies)
         {
             Contracts.CheckValue(reconciler, nameof(reconciler));
             Contracts.CheckValueOrNull(dependencies);

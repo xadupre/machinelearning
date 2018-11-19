@@ -56,7 +56,7 @@ namespace Microsoft.ML.Runtime.Data
                 requireIndicesOnDense: requireIndicesOnDense);
         }
 
-        internal static VBufferEditor<T> Create<T>(
+        /*internal*/public static VBufferEditor<T> Create<T>(
             ref VBuffer<T> destination,
             int newLogicalLength,
             int valuesCount,

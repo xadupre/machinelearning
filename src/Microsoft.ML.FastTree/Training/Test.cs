@@ -151,7 +151,7 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
 
         //The method returns one or more losses on a given Dataset
         public abstract IEnumerable<TestResult> ComputeTests(double[] scores);
-        private protected Test(ScoreTracker scoreTracker)
+        /*private*/ protected Test(ScoreTracker scoreTracker)
         {
             ScoreTracker = scoreTracker;
             if (ScoreTracker != null)
@@ -201,8 +201,8 @@ namespace Microsoft.ML.Trainers.FastTree.Internal
         protected IList<TestResult[]> History;
         protected int Iteration { get; private set; }
 
-        public TestResult BestResult { get; private protected set; }
-        public int BestIteration { get; private protected set; }
+        public TestResult BestResult { get; /*private*/ protected set; }
+        public int BestIteration { get; /*private*/ protected set; }
 
         // scenarioWithoutHistory - simple test scenario we want to track the history and look for best iteration
         // lossIndex - index of lossFunction in case Test returns more than one loss (default should be 0)

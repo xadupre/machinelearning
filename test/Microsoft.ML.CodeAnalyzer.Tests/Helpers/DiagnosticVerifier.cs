@@ -22,7 +22,7 @@ namespace Microsoft.ML.CodeAnalyzer.Tests.Helpers
     public abstract partial class DiagnosticVerifier<TDiag>
         where TDiag : DiagnosticAnalyzer, new()
     {
-        private protected DiagnosticVerifier()
+        /*private*/ protected DiagnosticVerifier()
         {
         }
 

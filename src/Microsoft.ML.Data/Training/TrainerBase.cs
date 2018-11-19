@@ -20,7 +20,7 @@ namespace Microsoft.ML.Runtime.Training
         public abstract TrainerInfo Info { get; }
 
         [BestFriend]
-        private protected TrainerBase(IHostEnvironment env, string name)
+        /*private*/ protected TrainerBase(IHostEnvironment env, string name)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckNonEmpty(name, nameof(name));
@@ -34,6 +34,6 @@ namespace Microsoft.ML.Runtime.Training
         TPredictor ITrainer<TPredictor>.Train(TrainContext context) => Train(context);
 
         [BestFriend]
-        private protected abstract TPredictor Train(TrainContext context);
+        /*private*/ protected abstract TPredictor Train(TrainContext context);
     }
 }

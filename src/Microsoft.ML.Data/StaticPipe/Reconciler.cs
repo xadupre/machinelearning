@@ -19,7 +19,7 @@ namespace Microsoft.ML.StaticPipe.Runtime
     /// </summary>
     public abstract class Reconciler
     {
-        private protected Reconciler() { }
+        /*private*/ protected Reconciler() { }
     }
 
     /// <summary>

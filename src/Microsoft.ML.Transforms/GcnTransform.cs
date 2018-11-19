@@ -318,7 +318,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Factory method for SignatureDataTransform for GcnArguments class.
-        internal static IDataTransform Create(IHostEnvironment env, GcnArguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, GcnArguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -344,7 +344,7 @@ namespace Microsoft.ML.Transforms.Projections
         }
 
         // Factory method for SignatureDataTransform for Arguments class.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
         {
             Contracts.CheckValue(env, nameof(env));
             env.CheckValue(args, nameof(args));
@@ -757,7 +757,7 @@ namespace Microsoft.ML.Transforms.Projections
             LInf = 3
         }
 
-        internal static class Defaults
+        /*internal*/public static class Defaults
         {
             public const NormalizerKind NormKind = NormalizerKind.L2Norm;
             public const bool LpSubstractMean = false;
@@ -775,14 +775,14 @@ namespace Microsoft.ML.Transforms.Projections
 
         }
 
-        internal static bool IsColumnTypeValid(ColumnType type)
+        /*internal*/public static bool IsColumnTypeValid(ColumnType type)
         {
             if (!(type.IsVector && type.IsKnownSizeVector))
                 return false;
             return type.ItemType == NumberType.R4;
         }
 
-        internal static bool IsSchemaColumnValid(SchemaShape.Column col)
+        /*internal*/public static bool IsSchemaColumnValid(SchemaShape.Column col)
         {
             if (col.Kind != SchemaShape.Column.VectorKind.Vector)
                 return false;

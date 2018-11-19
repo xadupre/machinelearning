@@ -17,7 +17,7 @@ using System;
 namespace Microsoft.ML.Trainers.FastTree
 {
     [TlcModule.ComponentKind("FastTreeTrainer")]
-    internal interface IFastTreeTrainerFactory : IComponentFactory<ITrainer>
+    /*internal*/public interface IFastTreeTrainerFactory : IComponentFactory<ITrainer>
     {
     }
 

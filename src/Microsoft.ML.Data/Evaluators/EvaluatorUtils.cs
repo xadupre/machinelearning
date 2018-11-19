@@ -1042,7 +1042,7 @@ namespace Microsoft.ML.Runtime.Data
             return metricNames;
         }
 
-        internal static IDataView GetOverallMetricsData(IHostEnvironment env, IDataView data, int numFolds, out AggregatedMetric[] agg,
+        /*internal*/public static IDataView GetOverallMetricsData(IHostEnvironment env, IDataView data, int numFolds, out AggregatedMetric[] agg,
             out AggregatedMetric[] weightedAgg)
         {
             agg = ComputeMetricsSum(env, data, numFolds, out int isWeightedCol, out int stratCol, out int stratVal, out int foldCol, out weightedAgg);
@@ -1072,7 +1072,7 @@ namespace Microsoft.ML.Runtime.Data
             return overall;
         }
 
-        internal static AggregatedMetric[] ComputeMetricsSum(IHostEnvironment env, IDataView data, int numFolds, out int isWeightedCol,
+        /*internal*/public static AggregatedMetric[] ComputeMetricsSum(IHostEnvironment env, IDataView data, int numFolds, out int isWeightedCol,
             out int stratCol, out int stratVal, out int foldCol, out AggregatedMetric[] weightedAgg)
         {
             var hasWeighted = data.Schema.TryGetColumnIndex(MetricKinds.ColumnNames.IsWeighted, out int wcol);
@@ -1204,7 +1204,7 @@ namespace Microsoft.ML.Runtime.Data
             Contracts.Assert(iMetric == metricNames.Count);
         }
 
-        internal static IDataView GetAverageToDataView(IHostEnvironment env, Schema schema, AggregatedMetric[] agg, AggregatedMetric[] weightedAgg,
+        /*internal*/public static IDataView GetAverageToDataView(IHostEnvironment env, Schema schema, AggregatedMetric[] agg, AggregatedMetric[] weightedAgg,
             int numFolds, int stratCol, int stratVal, int isWeightedCol, int foldCol, bool hasStdev, List<string> nonAveragedCols = null)
         {
             Contracts.AssertValue(env);

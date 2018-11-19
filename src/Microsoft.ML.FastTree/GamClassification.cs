@@ -44,7 +44,7 @@ namespace Microsoft.ML.Trainers.FastTree
         private readonly double _sigmoidParameter;
 
         public override PredictionKind PredictionKind => PredictionKind.BinaryClassification;
-        private protected override bool NeedCalibration => true;
+        /*private*/ protected override bool NeedCalibration => true;
 
         /// <summary>
         /// Initializes a new instance of <see cref="BinaryClassificationGamTrainer"/>
@@ -104,7 +104,7 @@ namespace Microsoft.ML.Trainers.FastTree
             return boolArray;
         }
 
-        private protected override IPredictorProducing<float> TrainModelCore(TrainContext context)
+        /*private*/ protected override IPredictorProducing<float> TrainModelCore(TrainContext context)
         {
             TrainBase(context);
             var predictor = new BinaryClassGamPredictor(Host, InputLength, TrainSet,

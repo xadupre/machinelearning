@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Data
     /// console functionality.
     /// </summary>
     [BestFriend]
-    internal sealed class ConsoleEnvironment : HostEnvironmentBase<ConsoleEnvironment>
+    /*internal*/public sealed class ConsoleEnvironment : HostEnvironmentBase<ConsoleEnvironment>
     {
         public const string ComponentHistoryKey = "ComponentHistory";
 

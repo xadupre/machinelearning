@@ -117,7 +117,7 @@ namespace Microsoft.ML.Transforms
         }
 
         // Factory method for SignatureDataTransform.
-        internal static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
+        /*internal*/public static IDataTransform Create(IHostEnvironment env, Arguments args, IDataView input)
             => new MissingValueDroppingTransformer(env, args).MakeDataTransform(input);
 
         // Factory method for SignatureLoadDataTransform.

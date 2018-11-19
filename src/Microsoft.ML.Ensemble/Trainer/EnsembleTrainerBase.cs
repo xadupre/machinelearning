@@ -58,19 +58,19 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         private const int DefaultNumModels = 50;
         /// <summary> Command-line arguments </summary>
-        private protected readonly ArgumentsBase Args;
-        private protected readonly int NumModels;
+        /*private*/ protected readonly ArgumentsBase Args;
+        /*private*/ protected readonly int NumModels;
 
         /// <summary> Ensemble members </summary>
-        private protected readonly ITrainer<IPredictorProducing<TOutput>>[] Trainers;
+        /*private*/ protected readonly ITrainer<IPredictorProducing<TOutput>>[] Trainers;
 
         private readonly ISubsetSelector _subsetSelector;
-        private protected ISubModelSelector<TOutput> SubModelSelector;
-        private protected IOutputCombiner<TOutput> Combiner;
+        /*private*/ protected ISubModelSelector<TOutput> SubModelSelector;
+        /*private*/ protected IOutputCombiner<TOutput> Combiner;
 
         public override TrainerInfo Info { get; }
 
-        private protected EnsembleTrainerBase(ArgumentsBase args, IHostEnvironment env, string name)
+        /*private*/ protected EnsembleTrainerBase(ArgumentsBase args, IHostEnvironment env, string name)
             : base(env, name)
         {
             Args = args;
@@ -101,7 +101,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             }
         }
 
-        private protected sealed override TPredictor Train(TrainContext context)
+        /*private*/ protected sealed override TPredictor Train(TrainContext context)
         {
             Host.CheckValue(context, nameof(context));
 
@@ -182,7 +182,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             return CreatePredictor(models);
         }
 
-        private protected abstract TPredictor CreatePredictor(List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models);
+        /*private*/ protected abstract TPredictor CreatePredictor(List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models);
 
         private bool EnsureMinimumFeaturesSelected(Subset subset)
         {
@@ -197,7 +197,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             return false;
         }
 
-        private protected virtual void PrintMetrics(IChannel ch, List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models)
+        /*private*/ protected virtual void PrintMetrics(IChannel ch, List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models)
         {
             // REVIEW: The formatting of this method is bizarre and seemingly not even self-consistent
             // w.r.t. its usage of |. Is this intentional?
@@ -210,7 +210,7 @@ namespace Microsoft.ML.Runtime.Ensemble
                 ch.Info("{0}{1}", string.Join("", model.Metrics.Select(m => string.Format("| {0} |", m.Value))), model.Predictor.GetType().Name);
         }
 
-        private protected static FeatureSubsetModel<T>[] CreateModels<T>(List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models) where T : IPredictor
+        /*private*/ protected static FeatureSubsetModel<T>[] CreateModels<T>(List<FeatureSubsetModel<IPredictorProducing<TOutput>>> models) where T : IPredictor
         {
             var subsetModels = new FeatureSubsetModel<T>[models.Count];
             for (int i = 0; i < models.Count; i++)

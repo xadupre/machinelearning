@@ -251,7 +251,7 @@ namespace Microsoft.ML.Trainers.Online
             data.CheckBinaryLabel();
         }
 
-        private protected override TrainStateBase MakeState(IChannel ch, int numFeatures, LinearPredictor predictor)
+        /*private*/ protected override TrainStateBase MakeState(IChannel ch, int numFeatures, LinearPredictor predictor)
         {
             return new TrainState(ch, numFeatures, predictor, this);
         }

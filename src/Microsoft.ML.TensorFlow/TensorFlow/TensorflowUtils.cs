@@ -332,7 +332,7 @@ namespace Microsoft.ML.Transforms.TensorFlow
             return LoadTFSession(env, bytes, modelPath);
         }
 
-        internal static unsafe void FetchData<T>(IntPtr data, Span<T> result)
+        /*internal*/public static unsafe void FetchData<T>(IntPtr data, Span<T> result)
         {
             var dataSpan = new Span<T>(data.ToPointer(), result.Length);
             dataSpan.CopyTo(result);

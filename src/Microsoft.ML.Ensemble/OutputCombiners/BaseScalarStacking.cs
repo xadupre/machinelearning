@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.Model;
 
 namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 {
-    internal abstract class BaseScalarStacking : BaseStacking<Single>
+    /*internal*/public abstract class BaseScalarStacking : BaseStacking<Single>
     {
         /*internal*/public BaseScalarStacking(IHostEnvironment env, string name, ArgumentsBase args)
             : base(env, name, args)

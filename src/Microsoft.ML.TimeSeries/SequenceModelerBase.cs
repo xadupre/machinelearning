@@ -24,7 +24,7 @@ namespace Microsoft.ML.Runtime.TimeSeriesProcessing
     /// <typeparam name="TOutput">The type of the elements in the output sequence</typeparam>
     public abstract class SequenceModelerBase<TInput, TOutput> : ICanSaveModel
     {
-        private protected SequenceModelerBase()
+        /*private*/ protected SequenceModelerBase()
         {
         }
 

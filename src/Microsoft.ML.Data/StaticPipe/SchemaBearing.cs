@@ -40,7 +40,7 @@ namespace Microsoft.ML.StaticPipe
         /// <param name="env">The host environment, stored with this object</param>
         /// <param name="shape">The item holding the name and types as enumerated within
         /// <typeparamref name="TShape"/></param>
-        private protected SchemaBearing(IHostEnvironment env, StaticSchemaShape shape)
+        /*private*/ protected SchemaBearing(IHostEnvironment env, StaticSchemaShape shape)
         {
             Contracts.AssertValue(env);
             env.AssertValue(shape);

@@ -26,7 +26,7 @@ using Microsoft.ML.Trainers.Online;
 namespace Microsoft.ML.Runtime.Ensemble
 {
     using TScalarPredictor = IPredictorProducing<Single>;
-    internal sealed class RegressionEnsembleTrainer : EnsembleTrainerBase<Single, TScalarPredictor,
+    /*internal*/public sealed class RegressionEnsembleTrainer : EnsembleTrainerBase<Single, TScalarPredictor,
        IRegressionSubModelSelector, IRegressionOutputCombiner>,
        IModelCombiner
     {
@@ -77,7 +77,7 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         public override PredictionKind PredictionKind => PredictionKind.Regression;
 
-        private protected override TScalarPredictor CreatePredictor(List<FeatureSubsetModel<TScalarPredictor>> models)
+        /*private*/ protected override TScalarPredictor CreatePredictor(List<FeatureSubsetModel<TScalarPredictor>> models)
         {
             return new EnsemblePredictor(Host, PredictionKind, CreateModels<TScalarPredictor>(models), Combiner);
         }

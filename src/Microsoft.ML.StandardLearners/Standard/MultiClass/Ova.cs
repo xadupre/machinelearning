@@ -193,7 +193,7 @@ namespace Microsoft.ML.Runtime.Learners
                     }
                     else
                     {
-                        var tr = GetTrainer();
+                        var tr = Trainer;
                         predictors[i] = TrainOne(ch, tr, td, i).Model;
                     }
                 }

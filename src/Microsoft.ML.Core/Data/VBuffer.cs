@@ -24,6 +24,7 @@ namespace Microsoft.ML.Runtime.Data
         /// is dense and &lt; Length when sparse.
         /// </summary>
         private readonly int _count;
+        public int Count => _count;
 
         /// <summary>
         /// The logical length of the buffer.

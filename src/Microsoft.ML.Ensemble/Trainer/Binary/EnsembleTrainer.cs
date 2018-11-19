@@ -29,7 +29,7 @@ namespace Microsoft.ML.Runtime.Ensemble
     /// <summary>
     /// A generic ensemble trainer for binary classification.
     /// </summary>
-    internal sealed class EnsembleTrainer : EnsembleTrainerBase<Single, TScalarPredictor,
+    /*internal*/public sealed class EnsembleTrainer : EnsembleTrainerBase<Single, TScalarPredictor,
         IBinarySubModelSelector, IBinaryOutputCombiner>,
         IModelCombiner
     {
@@ -82,7 +82,7 @@ namespace Microsoft.ML.Runtime.Ensemble
 
         public override PredictionKind PredictionKind => PredictionKind.BinaryClassification;
 
-        private protected override TScalarPredictor CreatePredictor(List<FeatureSubsetModel<TScalarPredictor>> models)
+        /*private*/ protected override TScalarPredictor CreatePredictor(List<FeatureSubsetModel<TScalarPredictor>> models)
         {
             if (models.All(m => m.Predictor is TDistPredictor))
                 return new EnsembleDistributionPredictor(Host, PredictionKind, CreateModels<TDistPredictor>(models), Combiner);

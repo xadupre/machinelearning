@@ -10,7 +10,7 @@ using System.Text;
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
     [BestFriend]
-    internal static class IndentedTextWriterExtensions
+    /*internal*/public static class IndentedTextWriterExtensions
     {
         public struct Scope : IDisposable
         {

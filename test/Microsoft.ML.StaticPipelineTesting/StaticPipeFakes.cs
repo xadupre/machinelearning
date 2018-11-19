@@ -94,7 +94,7 @@ namespace FakeStaticPipes
             private readonly PipelineColumn _wrappedColumn;
             PipelineColumn IContainsColumn.WrappedColumn => _wrappedColumn;
 
-            private protected ScalarOrVectorOrVarVector(PipelineColumn col)
+            /*private*/ protected ScalarOrVectorOrVarVector(PipelineColumn col)
             {
                 _wrappedColumn = col;
             }

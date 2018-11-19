@@ -41,24 +41,24 @@ namespace Microsoft.ML.Runtime.LightGBM
             public bool[] IsCategoricalFeature;
         }
 
-        private protected readonly LightGbmArguments Args;
+        /*private*/ protected readonly LightGbmArguments Args;
 
         /// <summary>
         /// Stores argumments as objects to convert them to invariant string type in the end so that
         /// the code is culture agnostic. When retrieving key value from this dictionary as string
         /// please convert to string invariant by string.Format(CultureInfo.InvariantCulture, "{0}", Option[key]).
         /// </summary>
-        private protected Dictionary<string, object> Options;
-        private protected IParallel ParallelTraining;
+        /*private*/ protected Dictionary<string, object> Options;
+        /*private*/ protected IParallel ParallelTraining;
 
         // Store _featureCount and _trainedEnsemble to construct predictor.
-        private protected int FeatureCount;
-        private protected TreeEnsemble TrainedEnsemble;
+        /*private*/ protected int FeatureCount;
+        /*private*/ protected TreeEnsemble TrainedEnsemble;
 
         private static readonly TrainerInfo _info = new TrainerInfo(normalization: false, caching: false, supportValid: true);
         public override TrainerInfo Info => _info;
 
-        private protected LightGbmTrainerBase(IHostEnvironment env,
+        /*private*/ protected LightGbmTrainerBase(IHostEnvironment env,
             string name,
             SchemaShape.Column label,
             string featureColumn,
@@ -93,7 +93,7 @@ namespace Microsoft.ML.Runtime.LightGBM
             InitParallelTraining();
         }
 
-        private protected LightGbmTrainerBase(IHostEnvironment env, string name, LightGbmArguments args, SchemaShape.Column label)
+        /*private*/ protected LightGbmTrainerBase(IHostEnvironment env, string name, LightGbmArguments args, SchemaShape.Column label)
            : base(Contracts.CheckRef(env, nameof(env)).Register(name), TrainerUtils.MakeR4VecFeature(args.FeatureColumn), label, TrainerUtils.MakeR4ScalarWeightColumn(args.WeightColumn, args.WeightColumn.IsExplicit))
         {
             Host.CheckValue(args, nameof(args));
@@ -102,7 +102,7 @@ namespace Microsoft.ML.Runtime.LightGBM
             InitParallelTraining();
         }
 
-        private protected override TModel TrainModelCore(TrainContext context)
+        /*private*/ protected override TModel TrainModelCore(TrainContext context)
         {
             Host.CheckValue(context, nameof(context));
 
@@ -891,7 +891,7 @@ namespace Microsoft.ML.Runtime.LightGBM
             return ret;
         }
 
-        private protected abstract TModel CreatePredictor();
+        /*private*/ protected abstract TModel CreatePredictor();
 
         /// <summary>
         /// This function will be called before training. It will check the label/group and add parameters for specific applications.

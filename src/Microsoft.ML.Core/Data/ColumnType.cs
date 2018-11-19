@@ -31,7 +31,7 @@ namespace Microsoft.ML.Runtime.Data
         /// <summary>
         /// Constructor for extension types, which must be either <see cref="PrimitiveType"/> or <see cref="StructuredType"/>.
         /// </summary>
-        private protected ColumnType(Type rawType)
+        /*private*/ protected ColumnType(Type rawType)
             : this()
         {
             Contracts.CheckValue(rawType, nameof(rawType));
@@ -44,7 +44,7 @@ namespace Microsoft.ML.Runtime.Data
         /// /*internal*/public sub types can pass both the <paramref name="rawType"/> and <paramref name="rawKind"/> values.
         /// This asserts that they are consistent.
         /// </summary>
-        private protected ColumnType(Type rawType, DataKind rawKind)
+        /*private*/ protected ColumnType(Type rawType, DataKind rawKind)
             : this()
         {
             Contracts.AssertValue(rawType);
@@ -157,7 +157,7 @@ namespace Microsoft.ML.Runtime.Data
         /// <summary>
         /// The only sub-class that should override this is <see cref="KeyType"/>.
         /// </summary>
-        private protected virtual int KeyCountCore => 0;
+        /*private*/ protected virtual int KeyCountCore => 0;
 
         /// <summary>
         /// Whether this is a vector type. External code should just check directly against whether this type
@@ -201,17 +201,17 @@ namespace Microsoft.ML.Runtime.Data
         /// <summary>
         /// The only sub-class that should override this is VectorType!
         /// </summary>
-        private protected virtual ColumnType ItemTypeCore => this;
+        /*private*/ protected virtual ColumnType ItemTypeCore => this;
 
         /// <summary>
         /// The only sub-class that should override this is <see cref="VectorType"/>!
         /// </summary>
-        private protected virtual int VectorSizeCore => 0;
+        /*private*/ protected virtual int VectorSizeCore => 0;
 
         /// <summary>
         /// The only sub-class that should override this is VectorType!
         /// </summary>
-        private protected virtual int ValueCountCore => 1;
+        /*private*/ protected virtual int ValueCountCore => 1;
 
         // IEquatable<T> interface recommends also to override base class implementations of
         // Object.Equals(Object) and GetHashCode. In classes below where Equals(ColumnType other)
@@ -252,7 +252,7 @@ namespace Microsoft.ML.Runtime.Data
             Contracts.Assert(!IsPrimitive);
         }
 
-        private protected StructuredType(Type rawType, DataKind rawKind)
+        /*private*/ protected StructuredType(Type rawType, DataKind rawKind)
             : base(rawType, rawKind)
         {
             Contracts.Assert(!IsPrimitive);
@@ -273,7 +273,7 @@ namespace Microsoft.ML.Runtime.Data
                 "A " + nameof(PrimitiveType) + " cannot have a disposable " + nameof(RawType));
         }
 
-        private protected PrimitiveType(Type rawType, DataKind rawKind)
+        /*private*/ protected PrimitiveType(Type rawType, DataKind rawKind)
             : base(rawType, rawKind)
         {
             Contracts.Assert(IsPrimitive);
@@ -740,7 +740,7 @@ namespace Microsoft.ML.Runtime.Data
             return type == typeof(byte) || type == typeof(ushort) || type == typeof(uint) || type == typeof(ulong);
         }
 
-        private protected override int KeyCountCore => Count;
+        /*private*/ protected override int KeyCountCore => Count;
 
         /// <summary>
         /// This is the Min of the key type for display purposes and conversion to/from text. The values
@@ -905,11 +905,11 @@ namespace Microsoft.ML.Runtime.Data
         /// </summary>
         public int Size { get; }
 
-        private protected override ColumnType ItemTypeCore => ItemType;
+        /*private*/ protected override ColumnType ItemTypeCore => ItemType;
 
-        private protected override int VectorSizeCore => Size;
+        /*private*/ protected override int VectorSizeCore => Size;
 
-        private protected override int ValueCountCore => Size;
+        /*private*/ protected override int ValueCountCore => Size;
 
         public override bool Equals(ColumnType other)
         {
