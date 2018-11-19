@@ -16,7 +16,7 @@ using Microsoft.ML.Runtime.Training;
 namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
 {
     using ColumnRole = RoleMappedSchema.ColumnRole;
-    public abstract class BaseStacking<TOutput> : IStackingTrainer<TOutput>
+    internal abstract class BaseStacking<TOutput> : IStackingTrainer<TOutput>
     {
         public abstract class ArgumentsBase
         {
@@ -28,9 +28,9 @@ namespace Microsoft.ML.Runtime.Ensemble.OutputCombiners
             /*internal*/public abstract IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> GetPredictorFactory();
         }
 
-        protected readonly IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> BasePredictorType;
-        protected readonly IHost Host;
-        protected IPredictorProducing<TOutput> Meta;
+        private protected readonly IComponentFactory<ITrainer<IPredictorProducing<TOutput>>> BasePredictorType;
+        private protected readonly IHost Host;
+        private protected IPredictorProducing<TOutput> Meta;
 
         public Single ValidationDatasetProportion { get; }
 
