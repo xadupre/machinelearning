@@ -37,6 +37,16 @@ namespace Microsoft.ML.Runtime.Data
         public ReadOnlySpan<T> GetValues() => _values.AsSpan(0, _count);
 
         /// <summary>
+        /// Fast access but allow writing.
+        /// </summary>
+        public T[] Values => _values;
+
+        /// <summary>
+        /// Fast access but allow writing.
+        /// </summary>
+        public int[] Indices => _indices;
+
+        /// <summary>
         /// The indices. For a dense representation, this array is not used. For a sparse representation
         /// it is parallel to values and specifies the logical indices for the corresponding values.
         /// </summary>
