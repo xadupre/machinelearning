@@ -22,7 +22,7 @@ namespace Microsoft.ML.Runtime.Model.Pfa
     /// what token in the PFA being built up.
     /// </summary>
     [BestFriend]
-    internal sealed class BoundPfaContext
+    /*internal*/public sealed class BoundPfaContext
     {
         /// <summary>
         /// The internal PFA context, for an escape hatch.

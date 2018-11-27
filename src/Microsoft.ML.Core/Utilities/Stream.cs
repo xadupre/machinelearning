@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Microsoft.ML.Runtime.Internal.Utilities
 {
-    internal static partial class Utils
+    /*internal*/public static partial class Utils
     {
         private const int _bulkReadThresholdInBytes = 4096;
 

@@ -103,7 +103,7 @@ namespace Microsoft.ML.Transforms
     // learning algorithms actually behave more or less as this transform used to, so its presence is no longer necessary or helpful,
     // from an API perspective, but this is still how things are invoked from the command line for now.
     [BestFriend]
-    internal static class TrainAndScoreTransformer
+    /*internal*/public static class TrainAndScoreTransformer
     {
         public abstract class ArgumentsBase : TransformInputBase
         {

@@ -7,7 +7,7 @@ using System.Text;
 namespace Microsoft.ML.Runtime.CommandLine
 {
     [BestFriend]
-    internal sealed class CmdLexer
+    /*internal*/public sealed class CmdLexer
     {
         private CharCursor _curs;
 

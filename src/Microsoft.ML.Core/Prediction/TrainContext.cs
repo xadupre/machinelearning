@@ -12,7 +12,7 @@ namespace Microsoft.ML.Runtime
     /// This holds at least a training set, as well as optioonally a predictor.
     /// </summary>
     [BestFriend]
-    internal sealed class TrainContext
+    /*internal*/public sealed class TrainContext
     {
         /// <summary>
         /// The training set. Cannot be <c>null</c>.

@@ -15,33 +15,33 @@ namespace Microsoft.ML.Runtime
     /// both SignatureTrainer and SignatureXxxTrainer where Xxx is the prediction kind.
     /// </summary>
     [BestFriend]
-    internal delegate void SignatureTrainer();
+    /*internal*/public delegate void SignatureTrainer();
 
     [BestFriend]
-    internal delegate void SignatureBinaryClassifierTrainer();
+    /*internal*/public delegate void SignatureBinaryClassifierTrainer();
     [BestFriend]
-    internal delegate void SignatureMultiClassClassifierTrainer();
+    /*internal*/public delegate void SignatureMultiClassClassifierTrainer();
     [BestFriend]
-    internal delegate void SignatureRegressorTrainer();
+    /*internal*/public delegate void SignatureRegressorTrainer();
     [BestFriend]
-    internal delegate void SignatureMultiOutputRegressorTrainer();
+    /*internal*/public delegate void SignatureMultiOutputRegressorTrainer();
     [BestFriend]
-    internal delegate void SignatureRankerTrainer();
+    /*internal*/public delegate void SignatureRankerTrainer();
     [BestFriend]
-    internal delegate void SignatureAnomalyDetectorTrainer();
+    /*internal*/public delegate void SignatureAnomalyDetectorTrainer();
     [BestFriend]
-    internal delegate void SignatureClusteringTrainer();
+    /*internal*/public delegate void SignatureClusteringTrainer();
     [BestFriend]
-    internal delegate void SignatureSequenceTrainer();
+    /*internal*/public delegate void SignatureSequenceTrainer();
     [BestFriend]
-    internal delegate void SignatureMatrixRecommendingTrainer();
+    /*internal*/public delegate void SignatureMatrixRecommendingTrainer();
 
     /// <summary>
     /// The base interface for a trainers. Implementors should not implement this interface directly,
     /// but rather implement the more specific <see cref="ITrainer{TPredictor}"/>.
     /// </summary>
     [BestFriend]
-    internal interface ITrainer
+    /*internal*/public interface ITrainer
     {
         /// <summary>
         /// Auxiliary information about the trainer in terms of its capabilities
@@ -69,7 +69,7 @@ namespace Microsoft.ML.Runtime
     /// </summary>
     /// <typeparam name="TPredictor"> Type of predictor produced</typeparam>
     [BestFriend]
-    internal interface ITrainer<out TPredictor> : ITrainer
+    /*internal*/public interface ITrainer<out TPredictor> : ITrainer
         where TPredictor : IPredictor
     {
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.ML.Runtime
     }
 
     [BestFriend]
-    internal static class TrainerExtensions
+    /*internal*/public static class TrainerExtensions
     {
         /// <summary>
         /// Convenience train extension for the case where one has only a training set with no auxiliary information.

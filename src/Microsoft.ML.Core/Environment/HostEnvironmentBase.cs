@@ -16,7 +16,7 @@ namespace Microsoft.ML.Runtime.Data
     /// The ParentFullName, ShortName, and FullName may be null or empty.
     /// </summary>
     [BestFriend]
-    internal abstract class ChannelProviderBase : IExceptionContext
+    /*internal*/public abstract class ChannelProviderBase : IExceptionContext
     {
         /// <summary>
         /// Data keys that are attached to the exception thrown via the exception context.
@@ -81,7 +81,7 @@ namespace Microsoft.ML.Runtime.Data
     /// Message source (a channel) that generated the message being dispatched.
     /// </summary>
     [BestFriend]
-    internal interface IMessageSource
+    /*internal*/public interface IMessageSource
     {
         string ShortName { get; }
         string FullName { get; }
@@ -95,7 +95,7 @@ namespace Microsoft.ML.Runtime.Data
     /// query progress.
     /// </summary>
     [BestFriend]
-    internal abstract class HostEnvironmentBase<TEnv> : ChannelProviderBase, IHostEnvironment, IDisposable, IChannelProvider
+    /*internal*/public abstract class HostEnvironmentBase<TEnv> : ChannelProviderBase, IHostEnvironment, IDisposable, IChannelProvider
         where TEnv : HostEnvironmentBase<TEnv>
     {
         /// <summary>

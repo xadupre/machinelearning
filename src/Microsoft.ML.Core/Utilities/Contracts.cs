@@ -39,7 +39,7 @@ namespace Microsoft.ML.Runtime
     }
 
     [BestFriend]
-    internal static partial class Contracts
+    /*internal*/public static partial class Contracts
     {
         public const string IsMarkedKey = "ML_IsMarked";
         public const string SensitivityKey = "ML_Sensitivity";

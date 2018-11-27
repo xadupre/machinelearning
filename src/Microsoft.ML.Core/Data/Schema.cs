@@ -278,7 +278,7 @@ namespace Microsoft.ML.Data
         /// Manufacture an instance of <see cref="Schema"/> out of any <see cref="ISchema"/>.
         /// </summary>
         [BestFriend]
-        internal static Schema Create(ISchema inputSchema)
+        /*internal*/public static Schema Create(ISchema inputSchema)
         {
             Contracts.CheckValue(inputSchema, nameof(inputSchema));
 

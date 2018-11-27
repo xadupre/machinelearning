@@ -19,11 +19,15 @@ namespace Microsoft.ML.Runtime.Data
         private readonly T[] _values;
         private readonly int[] _indices;
 
+        public T[] Values => _values;
+        public int[] Indices => _indices;
+
         /// <summary>
         /// The number of items explicitly represented. This is == Length when the representation
         /// is dense and &lt; Length when sparse.
         /// </summary>
         private readonly int _count;
+        public int Count => _count;
 
         /// <summary>
         /// The logical length of the buffer.
