@@ -10,7 +10,7 @@ namespace Microsoft.ML.Runtime.EntryPoints
     /// This is a signature for classes that are 'holders' of entry points and components.
     /// </summary>
     [BestFriend]
-    internal delegate void SignatureEntryPointModule();
+    /*internal*/public delegate void SignatureEntryPointModule();
 
     /// <summary>
     /// A simplified assembly attribute for marking EntryPoint modules.

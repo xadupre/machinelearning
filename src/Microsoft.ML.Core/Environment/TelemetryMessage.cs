@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime
     /// A telemetry message.
     /// </summary>
     [BestFriend]
-    internal abstract class TelemetryMessage
+    /*internal*/public abstract class TelemetryMessage
     {
         public static TelemetryMessage CreateCommand(string commandName, string commandText)
         {

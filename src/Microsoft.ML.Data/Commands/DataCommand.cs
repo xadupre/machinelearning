@@ -18,7 +18,7 @@ namespace Microsoft.ML.Runtime.Data
     /// This holds useful base classes for commands that ingest a primary dataset and deal with associated model files.
     /// </summary>
     [BestFriend]
-    internal static class DataCommand
+    /*internal*/public static class DataCommand
     {
         public abstract class ArgumentsBase
         {
@@ -58,7 +58,7 @@ namespace Microsoft.ML.Runtime.Data
         }
 
         [BestFriend]
-        internal abstract class ImplBase<TArgs> : ICommand
+        /*internal*/public abstract class ImplBase<TArgs> : ICommand
             where TArgs : ArgumentsBase
         {
             protected readonly IHost Host;

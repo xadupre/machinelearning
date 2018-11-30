@@ -234,7 +234,7 @@ namespace Microsoft.ML.Runtime.Data
     }
 
     [BestFriend]
-    internal static class ScoreUtils
+    /*internal*/public static class ScoreUtils
     {
         public static IDataScorerTransform GetScorer(IPredictor predictor, RoleMappedData data, IHostEnvironment env, RoleMappedSchema trainSchema)
         {

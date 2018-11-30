@@ -191,7 +191,7 @@ namespace Microsoft.ML.Runtime
         public string Message => _args != null ? string.Format(_message, _args) : _message;
 
         [BestFriend]
-        internal ChannelMessage(ChannelMessageKind kind, MessageSensitivity sensitivity, string message)
+        /*internal*/public ChannelMessage(ChannelMessageKind kind, MessageSensitivity sensitivity, string message)
         {
             Contracts.CheckNonEmpty(message, nameof(message));
             Kind = kind;
@@ -201,7 +201,7 @@ namespace Microsoft.ML.Runtime
         }
 
         [BestFriend]
-        internal ChannelMessage(ChannelMessageKind kind, MessageSensitivity sensitivity, string fmt, params object[] args)
+        /*internal*/public ChannelMessage(ChannelMessageKind kind, MessageSensitivity sensitivity, string fmt, params object[] args)
         {
             Contracts.CheckNonEmpty(fmt, nameof(fmt));
             Contracts.CheckNonEmpty(args, nameof(args));

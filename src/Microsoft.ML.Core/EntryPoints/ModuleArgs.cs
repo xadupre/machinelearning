@@ -19,7 +19,7 @@ namespace Microsoft.ML.Runtime.EntryPoints
     /// the module interface.
     /// </summary>
     [BestFriend]
-    internal static class TlcModule
+    /*internal*/public static class TlcModule
     {
         /// <summary>
         /// An attribute used to annotate the component.

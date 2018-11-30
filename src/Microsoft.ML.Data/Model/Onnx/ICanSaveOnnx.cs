@@ -7,7 +7,7 @@ using Microsoft.ML.Runtime.Data;
 namespace Microsoft.ML.Runtime.Model.Onnx
 {
     [BestFriend]
-    internal interface ICanSaveOnnx
+    /*internal*/public interface ICanSaveOnnx
     {
         /// <summary>
         /// Whether this object really is capable of saving itself as part of an ONNX
@@ -23,7 +23,7 @@ namespace Microsoft.ML.Runtime.Model.Onnx
     /// This component know how to save himself in ONNX format.
     /// </summary>
     [BestFriend]
-    internal interface ISaveAsOnnx : ICanSaveOnnx
+    /*internal*/public interface ISaveAsOnnx : ICanSaveOnnx
     {
         /// <summary>
         /// Save as ONNX.
