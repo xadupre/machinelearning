@@ -24,6 +24,7 @@ using Microsoft.ML.Trainers.PCA;
 using Microsoft.ML.Trainers.SymSgd;
 using Microsoft.ML.Transforms;
 using Microsoft.ML.Transforms.Categorical;
+using Microsoft.ML.Transforms.Conversions;
 using Microsoft.ML.Transforms.Normalizers;
 using Microsoft.ML.Transforms.Projections;
 using Microsoft.ML.Transforms.Text;
@@ -459,12 +460,12 @@ namespace Microsoft.ML.Runtime.RunTests
                         new ScoreModel.Input { Data = splitOutput.TestData[nModels], PredictorModel = predictorModels[i] })
                         .ScoredData;
 
-                individualScores[i] = ColumnsCopyingTransformer.Create(Env,
-                    new ColumnsCopyingTransformer.Arguments()
+                individualScores[i] = ColumnCopyingTransformer.Create(Env,
+                    new ColumnCopyingTransformer.Arguments()
                     {
                         Column = new[]
                         {
-                            new ColumnsCopyingTransformer.Column()
+                            new ColumnCopyingTransformer.Column()
                             {
                                 Name = MetadataUtils.Const.ScoreValueKind.Score + i,
                                 Source = MetadataUtils.Const.ScoreValueKind.Score
@@ -960,7 +961,7 @@ namespace Microsoft.ML.Runtime.RunTests
                     getterAnom(ref scoreAnom);
                     Assert.True(Single.IsNaN(scoreBin) && Single.IsNaN(score) || scoreBin == score);
                     Assert.True(Single.IsNaN(scoreBinCali) && Single.IsNaN(score) || scoreBinCali == score);
-                    Assert.True(Single.IsNaN(scoreSaved) && Single.IsNaN(score) || scoreSaved == score);
+                    Assert.True(Single.IsNaN(scoreSaved) && Single.IsNaN(score) || CompareNumbersWithTolerance(scoreSaved, score, null, 5));
                     Assert.True(Single.IsNaN(scoreAnom) && Single.IsNaN(score) || scoreAnom == score);
 
                     Single avg = 0;
@@ -1340,7 +1341,7 @@ namespace Microsoft.ML.Runtime.RunTests
             }
         }
 
-        [Fact]
+        [ConditionalFact(typeof(BaseTestBaseline), nameof(BaseTestBaseline.LessThanNetCore30OrNotNetCore))]
         public void EntryPointPipelineEnsembleGetSummary()
         {
             var dataPath = GetDataPath("breast-cancer-withheader.txt");
@@ -1430,14 +1431,14 @@ namespace Microsoft.ML.Runtime.RunTests
                     var saver = Env.CreateSaver("Text");
                     using (var file = Env.CreateOutputFile(summary))
                         DataSaverUtils.SaveDataView(ch, saver, summaryDataViews.Summaries[i], file);
-                    CheckEquality(@"../Common/EntryPoints", $"ensemble-model{i}-summary.txt");
+                    CheckEquality(@"../Common/EntryPoints", $"ensemble-model{i}-summary.txt", digitsOfPrecision: 4);
 
                     if (summaryDataViews.Stats[i] != null)
                     {
                         var stats = DeleteOutputPath(@"../Common/EntryPoints", $"ensemble-model{i}-stats.txt");
                         using (var file = Env.CreateOutputFile(stats))
                             DataSaverUtils.SaveDataView(ch, saver, summaryDataViews.Stats[i], file);
-                        CheckEquality(@"../Common/EntryPoints", $"ensemble-model{i}-stats.txt");
+                        CheckEquality(@"../Common/EntryPoints", $"ensemble-model{i}-stats.txt", digitsOfPrecision: 4);
                     }
                 }
             }
@@ -1447,7 +1448,7 @@ namespace Microsoft.ML.Runtime.RunTests
             using (var writer = Utils.OpenWriter(file))
                 summarizable.SaveSummary(writer, null);
 
-            CheckEquality(@"../Common/EntryPoints", "ensemble-summary.txt");
+            CheckEquality(@"../Common/EntryPoints", "ensemble-summary.txt", digitsOfPrecision: 4);
 
             var summaryKvps = binaryEnsembleCalibrated.Predictor as ICanGetSummaryInKeyValuePairs;
             Assert.NotNull(summaryKvps);
@@ -1471,7 +1472,7 @@ namespace Microsoft.ML.Runtime.RunTests
                     }
                 }
             }
-            CheckEquality(@"../Common/EntryPoints", "ensemble-summary-key-value-pairs.txt");
+            CheckEquality(@"../Common/EntryPoints", "ensemble-summary-key-value-pairs.txt", digitsOfPrecision: 4);
 
             Done();
         }
