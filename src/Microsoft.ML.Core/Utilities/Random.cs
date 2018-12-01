@@ -9,7 +9,7 @@ using Microsoft.ML.Runtime.Internal.Utilities;
 namespace Microsoft.ML.Runtime
 {
     [BestFriend]
-    internal static class RandomUtils
+    /*internal*/public static class RandomUtils
     {
         public static float NextSingle(this Random random)
         {
@@ -82,7 +82,7 @@ namespace Microsoft.ML.Runtime
     /// Tausworthe hybrid random number generator.
     /// </summary>
     [BestFriend]
-    internal sealed class TauswortheHybrid : Random
+    /*internal*/public sealed class TauswortheHybrid : Random
     {
         public readonly struct State
         {
