@@ -32,7 +32,7 @@ namespace Microsoft.ML.Runtime
     /// Process (unless null was passed in, which really shouldn't happen).
     /// </summary>
 #if CPUMATH_INFRASTRUCTURE
-    internal interface IExceptionContext
+    /*internal*/public interface IExceptionContext
 #else
     public interface IExceptionContext
 #endif
@@ -48,7 +48,7 @@ namespace Microsoft.ML.Runtime
 
 #if CPUMATH_INFRASTRUCTURE
     [Flags]
-    internal enum MessageSensitivity
+    /*internal*/public enum MessageSensitivity
     {
         None = 0,
         Unknown = ~None
