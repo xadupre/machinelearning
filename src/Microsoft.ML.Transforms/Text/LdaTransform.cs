@@ -720,7 +720,7 @@ namespace Microsoft.ML.Transforms.Text
                 return result;
             }
 
-            protected override Delegate MakeGetter(IRow input, int iinfo, Func<int, bool> activeOutput, out Action disposer)
+            protected override Delegate MakeGetter(Row input, int iinfo, Func<int, bool> activeOutput, out Action disposer)
             {
                 Contracts.AssertValue(input);
                 Contracts.Assert(0 <= iinfo && iinfo < _parent.ColumnPairs.Length);
@@ -729,7 +729,7 @@ namespace Microsoft.ML.Transforms.Text
                 return GetTopic(input, iinfo);
             }
 
-            private ValueGetter<VBuffer<float>> GetTopic(IRow input, int iinfo)
+            private ValueGetter<VBuffer<float>> GetTopic(Row input, int iinfo)
             {
                 var getSrc = RowCursorUtils.GetVecGetterAs<Double>(NumberType.R8, input, _srcCols[iinfo]);
                 var src = default(VBuffer<Double>);
@@ -1068,10 +1068,8 @@ namespace Microsoft.ML.Transforms.Text
             return columnMappings;
         }
 
-        protected override IRowMapper MakeRowMapper(Schema schema)
-        {
-            return new Mapper(this, schema);
-        }
+        private protected override IRowMapper MakeRowMapper(Schema schema)
+            => new Mapper(this, schema);
     }
 
     /// <include file='doc.xml' path='doc/members/member[@name="LightLDA"]/*' />
@@ -1145,7 +1143,7 @@ namespace Microsoft.ML.Transforms.Text
         public SchemaShape GetOutputSchema(SchemaShape inputSchema)
         {
             _host.CheckValue(inputSchema, nameof(inputSchema));
-            var result = inputSchema.Columns.ToDictionary(x => x.Name);
+            var result = inputSchema.ToDictionary(x => x.Name);
             foreach (var colInfo in _columns)
             {
                 if (!inputSchema.TryFindColumn(colInfo.Input, out var col))
