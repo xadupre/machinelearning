@@ -713,7 +713,7 @@ namespace Microsoft.ML.Transforms.Conversions
             return _unboundMaps[iinfo];
         }
 
-        protected override IRowMapper MakeRowMapper(Schema schema)
+        private protected override IRowMapper MakeRowMapper(Schema schema)
           => new Mapper(this, schema);
 
         private sealed class Mapper : OneToOneMapperBase, ISaveAsOnnx, ISaveAsPfa
@@ -768,7 +768,7 @@ namespace Microsoft.ML.Transforms.Conversions
                 return result;
             }
 
-            protected override Delegate MakeGetter(IRow input, int iinfo, Func<int, bool> activeOutput, out Action disposer)
+            protected override Delegate MakeGetter(Row input, int iinfo, Func<int, bool> activeOutput, out Action disposer)
             {
                 Contracts.AssertValue(input);
                 Contracts.Assert(0 <= iinfo && iinfo < _parent.ColumnPairs.Length);
@@ -777,7 +777,7 @@ namespace Microsoft.ML.Transforms.Conversions
                 return Utils.MarshalInvoke(MakeGetter<int>, type.RawType, input, iinfo);
             }
 
-            private Delegate MakeGetter<T>(IRow row, int src) => _termMap[src].GetMappingGetter(row);
+            private Delegate MakeGetter<T>(Row row, int src) => _termMap[src].GetMappingGetter(row);
 
             private bool SaveAsOnnxCore(OnnxContext ctx, int iinfo, ColInfo info, string srcVariableName, string dstVariableName)
             {

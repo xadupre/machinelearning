@@ -231,9 +231,8 @@ namespace Microsoft.ML.Trainers
         private readonly ImplBase _impl;
 
         public override PredictionKind PredictionKind => PredictionKind.MultiClassClassification;
-        public ColumnType InputType => _impl.InputType;
-        public ColumnType OutputType { get; }
-        public ColumnType DistType => OutputType;
+        private readonly ColumnType _outputType;
+        public ColumnType DistType => _outputType;
         bool ICanSavePfa.CanSavePfa => _impl.CanSavePfa;
 
         [BestFriend]
@@ -284,7 +283,7 @@ namespace Microsoft.ML.Trainers
             Host.Assert(Utils.Size(impl.Predictors) > 0);
 
             _impl = impl;
-            OutputType = new VectorType(NumberType.Float, _impl.Predictors.Length);
+            _outputType = new VectorType(NumberType.Float, _impl.Predictors.Length);
         }
 
         private OvaPredictor(IHostEnvironment env, ModelLoadContext ctx)
@@ -310,7 +309,7 @@ namespace Microsoft.ML.Trainers
                 _impl = new ImplRaw(predictors);
             }
 
-            OutputType = new VectorType(NumberType.Float, _impl.Predictors.Length);
+            _outputType = new VectorType(NumberType.Float, _impl.Predictors.Length);
         }
 
         public static OvaPredictor Create(IHostEnvironment env, ModelLoadContext ctx)
@@ -328,7 +327,7 @@ namespace Microsoft.ML.Trainers
                 ctx.LoadModel<TPredictor, SignatureLoadModel>(env, out predictors[i], string.Format(SubPredictorFmt, i));
         }
 
-        protected override void SaveCore(ModelSaveContext ctx)
+        private protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());
@@ -353,7 +352,16 @@ namespace Microsoft.ML.Trainers
             return _impl.SaveAsPfa(ctx, input);
         }
 
-        public ValueMapper<TIn, TOut> GetMapper<TIn, TOut>()
+        ColumnType IValueMapper.InputType
+        {
+            get { return _impl.InputType; }
+        }
+
+        ColumnType IValueMapper.OutputType
+        {
+            get { return _outputType; }
+        }
+        ValueMapper<TIn, TOut> IValueMapper.GetMapper<TIn, TOut>()
         {
             Host.Check(typeof(TIn) == typeof(VBuffer<float>));
             Host.Check(typeof(TOut) == typeof(VBuffer<float>));
@@ -381,7 +389,7 @@ namespace Microsoft.ML.Trainers
             }
         }
 
-        public void SaveAsText(TextWriter writer, RoleMappedSchema schema)
+        void ICanSaveInTextFormat.SaveAsText(TextWriter writer, RoleMappedSchema schema)
         {
             Host.CheckValue(writer, nameof(writer));
             Host.CheckValue(schema, nameof(schema));

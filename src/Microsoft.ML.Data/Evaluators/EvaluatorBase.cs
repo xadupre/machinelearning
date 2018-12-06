@@ -253,7 +253,7 @@ namespace Microsoft.ML.Runtime.Data
             /// <summary>
             /// This method should get the getters of the new IRow that are needed for the next pass.
             /// </summary>
-            public abstract void InitializeNextPass(IRow row, RoleMappedSchema schema);
+            public abstract void InitializeNextPass(Row row, RoleMappedSchema schema);
 
             /// <summary>
             /// Call the getters once, and process the input as necessary.
@@ -324,7 +324,7 @@ namespace Microsoft.ML.Runtime.Data
         // When a new value is encountered, it uses a callback for creating a new aggregator.
         protected abstract class AggregatorDictionaryBase
         {
-            protected IRow Row;
+            protected Row Row;
             protected readonly Func<string, TAgg> CreateAgg;
             protected readonly RoleMappedSchema Schema;
 
@@ -346,7 +346,7 @@ namespace Microsoft.ML.Runtime.Data
             /// <summary>
             /// Gets the stratification column getter for the new IRow.
             /// </summary>
-            public abstract void Reset(IRow row);
+            public abstract void Reset(Row row);
 
             public static AggregatorDictionaryBase Create(RoleMappedSchema schema, string stratCol, ColumnType stratType,
                 Func<string, TAgg> createAgg)
@@ -397,7 +397,7 @@ namespace Microsoft.ML.Runtime.Data
                     _dict = new Dictionary<TStrat, TAgg>();
                 }
 
-                public override void Reset(IRow row)
+                public override void Reset(Row row)
                 {
                     Row = row;
                     int col;
@@ -446,7 +446,8 @@ namespace Microsoft.ML.Runtime.Data
             return new RowToRowMapperTransform(Host, data.Data, mapper, null);
         }
 
-        protected abstract IRowMapper CreatePerInstanceRowMapper(RoleMappedSchema schema);
+        [BestFriend]
+        private protected abstract IRowMapper CreatePerInstanceRowMapper(RoleMappedSchema schema);
     }
 
     /// <summary>
@@ -501,10 +502,22 @@ namespace Microsoft.ML.Runtime.Data
             ctx.SaveStringOrNull(LabelCol);
         }
 
-        public abstract Func<int, bool> GetDependencies(Func<int, bool> activeOutput);
+        Func<int, bool> IRowMapper.GetDependencies(Func<int, bool> activeOutput)
+            => GetDependenciesCore(activeOutput);
 
-        public abstract Schema.DetachedColumn[] GetOutputColumns();
+        [BestFriend]
+        private protected abstract Func<int, bool> GetDependenciesCore(Func<int, bool> activeOutput);
 
-        public abstract Delegate[] CreateGetters(IRow input, Func<int, bool> activeCols, out Action disposer);
+        Schema.DetachedColumn[] IRowMapper.GetOutputColumns()
+            => GetOutputColumnsCore();
+
+        [BestFriend]
+        private protected abstract Schema.DetachedColumn[] GetOutputColumnsCore();
+
+        Delegate[] IRowMapper.CreateGetters(Row input, Func<int, bool> activeCols, out Action disposer)
+            => CreateGettersCore(input, activeCols, out disposer);
+
+        [BestFriend]
+        private protected abstract Delegate[] CreateGettersCore(Row input, Func<int, bool> activeCols, out Action disposer);
     }
 }

@@ -208,15 +208,14 @@ namespace Microsoft.ML.Runtime.Data
                 OutputSchema = Schema.Create(new SchemaImpl(ectx, owner, treeValueType, leafIdType, pathIdType));
             }
 
-            public IRow GetRow(IRow input, Func<int, bool> predicate, out Action disposer)
+            public Row GetRow(Row input, Func<int, bool> predicate)
             {
                 _ectx.CheckValue(input, nameof(input));
                 _ectx.CheckValue(predicate, nameof(predicate));
-                disposer = null;
                 return new SimpleRow(OutputSchema, input, CreateGetters(input, predicate));
             }
 
-            private Delegate[] CreateGetters(IRow input, Func<int, bool> predicate)
+            private Delegate[] CreateGetters(Row input, Func<int, bool> predicate)
             {
                 _ectx.AssertValue(input);
                 _ectx.AssertValue(predicate);
@@ -259,7 +258,7 @@ namespace Microsoft.ML.Runtime.Data
             private sealed class State
             {
                 private readonly IExceptionContext _ectx;
-                private readonly IRow _input;
+                private readonly Row _input;
                 private readonly FastTreePredictionWrapper _ensemble;
                 private readonly int _numTrees;
                 private readonly int _numLeaves;
@@ -276,7 +275,7 @@ namespace Microsoft.ML.Runtime.Data
                 private long _cachedLeafBuilderPosition;
                 private long _cachedPathBuilderPosition;
 
-                public State(IExceptionContext ectx, IRow input, FastTreePredictionWrapper ensemble, int numLeaves, int featureIndex)
+                public State(IExceptionContext ectx, Row input, FastTreePredictionWrapper ensemble, int numLeaves, int featureIndex)
                 {
                     Contracts.AssertValue(ectx);
                     _ectx = ectx;

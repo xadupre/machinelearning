@@ -188,7 +188,7 @@ namespace Microsoft.ML.Runtime.Data
             return names;
         }
 
-        protected override IRowMapper CreatePerInstanceRowMapper(RoleMappedSchema schema)
+        private protected override IRowMapper CreatePerInstanceRowMapper(RoleMappedSchema schema)
         {
             Contracts.CheckValue(schema, nameof(schema));
             Contracts.CheckParam(schema.Label != null, nameof(schema), "Could not find the label column");
@@ -609,7 +609,7 @@ namespace Microsoft.ML.Runtime.Data
                 }
             }
 
-            public override void InitializeNextPass(IRow row, RoleMappedSchema schema)
+            public override void InitializeNextPass(Row row, RoleMappedSchema schema)
             {
                 Host.AssertValue(schema.Label);
                 Host.Assert(PassNum < 1);
@@ -968,7 +968,7 @@ namespace Microsoft.ML.Runtime.Data
             ctx.Writer.WriteBoolByte(_useRaw);
         }
 
-        public override Func<int, bool> GetDependencies(Func<int, bool> activeOutput)
+        private protected override Func<int, bool> GetDependenciesCore(Func<int, bool> activeOutput)
         {
             if (_probIndex >= 0)
             {
@@ -981,7 +981,7 @@ namespace Microsoft.ML.Runtime.Data
             return col => activeOutput(AssignedCol) && col == ScoreIndex;
         }
 
-        public override Delegate[] CreateGetters(IRow input, Func<int, bool> activeCols, out Action disposer)
+        private protected override Delegate[] CreateGettersCore(Row input, Func<int, bool> activeCols, out Action disposer)
         {
             Host.Assert(LabelIndex >= 0);
             Host.Assert(ScoreIndex >= 0);
@@ -1079,7 +1079,7 @@ namespace Microsoft.ML.Runtime.Data
             return Single.IsNaN(val) ? false : val > _threshold;
         }
 
-        public override Schema.DetachedColumn[] GetOutputColumns()
+        private protected override Schema.DetachedColumn[] GetOutputColumnsCore()
         {
             if (_probIndex >= 0)
             {
