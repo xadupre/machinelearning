@@ -93,7 +93,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
     /// Predictors that can output themselves in a human-readable text format
     /// </summary>
     [BestFriend]
-    internal interface ICanSaveInTextFormat
+    /*internal*/public interface ICanSaveInTextFormat
     {
         void SaveAsText(TextWriter writer, RoleMappedSchema schema);
     }

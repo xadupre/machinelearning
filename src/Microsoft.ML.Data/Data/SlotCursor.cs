@@ -13,7 +13,7 @@ namespace Microsoft.ML.Runtime.Data
     public abstract class SlotCursor : IDisposable
     {
         [BestFriend]
-        private protected readonly IChannel Ch;
+        /*private*/ protected readonly IChannel Ch;
         private CursorState _state;
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.ML.Runtime.Data
         /// for <see cref="RowCursor"/>s.
         /// </summary>
         [BestFriend]
-        internal abstract class SynchronizedSlotCursor : SlotCursor
+        /*internal*/public abstract class SynchronizedSlotCursor : SlotCursor
         {
             private readonly SlotCursor _root;
 
