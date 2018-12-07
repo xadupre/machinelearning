@@ -225,7 +225,7 @@ namespace Microsoft.ML.Trainers.KMeans
         /// Save the predictor in binary format.
         /// </summary>
         /// <param name="ctx">The context to save to</param>
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());

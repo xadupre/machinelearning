@@ -563,7 +563,7 @@ namespace Microsoft.ML.Runtime.Learners
             return new MulticlassLogisticRegressionPredictor(env, ctx);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());
