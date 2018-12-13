@@ -54,7 +54,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
         }
 
         [BestFriend]
-        private protected virtual void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected virtual void SaveCore(ModelSaveContext ctx)
         {
             Contracts.AssertValue(ctx);
 

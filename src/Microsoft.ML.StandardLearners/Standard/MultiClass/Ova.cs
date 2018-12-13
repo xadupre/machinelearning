@@ -323,7 +323,7 @@ namespace Microsoft.ML.Trainers
                 ctx.LoadModel<TPredictor, SignatureLoadModel>(env, out predictors[i], string.Format(SubPredictorFmt, i));
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());

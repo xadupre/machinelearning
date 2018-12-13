@@ -111,7 +111,7 @@ namespace Microsoft.ML.Runtime.Ensemble
             return new EnsembleDistributionPredictor(env, ctx);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());

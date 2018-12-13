@@ -27,7 +27,7 @@ namespace Microsoft.ML.Runtime.Data
     /// vector lengths.
     /// </summary>
     [BestFriend]
-    internal interface IValueMapper
+    /*internal*/public interface IValueMapper
     {
         ColumnType InputType { get; }
         ColumnType OutputType { get; }
@@ -47,7 +47,7 @@ namespace Microsoft.ML.Runtime.Data
     /// vector lengths.
     /// </summary>
     [BestFriend]
-    internal interface IValueMapperDist : IValueMapper
+    /*internal*/public interface IValueMapperDist : IValueMapper
     {
         ColumnType DistType { get; }
 

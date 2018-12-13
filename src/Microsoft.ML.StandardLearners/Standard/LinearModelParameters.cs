@@ -183,7 +183,7 @@ namespace Microsoft.ML.Runtime.Learners
         }
 
         [BestFriend]
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
 
@@ -467,7 +467,7 @@ namespace Microsoft.ML.Runtime.Learners
             return new SchemaBindableCalibratedPredictor(env, predictor, calibrator);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             // *** Binary format ***
             // (Base class)
@@ -618,7 +618,7 @@ namespace Microsoft.ML.Runtime.Learners
             return new LinearRegressionModelParameters(env, ctx);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());
@@ -694,7 +694,7 @@ namespace Microsoft.ML.Runtime.Learners
             return new PoissonRegressionModelParameters(env, ctx);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
             ctx.SetVersionInfo(GetVersionInfo());

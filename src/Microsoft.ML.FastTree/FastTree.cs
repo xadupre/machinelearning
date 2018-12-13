@@ -2900,7 +2900,7 @@ namespace Microsoft.ML.Trainers.FastTree
         }
 
         [BestFriend]
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             base.SaveCore(ctx);
 
