@@ -41,7 +41,7 @@ namespace Microsoft.ML.Runtime
         /// Provides information on an instantiatable component, aka, loadable class.
         /// </summary>
         [BestFriend]
-        internal sealed class LoadableClassInfo
+        /*internal*/public sealed class LoadableClassInfo
         {
             /// <summary>
             /// Used for dictionary lookup based on signature and name.

@@ -125,7 +125,7 @@ namespace Microsoft.ML.Runtime
     }
 
     [BestFriend]
-    internal sealed class PredictionEngine<TSrc, TDst> : PredictionEngineBase<TSrc, TDst>
+    /*internal*/public sealed class PredictionEngine<TSrc, TDst> : PredictionEngineBase<TSrc, TDst>
        where TSrc : class
        where TDst : class, new()
     {
