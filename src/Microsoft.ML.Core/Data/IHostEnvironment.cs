@@ -234,7 +234,7 @@ namespace Microsoft.ML.Runtime
     /// component creation.
     /// </summary>
     [BestFriend]
-    internal static class HostExtensions
+    /*internal*/public static class HostExtensions
     {
         public static T Apply<T>(this IHost host, string channelName, Func<IChannel, T> func)
         {

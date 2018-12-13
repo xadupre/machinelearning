@@ -46,7 +46,7 @@ namespace Microsoft.ML.Data
         /// <param name="custom">Additional column mapping to be passed to the trainer or scorer (specific to the prediction type). Can be null or empty.</param>
         /// <returns>The constructed examples.</returns>
         [BestFriend]
-        internal static RoleMappedData CreateExamples(this IHostEnvironment env, IDataView data, string features, string label = null,
+        /*internal*/public static RoleMappedData CreateExamples(this IHostEnvironment env, IDataView data, string features, string label = null,
             string group = null, string weight = null, IEnumerable<KeyValuePair<RoleMappedSchema.ColumnRole, string>> custom = null)
         {
             Contracts.CheckValue(env, nameof(env));
@@ -297,7 +297,7 @@ namespace Microsoft.ML.Data
         /// extracted.</param>
         /// <returns>The scored data.</returns>
         [BestFriend]
-        internal static IDataScorerTransform CreateDefaultScorer(this IHostEnvironment env, RoleMappedData data,
+        /*internal*/public static IDataScorerTransform CreateDefaultScorer(this IHostEnvironment env, RoleMappedData data,
             IPredictor predictor, RoleMappedSchema trainSchema = null)
         {
             Contracts.CheckValue(env, nameof(env));

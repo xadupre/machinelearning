@@ -14,7 +14,7 @@ namespace Microsoft.ML.Runtime.Data
     /// injects a standard conversion from the actual type of the source column to typeSrc (if needed).
     /// </summary>
     [BestFriend]
-    internal static class LambdaColumnMapper
+    /*internal*/public static class LambdaColumnMapper
     {
         // REVIEW: It would be nice to support propagation of select metadata.
         public static IDataView Create<TSrc, TDst>(IHostEnvironment env, string name, IDataView input,

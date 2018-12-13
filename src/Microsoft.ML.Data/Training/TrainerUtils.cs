@@ -39,7 +39,7 @@ namespace Microsoft.ML.Runtime.Training
     }
 
     [BestFriend]
-    internal static class TrainerUtils
+    /*internal*/public static class TrainerUtils
     {
         /// <summary>
         /// Check for a standard (known-length vector of float) feature column.

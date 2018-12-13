@@ -33,7 +33,7 @@ namespace Microsoft.ML.Runtime.Data.Conversion
     using UG = RowId;
 
     [BestFriend]
-    internal delegate bool TryParseMapper<T>(in TX src, out T dst);
+    /*internal*/public delegate bool TryParseMapper<T>(in TX src, out T dst);
 
     /// <summary>
     /// This type exists to provide efficient delegates for conversion between standard ColumnTypes,
@@ -46,7 +46,7 @@ namespace Microsoft.ML.Runtime.Data.Conversion
     /// differences between sparse and dense inputs in a semantically invariant way.
     /// </summary>
     [BestFriend]
-    internal sealed class Conversions
+    /*internal*/public sealed class Conversions
     {
         // REVIEW: Reconcile implementations with TypeUtils, and clarify the distinction.
 

@@ -17,7 +17,7 @@ namespace Microsoft.ML.Runtime
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     [BestFriend]
-    internal sealed class LoadableClassAttribute : LoadableClassAttributeBase
+    /*internal*/public sealed class LoadableClassAttribute : LoadableClassAttributeBase
     {
         /// <summary>
         /// Assembly attribute used to specify that a class is loadable by a machine learning
@@ -100,7 +100,7 @@ namespace Microsoft.ML.Runtime
         }
     }
 
-    internal abstract class LoadableClassAttributeBase : Attribute
+    /*internal*/public abstract class LoadableClassAttributeBase : Attribute
     {
         // Note: these properties have private setters to make attribute parsing easier - the values
         // are all guaranteed to be in the ConstructorArguments of the CustomAttributeData

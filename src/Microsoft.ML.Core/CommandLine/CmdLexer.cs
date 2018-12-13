@@ -303,7 +303,7 @@ namespace Microsoft.ML.Runtime.CommandLine
     }
 
     [BestFriend]
-    internal sealed class CmdQuoter
+    /*internal*/public sealed class CmdQuoter
     {
         private readonly string _str;
         private StringBuilder _sb;

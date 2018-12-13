@@ -152,7 +152,7 @@ namespace Microsoft.ML.Runtime.Internal.Internallearn
     /// Predictors that can output themselves in C#/C++ code.
     /// </summary>
     [BestFriend]
-    internal interface ICanSaveInSourceCode
+    /*internal*/public interface ICanSaveInSourceCode
     {
         void SaveAsCode(TextWriter writer, RoleMappedSchema schema);
     }

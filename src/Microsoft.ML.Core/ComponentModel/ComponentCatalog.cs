@@ -620,7 +620,7 @@ namespace Microsoft.ML.Runtime
         /// If provided, the given set of assemblies is loaded first.
         /// </summary>
         [BestFriend]
-        internal LoadableClassInfo[] GetAllClasses()
+        /*internal*/public LoadableClassInfo[] GetAllClasses()
         {
             return _classes.ToArray();
         }
@@ -630,7 +630,7 @@ namespace Microsoft.ML.Runtime
         /// signature and base type. If provided, the given set of assemblies is loaded first.
         /// </summary>
         [BestFriend]
-        internal LoadableClassInfo[] GetAllDerivedClasses(Type typeBase, Type typeSig)
+        /*internal*/public LoadableClassInfo[] GetAllDerivedClasses(Type typeBase, Type typeSig)
         {
             Contracts.CheckValue(typeBase, nameof(typeBase));
             Contracts.CheckValueOrNull(typeSig);
@@ -649,7 +649,7 @@ namespace Microsoft.ML.Runtime
         /// is loaded first.
         /// </summary>
         [BestFriend]
-        internal Type[] GetAllSignatureTypes()
+        /*internal*/public Type[] GetAllSignatureTypes()
         {
             return _signatures.Select(kvp => kvp.Key).ToArray();
         }
@@ -658,7 +658,7 @@ namespace Microsoft.ML.Runtime
         /// Returns a string name for a given signature type.
         /// </summary>
         [BestFriend]
-        internal static string SignatureToString(Type sig)
+        /*internal*/public static string SignatureToString(Type sig)
         {
             Contracts.CheckValue(sig, nameof(sig));
             Contracts.CheckParam(sig.BaseType == typeof(MulticastDelegate), nameof(sig), "Must be a delegate type");
@@ -889,7 +889,7 @@ namespace Microsoft.ML.Runtime
         /// If there is no such component in the catalog, returns false. Any other error results in an exception.
         /// </summary>
         [BestFriend]
-        internal static bool TryCreateInstance<TRes, TSig>(IHostEnvironment env, out TRes result, string name, string options, params object[] extra)
+        /*internal*/public static bool TryCreateInstance<TRes, TSig>(IHostEnvironment env, out TRes result, string name, string options, params object[] extra)
             where TRes : class
         {
             return TryCreateInstance<TRes>(env, typeof(TSig), out result, name, options, extra);
