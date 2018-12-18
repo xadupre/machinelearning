@@ -134,7 +134,7 @@ namespace Microsoft.ML.Trainers
                 var trainedData = new RoleMappedData(view, label: trainerLabel, feature: transformer.FeatureColumn);
 
                 if (calibratedModel == null)
-                    calibratedModel = CalibratorUtils.TrainCalibrator(Host, ch, Calibrator, Args.MaxCalibrationExamples, transformer.Model, trainedData) as TDistPredictor;
+                    calibratedModel = CalibratorUtils.GetCalibratedPredictor(Host, ch, Calibrator, transformer.Model, trainedData, Args.MaxCalibrationExamples) as TDistPredictor;
 
                 Host.Check(calibratedModel != null, "Calibrated predictor does not implement the expected interface");
                 return new BinaryPredictionTransformer<TScalarPredictor>(Host, calibratedModel, trainedData.Data.Schema, transformer.FeatureColumn);
@@ -146,7 +146,7 @@ namespace Microsoft.ML.Trainers
         private IDataView MapLabels(RoleMappedData data, int cls)
         {
             var lab = data.Schema.Label;
-            Host.Assert(!data.Schema.Schema.IsHidden(lab.Index));
+            Host.Assert(!data.Schema.Schema[lab.Index].IsHidden);
             Host.Assert(lab.Type.KeyCount > 0 || lab.Type == NumberType.R4 || lab.Type == NumberType.R8);
 
             if (lab.Type.KeyCount > 0)
