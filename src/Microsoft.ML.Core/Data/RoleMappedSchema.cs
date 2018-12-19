@@ -101,7 +101,7 @@ namespace Microsoft.ML.Runtime.Data
     /// <seealso cref="ColumnRole"/>
     /// <seealso cref="RoleMappedData"/>
     [BestFriend]
-    internal sealed class RoleMappedSchema
+    /*internal*/public sealed class RoleMappedSchema
     {
         private const string FeatureString = "Feature";
         private const string LabelString = "Label";

@@ -21,7 +21,7 @@ namespace Microsoft.ML.Runtime.Data
     /// the SimpleRow class can be used in the <see cref="IRowToRowMapper.GetRow"/> method.
     /// </summary>
     [BestFriend]
-    internal interface ISchemaBindableMapper
+    /*internal*/public interface ISchemaBindableMapper
     {
         ISchemaBoundMapper Bind(IHostEnvironment env, RoleMappedSchema schema);
     }
@@ -31,7 +31,7 @@ namespace Microsoft.ML.Runtime.Data
     /// of the input columns that are needed for the mapping.
     /// </summary>
     [BestFriend]
-    internal interface ISchemaBoundMapper
+    /*internal*/public interface ISchemaBoundMapper
     {
         /// <summary>
         /// The <see cref="RoleMappedSchema"/> that was passed to the <see cref="ISchemaBoundMapper"/> in the binding process.
@@ -58,7 +58,7 @@ namespace Microsoft.ML.Runtime.Data
     /// This interface combines <see cref="ISchemaBoundMapper"/> with <see cref="IRowToRowMapper"/>.
     /// </summary>
     [BestFriend]
-    internal interface ISchemaBoundRowMapper : ISchemaBoundMapper, IRowToRowMapper
+    /*internal*/public interface ISchemaBoundRowMapper : ISchemaBoundMapper, IRowToRowMapper
     {
         /// <summary>
         /// There are two schemas from <see cref="ISchemaBoundMapper"/> and <see cref="IRowToRowMapper"/>.
