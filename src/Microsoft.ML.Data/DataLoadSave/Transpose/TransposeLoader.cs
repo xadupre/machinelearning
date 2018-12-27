@@ -9,13 +9,12 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft.ML;
+using Microsoft.ML.CommandLine;
 using Microsoft.ML.Data;
-using Microsoft.ML.Runtime;
-using Microsoft.ML.Runtime.CommandLine;
-using Microsoft.ML.Runtime.Data;
-using Microsoft.ML.Runtime.Data.IO;
-using Microsoft.ML.Runtime.Internal.Utilities;
-using Microsoft.ML.Runtime.Model;
+using Microsoft.ML.Data.IO;
+using Microsoft.ML.Internal.Utilities;
+using Microsoft.ML.Model;
 
 [assembly: LoadableClass(TransposeLoader.Summary, typeof(TransposeLoader), typeof(TransposeLoader.Arguments), typeof(SignatureDataLoader),
     "Transpose Loader", TransposeLoader.LoadName, "Transpose", "trans")]
@@ -23,7 +22,7 @@ using Microsoft.ML.Runtime.Model;
 [assembly: LoadableClass(TransposeLoader.Summary, typeof(TransposeLoader), null, typeof(SignatureLoadDataLoader),
     "Transpose Data View Loader", TransposeLoader.LoadName)]
 
-namespace Microsoft.ML.Runtime.Data.IO
+namespace Microsoft.ML.Data.IO
 {
     /// <summary>
     /// The transposed loader reads the transposed binary format. This binary format, at a high level, is nothing more
@@ -367,7 +366,7 @@ namespace Microsoft.ML.Runtime.Data.IO
         // to use the cursors from the schema view if convenient to do so.
         public Schema Schema { get { return _schemaEntry.GetView().Schema; } }
 
-        public ITransposeSchema TransposeSchema { get { return _schema; } }
+        ITransposeSchema ITransposeDataView.TransposeSchema { get { return _schema; } }
 
         /// <summary>
         /// Whether the master schema sub-IDV has the actual data.
@@ -677,12 +676,11 @@ namespace Microsoft.ML.Runtime.Data.IO
             return new Cursor(this, predicate);
         }
 
-        public RowCursor[] GetRowCursorSet(out IRowCursorConsolidator consolidator, Func<int, bool> predicate, int n, Random rand = null)
+        public RowCursor[] GetRowCursorSet(Func<int, bool> predicate, int n, Random rand = null)
         {
             _host.CheckValue(predicate, nameof(predicate));
             if (HasRowData)
-                return _schemaEntry.GetView().GetRowCursorSet(out consolidator, predicate, n, rand);
-            consolidator = null;
+                return _schemaEntry.GetView().GetRowCursorSet(predicate, n, rand);
             return new RowCursor[] { GetRowCursor(predicate, rand) };
         }
 
@@ -698,7 +696,7 @@ namespace Microsoft.ML.Runtime.Data.IO
             _host.CheckParam(0 <= col && col < _header.ColumnCount, nameof(col));
             // We don't want the type error, if there is one, to be handled by the get-getter, because
             // at the point we've gotten the interior cursor, but not yet constructed the slot cursor.
-            ColumnType cursorType = TransposeSchema.GetSlotType(col).ItemType;
+            ColumnType cursorType = _schema.GetSlotType(col).ItemType;
             RowCursor inputCursor = view.GetRowCursor(c => true);
             try
             {
@@ -783,8 +781,8 @@ namespace Microsoft.ML.Runtime.Data.IO
                         _host.AssertValue(view);
                         _host.Assert(view.Schema.Count == 1);
                         var trans = _colTransposers[col] = Transposer.Create(_host, view, false, new int[] { 0 });
-                        _host.Assert(trans.TransposeSchema.ColumnCount == 1);
-                        _host.Assert(trans.TransposeSchema.GetSlotType(0).ValueCount == Schema[col].Type.ValueCount);
+                        _host.Assert(((ITransposeDataView)trans).TransposeSchema.ColumnCount == 1);
+                        _host.Assert(((ITransposeDataView)trans).TransposeSchema.GetSlotType(0).ValueCount == Schema[col].Type.ValueCount);
                     }
                 }
             }
@@ -845,7 +843,7 @@ namespace Microsoft.ML.Runtime.Data.IO
                 Ch.Assert(0 <= col && col < Schema.Count);
                 Ch.Assert(_colToActivesIndex[col] >= 0);
                 var type = Schema[col].Type;
-                Ch.Assert(_parent.TransposeSchema.GetSlotType(col).ValueCount == _parent._header.RowCount);
+                Ch.Assert(((ITransposeDataView)_parent).TransposeSchema.GetSlotType(col).ValueCount == _parent._header.RowCount);
                 Action<int> func = InitOne<int>;
                 if (type.IsVector)
                     func = InitVec<int>;
