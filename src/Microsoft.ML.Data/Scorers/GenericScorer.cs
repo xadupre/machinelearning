@@ -4,12 +4,11 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.ML.Runtime;
-using Microsoft.ML.Runtime.Data;
-using Microsoft.ML.Runtime.Model;
-using Microsoft.ML.Runtime.Model.Onnx;
-using Microsoft.ML.Runtime.Model.Pfa;
+using Microsoft.ML.Model;
+using Microsoft.ML.Model.Onnx;
+using Microsoft.ML.Model.Pfa;
 
 [assembly: LoadableClass(typeof(GenericScorer), typeof(GenericScorer.Arguments), typeof(SignatureDataScorer),
     "Generic Scorer", GenericScorer.LoadName, "Generic")]
@@ -17,7 +16,7 @@ using Microsoft.ML.Runtime.Model.Pfa;
 [assembly: LoadableClass(typeof(GenericScorer), null, typeof(SignatureLoadDataTransform),
     "Generic Scorer", GenericScorer.LoaderSignature)]
 
-namespace Microsoft.ML.Runtime.Data
+namespace Microsoft.ML.Data
 {
     /// <summary>
     /// This class is a scorer that passes through all the ISchemaBound columns without adding any "derived columns".
@@ -161,7 +160,7 @@ namespace Microsoft.ML.Runtime.Data
             var rowMapper = mapper as ISchemaBoundRowMapper;
             Host.CheckParam(rowMapper != null, nameof(mapper), "mapper should implement ISchemaBoundRowMapper");
             _bindings = Bindings.Create(data.Schema, rowMapper, args.Suffix);
-            OutputSchema = Schema.Create(_bindings);
+            OutputSchema = _bindings.AsSchema;
         }
 
         /// <summary>
@@ -171,7 +170,7 @@ namespace Microsoft.ML.Runtime.Data
             : base(env, data, RegistrationName, transform.Bindable)
         {
             _bindings = transform._bindings.ApplyToSchema(env, data.Schema);
-            OutputSchema = Schema.Create(_bindings);
+            OutputSchema = _bindings.AsSchema;
         }
 
         /// <summary>
@@ -182,7 +181,7 @@ namespace Microsoft.ML.Runtime.Data
         {
             Contracts.AssertValue(ctx);
             _bindings = Bindings.Create(ctx, host, Bindable, input.Schema);
-            OutputSchema = Schema.Create(_bindings);
+            OutputSchema = _bindings.AsSchema;
         }
 
         /// <summary>
