@@ -24,7 +24,7 @@ namespace Microsoft.ML.Data
     /// <see cref="ITransposeSchema.GetSlotType"/> returns a non-null value.
     /// </summary>
     [BestFriend]
-    internal interface ITransposeDataView : IDataView
+    /*internal*/public interface ITransposeDataView : IDataView
     {
         /// <summary>
         /// An enhanced schema, containing information on the transposition properties, if any,
@@ -44,7 +44,7 @@ namespace Microsoft.ML.Data
     /// The transpose schema returns the schema information of the view we have transposed.
     /// </summary>
     [BestFriend]
-    internal interface ITransposeSchema : ISchema
+    /*internal*/public interface ITransposeSchema : ISchema
     {
         /// <summary>
         /// Analogous to <see cref="ISchema.GetColumnType"/>, except instead of returning the type of value

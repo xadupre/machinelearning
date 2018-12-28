@@ -33,7 +33,7 @@ namespace Microsoft.ML.Data
     /// <summary>
     /// This is a base class for wrapping <see cref="IPredictor"/>s in an <see cref="ISchemaBindableMapper"/>.
     /// </summary>
-    internal abstract class SchemaBindablePredictorWrapperBase : ISchemaBindableMapper, ICanSaveModel, ICanSaveSummary,
+    /*internal*/public abstract class SchemaBindablePredictorWrapperBase : ISchemaBindableMapper, ICanSaveModel, ICanSaveSummary,
         IBindableCanSavePfa, IBindableCanSaveOnnx
     {
         // The ctor guarantees that Predictor is non-null. It also ensures that either
@@ -239,7 +239,7 @@ namespace Microsoft.ML.Data
     /// This class is a wrapper for all <see cref="IPredictor"/>s except for quantile regression predictors,
     /// and calibrated binary classification predictors.
     /// </summary>
-    internal sealed class SchemaBindablePredictorWrapper : SchemaBindablePredictorWrapperBase
+    /*internal*/public sealed class SchemaBindablePredictorWrapper : SchemaBindablePredictorWrapperBase
     {
         public const string LoaderSignature = "SchemaBindableWrapper";
         private static VersionInfo GetVersionInfo()

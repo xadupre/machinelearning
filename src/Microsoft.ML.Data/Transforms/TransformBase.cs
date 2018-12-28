@@ -469,7 +469,7 @@ namespace Microsoft.ML.Data
         // The ColInfos are exposed to sub-classes. They should be considered readonly.
         protected readonly ColInfo[] Infos;
         // The _input as a transposed data view, non-null iff _input is a transposed data view.
-        private protected readonly ITransposeDataView InputTranspose;
+        /*private*/ protected readonly ITransposeDataView InputTranspose;
         // The InputTranspose transpose schema, null iff InputTranspose is null.
         private protected ITransposeSchema InputTransposeSchema => InputTranspose?.TransposeSchema;
 

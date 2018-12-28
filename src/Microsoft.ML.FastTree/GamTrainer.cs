@@ -791,7 +791,7 @@ namespace Microsoft.ML.Trainers.FastTree
             _outputType = NumberType.Float;
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             Host.CheckValue(ctx, nameof(ctx));
 

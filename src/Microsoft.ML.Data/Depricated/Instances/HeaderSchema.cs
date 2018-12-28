@@ -16,7 +16,7 @@ using Microsoft.ML.Model;
 namespace Microsoft.ML.Internal.Internallearn
 {
     [BestFriend]
-    internal abstract class FeatureNameCollection : IEnumerable<string>
+    /*internal*/public abstract class FeatureNameCollection : IEnumerable<string>
     {
         private sealed class FeatureNameCollectionSchema : ISchema
         {

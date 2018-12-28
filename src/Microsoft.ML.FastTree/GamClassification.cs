@@ -194,7 +194,7 @@ namespace Microsoft.ML.Trainers.FastTree
             return new SchemaBindableCalibratedPredictor(env, predictor, calibrator);
         }
 
-        private protected override void SaveCore(ModelSaveContext ctx)
+        /*private*/ protected override void SaveCore(ModelSaveContext ctx)
         {
             Host.CheckValue(ctx, nameof(ctx));
             ctx.CheckAtModel();

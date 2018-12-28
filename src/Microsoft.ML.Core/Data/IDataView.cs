@@ -12,7 +12,7 @@ namespace Microsoft.ML.Data
     /// Please avoid implementing this interface, use <see cref="Schema"/>.
     /// </summary>
     [BestFriend]
-    internal interface ISchema
+    /*internal*/public interface ISchema
     {
         /// <summary>
         /// Number of columns.
