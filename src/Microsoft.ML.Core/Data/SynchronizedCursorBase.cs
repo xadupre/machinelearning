@@ -11,7 +11,8 @@ namespace Microsoft.ML.Data
     /// Dispose is virtual with the default implementation delegating to the input cursor.
     /// </summary>
     [BestFriend]
-    /*internal*/public abstract class SynchronizedCursorBase : RowCursor
+    /*internal*/
+    public abstract class SynchronizedCursorBase : RowCursor
     {
         protected readonly IChannel Ch;
 
@@ -53,6 +54,8 @@ namespace Microsoft.ML.Data
             base.Dispose(disposing);
             _disposed = true;
         }
+
+        public sealed override int Count() { return _root.Count(); }
 
         public sealed override bool MoveNext() => _root.MoveNext();
 
