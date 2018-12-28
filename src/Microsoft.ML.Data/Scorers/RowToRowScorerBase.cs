@@ -144,7 +144,8 @@ namespace Microsoft.ML.Data
             var inputs = Source.GetRowCursorSet(predicateInput, n, rand);
             Contracts.AssertNonEmpty(inputs);
 
-            if (inputs.Length == 1 && n > 1 && WantParallelCursors(predicate) && (Source.GetRowCount() ?? int.MaxValue) > n)
+            if (inputs.Length == 1 && n > 1 && WantParallelCursors(predicate) && (Source.GetRowCount() ?? int.MaxValue) > n &&
+                (inputs[0].Count() == -1 || inputs[0].Count() > 1))
                 inputs = DataViewUtils.CreateSplitCursors(Host, inputs[0], n);
             Contracts.AssertNonEmpty(inputs);
 

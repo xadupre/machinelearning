@@ -198,7 +198,8 @@ namespace Microsoft.ML.Data
             var inputs = Source.GetRowCursorSet(predicateInput, n, rand);
             Host.AssertNonEmpty(inputs);
 
-            if (inputs.Length == 1 && n > 1 && _bindings.AddedColumnIndices.Any(predicate))
+            if (inputs.Length == 1 && n > 1 && _bindings.AddedColumnIndices.Any(predicate) &&
+                (inputs[0].Count() == -1 || inputs[0].Count() > 1))
                 inputs = DataViewUtils.CreateSplitCursors(Host, inputs[0], n);
             Host.AssertNonEmpty(inputs);
 

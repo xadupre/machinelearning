@@ -270,5 +270,13 @@ namespace Microsoft.ML.Data
         /// values from <see cref="Row.GetIdGetter"/>.
         /// </summary>
         public abstract RowCursor GetRootCursor();
+
+        /// <summary>
+        /// Tells if the cursor knows the number of observations it will walk through
+        /// to let the library optimize the number of threads to create while waiting
+        /// for multiple threads.
+        /// </summary>
+        /// <returns>-1 if not known, 0 if empty</returns>
+        public virtual int Count() { return -1; }
     }
 }
